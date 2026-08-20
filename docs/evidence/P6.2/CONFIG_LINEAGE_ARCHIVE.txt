@@ -1,0 +1,17 @@
+schemaVersion=1
+semanticTag=fatigue_improved
+ablation=B3
+enabled=true
+capacity=6
+normalizationEpsilon=1.0E-12
+duplicateEpsilon=1.0E-4
+indicatorKappa=0.05
+fatigueWeightFmax=0.5
+fatigueWeightFe=0.5
+similarityEpsilon=1.0E-4
+pbestSelection=AUTHOR_PBEST_UNCHANGED
+smokeInstance=20_2_3_1.txt
+smokePopulation=100
+smokeMaxFEs=2000
+seed=20260808
+

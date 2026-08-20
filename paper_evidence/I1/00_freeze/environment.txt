@@ -1,0 +1,7 @@
+versionId=pre-validation-audited-20260810
+java.version=17.0.12
+java.vendor=Oracle Corporation
+os.name=Windows 11
+os.arch=amd64
+jmetal.version=5.8
+seed=20260808

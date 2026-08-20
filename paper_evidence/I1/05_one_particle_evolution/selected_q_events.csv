@@ -1,0 +1,5 @@
+controller,lineage,event
+Qg,social/group,"4:G4_BALANCED:action:mode=explore,state=0,draw=0.9079809131023555,action=1"
+Qg,social/group,"5:G4_BALANCED:leader:action=1,fingerprint=[0, 8, 2, 6, 7, 5, 1, 4, 3, 9]|[0, 1, 1, 1, 1, 1, 0, 0, 1, 1]|[2, 0, 1, 1, 0, 0, 2, 1, 0, 1]|[0, 1, 0, 1, 0, 1, 1, 1, 0, 0]"
+Qp,75,"event=104,group=G1_CMAX,type=select,lineage=75,state=3,E=3,H=0,R=0,mask=1110,action=KEEP,epsilon=0.2724,rho=0.8544472277230409,rhoThreshold=0.8648242898046202,pbest=E92E15CC5718A21C98F5EBAC4DF3CB704575AD19E14680EECD1EBD71686DEA41"
+Qp,75,"event=122,group=G1_CMAX,type=reward,lineage=75,action=KEEP,dom=0.2,direction=-4.358101814883977,archive=1.0,risk=-0.2263877016923518,total=-3.5146987403070646,nextState=6,nextMask=1110,archiveSurvived=true"

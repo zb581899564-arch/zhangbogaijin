@@ -1,0 +1,2 @@
+runId,seed,algorithm,sourceKind,status,FE,frontSize,initialPopulationHash,runNanos,representationRepairs
+seed-20260823-MOPSODS_DE_F,20260823,MOPSODS_DE_F,PAPER_AUTHOR_SOURCE,COMPLETED,50000,213,822810ea710b7d58b3a51543ff345de7f7e24979c93939f13d7324797a7f8289,6340631700,306

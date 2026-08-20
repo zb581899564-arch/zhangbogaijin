@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "instanceId": "I0-v35",
+  "tolerance": 1e-9,
+  "operationCount": 10,
+  "comparedOperationFields": 370,
+  "failedOperationFields": 0,
+  "comparedObjectives": 11,
+  "failedObjectives": 0,
+  "maxAbsoluteError": 3.552713678800501e-15,
+  "status": "PASS",
+  "manualTraceSha256": "c1fc5df3bab0eec226c366710b0df2897a04482e775f2c6cb5c7f522b9c4a132",
+  "javaTraceSha256": "2c1c0f380fd75401acc85466940172b805c356bd0ce686cf0cebe872ea0dd631",
+  "manualObjectivesSha256": "e4cd1c11ff6a09def3ba6e622060a551e0c55ab5c04d340b2326ec37e820f234",
+  "javaObjectivesSha256": "8ba90b4d81ce433292bc8ba378a8ffb018f5dbcf313d46bc1ac3d48187eece5a"
+}

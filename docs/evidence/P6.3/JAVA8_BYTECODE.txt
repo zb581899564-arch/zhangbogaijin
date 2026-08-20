@@ -1,0 +1,4 @@
+class=org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoQpController
+majorVersion=52
+class=org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoQpConfiguration
+majorVersion=52

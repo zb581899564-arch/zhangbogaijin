@@ -1,0 +1,15 @@
+instance=20_2_3_1
+seed=20260808
+population=100
+maxEvaluations=20000
+baselineStatus=COMPLETED
+baselineFE=20000
+baselineInitialHash=07311d31f51e6a71efcbf70435bf8924c02cb8be302023ddeed7f86c2ebca01b
+baselineMechanisms=qgEvents=4096,pddrEvents=1,cfvfOffspring=0,archiveInsertions=0,cataTest=0,cataApply=0,cataFE=14900,dscr=disabled
+fullStatus=COMPLETED
+fullFE=20000
+fullInitialHash=07311d31f51e6a71efcbf70435bf8924c02cb8be302023ddeed7f86c2ebca01b
+fullMechanisms=qgEvents=4096,pddrEvents=67,cfvfOffspring=6700,archiveInsertions=6700,cataTest=13168,cataApply=32,cataFE=13200,dscr=G1_CMAX|teacher=[1, 5, 19, 6, 16, 15, 0, 9, 12, 13, 10, 3, 4, 2, 11, 14, 7, 17, 8, 18]|[0, 1, 2, 1, 0, 1, 0, 1, 0, 0, 2, 0, 1, 2, 2, 1, 2, 1, 0, 0]|[2, 1, 1, 1, 3, 1, 3, 1, 0, 3, 0, 3, 0, 0, 0, 1, 1, 0, 2, 3]|[1, 1, 0, 1, 0, 1, 0, 1, 2, 0, 1, 0, 0, 1, 0, 1, 1, 0, 2, 2]|exposure=134|replacements=7|dominanceAge=77
+G2_TEC|teacher=[1, 5, 19, 6, 16, 15, 0, 9, 12, 13, 10, 3, 4, 2, 11, 14, 7, 17, 8, 18]|[0, 1, 2, 1, 0, 1, 0, 1, 0, 0, 2, 0, 1, 2, 2, 1, 2, 1, 0, 0]|[2, 1, 1, 1, 3, 1, 3, 1, 0, 3, 0, 3, 0, 0, 0, 1, 1, 0, 2, 3]|[1, 1, 0, 1, 0, 1, 0, 1, 2, 0, 1, 0, 0, 1, 0, 1, 1, 0, 2, 2]|exposure=134|replacements=7|dominanceAge=77
+G3_TWC|teacher=[1, 5, 19, 6, 16, 15, 0, 9, 12, 13, 10, 3, 4, 2, 11, 14, 7, 17, 8, 18]|[0, 1, 2, 1, 0, 1, 0, 1, 0, 0, 2, 0, 1, 2, 2, 1, 2, 1, 0, 0]|[2, 1, 1, 1, 3, 1, 3, 1, 0, 3, 0, 3, 0, 0, 0, 1, 1, 0, 2, 3]|[1, 1, 0, 1, 0, 1, 0, 1, 2, 0, 1, 0, 0, 1, 0, 1, 1, 0, 2, 2]|exposure=134|replacements=6|dominanceAge=77
+G4_BALANCED|teacher=[1, 5, 19, 6, 16, 15, 0, 9, 12, 13, 10, 3, 4, 2, 11, 14, 7, 17, 8, 18]|[0, 1, 2, 1, 0, 1, 0, 1, 0, 0, 2, 0, 1, 2, 2, 1, 2, 1, 0, 0]|[2, 1, 1, 1, 3, 1, 3, 1, 0, 3, 0, 3, 0, 0, 0, 1, 1, 0, 2, 3]|[1, 1, 0, 1, 0, 1, 0, 1, 2, 0, 1, 0, 0, 1, 0, 1, 1, 0, 2, 2]|exposure=134|replacements=6|dominanceAge=77

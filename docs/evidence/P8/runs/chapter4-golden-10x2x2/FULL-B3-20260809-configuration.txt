@@ -1,0 +1,9 @@
+matrix=FULL
+label=B3
+mechanism=B2 plus lineage archive
+configurationKey=B3
+status=COMPLETED
+reason=Registered exact configuration key B3
+populationSize=100
+maxFEs=2000
+physicalSubswarmSizes=[20, 40, 20, 20]

@@ -1,0 +1,2 @@
+﻿jmetal-problem\target\classes\org\uma\jmetal\problem\multiobjective\dfsp\fatigue\ZhangBoCanonicalProductionProblem.class	major=52
+jmetal-exec\target\classes\org\uma\jmetal\runner\lc_psode\ZhangBoP85AlgorithmAuditRunner.class	major=52

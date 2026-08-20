@@ -1,0 +1,10 @@
+algorithm,sourceMapped,seedInjected,commonInitialPopulation,canonicalFM3,shiftNone,objective016,exactDecoderBudget,batch0Status
+ZHANGBO_A4,true,true,true,true,true,true,true,PASSED_2000_FE
+HMOPSO_QGS_F,true,true,true,true,true,true,true,PASSED_2000_FE
+HMOPSO_QLS_F,true,true,true,true,true,true,true,PASSED_2000_FE
+MOPSO_F,true,true,true,true,true,true,true,PASSED_2000_FE
+MOPSODS_DE_F,true,true,true,true,true,true,true,PASSED_2000_FE
+MOHEADE_F,true,true,true,true,true,true,true,PASSED_2000_FE
+NSGA_II_F,true,true,true,true,true,true,true,PASSED_2000_FE
+SPEA2_F,true,true,true,true,true,true,true,PASSED_2000_FE
+QMOEA_PENDING,false,false,false,false,false,false,false,PENDING_SOURCE_VERIFICATION

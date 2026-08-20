@@ -1,0 +1,7 @@
+paperLabel=SPEA2_F
+sourceKind=OFFICIAL_JMETAL_CORE
+implementationClass=org.uma.jmetal.algorithm.multiobjective.mypso.v35.p25e.official.OfficialJMetal58SPEA2
+actualSourceSha256=06A9EA8291ADA04B145B6EF709714FB5A2EBF9D476A613D63526913DCA76BB7A
+adaptationWhitelist=Problem,Solution,initialPopulation,randomSource,FE,logging
+forbiddenEnhancements=ZhangBoBaselineUpdater,CFVF,Qp,DSCR,CA-TA-Lite,directionalTeacherPool
+identityEvidence=strengthRawFitness=true;archive=true;environmentalSelection=SPEA2;upstream=jmetal-5.8

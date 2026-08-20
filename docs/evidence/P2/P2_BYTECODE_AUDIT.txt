@@ -1,0 +1,8 @@
+DhhfspInstance major version: 52
+DhhfspFourVectorSolution major version: 52
+DhhfspEncodingValidator major version: 52
+DhhfspEncodingCodec major version: 52
+Chapter4GoldenFixture major version: 52
+Chapter4OperatorFixtures major version: 52
+
+Conclusion: all inspected P2 public classes target Java 8 bytecode.

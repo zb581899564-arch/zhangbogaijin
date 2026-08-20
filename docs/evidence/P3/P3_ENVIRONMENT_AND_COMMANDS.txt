@@ -1,0 +1,20 @@
+P3 execution environment
+date=2026-08-08
+os=Windows 11
+maven=3.8.9
+java_runtime=Oracle JDK 17.0.12
+java_home=E:\javavava
+compiler_target=Java 8
+jmetal=5.8
+seed=20260808
+standby_energy_rate=1.0
+standby_energy_provenance=author_actual_compatibility
+
+Commands
+1. mvn -pl jmetal-problem -am -Dmaven.javadoc.skip=true -Djacoco.skip=true -Dtest=OriginalDhhfspDecoderTest,AuthorActualDiagnosticTest -Dsurefire.failIfNoSpecifiedTests=false test
+2. mvn -pl jmetal-problem -Djacoco.skip=true -DargLine="--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED" -Ddhfsp.data.dir=<absolute-workcopy-EADHFSP> test
+3. mvn -pl jmetal-problem -am -DskipTests -Dmaven.javadoc.skip=true package
+4. mvn -Djacoco.skip=true -DargLine="--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED" -Ddhfsp.data.dir=<absolute-workcopy-EADHFSP> test
+
+The root regression command is expected to exit non-zero at the three P1-known jmetal-core errors. The problem-module test command independently proves that downstream P3 tests were actually executed.
+

@@ -1,0 +1,13 @@
+schemaVersion=1
+semanticTag=fatigue_improved
+ablation=B2P
+environmentalSelectionMode=EVALUATED_PDDR
+candidateOrder=GLOBAL_OFFSPRING,PARENT
+stableTieOrder=originalCandidateOrder
+parentReevaluation=false
+pddrEvaluationCost=0
+smokeInstance=20_2_3_1.txt
+smokePopulation=100
+smokeMaxFEs=2000
+seed=20260808
+

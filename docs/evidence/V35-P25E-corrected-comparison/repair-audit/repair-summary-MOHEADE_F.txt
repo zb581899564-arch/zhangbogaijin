@@ -1,0 +1,11 @@
+algorithm=MOHEADE_F
+FE=2000
+repairsTotal=664
+repairsPerEvaluationMean=0.3320
+evaluationsWithRepair=338 / 2000
+maxRepairsInOneEvaluation=8
+repairsP50/P90/P99=2/4/6
+byVector={MA=312, WA=352}
+byPosition={p5=36, p6=21, p14=51, p16=39, p17=69, p19=39, p18=44, p11=46, p15=29, p4=41, p7=24, p2=18, p3=24, p13=32, p0=26, p9=34, p10=25, p12=23, p8=21, p1=22}
+oldToNewPairs={2->0=496, 3->1=168}
+frontSize=100

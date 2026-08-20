@@ -1,0 +1,17 @@
+﻿p4_1_status=completed
+normalized_pairs=4
+normalized_mismatches=0
+author_sources=4
+author_source_changes=0
+p2_p3_p4_problem_tests=22 failures=0 errors=0
+p4_algorithm_tests=10 failures=0 errors=0
+p4_1_direct_runner_tests=3 failures=0 errors=0
+java8_classes=4
+java8_non52=0
+full_regression_tests=651 failures=0 expected_p1_errors=3 skipped=6
+baseline_files=1806 baseline_hash_mismatches=0 baseline_writable=0
+forbidden_mechanism_hits=0
+all_algorithm_run_zhangbo_references=0
+sampled_reproduction_accepted=false
+full_reproduction_accepted=false
+next_allowed_work_package=P5

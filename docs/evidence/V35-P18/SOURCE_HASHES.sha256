@@ -1,0 +1,9 @@
+3BFCA9F550736AE056ED03AA65BF39E29C27BF8DFA4FE618098F57F5BFD64CB8  java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35DscrTeacherCache.java
+78D74A5D111366D04D7655E4BB27C7657DC3E0F01162CB0BD03E8E2C8173524B  java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/zhangbo/ZhangBoQgController.java
+B55C62E3BCCA50259AA2CB715CCBF11361BA86C84150C4700D2B1B734740D84C  java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35MacroCandidateGateway.java
+7F3EDFB15469E4BB3DC771A7725E532F1B348CCF4E194465CE98611855807556  java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35CaTaLiteController.java
+1F05A241BAC05933F935BA1990517087EFDFFC7B66951388EEDAFFE378DEC5C5  java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35FairRunner.java
+22135138F954D0867130401BE7EA1E3E5AF7B79A275D62AE82CA3A100A49151E  java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/zhangbo/audit/ZhangBoCmaxAudit.java
+DA079EDF4D42DACBA0202D847767D41F6B1ACC22719E85AF8685D0BEEEA7EB24  java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/ZhangBoMOHPSOQ.java
+7B54078598F001263B540684A6032F323B699E66A46F637FBE12D36E01FD256E  java-jmetal58/jmetal-algorithm/src/test/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35MacroCandidateGatewayTest.java
+742CEA52C8497C7DCF4ED07CBCC0CEE0411A13E5AC5A86803342DD1C8E4C6907  java-jmetal58/jmetal-algorithm/src/test/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35FairComparisonSmokeTest.java

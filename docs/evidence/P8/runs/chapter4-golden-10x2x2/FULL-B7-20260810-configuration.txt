@@ -1,0 +1,9 @@
+matrix=FULL
+label=B7
+mechanism=B6 plus CA-TA
+configurationKey=B7
+status=COMPLETED
+reason=Registered exact configuration key B7
+populationSize=100
+maxFEs=2000
+physicalSubswarmSizes=[20, 40, 20, 20]

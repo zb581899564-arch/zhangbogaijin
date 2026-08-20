@@ -1,0 +1,29 @@
+P2 execution date: 2026-08-08 Asia/Shanghai
+Roadmap package: P2
+Semantic tag: published_baseline
+Random seed: 20260808 (recorded only; P2 code invokes no random source)
+Complete objective evaluations: 0
+
+Build runtime:
+- Apache Maven 3.8.9
+- Java runtime 17.0.12 (Oracle)
+- JAVA_HOME=E:\javavava
+- Java compilation target=8
+- OS=Windows 11 amd64
+
+Primary source:
+- E:\学习\eswa2026-最新李明哲第四.pdf
+- SHA-256=BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D
+- bytes=6079426
+
+Cross-check source:
+- E:\学习\李明哲-毕业材料\3.毕业论文\104_2022930913_李明哲.pdf
+- SHA-256=D835DCD5B15BF767F432F80835235BE740E7BD5BA0EF9DDB70437FB4EF91EC3A
+- bytes=8997321
+
+Verification commands:
+1. mvn -pl jmetal-problem -am -DskipTests package
+2. mvn -pl jmetal-problem -am -Djacoco.skip=true -DfailIfNoTests=false -Dtest=Chapter4GoldenFixtureTest,DhhfspFourVectorSolutionTest,Chapter4OperatorFixturesTest test
+3. mvn -Djacoco.skip=true -DargLine="--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED" -Ddhfsp.data.dir=<absolute-workcopy-EADHFSP> test
+
+The third command intentionally retains the three P1 author_actual errors and exits non-zero.

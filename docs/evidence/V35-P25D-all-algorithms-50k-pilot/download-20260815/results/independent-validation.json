@@ -1,0 +1,617 @@
+{
+  "run_count": 40,
+  "completed_count": 40,
+  "exact_fe_count": 40,
+  "decoder_call_count_match": 40,
+  "manifest_entries": 345,
+  "manifest_hash_passed": 345,
+  "finite_fronts": 40,
+  "nonempty_fronts": 40,
+  "fronts_fully_nondominated": 35,
+  "fronts_without_duplicates": 35,
+  "front_quality_issues": [
+    {
+      "seed": 20260822,
+      "algorithm": "NSGA_II_F",
+      "raw": 197,
+      "unique": 196,
+      "nondominated": 196
+    },
+    {
+      "seed": 20260824,
+      "algorithm": "NSGA_II_F",
+      "raw": 167,
+      "unique": 166,
+      "nondominated": 166
+    },
+    {
+      "seed": 20260825,
+      "algorithm": "MOPSO_F",
+      "raw": 205,
+      "unique": 204,
+      "nondominated": 204
+    },
+    {
+      "seed": 20260825,
+      "algorithm": "MOHEADE_F",
+      "raw": 99,
+      "unique": 98,
+      "nondominated": 98
+    },
+    {
+      "seed": 20260826,
+      "algorithm": "NSGA_II_F",
+      "raw": 184,
+      "unique": 182,
+      "nondominated": 182
+    }
+  ],
+  "reference_size": 480,
+  "reference_file_matches": true,
+  "metric_max_abs_error": 0.0,
+  "same_initial_by_seed": {
+    "20260822": true,
+    "20260823": true,
+    "20260824": true,
+    "20260825": true,
+    "20260826": true
+  },
+  "different_initial_across_seeds": true,
+  "status_hash_mismatch_count": 10,
+  "status_hash_mismatches": [
+    {
+      "seed": 20260822,
+      "algorithm": "ZHANGBO_A4",
+      "status": "165ad2bc3a58953ed2f10674b2162bf18eb9960667e33e7de6133317297e77f2",
+      "canonical": "58c4c3b6be9869b3666595618cbd11ef9d076ebc4ff6f60e1321d0f63b2f4b00"
+    },
+    {
+      "seed": 20260822,
+      "algorithm": "HMOPSO_QGS_F",
+      "status": "165ad2bc3a58953ed2f10674b2162bf18eb9960667e33e7de6133317297e77f2",
+      "canonical": "58c4c3b6be9869b3666595618cbd11ef9d076ebc4ff6f60e1321d0f63b2f4b00"
+    },
+    {
+      "seed": 20260823,
+      "algorithm": "ZHANGBO_A4",
+      "status": "c2e535bb0da51a986255463f078c0d649170b5f8f306a6b868866af1dc7bccbb",
+      "canonical": "822810ea710b7d58b3a51543ff345de7f7e24979c93939f13d7324797a7f8289"
+    },
+    {
+      "seed": 20260823,
+      "algorithm": "HMOPSO_QGS_F",
+      "status": "c2e535bb0da51a986255463f078c0d649170b5f8f306a6b868866af1dc7bccbb",
+      "canonical": "822810ea710b7d58b3a51543ff345de7f7e24979c93939f13d7324797a7f8289"
+    },
+    {
+      "seed": 20260824,
+      "algorithm": "ZHANGBO_A4",
+      "status": "5c87299719b1fe1ca5aed031d768ec1ba6278d7e352515e6189c3906ea6c7131",
+      "canonical": "91439f037899eed0654b33e964f6a08baba9abd1e33003c5678d120700711061"
+    },
+    {
+      "seed": 20260824,
+      "algorithm": "HMOPSO_QGS_F",
+      "status": "5c87299719b1fe1ca5aed031d768ec1ba6278d7e352515e6189c3906ea6c7131",
+      "canonical": "91439f037899eed0654b33e964f6a08baba9abd1e33003c5678d120700711061"
+    },
+    {
+      "seed": 20260825,
+      "algorithm": "ZHANGBO_A4",
+      "status": "2bc69a5ea0eb1d760c90b081d91e6d9dc50ad3e19d372b2eaefcd3a7fb949d63",
+      "canonical": "8635ec0750692742409ddf0e4aca29572f1877080fe18e9f649ff046e9d11c0d"
+    },
+    {
+      "seed": 20260825,
+      "algorithm": "HMOPSO_QGS_F",
+      "status": "2bc69a5ea0eb1d760c90b081d91e6d9dc50ad3e19d372b2eaefcd3a7fb949d63",
+      "canonical": "8635ec0750692742409ddf0e4aca29572f1877080fe18e9f649ff046e9d11c0d"
+    },
+    {
+      "seed": 20260826,
+      "algorithm": "ZHANGBO_A4",
+      "status": "505dd17d681eeda9bb7f10fd11b3824dbea58900547748a52140f8bc31822b9d",
+      "canonical": "4177c16ff47401254d81a9cb39faa548b5b0af5c69cb724d1e7e2244432a1f35"
+    },
+    {
+      "seed": 20260826,
+      "algorithm": "HMOPSO_QGS_F",
+      "status": "505dd17d681eeda9bb7f10fd11b3824dbea58900547748a52140f8bc31822b9d",
+      "canonical": "4177c16ff47401254d81a9cb39faa548b5b0af5c69cb724d1e7e2244432a1f35"
+    }
+  ],
+  "a4_mechanism_ranges": {
+    "formalOuterCycles": {
+      "min": 2,
+      "max": 2,
+      "values": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "formalQgRounds": {
+      "min": 100,
+      "max": 100,
+      "values": [
+        100,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    "qgSelections": {
+      "min": 400,
+      "max": 400,
+      "values": [
+        400,
+        400,
+        400,
+        400,
+        400
+      ]
+    },
+    "qgTdUpdates": {
+      "min": 296,
+      "max": 296,
+      "values": [
+        296,
+        296,
+        296,
+        296,
+        296
+      ]
+    },
+    "qpActions": {
+      "min": 5100,
+      "max": 5100,
+      "values": [
+        5100,
+        5100,
+        5100,
+        5100,
+        5100
+      ]
+    },
+    "qpTransitions": {
+      "min": 2600,
+      "max": 2600,
+      "values": [
+        2600,
+        2600,
+        2600,
+        2600,
+        2600
+      ]
+    },
+    "cfvfOffspring": {
+      "min": 10000,
+      "max": 10000,
+      "values": [
+        10000,
+        10000,
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "cfvfRepairs": {
+      "min": 0,
+      "max": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "archiveInsertions": {
+      "min": 200,
+      "max": 200,
+      "values": [
+        200,
+        200,
+        200,
+        200,
+        200
+      ]
+    },
+    "caTaLiteTest": {
+      "min": 201,
+      "max": 348,
+      "values": [
+        252,
+        348,
+        253,
+        229,
+        201
+      ]
+    },
+    "caTaLiteApply": {
+      "min": 122,
+      "max": 159,
+      "values": [
+        147,
+        122,
+        147,
+        152,
+        159
+      ]
+    },
+    "caTaLiteFE": {
+      "min": 360,
+      "max": 470,
+      "values": [
+        399,
+        470,
+        400,
+        381,
+        360
+      ]
+    },
+    "formalLocalFE": {
+      "min": 39430,
+      "max": 39540,
+      "values": [
+        39501,
+        39430,
+        39500,
+        39519,
+        39540
+      ]
+    },
+    "pressureDiagnosisEvents": {
+      "min": 200,
+      "max": 200,
+      "values": [
+        200,
+        200,
+        200,
+        200,
+        200
+      ]
+    },
+    "dualQWarmup": {
+      "min": 49,
+      "max": 49,
+      "values": [
+        49,
+        49,
+        49,
+        49,
+        49
+      ]
+    },
+    "dualQP": {
+      "min": 26,
+      "max": 26,
+      "values": [
+        26,
+        26,
+        26,
+        26,
+        26
+      ]
+    },
+    "dualQG": {
+      "min": 25,
+      "max": 25,
+      "values": [
+        25,
+        25,
+        25,
+        25,
+        25
+      ]
+    }
+  },
+  "baseline_mechanism_ranges": {
+    "formalOuterCycles": {
+      "min": 2,
+      "max": 2,
+      "values": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "formalQgRounds": {
+      "min": 100,
+      "max": 100,
+      "values": [
+        100,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    "baselineUpdateEvents": {
+      "min": 10000,
+      "max": 10000,
+      "values": [
+        10000,
+        10000,
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "qgSelections": {
+      "min": 400,
+      "max": 400,
+      "values": [
+        400,
+        400,
+        400,
+        400,
+        400
+      ]
+    },
+    "qgTdUpdates": {
+      "min": 400,
+      "max": 400,
+      "values": [
+        400,
+        400,
+        400,
+        400,
+        400
+      ]
+    },
+    "qpActions": {
+      "min": 0,
+      "max": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "cfvfOffspring": {
+      "min": 0,
+      "max": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "archiveInsertions": {
+      "min": 0,
+      "max": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "caTaLiteFE": {
+      "min": 0,
+      "max": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "formalLocalFE": {
+      "min": 39900,
+      "max": 39900,
+      "values": [
+        39900,
+        39900,
+        39900,
+        39900,
+        39900
+      ]
+    }
+  },
+  "rankings": [
+    {
+      "algorithm": "MOPSODS_DE_F",
+      "median_hv": 0.9416866824676675,
+      "mean_hv": 0.9344219095848251,
+      "std_hv": 0.02297098148747128,
+      "median_igd": 0.06504194828480919,
+      "median_cmax": 183.3914911786452,
+      "median_tec": 8472.06139614461,
+      "median_twc": 12495.87574401727,
+      "median_time_s": 9.353512024,
+      "reference_points": 142,
+      "raw_points": 1035,
+      "hv_rank": 1
+    },
+    {
+      "algorithm": "MOPSO_F",
+      "median_hv": 0.936414199286187,
+      "mean_hv": 0.9368022216647118,
+      "std_hv": 0.007255542325444168,
+      "median_igd": 0.06641639131288592,
+      "median_cmax": 177.0093856992494,
+      "median_tec": 8508.512367230815,
+      "median_twc": 12494.124831854446,
+      "median_time_s": 9.223123512,
+      "reference_points": 126,
+      "raw_points": 1024,
+      "hv_rank": 2
+    },
+    {
+      "algorithm": "HMOPSO_QLS_F",
+      "median_hv": 0.923410599175587,
+      "mean_hv": 0.9110980854815341,
+      "std_hv": 0.04071651108391479,
+      "median_igd": 0.07209805753231371,
+      "median_cmax": 179.44593090838922,
+      "median_tec": 8546.589641847462,
+      "median_twc": 12520.878090503204,
+      "median_time_s": 8.595586902,
+      "reference_points": 177,
+      "raw_points": 1017,
+      "hv_rank": 3
+    },
+    {
+      "algorithm": "NSGA_II_F",
+      "median_hv": 0.8580666189699616,
+      "mean_hv": 0.8522335159015543,
+      "std_hv": 0.012951831881590678,
+      "median_igd": 0.08929666433911856,
+      "median_cmax": 205.6877545465997,
+      "median_tec": 8536.642044647331,
+      "median_twc": 12591.791463027408,
+      "median_time_s": 6.522117101,
+      "reference_points": 14,
+      "raw_points": 925,
+      "hv_rank": 4
+    },
+    {
+      "algorithm": "SPEA2_F",
+      "median_hv": 0.8450448551065304,
+      "mean_hv": 0.8446246066599231,
+      "std_hv": 0.018080916280205018,
+      "median_igd": 0.09885573861715194,
+      "median_cmax": 214.91622209866603,
+      "median_tec": 8613.200526867666,
+      "median_twc": 12508.183125215683,
+      "median_time_s": 12.581413048,
+      "reference_points": 16,
+      "raw_points": 501,
+      "hv_rank": 5
+    },
+    {
+      "algorithm": "MOHEADE_F",
+      "median_hv": 0.7182199139713631,
+      "mean_hv": 0.7256482825928954,
+      "std_hv": 0.01643264199751676,
+      "median_igd": 0.16093476620844296,
+      "median_cmax": 214.91796291110643,
+      "median_tec": 8799.072438940333,
+      "median_twc": 12731.048991842861,
+      "median_time_s": 7.538455382,
+      "reference_points": 1,
+      "raw_points": 580,
+      "hv_rank": 6
+    },
+    {
+      "algorithm": "ZHANGBO_A4",
+      "median_hv": 0.701958250416078,
+      "mean_hv": 0.7056752814180337,
+      "std_hv": 0.03162266090225325,
+      "median_igd": 0.18856690465071516,
+      "median_cmax": 201.32728636958814,
+      "median_tec": 8667.943054366626,
+      "median_twc": 12827.334944780248,
+      "median_time_s": 11.399406231,
+      "reference_points": 4,
+      "raw_points": 565,
+      "hv_rank": 7
+    },
+    {
+      "algorithm": "HMOPSO_QGS_F",
+      "median_hv": 0.5215631962823096,
+      "mean_hv": 0.5460851677206332,
+      "std_hv": 0.06317737472282438,
+      "median_igd": 0.3248412235836371,
+      "median_cmax": 203.00940255328172,
+      "median_tec": 8979.90949261906,
+      "median_twc": 12838.469755734852,
+      "median_time_s": 4.808815426,
+      "reference_points": 0,
+      "raw_points": 461,
+      "hv_rank": 8
+    }
+  ],
+  "a4_pairwise": [
+    {
+      "competitor": "HMOPSO_QGS_F",
+      "hv_wins": 4,
+      "hv_ties": 0,
+      "hv_losses": 1,
+      "cmax_wins": 1,
+      "tec_wins": 4,
+      "twc_wins": 4,
+      "median_C_A4_other": 0.5916666666666667,
+      "median_C_other_A4": 0.018691588785046728
+    },
+    {
+      "competitor": "HMOPSO_QLS_F",
+      "hv_wins": 0,
+      "hv_ties": 0,
+      "hv_losses": 5,
+      "cmax_wins": 1,
+      "tec_wins": 1,
+      "twc_wins": 0,
+      "median_C_A4_other": 0.0049261083743842365,
+      "median_C_other_A4": 0.9158878504672897
+    },
+    {
+      "competitor": "MOPSO_F",
+      "hv_wins": 0,
+      "hv_ties": 0,
+      "hv_losses": 5,
+      "cmax_wins": 0,
+      "tec_wins": 1,
+      "twc_wins": 0,
+      "median_C_A4_other": 0.0,
+      "median_C_other_A4": 0.9435483870967742
+    },
+    {
+      "competitor": "MOPSODS_DE_F",
+      "hv_wins": 0,
+      "hv_ties": 0,
+      "hv_losses": 5,
+      "cmax_wins": 0,
+      "tec_wins": 1,
+      "twc_wins": 0,
+      "median_C_A4_other": 0.004739336492890996,
+      "median_C_other_A4": 0.9626865671641791
+    },
+    {
+      "competitor": "MOHEADE_F",
+      "hv_wins": 2,
+      "hv_ties": 0,
+      "hv_losses": 3,
+      "cmax_wins": 3,
+      "tec_wins": 4,
+      "twc_wins": 1,
+      "median_C_A4_other": 0.24060150375939848,
+      "median_C_other_A4": 0.25806451612903225
+    },
+    {
+      "competitor": "NSGA_II_F",
+      "hv_wins": 0,
+      "hv_ties": 0,
+      "hv_losses": 5,
+      "cmax_wins": 4,
+      "tec_wins": 0,
+      "twc_wins": 1,
+      "median_C_A4_other": 0.010309278350515464,
+      "median_C_other_A4": 0.7850467289719626
+    },
+    {
+      "competitor": "SPEA2_F",
+      "hv_wins": 0,
+      "hv_ties": 0,
+      "hv_losses": 5,
+      "cmax_wins": 5,
+      "tec_wins": 2,
+      "twc_wins": 0,
+      "median_C_A4_other": 0.02,
+      "median_C_other_A4": 0.7383177570093458
+    }
+  ]
+}

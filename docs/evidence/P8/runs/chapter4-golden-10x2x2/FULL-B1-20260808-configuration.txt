@@ -1,0 +1,9 @@
+matrix=FULL
+label=B1
+mechanism=fatigue decoding
+configurationKey=B1
+status=COMPLETED
+reason=Registered exact configuration key B1
+populationSize=100
+maxFEs=2000
+physicalSubswarmSizes=[20, 40, 20, 20]

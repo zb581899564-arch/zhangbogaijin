@@ -1,0 +1,9 @@
+schema=zhangbo-p8.5-switch-audit-v1
+labels=34
+seed=20260808
+population=100
+maxFEs=2000
+initialPopulationSha256=e8885798be70374e73d48e996145681d926aa9ba1fe44836c234daf7b552dc41
+uniqueMechanismHashes=27
+exactAliasLabels=7
+failures=0

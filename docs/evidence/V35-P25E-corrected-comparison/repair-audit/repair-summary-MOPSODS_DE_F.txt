@@ -1,0 +1,11 @@
+algorithm=MOPSODS_DE_F
+FE=2000
+repairsTotal=19
+repairsPerEvaluationMean=0.0095
+evaluationsWithRepair=19 / 2000
+maxRepairsInOneEvaluation=1
+repairsP50/P90/P99=1/1/1
+byVector={MA=19}
+byPosition={p4=16, p14=1, p19=1, p10=1}
+oldToNewPairs={2->0=9, 3->1=10}
+frontSize=42

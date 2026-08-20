@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "semanticTag": "v35_manual_input_only",
+  "answerStatus": "NOT_GENERATED",
+  "instanceId": "I0-v35",
+  "description": "Five-job hand-calculation instance for the current v3.5 formal decoder",
+  "indexBase": 1,
+  "jobs": 5,
+  "factories": 2,
+  "stages": 2,
+  "seedReservedForLaterProgramComparison": 20260808,
+  "formalSemantics": {
+    "decoderMode": "FM3",
+    "familyMode": "DEGENERATE_SINGLE_FAMILY",
+    "setupMode": "SEQUENCE_INDEPENDENT",
+    "shiftMode": "NONE",
+    "pfSdstActive": false,
+    "machineChangeoverFactor": 1.0
+  },
+  "fatigueModel": {
+    "maximumIncreaseR": 0.30,
+    "warningThreshold": 0.80,
+    "safeThreshold": 0.90,
+    "initialFatigue": 0.0,
+    "standbyEnergyRate": 1.0
+  },
+  "jobData": [
+    {"job": 1, "stage": 1, "ST": 10, "SUT": 2},
+    {"job": 1, "stage": 2, "ST": 6, "SUT": 1},
+    {"job": 2, "stage": 1, "ST": 6, "SUT": 1},
+    {"job": 2, "stage": 2, "ST": 8, "SUT": 2},
+    {"job": 3, "stage": 1, "ST": 8, "SUT": 2},
+    {"job": 3, "stage": 2, "ST": 5, "SUT": 1},
+    {"job": 4, "stage": 1, "ST": 7, "SUT": 1},
+    {"job": 4, "stage": 2, "ST": 9, "SUT": 2},
+    {"job": 5, "stage": 1, "ST": 5, "SUT": 1},
+    {"job": 5, "stage": 2, "ST": 7, "SUT": 1}
+  ],
+  "machineData": [
+    {"factory": 1, "stage": 1, "machine": 1, "speed": 1.00, "power": 6},
+    {"factory": 1, "stage": 1, "machine": 2, "speed": 1.25, "power": 8},
+    {"factory": 1, "stage": 2, "machine": 1, "speed": 1.00, "power": 7},
+    {"factory": 1, "stage": 2, "machine": 2, "speed": 1.25, "power": 9},
+    {"factory": 2, "stage": 1, "machine": 1, "speed": 1.00, "power": 6},
+    {"factory": 2, "stage": 1, "machine": 2, "speed": 1.20, "power": 7},
+    {"factory": 2, "stage": 2, "machine": 1, "speed": 1.10, "power": 7},
+    {"factory": 2, "stage": 2, "machine": 2, "speed": 1.25, "power": 8}
+  ],
+  "workerData": [
+    {"factory": 1, "stage": 1, "localWorker": 1, "factoryWorkerId": 1, "efficiency": 1.00, "costRate": 10, "lambda": 0.020, "mu": 0.050},
+    {"factory": 1, "stage": 1, "localWorker": 2, "factoryWorkerId": 2, "efficiency": 1.00, "costRate": 11, "lambda": 0.025, "mu": 0.040},
+    {"factory": 1, "stage": 2, "localWorker": 1, "factoryWorkerId": 3, "efficiency": 1.00, "costRate": 10, "lambda": 0.018, "mu": 0.060},
+    {"factory": 1, "stage": 2, "localWorker": 2, "factoryWorkerId": 4, "efficiency": 1.20, "costRate": 12, "lambda": 0.022, "mu": 0.050},
+    {"factory": 2, "stage": 1, "localWorker": 1, "factoryWorkerId": 1, "efficiency": 1.00, "costRate": 10, "lambda": 0.021, "mu": 0.050},
+    {"factory": 2, "stage": 1, "localWorker": 2, "factoryWorkerId": 2, "efficiency": 1.10, "costRate": 11, "lambda": 0.026, "mu": 0.040},
+    {"factory": 2, "stage": 2, "localWorker": 1, "factoryWorkerId": 3, "efficiency": 1.00, "costRate": 10, "lambda": 0.019, "mu": 0.060},
+    {"factory": 2, "stage": 2, "localWorker": 2, "factoryWorkerId": 4, "efficiency": 1.15, "costRate": 12, "lambda": 0.023, "mu": 0.050}
+  ],
+  "goldenParticleX0": {
+    "JS": [3, 1, 2, 4, 5],
+    "FA": [1, 2, 2, 1, 1],
+    "MA": [1, 1, 1, 1, 2],
+    "WA": [1, 1, 1, 2, 2]
+  },
+  "decodeRules": {
+    "stageOne": "Read FA/MA/WA at the position of each JS job and preserve within-factory JS order.",
+    "laterStageOrder": "Sort by previous-stage completion; ties use previous-stage order and then smaller job number.",
+    "laterStageMachine": "The first job uses local machine 1; later jobs use the currently earliest-available machine, ties by smaller local machine number.",
+    "laterStageWorker": "Enumerate eligible workers and choose the smallest fatigue-adjusted completion time, ties by smaller factory worker ID.",
+    "start": "max(job predecessor completion, selected machine availability, selected worker availability)",
+    "setup": "SUT depends only on current job and stage; previous job is ignored in the current formal degenerate setup model.",
+    "naturalRecovery": "Positive idle time between two tasks of the same factory worker; initial waiting and tail time are excluded from totalNaturalRecovery.",
+    "energy": "actualAT*machinePower + machineIdle*1.0; first use has zero machine idle.",
+    "cost": "(actualAT+machineIdle)*workerCostRate.",
+    "shift": "Disabled. No FCLS/FCRS or other post-decode shift is applied.",
+    "externalEvaluationBudget": "One complete particle decode counts as one jMetal FE."
+  }
+}

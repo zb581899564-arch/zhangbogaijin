@@ -1,0 +1,287 @@
+diagnosticBudgetPacingOnly=true
+algorithm=ZHANGBO_A4
+seed=20260823
+instance=20_2_3_1
+population=100
+maxFEs=500000
+fullEvaluations=500000
+initialPopulationHash=822810ea710b7d58b3a51543ff345de7f7e24979c93939f13d7324797a7f8289
+localSearchTimes=30 (Table9 default=30)
+gBlockLength=5 (default=5)
+formalBaselineSha256=8C2D808121E4A397A6C31FB82D440A5AB131315BBDECE1BAE0CA13F1706149D2
+formalOuterCycles=62
+formalQgRounds=3100
+dualQWarmup=382
+dualQP=1360
+dualQG=1358
+formalOuterCycles=62
+formalQgRounds=3100
+pddrEvents=62
+qgSelections=12400
+qgTdUpdates=6960
+qpActions=271800
+qpTransitions=136000
+cfvfOffspring=310000
+cfvfRepairs=0
+archiveInsertions=6200
+caTaLiteTest=10608
+caTaLiteApply=3887
+caTaLiteFE=14495
+cfvfGirSummaryBegin
+girObservations=310000
+gir.G1_CMAX|FA|BOTH=16917
+gir.G1_CMAX|FA|GBEST=74948
+gir.G1_CMAX|FA|PBEST=73546
+gir.G1_CMAX|MA|BOTH=21254
+gir.G1_CMAX|MA|GBEST=97312
+gir.G1_CMAX|MA|PBEST=93065
+gir.G1_CMAX|WA|BOTH=21840
+gir.G1_CMAX|WA|GBEST=101563
+gir.G1_CMAX|WA|PBEST=101112
+gir.G2_TEC|FA|BOTH=10180
+gir.G2_TEC|FA|GBEST=56532
+gir.G2_TEC|FA|PBEST=60381
+gir.G2_TEC|MA|BOTH=10342
+gir.G2_TEC|MA|GBEST=59154
+gir.G2_TEC|MA|PBEST=61690
+gir.G2_TEC|WA|BOTH=13850
+gir.G2_TEC|WA|GBEST=75011
+gir.G2_TEC|WA|PBEST=80808
+gir.G3_TWC|FA|BOTH=9428
+gir.G3_TWC|FA|GBEST=77729
+gir.G3_TWC|FA|PBEST=69371
+gir.G3_TWC|MA|BOTH=10264
+gir.G3_TWC|MA|GBEST=95191
+gir.G3_TWC|MA|PBEST=76802
+gir.G3_TWC|WA|BOTH=14985
+gir.G3_TWC|WA|GBEST=135093
+gir.G3_TWC|WA|PBEST=110490
+gir.G4_BALANCED|FA|BOTH=25889
+gir.G4_BALANCED|FA|GBEST=303162
+gir.G4_BALANCED|FA|PBEST=194383
+gir.G4_BALANCED|MA|BOTH=29556
+gir.G4_BALANCED|MA|GBEST=365600
+gir.G4_BALANCED|MA|PBEST=222266
+gir.G4_BALANCED|WA|BOTH=32530
+gir.G4_BALANCED|WA|GBEST=381291
+gir.G4_BALANCED|WA|PBEST=255200
+gir.G1_CMAX|JS|GBEST=268864
+gir.G1_CMAX|JS|PBEST=269870
+gir.G2_TEC|JS|GBEST=179551
+gir.G2_TEC|JS|PBEST=185915
+gir.G3_TWC|JS|GBEST=286519
+gir.G3_TWC|JS|PBEST=271421
+gir.G4_BALANCED|JS|GBEST=783852
+gir.G4_BALANCED|JS|PBEST=719456
+girTrackedBranches=1417
+cfvfGirSummaryEnd
+formalLocalFE=175405
+formalLocalFraction=0.35081
+fm3StructurePreviews=10942
+proxyStructurePreviews=0
+frontSize=613
+runNanos=152147565500
+cmaxLifecycleAudit
+cmaxLifecycleAuditBegin
+--funnel per cycle (bestCmax, lower is better; inf = no finite solution)--
+cycle  genQrounds   genCaTa      genLs        genFinal     pool         nextPop      archBefore   archAfter   
+1      228.75       228.75       228.75       228.75       228.75       204.85       337.64       204.85      
+2      215.48       215.48       215.48       215.48       215.48       192.26       204.85       192.26      
+3      219.12       219.12       219.12       219.12       219.12       192.26       192.26       192.26      
+4      202.49       202.49       202.49       202.49       202.49       181.21       192.26       181.21      
+5      202.69       202.69       202.69       202.69       202.69       181.21       181.21       181.21      
+6      191.69       191.69       191.69       191.69       191.69       181.21       181.21       181.21      
+7      203.76       203.76       203.76       203.76       203.76       181.21       181.21       181.21      
+8      196.31       196.31       196.31       196.31       196.31       196.21       181.21       181.21      
+9      200.24       200.24       200.24       200.24       200.24       189.91       181.21       181.21      
+10     180.87       180.87       180.87       180.87       180.87       189.91       181.21       180.87      
+11     209.58       209.58       209.58       209.58       209.58       185.89       180.87       180.87      
+12     196.62       196.62       196.62       196.62       196.62       185.89       180.87       180.87      
+13     185.26       185.26       185.26       185.26       185.26       185.89       180.87       180.87      
+14     201.13       201.13       201.13       201.13       201.13       185.89       180.87       180.87      
+15     203.92       203.92       203.92       203.92       203.92       189.91       180.87       180.68      
+16     181.21       181.21       181.21       181.21       181.21       189.91       180.68       180.68      
+17     193.50       193.50       193.50       193.50       193.50       182.91       180.68       180.68      
+18     200.51       200.51       200.51       200.51       200.51       181.21       180.68       180.68      
+19     191.49       191.49       191.49       191.49       191.49       181.21       180.68       180.68      
+20     186.10       186.10       186.10       186.10       186.10       189.91       180.68       180.68      
+21     207.78       207.78       207.78       207.78       207.78       189.91       180.68       180.68      
+22     217.12       217.12       217.12       217.12       217.12       189.91       180.68       180.68      
+23     212.96       212.96       212.96       212.96       212.96       189.91       180.68       180.68      
+24     201.83       201.83       201.83       201.83       201.83       189.91       180.68       179.77      
+25     196.79       196.79       196.79       196.79       196.79       189.91       179.77       179.77      
+26     189.29       189.29       189.29       189.29       189.29       189.91       179.77       179.77      
+27     192.51       192.51       192.51       192.51       192.51       189.91       179.77       179.77      
+28     191.69       191.69       191.69       191.69       191.69       189.91       179.77       179.77      
+29     203.76       203.76       203.76       203.76       203.76       189.91       179.77       179.77      
+30     180.68       180.68       180.68       180.68       180.68       189.91       179.77       179.77      
+31     189.32       189.32       189.32       189.32       189.32       189.91       179.77       177.10      
+32     185.89       185.89       185.89       185.89       185.89       185.89       177.10       177.10      
+33     197.86       197.86       197.86       197.86       197.86       189.91       177.10       177.10      
+34     177.90       177.90       177.90       177.90       177.90       189.91       177.10       177.10      
+35     199.59       199.59       199.59       199.59       199.59       189.91       177.10       176.87      
+36     202.59       202.59       202.59       202.59       202.59       189.91       176.87       176.87      
+37     208.00       208.00       208.00       208.00       208.00       189.91       176.87       176.87      
+38     198.13       198.13       198.13       198.13       198.13       189.91       176.87       176.87      
+39     176.87       176.87       176.87       176.87       176.87       189.91       176.87       176.87      
+40     207.69       207.69       207.69       207.69       207.69       189.91       176.87       176.87      
+41     203.76       203.76       203.76       203.76       203.76       189.91       176.87       176.87      
+42     197.37       197.37       197.37       197.37       197.37       189.91       176.87       176.87      
+43     176.87       176.87       176.87       176.87       176.87       189.91       176.87       176.87      
+44     206.20       206.20       206.20       206.20       206.20       189.91       176.87       176.87      
+45     194.72       194.72       194.72       194.72       194.72       189.91       176.87       176.87      
+46     212.33       212.33       212.33       212.33       212.33       189.91       176.87       176.87      
+47     204.86       204.86       204.86       204.86       204.86       189.91       176.87       176.87      
+48     195.29       195.29       195.29       195.29       195.29       189.91       176.87       176.87      
+49     201.67       201.67       201.67       201.67       201.67       189.91       176.87       176.87      
+50     204.84       204.84       204.84       204.84       204.84       186.71       176.87       176.87      
+51     176.87       176.87       176.87       176.87       176.87       201.12       176.87       176.87      
+52     198.16       198.16       198.16       198.16       198.16       185.67       176.87       176.87      
+53     209.10       209.10       209.10       209.10       209.10       185.67       176.87       176.87      
+54     204.99       204.99       204.99       204.99       204.99       185.67       176.87       176.87      
+55     203.64       203.64       203.64       203.64       203.64       200.88       176.87       176.87      
+56     186.44       186.44       186.44       186.44       186.44       176.87       176.87       176.87      
+57     186.10       186.10       186.10       186.10       186.10       176.87       176.87       176.87      
+58     199.31       199.31       199.31       199.31       199.31       176.87       176.87       175.70      
+59     176.87       176.87       176.87       176.87       176.87       176.87       175.70       175.70      
+60     186.44       186.44       186.44       186.44       186.44       176.87       175.70       175.70      
+61     186.10       186.10       186.10       186.10       186.10       176.87       175.70       175.70      
+62     176.87       176.87       176.87       176.87       176.87       176.87       175.70       175.70      
+--G1 conditional GIR (Cmax-improved offspring vs all offspring)--
+allOffspring: n=62000  P(JS)=0.921 P(FA)=0.871 P(MA)=0.890 P(WA)=0.855
+cmaxImproved: n=19141  P(JS)=0.920 P(FA)=0.901 P(MA)=0.916 P(WA)=0.880
+--top-5 cmax lineage lifecycle--
+lineageId,birthCycle,birthOperator,birthCmax,enteredPool,survived,enteredArchive,selectedAsTeacher,cfvfUsedCount,lastSeenCycle,lastCmax
+137,1,INTRA_FACTORY_VNS,204.85,false,false,false,false,0,1,204.85
+139,1,INTRA_FACTORY_VNS,221.30,false,false,false,false,0,1,221.30
+123,1,GLOBAL_OFFSPRING,228.75,false,false,false,false,0,1,228.75
+117,1,GLOBAL_OFFSPRING,229.22,false,false,false,false,0,1,229.22
+119,1,GLOBAL_OFFSPRING,231.22,false,false,false,false,0,1,231.22
+223,2,INTRA_FACTORY_VNS,192.26,false,false,false,false,0,2,192.26
+229,2,INTRA_FACTORY_VNS,204.85,false,false,false,false,0,2,204.85
+230,2,INTRA_FACTORY_VNS,204.85,false,false,false,false,0,2,204.85
+227,2,INTRA_FACTORY_VNS,205.41,false,false,false,false,0,2,205.41
+218,2,INTRA_FACTORY_VNS,211.60,false,false,false,false,0,2,211.60
+312,3,INTRA_FACTORY_VNS,192.26,false,false,false,false,0,3,192.26
+313,3,INTRA_FACTORY_VNS,192.26,false,false,false,false,0,3,192.26
+316,3,INTRA_FACTORY_VNS,205.41,false,false,false,false,0,3,205.41
+317,3,INTRA_FACTORY_VNS,205.41,false,false,false,false,0,3,205.41
+308,3,INTRA_FACTORY_VNS,211.60,false,false,false,false,0,3,211.60
+406,4,INTRA_FACTORY_VNS,181.21,false,false,false,false,0,4,181.21
+405,4,INTRA_FACTORY_VNS,187.80,false,false,false,false,0,4,187.80
+397,4,GLOBAL_OFFSPRING,205.41,false,false,false,false,0,4,205.41
+401,4,GLOBAL_OFFSPRING,205.41,false,false,false,false,0,4,205.41
+395,4,GLOBAL_OFFSPRING,205.41,false,false,false,false,0,4,205.41
+468,5,INTRA_FACTORY_VNS,181.21,false,false,false,false,0,7,181.21
+469,5,INTRA_FACTORY_VNS,181.21,false,false,false,false,0,7,181.21
+466,5,INTRA_FACTORY_VNS,187.80,false,false,false,false,0,7,187.80
+467,5,INTRA_FACTORY_VNS,187.80,false,false,false,false,0,7,187.80
+463,5,INTRA_FACTORY_VNS,202.43,false,false,false,false,0,5,202.43
+513,6,INTRA_FACTORY_VNS,202.43,false,false,false,false,0,8,202.43
+633,8,INTRA_FACTORY_VNS,196.21,false,false,false,false,0,8,196.21
+623,8,GLOBAL_OFFSPRING,196.31,false,false,false,false,0,8,196.31
+629,8,INTRA_FACTORY_VNS,199.25,false,false,false,false,0,8,199.25
+626,8,GLOBAL_OFFSPRING,199.25,false,false,false,false,0,8,199.25
+691,9,INTRA_FACTORY_VNS,189.91,false,false,false,false,0,9,189.91
+673,9,GLOBAL_OFFSPRING,199.25,false,false,false,false,0,10,199.25
+674,9,GLOBAL_OFFSPRING,199.25,false,false,false,false,0,9,199.25
+687,9,INTRA_FACTORY_VNS,200.24,false,false,false,false,0,9,200.24
+686,9,INTRA_FACTORY_VNS,201.60,false,false,false,false,0,9,201.60
+729,10,INTRA_FACTORY_VNS,189.91,false,false,false,false,0,23,189.91
+730,10,INTRA_FACTORY_VNS,189.91,false,false,false,false,0,20,189.91
+727,10,INTRA_FACTORY_VNS,200.24,false,false,false,false,0,15,200.24
+728,10,INTRA_FACTORY_VNS,200.24,false,false,false,false,0,10,200.24
+745,11,INTRA_FACTORY_VNS,185.89,false,false,false,false,0,13,185.89
+741,11,GLOBAL_OFFSPRING,199.25,false,false,false,false,0,13,199.25
+742,11,GLOBAL_OFFSPRING,199.25,false,false,false,false,0,11,199.25
+763,12,INTRA_FACTORY_VNS,189.25,false,false,false,false,0,14,189.25
+818,14,INTRA_FACTORY_VNS,185.89,false,false,false,false,0,14,185.89
+815,14,INTRA_FACTORY_VNS,199.04,false,false,false,false,0,14,199.04
+862,15,INTRA_FACTORY_VNS,199.04,false,false,false,false,0,20,199.04
+863,15,INTRA_FACTORY_VNS,199.04,false,false,false,false,0,20,199.04
+864,16,INTRA_FACTORY_VNS,201.71,false,false,false,false,0,20,201.71
+921,17,INTRA_FACTORY_VNS,182.91,false,false,false,false,0,17,182.91
+923,17,INTRA_FACTORY_VNS,185.89,false,false,false,false,0,17,185.89
+936,18,INTRA_FACTORY_VNS,181.21,false,false,false,false,0,18,181.21
+949,18,INTRA_FACTORY_VNS,185.89,false,false,false,false,0,19,185.89
+950,18,INTRA_FACTORY_VNS,185.89,false,false,false,false,0,19,185.89
+963,19,INTRA_FACTORY_VNS,181.21,false,false,false,false,0,19,181.21
+964,19,INTRA_FACTORY_VNS,181.21,false,false,false,false,0,19,181.21
+956,19,INTRA_FACTORY_VNS,187.14,false,false,false,false,0,19,187.14
+855,21,GLOBAL_OFFSPRING,203.76,false,false,false,false,0,24,203.76
+669,21,GLOBAL_OFFSPRING,203.76,false,false,false,false,0,51,203.76
+814,21,GLOBAL_OFFSPRING,203.76,false,false,false,false,0,22,203.76
+670,21,GLOBAL_OFFSPRING,203.76,false,false,false,false,0,22,203.76
+981,23,INTRA_FACTORY_VNS,203.76,false,false,false,false,0,30,203.76
+785,23,INTRA_FACTORY_VNS,203.76,false,false,false,false,0,23,203.76
+1048,24,INTRA_FACTORY_VNS,189.91,false,false,false,false,0,50,189.91
+1049,24,INTRA_FACTORY_VNS,189.91,false,false,false,false,0,50,189.91
+1051,24,INTRA_FACTORY_VNS,203.76,false,false,false,false,0,27,203.76
+1062,25,INTRA_FACTORY_VNS,201.12,false,false,false,false,0,25,201.12
+1061,25,GLOBAL_OFFSPRING,203.76,false,false,false,false,0,25,203.76
+620,26,INTRA_FACTORY_VNS,203.76,false,false,false,false,0,26,203.76
+621,26,INTRA_FACTORY_VNS,203.76,false,false,false,false,0,26,203.76
+1105,27,GLOBAL_OFFSPRING,203.76,false,false,false,false,0,37,203.76
+1114,28,INTRA_FACTORY_VNS,197.42,false,false,false,false,0,28,197.42
+1106,28,GLOBAL_OFFSPRING,203.76,false,false,false,false,0,36,203.76
+1134,29,INTRA_FACTORY_VNS,201.12,false,false,false,false,0,29,201.12
+1139,30,GLOBAL_OFFSPRING,203.76,false,false,false,false,0,30,203.76
+1154,31,INTRA_FACTORY_VNS,202.14,false,false,false,false,0,31,202.14
+1160,32,GLOBAL_OFFSPRING,185.89,false,false,false,false,0,32,185.89
+1140,33,GLOBAL_OFFSPRING,203.76,false,false,false,false,0,36,203.76
+1185,34,GLOBAL_OFFSPRING,190.16,false,false,false,false,0,34,190.16
+1176,34,GLOBAL_OFFSPRING,203.76,false,false,false,false,0,48,203.76
+1198,35,INTRA_FACTORY_VNS,203.76,false,false,false,false,0,37,203.76
+1246,38,INTRA_FACTORY_VNS,200.83,false,false,false,false,0,39,200.83
+1244,38,GLOBAL_OFFSPRING,200.83,false,false,false,false,0,39,200.83
+1250,38,INTRA_FACTORY_VNS,203.76,false,false,false,false,0,38,203.76
+1297,40,INTRA_FACTORY_VNS,200.83,false,false,false,false,0,43,200.83
+1298,40,INTRA_FACTORY_VNS,200.83,false,false,false,false,0,42,200.83
+1295,40,GLOBAL_OFFSPRING,200.83,false,false,false,false,0,44,200.83
+1296,43,GLOBAL_OFFSPRING,200.83,false,false,false,false,0,43,200.83
+1353,44,INTRA_FACTORY_VNS,200.83,false,false,false,false,0,47,200.83
+1354,44,INTRA_FACTORY_VNS,200.83,false,false,false,false,0,44,200.83
+1367,45,INTRA_FACTORY_VNS,195.30,false,false,false,false,0,45,195.30
+1366,45,INTRA_FACTORY_VNS,200.83,false,false,false,false,0,47,200.83
+1362,46,GLOBAL_OFFSPRING,200.83,false,false,false,false,0,46,200.83
+1410,48,INTRA_FACTORY_VNS,203.02,false,false,false,false,0,48,203.02
+1247,48,GLOBAL_OFFSPRING,203.76,false,false,false,false,0,48,203.76
+1435,49,INTRA_FACTORY_VNS,203.02,false,false,false,false,0,55,203.02
+1436,49,INTRA_FACTORY_VNS,203.02,false,false,false,false,0,55,203.02
+1421,49,GLOBAL_OFFSPRING,203.76,false,false,false,false,0,55,203.76
+1464,50,INTRA_FACTORY_VNS,186.71,false,false,false,false,0,50,186.71
+1440,50,INTRA_FACTORY_VNS,202.74,false,false,false,false,0,50,202.74
+1441,50,INTRA_FACTORY_VNS,202.74,false,false,false,false,0,50,202.74
+1477,51,INTRA_FACTORY_VNS,201.12,false,false,false,false,0,51,201.12
+1510,52,INTRA_FACTORY_VNS,185.67,false,false,false,false,0,53,185.67
+1501,52,INTRA_FACTORY_VNS,201.12,false,false,false,false,0,52,201.12
+1502,52,INTRA_FACTORY_VNS,201.12,false,false,false,false,0,52,201.12
+1517,53,INTRA_FACTORY_VNS,200.88,false,false,false,false,0,53,200.88
+1552,54,INTRA_FACTORY_VNS,185.67,false,false,false,false,0,54,185.67
+1553,54,INTRA_FACTORY_VNS,185.67,false,false,false,false,0,54,185.67
+1554,54,INTRA_FACTORY_VNS,200.88,false,false,false,false,0,59,200.88
+1555,54,INTRA_FACTORY_VNS,200.88,false,false,false,false,0,59,200.88
+1589,56,INTRA_FACTORY_VNS,176.87,false,false,false,false,0,56,176.87
+1586,56,GLOBAL_OFFSPRING,186.44,false,false,false,false,0,57,186.44
+1588,56,INTRA_FACTORY_VNS,188.28,false,false,false,false,0,56,188.28
+1611,57,INTRA_FACTORY_VNS,176.87,false,false,false,false,0,57,176.87
+1609,57,INTRA_FACTORY_VNS,176.87,false,false,false,false,0,59,176.87
+1610,57,INTRA_FACTORY_VNS,176.87,false,false,false,false,0,59,176.87
+1612,57,INTRA_FACTORY_VNS,177.02,false,false,false,false,0,57,177.02
+1623,58,INTRA_FACTORY_VNS,176.87,false,false,false,false,0,58,176.87
+1624,58,INTRA_FACTORY_VNS,176.87,false,false,false,false,0,58,176.87
+1626,58,INTRA_FACTORY_VNS,177.02,false,false,false,false,0,58,177.02
+1636,59,GLOBAL_OFFSPRING,176.87,false,false,false,false,0,60,176.87
+1650,60,INTRA_FACTORY_VNS,176.87,false,false,false,false,0,61,176.87
+1647,60,INTRA_FACTORY_VNS,176.87,false,false,false,false,0,61,176.87
+1649,60,INTRA_FACTORY_VNS,195.89,false,false,false,false,0,60,195.89
+1651,60,INTRA_FACTORY_VNS,197.41,false,false,false,false,0,60,197.41
+1668,61,INTRA_FACTORY_VNS,176.87,false,false,false,false,0,62,176.87
+1667,61,GLOBAL_OFFSPRING,176.87,false,false,false,false,0,62,176.87
+1673,61,INTRA_FACTORY_VNS,197.41,false,false,false,false,0,61,197.41
+1681,62,GLOBAL_OFFSPRING,176.87,false,false,false,false,0,62,176.87
+1682,62,INTRA_FACTORY_VNS,176.87,false,false,false,false,0,62,176.87
+1679,62,INTRA_FACTORY_VNS,176.87,false,false,false,false,0,62,176.87
+--top5 per-cycle samples--
+cmaxLifecycleAuditEnd
+cmaxLifecycleAuditEnd

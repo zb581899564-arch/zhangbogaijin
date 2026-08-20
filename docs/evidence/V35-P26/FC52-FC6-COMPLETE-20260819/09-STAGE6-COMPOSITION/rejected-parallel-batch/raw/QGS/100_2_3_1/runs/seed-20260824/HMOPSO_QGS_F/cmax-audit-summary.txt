@@ -1,0 +1,17 @@
+schema=cmax-audit-v4-v35-lifecycle-three-objective
+checkpointInterval=1000
+latestFE=500000
+recordCount=125
+enteredCandidateSet=125
+pddrRetained=22
+personalArchive=0
+globalArchive=53
+nextRoundSurvived=2
+resolvedPendingByFinish=104
+bestCmaxGlobal=673.887358350122
+bestTECGlobal=50336.791498944700
+bestTWCGlobal=85366.950837863900
+bestCmaxGenerated=673.887358350122
+bestTECGenerated=50336.791498944700
+bestTWCGenerated=85366.950837863900
+recordSources={INITIAL/INITIAL=7, BASELINE_GLOBAL/BASELINE_GLOBAL=29, INTER_FACTORY/INTER_FACTORY_INSERTION=2, FIXED_VNS/O1_O9=87}

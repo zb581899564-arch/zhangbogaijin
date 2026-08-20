@@ -1,0 +1,9 @@
+matrix=FULL
+label=B4
+mechanism=B3 plus Q-pbest
+configurationKey=B4
+status=COMPLETED
+reason=Registered exact configuration key B4
+populationSize=100
+maxFEs=2000
+physicalSubswarmSizes=[20, 40, 20, 20]

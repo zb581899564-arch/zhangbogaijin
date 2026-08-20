@@ -1,0 +1,6 @@
+﻿
+WindowsProductName    WindowsVersion OsArchitecture
+------------------    -------------- --------------
+Windows 10 Home China 2009           64-bit        
+
+

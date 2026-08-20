@@ -1,0 +1,9 @@
+matrix=FM
+label=FM2
+mechanism=accumulation plus natural recovery
+configurationKey=NOT_EXPOSED
+status=NOT_EXPOSED
+reason=Current production path does not expose this ablation dimension independently
+populationSize=100
+maxFEs=2000
+physicalSubswarmSizes=[20, 40, 20, 20]

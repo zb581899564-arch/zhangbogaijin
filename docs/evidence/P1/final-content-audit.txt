@@ -1,0 +1,8 @@
+﻿verified_at=2026-08-08T00:23:28.1705046+08:00 source_pre_count=1806 source_post_count=1806 source_pre_post_differences=0 baseline_count=1806 workcopy_final_nongenerated_count=1806 baseline_workcopy_differences=6 baseline_workcopy_difference_list:
+content-diff:jmetal-core/src/main/java/org/uma/jmetal/solution/impl/DefaultIntegerPermutationSolution.java
+content-diff:jmetal-problem/src/main/java/org/uma/jmetal/problem/multiobjective/dfsp/DHFSP.java
+content-diff:jmetal-algorithm/pom.xml
+content-diff:jmetal-exec/src/main/java/org/uma/jmetal/runner/lc_psode/ALLAlgorithmRun.java
+content-diff:jmetal-exec/pom.xml
+content-diff:jmetal-problem/src/main/java/org/uma/jmetal/problem/multiobjective/dfsp/EDHHFSPW.java
+git_status_pre_post_differences=0

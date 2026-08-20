@@ -1,0 +1,11 @@
+algorithm=MOPSO_F
+FE=2000
+repairsTotal=630
+repairsPerEvaluationMean=0.3150
+evaluationsWithRepair=342 / 2000
+maxRepairsInOneEvaluation=7
+repairsP50/P90/P99=1/4/6
+byVector={WA=203, MA=427}
+byPosition={p8=26, p11=26, p17=38, p4=63, p9=43, p15=48, p6=31, p13=39, p2=6, p14=45, p0=8, p19=30, p7=28, p10=39, p12=38, p16=26, p5=22, p18=49, p3=15, p1=10}
+oldToNewPairs={2->0=400, 3->1=230}
+frontSize=10

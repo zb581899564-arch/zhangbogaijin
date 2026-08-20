@@ -1,0 +1,9 @@
+matrix=VNS
+label=V-Full
+mechanism=plus FAT-aware full VNS
+configurationKey=FULL
+status=COMPLETED
+reason=Registered exact configuration key FULL
+populationSize=100
+maxFEs=2000
+physicalSubswarmSizes=[20, 40, 20, 20]

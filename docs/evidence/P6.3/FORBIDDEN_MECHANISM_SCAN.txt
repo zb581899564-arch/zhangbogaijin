@@ -1,0 +1,4 @@
+scope=java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/zhangbo plus P6 integration test
+patterns=warmup|preheat|p-block|g-block|block-freeze|O10|O11|O12|O13|CA-TA|CATA
+matches=0
+conclusion=P6.3 contains no P6.4 warmup/block-freeze and no P7 CA-TA-VNS mechanisms.

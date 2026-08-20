@@ -1,0 +1,1 @@
+adapter=NSGA-II-F,generations=499,offspring=49900,localCandidates=0,deCandidates=0,eventHash=c199e2d8f517d55a3425b6d68bf3303035831e77e3ff7651e7ad68e2811b00a1

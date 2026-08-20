@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "semanticTag": "manual_illustrative_input_only",
+  "answerStatus": "NOT_GENERATED",
+  "instanceId": "I0",
+  "description": "Five-job, two-factory, two-stage hand-calculation instance",
+  "indexBase": 1,
+  "jobs": 5,
+  "factories": 2,
+  "stages": 2,
+  "seedReservedForLaterProgramComparison": 20260808,
+  "fatigueModel": {
+    "maximumIncreaseR": 0.30,
+    "warningThreshold": 0.80,
+    "safeThreshold": 0.90,
+    "initialFatigue": 0.0,
+    "standbyEnergyRate": 1.0
+  },
+  "jobData": [
+    {"job": 1, "stage": 1, "ST": 10, "SUT": 2},
+    {"job": 1, "stage": 2, "ST": 6, "SUT": 1},
+    {"job": 2, "stage": 1, "ST": 6, "SUT": 1},
+    {"job": 2, "stage": 2, "ST": 8, "SUT": 2},
+    {"job": 3, "stage": 1, "ST": 8, "SUT": 2},
+    {"job": 3, "stage": 2, "ST": 5, "SUT": 1},
+    {"job": 4, "stage": 1, "ST": 7, "SUT": 1},
+    {"job": 4, "stage": 2, "ST": 9, "SUT": 2},
+    {"job": 5, "stage": 1, "ST": 5, "SUT": 1},
+    {"job": 5, "stage": 2, "ST": 7, "SUT": 1}
+  ],
+  "machineData": [
+    {"factory": 1, "stage": 1, "machine": 1, "speed": 1.00, "power": 6},
+    {"factory": 1, "stage": 1, "machine": 2, "speed": 1.25, "power": 8},
+    {"factory": 1, "stage": 2, "machine": 1, "speed": 1.00, "power": 7},
+    {"factory": 1, "stage": 2, "machine": 2, "speed": 1.25, "power": 9},
+    {"factory": 2, "stage": 1, "machine": 1, "speed": 1.00, "power": 6},
+    {"factory": 2, "stage": 1, "machine": 2, "speed": 1.20, "power": 7},
+    {"factory": 2, "stage": 2, "machine": 1, "speed": 1.10, "power": 7},
+    {"factory": 2, "stage": 2, "machine": 2, "speed": 1.25, "power": 8}
+  ],
+  "workerData": [
+    {"factory": 1, "stage": 1, "localWorker": 1, "globalWorker": 1, "efficiency": 1.00, "costRate": 10, "lambda": 0.020, "mu": 0.050},
+    {"factory": 1, "stage": 1, "localWorker": 2, "globalWorker": 2, "efficiency": 1.00, "costRate": 11, "lambda": 0.025, "mu": 0.040},
+    {"factory": 1, "stage": 2, "localWorker": 1, "globalWorker": 3, "efficiency": 1.00, "costRate": 10, "lambda": 0.018, "mu": 0.060},
+    {"factory": 1, "stage": 2, "localWorker": 2, "globalWorker": 4, "efficiency": 1.20, "costRate": 12, "lambda": 0.022, "mu": 0.050},
+    {"factory": 2, "stage": 1, "localWorker": 1, "globalWorker": 1, "efficiency": 1.00, "costRate": 10, "lambda": 0.021, "mu": 0.050},
+    {"factory": 2, "stage": 1, "localWorker": 2, "globalWorker": 2, "efficiency": 1.10, "costRate": 11, "lambda": 0.026, "mu": 0.040},
+    {"factory": 2, "stage": 2, "localWorker": 1, "globalWorker": 3, "efficiency": 1.00, "costRate": 10, "lambda": 0.019, "mu": 0.060},
+    {"factory": 2, "stage": 2, "localWorker": 2, "globalWorker": 4, "efficiency": 1.15, "costRate": 12, "lambda": 0.023, "mu": 0.050}
+  ],
+  "goldenParticleX0": {
+    "JS": [3, 1, 2, 4, 5],
+    "FA": [1, 2, 2, 1, 1],
+    "MA": [1, 1, 1, 1, 2],
+    "WA": [1, 1, 1, 2, 2]
+  },
+  "shiftIllustrationGate": {
+    "semanticsVersion": "fatigue-shift-v2-common-gap",
+    "mode": "LEFT_RIGHT",
+    "screeningOnly": true,
+    "leftAcceptedCount": 1,
+    "rightAcceptedCount": 1,
+    "leftCandidateCount": 6,
+    "rightCandidateCount": 41,
+    "internalFullPropagationCount": 42,
+    "scheduleOrObjectiveAnswerPublished": false
+  },
+  "decodeRules": {
+    "stageOne": "Read FA/MA/WA at the position of each JS job; process jobs in their within-factory JS order.",
+    "laterStageOrder": "Sort by previous-stage completion; ties use previous dispatch order, then smaller job number.",
+    "laterStageMachine": "First job uses local machine 1; later jobs choose the earliest available machine, ties by smaller local machine number.",
+    "fm0LaterWorker": "Choose the worker with the smallest base completion time; ties by smaller global worker number.",
+    "fm3LaterWorker": "Choose the worker with the smallest fatigue-adjusted completion time; ties by smaller global worker number.",
+    "start": "max(predecessor completion, machine availability, worker availability)",
+    "naturalRecovery": "Only positive idle time between two tasks of the same worker; no initial or tail recovery is counted.",
+    "energy": "actualAT*machinePower + machineIdle*standbyEnergyRate; first use has zero machine idle.",
+    "cost": "(actualAT+machineIdle)*workerCostRate, matching the current canonical production evaluator.",
+    "baseState": "S0 is the complete FM3 base schedule before any shift.",
+    "FCLS": "Intersect the target operation's machine and worker idle intervals, try the earliest feasible common-gap placements in stable order, and fully repropagate precedence, machine, worker, recovery, fatigue, dynamic duration, energy, cost and objectives. Accept only when the actual start is earlier, the result is feasible and Cmax does not worsen. Accepted moves are applied sequentially to form S1.",
+    "FCRS": "Freeze the global CmaxStar after FCLS. From S1, traverse the current DAG in reverse topological order, keep all job/machine/worker orders fixed, add only a release override, and try the proposed delay followed by at most 10 deterministic half-backoff attempts. Accept only when the actual start is later, Cmax does not exceed CmaxStar, TEC and TWC do not worsen, and at least one of TEC/TWC strictly improves. Accepted moves are applied sequentially to form S2.",
+    "shiftAcceptance": "FCLS: earlier start + feasibility + Cmax non-worsening. FCRS: later start + Cmax<=CmaxStar + TEC/TWC non-worsening + at least one strict TEC/TWC improvement. Tolerance is 1e-9.",
+    "internalEvaluationBudget": "FCLS/FCRS internal full propagations do not add jMetal FE; the external particle evaluation still counts once."
+  }
+}

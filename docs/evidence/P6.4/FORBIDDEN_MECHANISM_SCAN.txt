@@ -1,0 +1,9 @@
+scope=java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/zhangbo plus ZhangBoMOHPSOQ.java
+O10=0
+O11=0
+O12=0
+O13=0
+CA-TA=0
+CATA=0
+500000=0
+conclusion=P6.4 contains no P7 neighborhoods, CA-TA-VNS, or formal 500000 FE experiment implementation.

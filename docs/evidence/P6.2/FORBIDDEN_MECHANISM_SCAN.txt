@@ -1,0 +1,4 @@
+Scope: P6.1.1/P6.2 production source roots
+Patterns: Q-pbest/QpController/O10/O11/O12/O13/CA-TA/CATA/active rest/multi-skill/fourth objective
+Result: NO_FORBIDDEN_MECHANISM_MATCHES
+

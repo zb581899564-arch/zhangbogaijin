@@ -1,0 +1,10 @@
+pilotLabel,paperLabel,localSource,canonicalAdapter,status,scopeNote
+ZHANGBO_A4,ZHANGBO-A4,V35FairRunner/V35_FULL_POOL_OFF,V35FairRunner,READY,current candidate; directional teacher pool off
+HMOPSO_QGS_F,HMOPSO-QGS,ZhangBoMOHPSOQ formal Table-9 path,V35FairRunner/V35_BASELINE,READY,canonical FM3 fair adaptation
+HMOPSO_QLS_F,HMOPSO-QLS,MOPSODivSubDE family and ESWA method description,V35P25DComparativeEngine/PSO_QLS,READY_STRUCTURED_ADAPTER,not the legacy unseeded executable
+MOPSO_F,MOPSO,MOPSO.java,V35P25DComparativeEngine/PSO,READY_STRUCTURED_ADAPTER,canonical four-vector rewrite
+MOPSODS_DE_F,MOPSODS-DE,MOPSODivSub.java family,V35P25DComparativeEngine/PSO_DE,READY_STRUCTURED_ADAPTER,canonical subgroup-discrete-DE rewrite
+MOHEADE_F,MOHEADE,MOHEADE.java,V35P25DComparativeEngine/MOHEA_DE,READY_STRUCTURED_ADAPTER,canonical archive-DE rewrite
+NSGA_II_F,NSGA-II,NSGAII.java,V35P25DComparativeEngine/NSGA_II,READY_STRUCTURED_ADAPTER,canonical nondominated-sort/crowding rewrite
+SPEA2_F,SPEA2,SPEA2.java,V35P25DComparativeEngine/SPEA2,READY_STRUCTURED_ADAPTER,canonical strength-fitness rewrite
+QMOEA_PENDING,QMOEA,NO_VERIFIED_LOCAL_SOURCE,NONE,PENDING_SOURCE_VERIFICATION,no substitution permitted

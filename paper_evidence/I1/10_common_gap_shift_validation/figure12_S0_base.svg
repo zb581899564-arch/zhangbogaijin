@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="530" viewBox="0 0 1200 530">
+<rect width="100%" height="100%" fill="white"/><text x="20" y="30" font-family="sans-serif" font-size="18">Figure 12 - I1/X0 S0 base FM3</text>
+<text x="10" y="77" font-family="sans-serif" font-size="12">F1-S1-M1</text><line x1="150" y1="85" x2="1180" y2="85" stroke="#ddd"/>
+<text x="10" y="121" font-family="sans-serif" font-size="12">F1-S1-M2</text><line x1="150" y1="129" x2="1180" y2="129" stroke="#ddd"/>
+<text x="10" y="165" font-family="sans-serif" font-size="12">F1-S1-M3</text><line x1="150" y1="173" x2="1180" y2="173" stroke="#ddd"/>
+<text x="10" y="209" font-family="sans-serif" font-size="12">F1-S2-M1</text><line x1="150" y1="217" x2="1180" y2="217" stroke="#ddd"/>
+<text x="10" y="253" font-family="sans-serif" font-size="12">F1-S2-M2</text><line x1="150" y1="261" x2="1180" y2="261" stroke="#ddd"/>
+<text x="10" y="297" font-family="sans-serif" font-size="12">F2-S1-M1</text><line x1="150" y1="305" x2="1180" y2="305" stroke="#ddd"/>
+<text x="10" y="341" font-family="sans-serif" font-size="12">F2-S1-M2</text><line x1="150" y1="349" x2="1180" y2="349" stroke="#ddd"/>
+<text x="10" y="385" font-family="sans-serif" font-size="12">F2-S2-M1</text><line x1="150" y1="393" x2="1180" y2="393" stroke="#ddd"/>
+<text x="10" y="429" font-family="sans-serif" font-size="12">F2-S2-M2</text><line x1="150" y1="437" x2="1180" y2="437" stroke="#ddd"/>
+<text x="10" y="473" font-family="sans-serif" font-size="12">F2-S2-M3</text><line x1="150" y1="481" x2="1180" y2="481" stroke="#ddd"/>
+<rect x="150.000000000000" y="99" width="154.860402150622" height="28" fill="#EDC948" stroke="#222"/><text x="153.000000000000" y="117" font-family="sans-serif" font-size="10" fill="white">J10/W2</text>
+<rect x="304.860402150622" y="55" width="173.809638416038" height="28" fill="#E45756" stroke="#222"/><text x="307.860402150622" y="73" font-family="sans-serif" font-size="10" fill="white">J4/W2</text>
+<rect x="478.670040566659" y="55" width="203.763687040292" height="28" fill="#FF9DA6" stroke="#222"/><text x="481.670040566659" y="73" font-family="sans-serif" font-size="10" fill="white">J7/W1</text>
+<rect x="478.670040566659" y="143" width="279.407632688049" height="28" fill="#F58518" stroke="#222"/><text x="481.670040566659" y="161" font-family="sans-serif" font-size="10" fill="white">J2/W2</text>
+<rect x="682.433727606951" y="99" width="246.004652240503" height="28" fill="#BAB0AC" stroke="#222"/><text x="685.433727606951" y="117" font-family="sans-serif" font-size="10" fill="white">J9/W1</text>
+<rect x="304.860402150622" y="187" width="125.963006533998" height="28" fill="#EDC948" stroke="#222"/><text x="307.860402150622" y="205" font-family="sans-serif" font-size="10" fill="white">J10/W4</text>
+<rect x="478.670040566659" y="231" width="247.333532576367" height="28" fill="#E45756" stroke="#222"/><text x="481.670040566659" y="249" font-family="sans-serif" font-size="10" fill="white">J4/W4</text>
+<rect x="682.433727606951" y="187" width="289.797243790637" height="28" fill="#FF9DA6" stroke="#222"/><text x="685.433727606951" y="205" font-family="sans-serif" font-size="10" fill="white">J7/W3</text>
+<rect x="758.077673254709" y="231" width="202.696735257395" height="28" fill="#F58518" stroke="#222"/><text x="761.077673254709" y="249" font-family="sans-serif" font-size="10" fill="white">J2/W4</text>
+<rect x="960.774408512104" y="231" width="177.649768751215" height="28" fill="#BAB0AC" stroke="#222"/><text x="963.774408512104" y="249" font-family="sans-serif" font-size="10" fill="white">J9/W4</text>
+<rect x="150.000000000000" y="319" width="125.963006533998" height="28" fill="#B279A2" stroke="#222"/><text x="153.000000000000" y="337" font-family="sans-serif" font-size="10" fill="white">J6/W2</text>
+<rect x="275.963006533998" y="319" width="164.358147563078" height="28" fill="#72B7B2" stroke="#222"/><text x="278.963006533998" y="337" font-family="sans-serif" font-size="10" fill="white">J5/W1</text>
+<rect x="440.321154097077" y="275" width="248.945406749002" height="28" fill="#9D755D" stroke="#222"/><text x="443.321154097077" y="293" font-family="sans-serif" font-size="10" fill="white">J8/W1</text>
+<rect x="689.266560846079" y="275" width="191.698055841491" height="28" fill="#54A24B" stroke="#222"/><text x="692.266560846079" y="293" font-family="sans-serif" font-size="10" fill="white">J3/W2</text>
+<rect x="880.964616687570" y="319" width="146.273927705673" height="28" fill="#4C78A8" stroke="#222"/><text x="883.964616687570" y="337" font-family="sans-serif" font-size="10" fill="white">J1/W2</text>
+<rect x="275.963006533998" y="363" width="230.932178645664" height="28" fill="#B279A2" stroke="#222"/><text x="278.963006533998" y="381" font-family="sans-serif" font-size="10" fill="white">J6/W3</text>
+<rect x="440.321154097077" y="407" width="295.834686369608" height="28" fill="#72B7B2" stroke="#222"/><text x="443.321154097077" y="425" font-family="sans-serif" font-size="10" fill="white">J5/W4</text>
+<rect x="689.266560846079" y="451" width="220.846543496575" height="28" fill="#9D755D" stroke="#222"/><text x="692.266560846079" y="469" font-family="sans-serif" font-size="10" fill="white">J8/W3</text>
+<rect x="910.113104342654" y="363" width="234.217174988758" height="28" fill="#54A24B" stroke="#222"/><text x="913.113104342654" y="381" font-family="sans-serif" font-size="10" fill="white">J3/W3</text>
+<rect x="1027.238544393244" y="407" width="142.761455606757" height="28" fill="#4C78A8" stroke="#222"/><text x="1030.238544393244" y="425" font-family="sans-serif" font-size="10" fill="white">J1/W4</text>
+</svg>

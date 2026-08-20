@@ -1,0 +1,380 @@
+﻿P6.5 subgroup semantic migration scan
+generated=2026-08-09T17:05:22.4642490+08:00
+zhangbo_source_files=52
+legacy_enum_name_hits:
+NONE
+active_ordinal_usage_in_zhangbo:
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\zhangbo\ZhangBoQpController.java:241:          actionRewards[value.selection.action.ordinal()] += reward.total;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\zhangbo\ZhangBoQpController.java:243:              value.selection.action.ordinal(), reward.total, nextState,
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\zhangbo\ZhangBoQpController.java:582:  public long getActionCount(ZhangBoQpAction action) { return actionCounts[action.ordinal()]; }
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\zhangbo\ZhangBoQpController.java:584:    long count = actionCounts[action.ordinal()];
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\zhangbo\ZhangBoQpController.java:585:    return count == 0L ? 0.0 : actionRewards[action.ordinal()] / count;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\zhangbo\ZhangBoQpCandidateSelector.java:53:        mask[action.ordinal()] = true;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\zhangbo\ZhangBoQpCandidateSelector.java:57:    if (!mask[ZhangBoQpAction.KEEP.ordinal()]) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\zhangbo\ZhangBoQpCandidateSelector.java:214:    public boolean isValid(ZhangBoQpAction action) { return mask[action.ordinal()]; }
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\zhangbo\neighborhood\ZhangBoNeighborhoodSuite.java:92:        request.getSeed() ^ (0x9E3779B97F4A7C15L * (id.ordinal() + 1L)));
+legacy_numeric_group_hits_in_ZhangBoMOHPSOQ:
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:85:    private List<PermutationSolution<Integer>> groupU1Solution;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:86:    private List<PermutationSolution<Integer>> groupUNewSolution;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:87:    private List<PermutationSolution<Integer>> groupC2Solution;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:88:    private List<PermutationSolution<Integer>> groupD3Solution;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:207:        groupU1Solution = new ArrayList<>(upSize);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:208:        groupUNewSolution = new ArrayList<>(upNewSize);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:209:        groupC2Solution = new ArrayList<>(centralSize);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:210:        groupD3Solution = new ArrayList<>(downSize);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:564:        groupU1Solution.clear();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:565:        groupUNewSolution.clear();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:566:        groupC2Solution.clear();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:567:        groupD3Solution.clear();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:606:            groupU1Solution.add(temp1.get(b));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:644:            groupC2Solution.add(temp2.get(b));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:661:            groupD3Solution.add(temp3.get(b));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:677:            groupUNewSolution.add(temp4.get(b));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1026:        ArrayList<PermutationSolution<Integer>> groupU1Solutionbefore = new ArrayList<>();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1027:        ArrayList<PermutationSolution<Integer>> groupC2Solutionbefore = new ArrayList<>();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1028:        ArrayList<PermutationSolution<Integer>> groupD3Solutionbefore = new ArrayList<>();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1029:        ArrayList<PermutationSolution<Integer>> groupUNewSolutionbefore = new ArrayList<>();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1030:        if (group==1){
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1033:            for (int i = 0; i < groupU1Solution.size(); i++) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1034:                groupU1Solutionbefore.add(groupU1Solution.get(i));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1036://        System.out.println(groupU1Solutionbefore+"groupU1Solutionbefore");
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1037:            G1PSO(random,nw,action,group);//进行粒子群进化并将结果写进groupU1Solution
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1038:            evaluateSwarm(groupU1Solution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1040://        System.out.println(groupU1Solution+"groupU1Solution");
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1043:            for (int i = 0; i < groupU1Solution.size(); i++) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1044:                double objectivebefore = groupU1Solutionbefore.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1045:                double objectivenext = groupU1Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1055:        } else if (group==2) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1058:            for (int i = 0; i < groupC2Solution.size(); i++) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1059:                groupC2Solutionbefore.add(groupC2Solution.get(i));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1061://        System.out.println(groupU1Solutionbefore+"groupU1Solutionbefore");
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1062:            G1PSO(random,nw,action,group);//进行粒子群进化并将结果写进groupU1Solution
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1063:            evaluateSwarm(groupC2Solution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1065://        System.out.println(groupU1Solution+"groupU1Solution");
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1068:            for (int i = 0; i < groupC2Solution.size(); i++) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1070:                double objective1before = groupC2Solutionbefore.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1071:                double objective1next = groupC2Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1072:                double objective2before = groupC2Solutionbefore.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1073:                double objective2next = groupC2Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1074:                double objective3before = groupC2Solutionbefore.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1075:                double objective3next = groupC2Solution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1087:        } else if (group==3) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1090:            for (int i = 0; i < groupD3Solution.size(); i++) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1091:                groupD3Solutionbefore.add(groupD3Solution.get(i));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1093://        System.out.println(groupU1Solutionbefore+"groupU1Solutionbefore");
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1094:            G1PSO(random,nw,action,group);//进行粒子群进化并将结果写进groupU1Solution
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1095:            evaluateSwarm(groupD3Solution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1097://        System.out.println(groupU1Solution+"groupU1Solution");
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1100:            for (int i = 0; i < groupD3Solution.size(); i++) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1101:                double objectivebefore = groupD3Solutionbefore.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1102:                double objectivenext = groupD3Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1113:        } else if (group==4) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1116:            for (int i = 0; i < groupUNewSolution.size(); i++) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1117:                groupUNewSolutionbefore.add(groupUNewSolution.get(i));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1119://        System.out.println(groupU1Solutionbefore+"groupU1Solutionbefore");
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1120:            G1PSO(random,nw,action,group);//进行粒子群进化并将结果写进groupU1Solution
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1121:            evaluateSwarm(groupUNewSolution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1123://        System.out.println(groupU1Solution+"groupU1Solution");
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1126:            for (int i = 0; i < groupUNewSolution.size(); i++) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1127:                double objectivebefore = groupUNewSolutionbefore.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1128:                double objectivenext = groupUNewSolution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1164://        System.out.println(groupU1Solution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1190:            PermutationSolution<Integer> particle = (PermutationSolution<Integer>) groupU1Solution.get(i).copy();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1221://            System.out.println(groupU1Solution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1338:            groupU1Solution.set(i, particle);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1350:            PermutationSolution<Integer> particle = (PermutationSolution<Integer>) groupC2Solution.get(i).copy();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1484:            groupC2Solution.set(i, particle);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1495:            PermutationSolution<Integer> particle = (PermutationSolution<Integer>) groupD3Solution.get(i).copy();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1630:            groupD3Solution.set(i, particle);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1642:            PermutationSolution<Integer> particle = (PermutationSolution<Integer>) groupUNewSolution.get(i).copy();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1774:            groupUNewSolution.set(i, particle);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1822:            candidates.addAll(copySolutions(groupU1Solution));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1823:            candidates.addAll(copySolutions(groupC2Solution));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1824:            candidates.addAll(copySolutions(groupD3Solution));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1825:            candidates.addAll(copySolutions(groupUNewSolution));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1827:        selectQgLeader(ZhangBoSubSwarm.G1_CMAX, groupU1Solution, candidates);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1828:        selectQgLeader(ZhangBoSubSwarm.G4_BALANCED, groupC2Solution, candidates);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1829:        selectQgLeader(ZhangBoSubSwarm.G2_TEC, groupD3Solution, candidates);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1830:        selectQgLeader(ZhangBoSubSwarm.G3_TWC, groupUNewSolution, candidates);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1867:            List<PermutationSolution<Integer>> groupAfter = after.get(group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1868:            if (groupAfter.isEmpty()) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1869:                groupAfter = pendingQgBefore.get(group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1875:                        pendingQgSelections.get(group), pendingQgBefore.get(group), groupAfter);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1880:                        pendingQgSelections.get(group), pendingQgBefore.get(group), groupAfter);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1894:            List<PermutationSolution<Integer>> groupedParents = groupedCurrentSolutions();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1895:            annotateSubSwarmSlots(groupedParents);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1898:                zhangBoLineageCoordinator.initialize(groupedParents, globallyOptimalIndividual,
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1901:                zhangBoLineageCoordinator.freezeBounds(groupedParents, globallyOptimalIndividual);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1910:            pendingPddrParents = ZhangBoSolutionSupport.deepCopySolutions(groupedParents);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1911:            pendingPddrParentHistories = groupedAuthorHistories();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1914:        updateCfvfGroup(ZhangBoSubSwarm.G1_CMAX, groupU1Solution,
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1916:        updateCfvfGroup(ZhangBoSubSwarm.G4_BALANCED, groupC2Solution,
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1918:        updateCfvfGroup(ZhangBoSubSwarm.G2_TEC, groupD3Solution,
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1920:        updateCfvfGroup(ZhangBoSubSwarm.G3_TWC, groupUNewSolution,
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1943:    private List<PermutationSolution<Integer>> groupedCurrentSolutions() {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1945:        result.addAll(groupU1Solution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1946:        result.addAll(groupC2Solution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1947:        result.addAll(groupD3Solution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1948:        result.addAll(groupUNewSolution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:1956:    private List<List<PermutationSolution<Integer>>> groupedAuthorHistories() {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2007:                zhangBoP6Events.add("authorUpdateCanonicalization:group=" + group
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2018:                zhangBoP6Events.add("authorUpdateCanonicalization:group=" + group
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2122:        selectQpGroup(ZhangBoSubSwarm.G1_CMAX, groupU1Solution,
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2124:        base += groupU1Solution.size();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2125:        selectQpGroup(ZhangBoSubSwarm.G4_BALANCED, groupC2Solution,
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2127:        base += groupC2Solution.size();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2128:        selectQpGroup(ZhangBoSubSwarm.G2_TEC, groupD3Solution,
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2130:        base += groupD3Solution.size();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2131:        selectQpGroup(ZhangBoSubSwarm.G3_TWC, groupUNewSolution,
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2173:        selectWarmupGroup(ZhangBoSubSwarm.G1_CMAX, groupU1Solution, memories, bounds, base);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2174:        base += groupU1Solution.size();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2175:        selectWarmupGroup(ZhangBoSubSwarm.G4_BALANCED, groupC2Solution, memories, bounds, base);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2176:        base += groupC2Solution.size();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2177:        selectWarmupGroup(ZhangBoSubSwarm.G2_TEC, groupD3Solution, memories, bounds, base);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2178:        base += groupD3Solution.size();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2179:        selectWarmupGroup(ZhangBoSubSwarm.G3_TWC, groupUNewSolution, memories, bounds, base);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2204:        groupU1Solution = ZhangBoSolutionSupport.deepCopySolutions(groupU1Solution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2205:        groupC2Solution = ZhangBoSolutionSupport.deepCopySolutions(groupC2Solution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2206:        groupD3Solution = ZhangBoSolutionSupport.deepCopySolutions(groupD3Solution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2207:        groupUNewSolution = ZhangBoSolutionSupport.deepCopySolutions(groupUNewSolution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2268:        if (group==1){
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2282:                PermutationSolution<Integer> particle = (PermutationSolution<Integer>) groupU1Solution.get(i).copy();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2380:                groupU1Solution.set(i, particle);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2382:        }else if (group == 2){
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2391:                PermutationSolution<Integer> particle = (PermutationSolution<Integer>) groupC2Solution.get(i).copy();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2484:                groupC2Solution.set(i, particle);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2486:        } else if (group == 3) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2495:                PermutationSolution<Integer> particle = (PermutationSolution<Integer>) groupD3Solution.get(i).copy();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2588:                groupD3Solution.set(i, particle);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2590:        } else if (group == 4) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2599:                PermutationSolution<Integer> particle = (PermutationSolution<Integer>) groupUNewSolution.get(i).copy();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2688:                groupUNewSolution.set(i, particle);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2701:            swarm.add((PermutationSolution<Integer>) groupU1Solution.get(i).copy());
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2710:            swarm.add((PermutationSolution<Integer>) groupC2Solution.get(i).copy());
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2719:            swarm.add((PermutationSolution<Integer>) groupD3Solution.get(i).copy());
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2729:            swarm.add((PermutationSolution<Integer>) groupUNewSolution.get(i).copy());
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2813://            getswarm1=selectFac1(groupU1Solution.get(i),group1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2815://            groupU1Solution.set(i,getswarm1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2822://            getswarm1=selectFac1(groupUNewSolution.get(i),group4);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2827://            groupUNewSolution.set(i,getswarm1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2832://            getswarm1=selectFac1(groupC2Solution.get(i),group2);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2834://            groupC2Solution.set(i,getswarm1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2839://            getswarm1=selectFac1(groupD3Solution.get(i),group3);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2841://            groupD3Solution.set(i,getswarm1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2885:        int group = 1;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2926:                    getswarm1 = learn(actionIndex, R, Q, groupU1Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2928:                    if ((getswarm1.getObjective(0) < groupU1Solution.get(i).getObjective(0))) next = 0;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2930:                    old0 = groupU1Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2940:                        getswarm1 = learn(actionIndex, R, Q, groupU1Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2942:                        if ((getswarm1.getObjective(0) < groupU1Solution.get(i).getObjective(0)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2945:                        old0 = groupU1Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2957:                        getswarm1 = learn(actionIndex, R, Q, groupU1Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2959:                        if ((getswarm1.getObjective(0) < groupU1Solution.get(i).getObjective(0)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2962:                        old0 = groupU1Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:2989:                max[k] = groupU1Solution.get(i).getObjective(0) - getswarm1.getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3003://            groupU1Solution.set(i,swarmtemp.get(i));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3015:        group = 2;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3044:                    getswarm1 = learn(actionIndex, R, Q, groupC2Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3046:                    if ((getswarm1.getObjective(0) < groupC2Solution.get(i).getObjective(0) && getswarm1.getObjective(1) < groupC2Solution.get(i).getObjective(1) && getswarm1.getObjective(6) < groupC2Solution.get(i).getObjective(6)) ||
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3047:                            getswarm1.getObjective(0) < groupC2Solution.get(i).getObjective(0) ||
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3048:                            getswarm1.getObjective(1) < groupC2Solution.get(i).getObjective(1) ||
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3049:                            getswarm1.getObjective(6) < groupC2Solution.get(i).getObjective(6))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3053:                    old0 = groupC2Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3054:                    old1 = groupC2Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3055:                    old2 = groupC2Solution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3065:                        getswarm1 = learn(actionIndex, R, Q, groupC2Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3067:                        if ((getswarm1.getObjective(0) < groupC2Solution.get(i).getObjective(0) && getswarm1.getObjective(1) < groupC2Solution.get(i).getObjective(1) && getswarm1.getObjective(6) < groupC2Solution.get(i).getObjective(6)) ||
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3068:                                getswarm1.getObjective(0) < groupC2Solution.get(i).getObjective(0) ||
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3069:                                getswarm1.getObjective(1) < groupC2Solution.get(i).getObjective(1) ||
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3070:                                getswarm1.getObjective(6) < groupC2Solution.get(i).getObjective(6))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3073:                        old0 = groupC2Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3074:                        old1 = groupC2Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3075:                        old2 = groupC2Solution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3086:                        getswarm1 = learn(actionIndex, R, Q, groupC2Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3088:                        if ((getswarm1.getObjective(0) < groupC2Solution.get(i).getObjective(0) && getswarm1.getObjective(1) < groupC2Solution.get(i).getObjective(1) && getswarm1.getObjective(6) < groupC2Solution.get(i).getObjective(6)) ||
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3089:                                getswarm1.getObjective(0) < groupC2Solution.get(i).getObjective(0) ||
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3090:                                getswarm1.getObjective(1) < groupC2Solution.get(i).getObjective(1) ||
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3091:                                getswarm1.getObjective(6) < groupC2Solution.get(i).getObjective(6))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3094:                        old0 = groupC2Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3095:                        old1 = groupC2Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3096:                        old2 = groupC2Solution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3121:                max[k] = (groupC2Solution.get(i).getObjective(0) - getswarm1.getObjective(0)) + (groupC2Solution.get(i).getObjective(1) - getswarm1.getObjective(1)) + (groupC2Solution.get(i).getObjective(6) - getswarm1.getObjective(6));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3135:            groupC2Solution.set(i, swarmtemp.get(i));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3140:        group = 3;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3169:                    getswarm1 = learn(actionIndex, R, Q, groupD3Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3171:                    if ((getswarm1.getObjective(1) < groupD3Solution.get(i).getObjective(1)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3175:                    old0 = groupD3Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3183:                        getswarm1 = learn(actionIndex, R, Q, groupD3Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3185:                        if ((getswarm1.getObjective(1) < groupD3Solution.get(i).getObjective(1)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3188:                        old0 = groupD3Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3197:                        getswarm1 = learn(actionIndex, R, Q, groupD3Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3199:                        if ((getswarm1.getObjective(1) < groupD3Solution.get(i).getObjective(1)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3202:                        old0 = groupD3Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3226:                max[k] = groupD3Solution.get(i).getObjective(1) - getswarm1.getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3240:            groupD3Solution.set(i, swarmtemp.get(i));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3245:        group = 4;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3273:                    getswarm1 = learn(actionIndex, R, Q, groupUNewSolution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3275:                    if ((getswarm1.getObjective(6) < groupUNewSolution.get(i).getObjective(6)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3279:                    old0 = groupUNewSolution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3287:                        getswarm1 = learn(actionIndex, R, Q, groupUNewSolution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3289:                        if ((getswarm1.getObjective(6) < groupUNewSolution.get(i).getObjective(6)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3292:                        old0 = groupUNewSolution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3301:                        getswarm1 = learn(actionIndex, R, Q, groupUNewSolution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3303:                        if ((getswarm1.getObjective(6) < groupUNewSolution.get(i).getObjective(6)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3306:                        old0 = groupUNewSolution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3330:                max[k] = groupUNewSolution.get(i).getObjective(6) - getswarm1.getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3344:            groupUNewSolution.set(i, swarmtemp.get(i));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3535:            ZhangBoSubSwarm group = (ZhangBoSubSwarm) value;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3619:            this.group = group;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3682:        int group = 1;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3727:                    getswarm1 = learn(actionIndex, R, Q, groupU1Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3731:                    if ((getswarm1.getObjective(0) < groupU1Solution.get(i).getObjective(0))) next = 0;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3733:                    old0 = groupU1Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3743:                        getswarm1 = learn(actionIndex, R, Q, groupU1Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3745:                        if ((getswarm1.getObjective(0) < groupU1Solution.get(i).getObjective(0)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3748:                        old0 = groupU1Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3760:                        getswarm1 = learn(actionIndex, R, Q, groupU1Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3762:                        if ((getswarm1.getObjective(0) < groupU1Solution.get(i).getObjective(0)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3765:                        old0 = groupU1Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3793:                max[k] = groupU1Solution.get(i).getObjective(0) - getswarm1.getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3808://            groupU1Solution.set(i,swarmtemp.get(i));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3820:        group = 2;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3848:                    getswarm1 = learn(actionIndex, R, Q, groupC2Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3850:                    if ((getswarm1.getObjective(0) < groupC2Solution.get(i).getObjective(0) && getswarm1.getObjective(1) < groupC2Solution.get(i).getObjective(1) && getswarm1.getObjective(6) < groupC2Solution.get(i).getObjective(6)) || getswarm1.getObjective(0) < groupC2Solution.get(i).getObjective(0) || getswarm1.getObjective(1) < groupC2Solution.get(i).getObjective(1) || getswarm1.getObjective(6) < groupC2Solution.get(i).getObjective(6))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3854:                    old0 = groupC2Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3855:                    old1 = groupC2Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3856:                    old2 = groupC2Solution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3869:                        getswarm1 = learn(actionIndex, R, Q, groupC2Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3871:                        if ((getswarm1.getObjective(0) < groupC2Solution.get(i).getObjective(0) && getswarm1.getObjective(1) < groupC2Solution.get(i).getObjective(1) && getswarm1.getObjective(6) < groupC2Solution.get(i).getObjective(6)) || getswarm1.getObjective(0) < groupC2Solution.get(i).getObjective(0) || getswarm1.getObjective(1) < groupC2Solution.get(i).getObjective(1) || getswarm1.getObjective(6) < groupC2Solution.get(i).getObjective(6))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3874:                        old0 = groupC2Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3875:                        old1 = groupC2Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3876:                        old2 = groupC2Solution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3887:                        getswarm1 = learn(actionIndex, R, Q, groupC2Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3889:                        if ((getswarm1.getObjective(0) < groupC2Solution.get(i).getObjective(0) && getswarm1.getObjective(1) < groupC2Solution.get(i).getObjective(1) && getswarm1.getObjective(6) < groupC2Solution.get(i).getObjective(6)) || getswarm1.getObjective(0) < groupC2Solution.get(i).getObjective(0) || getswarm1.getObjective(1) < groupC2Solution.get(i).getObjective(1) || getswarm1.getObjective(6) < groupC2Solution.get(i).getObjective(6))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3892:                        old0 = groupC2Solution.get(i).getObjective(0);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3893:                        old1 = groupC2Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3894:                        old2 = groupC2Solution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3903:                max[k] = (groupC2Solution.get(i).getObjective(0) - getswarm1.getObjective(0)) + (groupC2Solution.get(i).getObjective(1) - getswarm1.getObjective(1)) + (groupC2Solution.get(i).getObjective(6) - getswarm1.getObjective(6));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3917:            groupC2Solution.set(i, swarmtemp.get(i));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3922:        group = 3;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3948:                    getswarm1 = learn(actionIndex, R, Q, groupD3Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3950:                    if ((getswarm1.getObjective(1) < groupD3Solution.get(i).getObjective(1)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3954:                    old0 = groupD3Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3961:                        getswarm1 = learn(actionIndex, R, Q, groupD3Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3963:                        if ((getswarm1.getObjective(1) < groupD3Solution.get(i).getObjective(1)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3966:                        old0 = groupD3Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3974:                        getswarm1 = learn(actionIndex, R, Q, groupD3Solution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3976:                        if ((getswarm1.getObjective(1) < groupD3Solution.get(i).getObjective(1)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3979:                        old0 = groupD3Solution.get(i).getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:3986:                max[k] = groupD3Solution.get(i).getObjective(1) - getswarm1.getObjective(1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4000:            groupD3Solution.set(i, swarmtemp.get(i));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4004:        group = 4;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4030:                    getswarm1 = learn(actionIndex, R, Q, groupUNewSolution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4032:                    if ((getswarm1.getObjective(6) < groupUNewSolution.get(i).getObjective(6)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4036:                    old0 = groupUNewSolution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4043:                        getswarm1 = learn(actionIndex, R, Q, groupUNewSolution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4045:                        if ((getswarm1.getObjective(6) < groupUNewSolution.get(i).getObjective(6)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4048:                        old0 = groupUNewSolution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4056:                        getswarm1 = learn(actionIndex, R, Q, groupUNewSolution.get(i), next, group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4058:                        if ((getswarm1.getObjective(6) < groupUNewSolution.get(i).getObjective(6)))
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4061:                        old0 = groupUNewSolution.get(i).getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4068:                max[k] = groupUNewSolution.get(i).getObjective(6) - getswarm1.getObjective(6);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4082:            groupUNewSolution.set(i, swarmtemp.get(i));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4126:            int group = 1;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4127:            PermutationSolution<Integer> currentsolution = groupU1Solution.get(i);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4135:            groupU1Solution.set(i, newsolution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4140:            int group = 2;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4141:            PermutationSolution<Integer> currentsolution = groupC2Solution.get(i);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4149:            groupC2Solution.set(i, newsolution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4154:            int group = 3;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4155:            PermutationSolution<Integer> currentsolution = groupD3Solution.get(i);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4163:            groupD3Solution.set(i, newsolution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4168:            int group = 4;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4169:            PermutationSolution<Integer> currentsolution = groupUNewSolution.get(i);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4177:            groupUNewSolution.set(i, newsolution);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4192:            getswarm1 = selectFac1(groupU1Solution.get(i), group1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4194:            groupU1Solution.set(i, getswarm1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4199:            getswarm1 = selectFac1(groupUNewSolution.get(i), group4);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4201:            groupUNewSolution.set(i, getswarm1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4206:            getswarm1 = selectFac1(groupC2Solution.get(i), group2);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4208:            groupC2Solution.set(i, getswarm1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4213:            getswarm1 = selectFac1(groupD3Solution.get(i), group3);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4215:            groupD3Solution.set(i, getswarm1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4380:            int group=1;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4382:            getswarm = factorySearch(groupU1Solution.get(i), group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4384:            groupU1Solution.set(i,getswarm1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4388:            int group=2;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4390:            getswarm = factorySearch(groupC2Solution.get(i), group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4392:            groupC2Solution.set(i,getswarm1);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4396:            int group=3;*/
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4411:        groupU1Solution.clear();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4412:        groupC2Solution.clear();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4413:        groupD3Solution.clear();
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4447:            groupU1Solution.add(temp1.get(b));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4482:            groupC2Solution.add(temp2.get(b));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4497:            groupD3Solution.add(temp3.get(b));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4521:            int group = 1;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4523:            getswarm = factorySearch(groupU1Solution.get(i), group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4524:            //groupU1Solution.set(i,getswarm);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4528:            int group = 2;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4530:            getswarm = factorySearch(groupC2Solution.get(i), group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4531:            //groupC2Solution.set(i,getswarm);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4535:            int group = 3;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4537:            getswarm = factorySearch(groupD3Solution.get(i), group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4539:            //groupD3Solution.set(i,getswarm);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4542:            int group = 4;
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4544:            getswarm = factorySearch(groupUNewSolution.get(i), group);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4546:            //groupD3Solution.set(i,getswarm);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4597:            if (group == 1) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4607:            if (group == 2) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4617:            if (group == 3) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4627:            if (group == 4) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4694:        if (group == 1) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4711:        if (group == 2) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4721:        if (group == 3) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4736:        if (group == 4) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4809:        if (group == 1 && len[maxfac1][0] - len[minfac1][0] > 2) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4824:        if (group == 2) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4834:        if (group == 3) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4850:        if (group == 4) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4908:            //swarm.add((PermutationSolution<Integer>) groupU1Solution.get(i).copy());
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4922:            //swarm.add((PermutationSolution<Integer>) groupC2Solution.get(i).copy());
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4933:            //swarm.add((PermutationSolution<Integer>) groupD3Solution.get(i).copy());
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4942:            //swarm.add((PermutationSolution<Integer>) groupU1Solution.get(i).copy());
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4959:            swarm.add((PermutationSolution<Integer>) groupU1Solution.get(i).copy());
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4971:            swarm.add((PermutationSolution<Integer>) groupC2Solution.get(i).copy());
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:4982:            swarm.add((PermutationSolution<Integer>) groupD3Solution.get(i).copy());
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5045:                if (group == 1) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5055:                if (group == 2) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5069:                if (group == 3) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5079:                if (group == 4) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5100:                if (group == 1) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5110:                if (group == 2) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5123:                if (group == 3) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5133:                if (group == 4) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5163:                if (group == 1) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5173:                if (group == 2) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5186:                if (group == 3) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5196:                if (group == 4) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5228:                if (group == 1) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5238:                if (group == 2) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5251:                if (group == 3) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5261:                if (group == 4) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5293:                if (group == 1) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5303:                if (group == 2) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5316:                if (group == 3) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5326:                if (group == 4) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5357:                if (group == 1) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5367:                if (group == 2) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5380:                if (group == 3) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5390:                if (group == 4) {
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5853:                    Map<Integer, List<Map.Entry<Integer, Integer>>> groupedMap = workermap.entrySet().stream()
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5854:                            .collect(Collectors.groupingBy(Map.Entry::getValue));
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5855:                    List<Integer> keys = new ArrayList<>(groupedMap.keySet());
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5864:                    List<Map.Entry<Integer, Integer>> firstMap = groupedMap.get(firstValue);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5865:                    List<Map.Entry<Integer, Integer>> secondMap = groupedMap.get(secondValue);
+java-jmetal58\jmetal-algorithm\src\main\java\org\uma\jmetal\algorithm\multiobjective\mypso\ZhangBoMOHPSOQ.java:5883://                    System.out.println("分组后的Map: " + groupedMap);
+interpretation=Any numeric group hits belong to frozen author_actual_legacy_inactive/compatibility code; active ZhangBo role-aware paths use ZhangBoSubSwarmSemantics.
+subgroup_enum_ordinal_scan:
+NONE
+note=Qp action/id ordinals are action indexing, not subgroup semantic inference.

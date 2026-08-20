@@ -1,0 +1,5 @@
+semanticTag=published_baseline
+phase=initial_append_only
+fineTuneCompared=false
+rightShiftCompared=false
+seed=20260808

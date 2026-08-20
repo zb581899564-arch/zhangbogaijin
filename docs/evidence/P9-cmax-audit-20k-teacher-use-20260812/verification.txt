@@ -1,0 +1,25 @@
+schema=cmax-teacher-use-verification-v1
+date=2026-08-12
+localTargetedTests=7 passed, 0 failures, 0 errors
+localTestClasses=ZhangBoCmaxAuditTest,ZhangBoCaTaIntegrationSmokeTest
+teacherMeaning=exact four-vector fingerprint passed as CFVF personalLeader or socialLeader
+eligibilityIsNotCounted=true
+remoteHost=inspur-NP5570M5
+remoteRoot=/home/inspur/aicomp/zhangbo-cmax-audit-20k-20260812
+remotePid=2439158
+remotePgid=2439156
+remoteAffinity=0-3
+remoteCompleted=true
+completionLine=CMAX_AUDIT_COMPLETED fe=20000 records=11
+resultCmax=201.278740141651
+g1SocialTeacherParticleUses=0
+g1SocialTeacherGenerations=0
+g1PersonalTeacherParticleUses=15
+g1PersonalTeacherGenerations=9
+firstTeacherFE=7580
+lastTeacherFE=13224
+firstTeacherGeneration=26
+lastTeacherGeneration=45
+behaviorEquivalentToOriginalAudit=true
+fullReproductionAccepted=false
+formalMatrixStarted=false

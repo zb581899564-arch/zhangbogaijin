@@ -1,0 +1,7 @@
+paperLabel=NSGA_II_F
+sourceKind=OFFICIAL_JMETAL_CORE
+implementationClass=org.uma.jmetal.algorithm.multiobjective.mypso.v35.p25e.official.OfficialJMetal58NSGAII
+actualSourceSha256=64D78C6CBE0B07A5E2EE4FBF42F8F5527D2C4DDA6186EC0491C73E7872242357
+adaptationWhitelist=Problem,Solution,initialPopulation,randomSource,FE,logging
+forbiddenEnhancements=ZhangBoBaselineUpdater,CFVF,Qp,DSCR,CA-TA-Lite,directionalTeacherPool
+identityEvidence=binaryTournament=true;ranking=true;crowdingDistance=true;replacement=RankingAndCrowdingSelection;upstream=jmetal-5.8

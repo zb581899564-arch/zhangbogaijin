@@ -1,0 +1,2 @@
+runId,seed,algorithm,sourceKind,status,FE,frontSize,initialPopulationHash,runNanos,representationRepairs
+seed-20260822-HMOPSO_QLS_F,20260822,HMOPSO_QLS_F,PAPER_AUTHOR_SOURCE,COMPLETED,49986,29,58c4c3b6be9869b3666595618cbd11ef9d076ebc4ff6f60e1321d0f63b2f4b00,3332986600,12505

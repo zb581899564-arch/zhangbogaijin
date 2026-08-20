@@ -1,0 +1,5 @@
+﻿"class","major_version","sha256"
+"java-jmetal58/jmetal-problem/target/classes/org/uma/jmetal/problem/multiobjective/dfsp/ZhangBoEDHHFSPW.class","52","4E6DA3CF47A02C40CD9D103FB1A09303C206A086D66DC5B54A7962D82218B826"
+"java-jmetal58/jmetal-algorithm/target/classes/org/uma/jmetal/algorithm/multiobjective/mypso/ZhangBoMOHPSOQ.class","52","6081DB9D3C35336B2D31475211099057C486AC61D02AA24534637F7BDFAC7AE7"
+"java-jmetal58/jmetal-algorithm/target/classes/org/uma/jmetal/algorithm/multiobjective/mypso/ZhangBoMOHPSOQBuilder.class","52","A5773DD03E4A321D6F5AEBB9AF91835AABD453E410B6CD33DEB0292CD177C798"
+"java-jmetal58/jmetal-exec/target/classes/org/uma/jmetal/runner/lc_psode/ZhangBoMOHPSOQRun.class","52","3B7C972BB137067A60DD6F8CD53A90E493B2D304AB846F2344C7A56B8B471286"

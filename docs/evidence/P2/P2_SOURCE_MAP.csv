@@ -1,0 +1,31 @@
+field_path,value,semantic_tag,primary_pdf_sha256,pdf_page,printed_page,source_item,crosscheck,review_status
+instance.jobs,10,published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,7,7,Section 4.2,thesis PDF p59 printed p47,visually_double_checked
+instance.stages,2,published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,7,7,Section 4.2,thesis PDF p59 printed p47,visually_double_checked
+instance.factories,2,published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,7,7,Section 4.2,thesis PDF p59 printed p47,visually_double_checked
+processing.stage1,"10,16,12,9,10,8,13,14,16,9",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,7,7,Table 4,thesis Table 4-1 PDF p59,visually_double_checked
+processing.stage2,"8,11,12,14,16,15,18,12,10,9",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,7,7,Table 4,thesis Table 4-1 PDF p59,visually_double_checked
+setup.stage1,"1,3,2,1,2,2,2,2,3,2",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,7,7,Table 4,thesis Table 4-1 PDF p59,visually_double_checked
+setup.stage2,"1,2,3,3,3,2,1,2,1,1",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,7,7,Table 4,thesis Table 4-1 PDF p59,visually_double_checked
+machine.speed.f1.s1,"1,1.2,1.3",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+machine.energy.f1.s1,"7,10,12",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+machine.speed.f1.s2,"1.2,1.1",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+machine.energy.f1.s2,"9,8",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+machine.speed.f2.s1,"1,1.1",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+machine.energy.f2.s1,"7,8",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+machine.speed.f2.s2,"1,1.2,0.9",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+machine.energy.f2.s2,"7,8,6",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+worker.efficiency.f1.s1,"1.2,1.0",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+worker.cost.f1.s1,"12,10",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+worker.efficiency.f1.s2,"0.9,1.1",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+worker.cost.f1.s2,"9,11",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+worker.efficiency.f2.s1,"1.1,1.2",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+worker.cost.f2.s1,"11,12",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+worker.efficiency.f2.s2,"1.2,0.9",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+worker.cost.f2.s2,"12,9",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,8,8,Table 5,thesis Table 4-2 PDF p59,visually_double_checked
+encoding.JS,"6,10,5,4,7,2,8,3,1,9",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,9,9,Fig. 3,thesis visible Fig. 4-2 PDF p59 matches,visually_double_checked
+encoding.FA,"2,1,2,1,1,1,2,2,2,1",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,9,9,Fig. 3,thesis visible Fig. 4-2 PDF p59 matches,visually_double_checked
+encoding.MA,"2,2,2,1,1,3,1,1,2,2",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,9,9,Fig. 3,thesis visible Fig. 4-2 PDF p59 matches,visually_double_checked
+encoding.WA,"2,2,1,2,1,2,1,2,2,1",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,9,9,Fig. 3,thesis visible Fig. 4-2 PDF p59 matches,visually_double_checked
+decoder.algorithm2.lines,"1-23",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,9,9,Algorithm 2,thesis Algorithm 4-2 PDF p60 printed p48,visually_double_checked
+operator.fig5,"8-position JS fixture",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,12,12,Fig. 5,article prose on same page,visually_double_checked
+operator.fig6,"six 5-position FA-MA-WA cases",published_baseline,BBBF3051E3B0B4F24A6B7FDC01DBAE7375D774E2467738A4DD8E49EAECACCF9D,14,14,Fig. 6,thesis Figs. 4-4 to 4-6 PDF p63,visually_double_checked

@@ -1,0 +1,1 @@
+velocity=true;pbest=true;gbest=true;externalArchive=Pgd;paperParams=r0.5,lv2-4=0.3/0.3/0.4,mv2-4=0.06/0.2/0.2;randomObjects=240798;suppressedConsoleLines=499;runtimeEvents=MOPSO_VELOCITY_UPDATE=499;budgetStop=EXACT

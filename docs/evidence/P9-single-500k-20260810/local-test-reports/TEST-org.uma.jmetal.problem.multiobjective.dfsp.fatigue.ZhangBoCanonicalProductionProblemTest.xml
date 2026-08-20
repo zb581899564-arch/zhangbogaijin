@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="7" failures="0" name="org.uma.jmetal.problem.multiobjective.dfsp.fatigue.ZhangBoCanonicalProductionProblemTest" time="0.168" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="java.vm.version" value="17.0.12+8-LTS-286"/>
+    <property name="sun.boot.library.path" value="E:\javavava\bin"/>
+    <property name="maven.multiModuleProjectDirectory" value="E:\学习\李明哲-毕业材料\张博改进\java-jmetal58"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="test" value="ZhangBoP9SingleComparisonRunnerTest,P8*Test,ZhangBoCanonicalProductionProblemTest,ZhangBoCanonicalSolutionFactoryTest,ZhangBoCaTaIntegrationSmokeTest,ZhangBoDualQCoordinatorTest"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="E:\学习\李明哲-毕业材料\张博改进\java-jmetal58"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="java.runtime.version" value="17.0.12+8-LTS-286"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\33056\AppData\Local\Temp\"/>
+    <property name="gpg.skip" value="true"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="classworlds.conf" value="E:\DEV\apache-maven-3.8.9\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="E:\javavava\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;E:\javavava\bin;E:\conda;E:\conda\Library\mingw-w64\bin;E:\conda\Library\usr\bin;E:\conda\Library\bin;E:\conda\Scripts;E:\conda\bin;E:\conda\condabin;C:\Users\33056\.codex\tmp\arg0\codex-arg0r3VvtW;C:\Users\33056\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\override;E:\ai编程\bin;C:\Program Files\Common Files\Oracle\Java\javapath;E:\linux\bin;E:\DEV\apache-maven-3.8.9\bin;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\dotnet;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;G:\js;C:\Program Files\Git\cmd;C:\kkk\CodeBlocks\MinGW\bin;G:\matlab\runtime\win64;G:\matlab\bin;C:\Program Files\Go\bin;C:\Program Files\Redis;C:\Program Files\Tailscale;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Users\33056\.grok\bin;C:\Users\33056\AppData\Local\OpenAI\CodexCLI;C:\Users\33056\.cargo\bin;C:\Users\33056\.local\bin;e:\cursor\cursor\resources\app\codeBin;e:\cursor\resources\app\codeBin;E:\conda;E:\conda\Scripts;G:\python\jieshiqi\Scripts;G:\python\jieshiqi;C:\Users\33056\AppData\Local\Microsoft\WindowsApps;G:\python\PyCharm Community Edition 2024.3.1.1\bin;E:\conda\Library\bin;C:\Users\33056\AppData\Roaming\npm;E:\vscode\Microsoft VS Code\bin;C:\Program Files\MySQL\MySQL Server 8.4\bin;E:\ai\google ai antigravity\Antigravity\bin;G:\ai\llm\ollama;C:\Users\33056\AppData\Local\OpenAI\Codex\bin;C:\Users\33056\.bun\bin;C:\Users\33056\AppData\Local\Programs\GitHub CLI Portable\bin;C:\Users\33056\AppData\Local\Programs\GitHub CLI Portable;C:\Users\33056\AppData\Local\Programs\MiKTeX\miktex\bin\x64;C:\Users\33056\.dotnet\tools;C:\Users\33056\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-15.1.0-x86_64-pc-windows-msvc;C:\Users\33056\AppData\Local\Microsoft\WinGet\Packages\OpenAI.Codex_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\33056\go\bin;G:\app\Qoder\bin;C:\Users\33056\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\fallback;C:\Users\33056\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\git\cmd;C:\Users\33056\AppData\Local\OpenAI\Codex\bin\fda9f910656130f4;C:\Program Files\WindowsApps\OpenAI.Codex_26.803.5235.0_x64__2p2nqsd0c76g0\app\resources;."/>
+    <property name="maven.conf" value="E:\DEV\apache-maven-3.8.9/conf"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="61.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="library.jansi.path" value="E:\DEV\apache-maven-3.8.9\lib\jansi-native"/>
+    <property name="user.home" value="C:\Users\33056"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="17"/>
+    <property name="jacoco.skip" value="true"/>
+    <property name="user.name" value="33056"/>
+    <property name="java.class.path" value="E:\DEV\apache-maven-3.8.9\boot\plexus-classworlds-2.6.0.jar"/>
+    <property name="org.slf4j.simpleLogger.defaultLogLevel" value="error"/>
+    <property name="failIfNoTests" value="false"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -q -pl jmetal-exec -am -Djacoco.skip=true -Dgpg.skip=true -DfailIfNoTests=false -Dtest=ZhangBoP9SingleComparisonRunnerTest,P8*Test,ZhangBoCanonicalProductionProblemTest,ZhangBoCanonicalSolutionFactoryTest,ZhangBoCaTaIntegrationSmokeTest,ZhangBoDualQCoordinatorTest test"/>
+    <property name="java.home" value="E:\javavava"/>
+    <property name="user.language" value="zh"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="17.0.12"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="E:\DEV\apache-maven-3.8.9"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.version.date" value="2024-07-16"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="org.uma.jmetal.problem.multiobjective.dfsp.fatigue.ZhangBoCanonicalProductionProblemTest" name="formalLoaderAcceptsTheIsolatedGoldenCompatibilityBridge" time="0.158"/>
+  <testcase classname="org.uma.jmetal.problem.multiobjective.dfsp.fatigue.ZhangBoCanonicalProductionProblemTest" name="nestedAttributeCopyDoesNotShareMutableArrayElements" time="0"/>
+  <testcase classname="org.uma.jmetal.problem.multiobjective.dfsp.fatigue.ZhangBoCanonicalProductionProblemTest" name="formalLoaderParsesInstanceAndBothManifestsWithoutLegacyProblem" time="0.005"/>
+  <testcase classname="org.uma.jmetal.problem.multiobjective.dfsp.fatigue.ZhangBoCanonicalProductionProblemTest" name="explicitModesUseSevenLegacyObjectiveSlotsAndFatigueTrace" time="0"/>
+  <testcase classname="org.uma.jmetal.problem.multiobjective.dfsp.fatigue.ZhangBoCanonicalProductionProblemTest" name="factoriesKeepIndependentInstanceDimensionsInOneJvm" time="0"/>
+  <testcase classname="org.uma.jmetal.problem.multiobjective.dfsp.fatigue.ZhangBoCanonicalProductionProblemTest" name="productionProblemRejectsNonP2PermutationSolution" time="0.004"/>
+  <testcase classname="org.uma.jmetal.problem.multiobjective.dfsp.fatigue.ZhangBoCanonicalProductionProblemTest" name="factoryIsInstanceBoundAndNonCanonicalIdentitySurvivesEvaluation" time="0.001"/>
+</testsuite>

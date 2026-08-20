@@ -1,0 +1,17 @@
+baseline_expected_files=1806
+baseline_actual_files=1806
+baseline_sha256_mismatches=0
+baseline_writable_files=0
+p3_decoder_class_files=27
+p3_decoder_class_major_versions=52
+p3_decoder_non_java8_classes=0
+forbidden_mechanism_terms_in_p3_decoder_scope=0
+
+Forbidden whole-word scan:
+fatigue|CFVF|Qp|VNS|crossover|mutation|particle|HMOPSO
+
+Interpretation:
+- The read-only P1 baseline is byte-for-byte unchanged.
+- P3 decoder output remains Java 8 bytecode.
+- P3 did not add crossover, mutation, particle update, fatigue, CFVF, Qp, VNS or HMOPSO mechanisms.
+

@@ -1,0 +1,22 @@
+schemaVersion=1
+semanticTag=v35_pilot_small_instances
+generator=V35PilotInstanceGeneratorTest
+sampler=sha256-name-keyed
+ranges=machinesPerFactoryStage=2..4,speed=0.9..1.3(step0.1),power=6..12,standom=8..20,workersPerFactory=sumOfStageNeeds(min(m,2)),level=0.8..1.2(step0.1),cost=8..12
+enumerationPin=jobs<=5 allStagesMachines=2 workersPerFactory=2*stages (V35-P23 exact-front enumerability)
+instance=10_2_3_1,jobs=10,stages=2,factories=3,instanceSha256=80CB8E33622AC526B1E6E7A9CFF60C42EE1B83E8BACAE7A1ECAB258A50652F22
+instance=10_3_2_1,jobs=10,stages=3,factories=2,instanceSha256=7AF542AEA46C570A2A1FED47AFA5B64CA41F62FBF654FE1E35166D9FAAAB0D08
+instance=5_2_2_1,jobs=5,stages=2,factories=2,instanceSha256=326FDF4557DFE433C2D07C419C0BCE630D8368451609BEAA57542DDEF9CF7E3C
+instance=3_2_2_1,jobs=3,stages=2,factories=2,instanceSha256=CD916B6BD73169D6B35F92E423347EBD09C2D29FB032E180C5E9C21DC98CDAE9
+EADHFSP/10_2_3_1.txt=80CB8E33622AC526B1E6E7A9CFF60C42EE1B83E8BACAE7A1ECAB258A50652F22
+EADHFSP/10_3_2_1.txt=7AF542AEA46C570A2A1FED47AFA5B64CA41F62FBF654FE1E35166D9FAAAB0D08
+EADHFSP/3_2_2_1.txt=CD916B6BD73169D6B35F92E423347EBD09C2D29FB032E180C5E9C21DC98CDAE9
+EADHFSP/5_2_2_1.txt=326FDF4557DFE433C2D07C419C0BCE630D8368451609BEAA57542DDEF9CF7E3C
+fatigue-parameters/v1/10_2_3_1.fatigue.txt=3cc0dc31531c834bc5476a26c8c263099a70552661e10bddb04d36aa66c641a3
+fatigue-parameters/v1/10_3_2_1.fatigue.txt=eef46a445d59dc38ff19525014b46eacf7817220165411cf5bf2ef7d4cec9f23
+fatigue-parameters/v1/3_2_2_1.fatigue.txt=65a6685ca0aaf28f29055340b2503232ef019c922a7d150077afd91cf030d559
+fatigue-parameters/v1/5_2_2_1.fatigue.txt=6ad8b4f44513040076d516246950052cb558c434905a20316c30eb8706dd0c1a
+instance-extensions/v1/10_2_3_1.setup.txt=6840764dbec693637ac5a3921571d07f2fecaf65701b9e796031c132ec776429
+instance-extensions/v1/10_3_2_1.setup.txt=52c2213d6e0017e7161b1db5fd039b80c9a7ff683264b468b80b394e47099072
+instance-extensions/v1/3_2_2_1.setup.txt=5c5d23d18388c83fe3d17e13db1e9b5b2fee8350d5dfab19c9094cab89396f0c
+instance-extensions/v1/5_2_2_1.setup.txt=49f4d495dd27e89479a12120245ac1ec97dfb590735060e4f719093bbfa9b390

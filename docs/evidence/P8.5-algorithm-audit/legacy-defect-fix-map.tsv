@@ -1,0 +1,11 @@
+id	severity	legacy_or_prefixed_behavior	fix	verification	status
+P85-01	blocking	B1配置写Table9但运行未完整消费	formal-hmopso-qgs-v1统一驱动结构化算子和循环	smoke-20k.csv B1 counters	closed
+P85-02	blocking	PDDR把相同目标当成相互支配	三目标严格Pareto支配	ZhangBoEvaluatedPddrSelectorTest	closed
+P85-03	blocking	正式文本0.6但CFVF实际0.4	正式入口0.6，0.4仅显式工程配置	formal parameter runtime tests	closed
+P85-04	high	影子档案日志字段差异被误判为搜索漂移	剥离lineage元数据后比较搜索行为	ZhangBoP6IntegrationSmokeTest	closed
+P85-05	high	全局semanticTag固定fatigue_improved	FM0-FM3按模式生成solution/config/result tag	P8 profile and canonical problem tests	closed
+P85-06	high	CA-TA Apply重复候选和随机键不足	跨父Apply并加入epoch/ordinal/operator/repetition	CA-TA state machine and replay tests	closed
+P85-07	medium	局部FE可能推动双Q区块	区块按已完成外层代计数	ZhangBoDualQCoordinatorTest	closed
+P85-08	medium	固定VNS与CA-TA的O13门不一致	共享ZhangBoNaturalRecoveryGate	fixed and CA-TA O13 tests	closed
+P85-09	evidence	旧P9早于正式基线闭环和LEFT_RIGHT	隔离为legacy_pre_full_algorithm_audit	LEGACY_P9_ISOLATION.md	closed
+P85-10	manual_gate	I1没有FCLS接受且I0本人手算未提交	不伪造，保持P8.4人工门	I1 shift evidence and ROADMAP	open

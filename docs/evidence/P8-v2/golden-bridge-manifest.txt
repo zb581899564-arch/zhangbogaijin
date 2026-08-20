@@ -1,0 +1,15 @@
+schemaVersion=1
+semanticTag=author_compatibility_bridge
+sourceSemanticTag=published_baseline
+sourceResource=/dfsp/chapter4/eswa-2026-130934-golden.properties
+sourceResourceSha256=C1F39F58BA7F714BDBB6CCF8D1FA7E67DC8135E727EC14700EBC22072E9FE998
+instanceFile=EADHFSP/10_2_2_1.txt
+instanceSha256=3D72AB1B8D10C7D2629D2A2D6A675AE8264120D7920D0DE85ECE22FFF786DFA5
+setupFile=instance-extensions/v1/10_2_2_1.setup.txt
+setupSha256=506929BA62AB45B80E80D30C9055738E28C647BCFC03CC3F99775ED23DE1274A
+fatigueFile=fatigue-parameters/v1/10_2_2_1.fatigue.txt
+fatigueSha256=5A477B70944F21CE9274D76BC8A7B95C24BD41B44DCF9B024C8969165E1E0AB2
+processingMapping=paper stage-job to EADHFSP job-stage
+machineMapping=paper factory-stage local order preserved
+workerMapping=paper factory-stage arrays concatenated by stage
+sutMapping=exact paper table; no sampling

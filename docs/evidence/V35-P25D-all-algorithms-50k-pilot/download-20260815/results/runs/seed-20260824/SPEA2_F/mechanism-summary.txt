@@ -1,0 +1,1 @@
+adapter=SPEA2-F,generations=499,offspring=49900,localCandidates=0,deCandidates=0,eventHash=7b9a120782df5f097f490ed6c49d0184640835c4b56782f80ba1c4079eca7d53

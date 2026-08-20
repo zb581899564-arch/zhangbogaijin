@@ -1,0 +1,2 @@
+runId,seedSlot,seed,algorithm,status,FE,frontSize,initialPopulationHash,algorithmRunNanos
+seed-20260825-MOPSO_F,4,20260825,MOPSO_F,COMPLETED,50000,205,8635ec0750692742409ddf0e4aca29572f1877080fe18e9f649ff046e9d11c0d,9684928810

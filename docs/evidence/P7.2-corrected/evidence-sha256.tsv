@@ -1,0 +1,5 @@
+sha256	relativePath
+9c4e226a6c784e8d28b7bcef0b19d66d09618ea79f485a57d672cf889eb066ce	docs/evidence/P7.2-corrected/P7_2_CORRECTION_REPORT.md
+c167c34fa34f2133856a9dafee177c893a3467aba9438c15f68e07c67e85a99c	java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/zhangbo/cata/ZhangBoCaTaStatistics.java
+85165772b8b232bbc1e595094142f30da6fdf4859a15ca007b7d26b6a37c5354	java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/zhangbo/cata/ZhangBoCaTaController.java
+4aa4fb92407d31efaa37cfcb2786a49b0bf2d47d573a08cbdba0f2aed69ea5e2	java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/ZhangBoMOHPSOQ.java

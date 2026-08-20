@@ -1,0 +1,8 @@
+javaVersion=17.0.12
+javaVendor=Oracle Corporation
+javaHome=E:\javavava
+osName=Windows 11
+osVersion=10.0
+osArch=amd64
+fileEncoding=UTF-8
+userTimezone=Asia/Shanghai

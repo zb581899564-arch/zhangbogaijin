@@ -1,0 +1,1 @@
+adapter=MOHEADE-F,generations=499,offspring=49900,localCandidates=0,deCandidates=39751,eventHash=30c97d0ae58d36457b7945b142c580dac5e89e76bc4396fcbe4da7280a8431cc

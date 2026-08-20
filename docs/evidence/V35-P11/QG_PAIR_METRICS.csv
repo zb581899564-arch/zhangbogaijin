@@ -1,0 +1,5 @@
+arm,status,FE,frontSize,minCmax,minTEC,minTWC,auditRecords,socialTaughtRecords,personalOnlyRecords,lastRecordFE,lastRecordSocialUses,lastRecordPersonalUses,teacherUses,dominatedTeacherUses,validityChecks,replacements,scrr,formalQgRounds,p6EventsTotal
+20k-20_2_3_1-qg0,COMPLETED,20000,76,196.839147,8909.748464,13218.952188,23,0,0,6414,0,0,-1,-1,-1,-1,NaN,50,5251
+20k-20_2_3_1-qg1,COMPLETED,20000,80,184.179447,9112.061683,13182.804379,17,0,0,8795,0,0,200,0,392,48,0.122449,50,5893
+5k-I1-10_2_2_1-qg0,COMPLETED,5000,32,47.107203,1972.215626,2768.937309,15,0,0,3500,0,0,-1,-1,-1,-1,NaN,100,1502
+5k-I1-10_2_2_1-qg1,COMPLETED,5000,36,47.177246,1973.674949,2776.917336,20,0,0,3659,0,0,400,0,792,39,0.049242,100,2794

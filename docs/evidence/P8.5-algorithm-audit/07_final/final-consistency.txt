@@ -1,0 +1,9 @@
+P8.5_FINAL_CONSISTENCY=PASS
+switchLabels=34
+uniqueMechanismHashes=27
+smokeInitialHash=ffca83d43be7a67b8860ad5ccbd5e3d51c2a0f7880509879c59ecbeac0dc9ebe
+authorSourceHashesFrozen=4
+formalRunnerForbiddenLegacyReferences=0
+sampledReproductionAccepted=false
+fullReproductionAccepted=false
+formalMatrixStarted=false

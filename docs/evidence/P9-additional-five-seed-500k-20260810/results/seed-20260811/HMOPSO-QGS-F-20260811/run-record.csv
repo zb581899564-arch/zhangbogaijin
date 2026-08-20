@@ -1,0 +1,2 @@
+algorithm,status,seed,fullEvaluations,wallClockMillis,cpuNanos,frontSize,minCmax,minTEC,minTWC,maxCmax,maxTEC,maxTWC,cfvfRepairs,localFullEvaluations,illegalSolutions,configurationSha256,initialPopulationSha256,reason
+"HMOPSO-QGS-F",COMPLETED,20260811,500000,28510,27624537321,199,198.043108851,8774.33146560,12823.2393342,430.143767895,11633.2584419,19479.5288994,0,445600,0,c726acf99b5024e39618b103c34081fe343b4e16e61796c1a2e36f6cac8ffd9e,dd81c8723da31abb0f6a52971c5a3e2d0cb599d509c5fed965fc207c8c8a91c1,"MAX_FES_REACHED"

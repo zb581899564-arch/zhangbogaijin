@@ -1,0 +1,11 @@
+algorithm=HMOPSO_QLS_F
+FE=1950
+repairsTotal=725
+repairsPerEvaluationMean=0.3718
+evaluationsWithRepair=545 / 1950
+maxRepairsInOneEvaluation=4
+repairsP50/P90/P99=1/2/4
+byVector={MA=725}
+byPosition={p11=31, p17=32, p6=52, p15=42, p5=25, p4=74, p19=17, p9=61, p13=54, p14=45, p3=40, p18=32, p8=26, p12=33, p16=26, p7=30, p10=61, p1=25, p2=12, p0=7}
+oldToNewPairs={2->0=331, 3->1=394}
+frontSize=12

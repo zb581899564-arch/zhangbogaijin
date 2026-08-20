@@ -1,0 +1,20 @@
+P6.2 status=completed
+evaluated_pddr_engineering_validated=true
+lineage_archive_engineering_validated=true
+lineage_archive_scheme_aligned=true
+sampled_reproduction_accepted=false
+full_reproduction_accepted=false
+componentTests=14 failures=0 errors=0
+integrationTests=6 failures=0 errors=0
+directedTests=54 failures=0 errors=0
+smoke.population=100
+smoke.maxFEs=2000
+smoke.cfvfOffspring=1900
+smoke.lineages=100
+smoke.archiveSizeRange=1..6
+smoke.illegalSolutions=0
+smoke.cfvfRepair=0
+fullLegacyRegression=651 failures=0 knownErrors=3 skipped=6
+javaBytecodeMajor=52
+nextAllowed=P6.3 pending, not started
+

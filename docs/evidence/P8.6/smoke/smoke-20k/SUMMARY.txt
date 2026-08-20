@@ -1,0 +1,8 @@
+schema=zhangbo-p8.5-20k-v1
+seed=20260808
+population=100
+maxFEs=20000
+initialPopulationSha256=ffca83d43be7a67b8860ad5ccbd5e3d51c2a0f7880509879c59ecbeac0dc9ebe
+sharedFM3=true
+sharedShiftMode=LEFT_RIGHT
+formalMatrix=false

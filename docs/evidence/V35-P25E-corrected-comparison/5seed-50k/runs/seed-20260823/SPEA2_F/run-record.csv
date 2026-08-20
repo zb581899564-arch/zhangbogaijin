@@ -1,0 +1,2 @@
+runId,seed,algorithm,sourceKind,status,FE,frontSize,initialPopulationHash,runNanos,representationRepairs
+seed-20260823-SPEA2_F,20260823,SPEA2_F,OFFICIAL_JMETAL_CORE,COMPLETED,50000,100,822810ea710b7d58b3a51543ff345de7f7e24979c93939f13d7324797a7f8289,5550037300,0

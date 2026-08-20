@@ -1,0 +1,16 @@
+Eq1 = boundary isolated nondominated (q=0,p=0,score==1.0)
+LT1 = center strong nondominated (q=0,p>=1,score<1)
+
+BASE 100_2_3_1: Eq1 total=80 sel=48 rej=32 (rej 40.0%) | LT1 total=17068 rej=814 (rej 4.8%)
+BASE 20_2_3_1: Eq1 total=50 sel=8 rej=42 (rej 84.0%) | LT1 total=19507 rej=1539 (rej 7.9%)
+QGS 100_2_3_1: Eq1 total=148 sel=116 rej=32 (rej 21.6%) | LT1 total=3535 rej=58 (rej 1.6%)
+QGS 20_2_3_1: Eq1 total=40 sel=10 rej=30 (rej 75.0%) | LT1 total=5092 rej=225 (rej 4.4%)
+
+Squeeze rule (nLT1>=100 => all Eq1 rejected):
+  rounds with nLT1>=100 & nEq1>0: 69, violations: 0
+
+Early vs late phase P(N_LT1>100) (per run, last third vs earlier):
+  BASE 100_2_3_1: early=0.41 (126 rounds)  late=0.78 (60 rounds)
+  BASE 20_2_3_1: early=0.80 (126 rounds)  late=0.97 (60 rounds)
+  QGS 100_2_3_1: early=0.09 (33 rounds)  late=0.27 (15 rounds)
+  QGS 20_2_3_1: early=0.33 (36 rounds)  late=0.72 (18 rounds)

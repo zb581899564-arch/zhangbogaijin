@@ -1,0 +1,5 @@
+controller,lineage,event
+Qg,social/group,"283:G4_BALANCED:action:mode=greedyFrozen,state=1,action=0"
+Qg,social/group,"284:G4_BALANCED:leader:mode=greedyFrozen,action=0,fingerprint=[0, 2, 8, 1, 6, 9, 7, 3, 5, 4]|[0, 0, 1, 0, 0, 1, 1, 0, 0, 0]|[2, 1, 0, 2, 1, 1, 0, 2, 1, 2]|[0, 0, 0, 1, 0, 1, 1, 1, 0, 1]"
+Qp,121,"event=313,group=G4_BALANCED,type=select,lineage=121,state=2,E=2,H=0,R=0,mask=1110,action=EPSILON,epsilon=0.2696,rho=-0.34996173843756884,rhoThreshold=0.8,pbest=A055BA31D979E4D52B9D092EF6B1599616920C8D2BA28ADE6BC45E7AAF56EF68"
+Qp,121,"event=338,group=G4_BALANCED,type=reward,lineage=121,action=EPSILON,dom=-1.0,direction=-0.3575616209966174,archive=0.0,risk=0.00462519454708793,total=-2.356405322359845,nextState=2,nextMask=1100,archiveSurvived=false"

@@ -1,0 +1,9 @@
+matrix=FV
+label=FV-Full
+mechanism=Qg/Qp plus CFVF
+configurationKey=B5
+status=COMPLETED
+reason=Registered exact configuration key B5
+populationSize=100
+maxFEs=2000
+physicalSubswarmSizes=[20, 40, 20, 20]

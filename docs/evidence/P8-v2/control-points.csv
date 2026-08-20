@@ -1,0 +1,5 @@
+label,mechanism,profileSha256
+"B0R","B0 with replayable ZhangBo random bridge","c8af785380934aeb7bd15f841459d8ea2a9e53d946999cd1993d40d5b1ced0d0"
+"B0C","B0R with fixed SUT and explicit first-stage MA/WA, fatigue disabled","f648b7f7ae2e159dd857595b043968910b2faaef959bc85c530cdb45e7229f10"
+"B1Q","B1 plus restored original Q-gbest","cd09cb798c7280e36a68b1da2d3d79d8a6b2514c69fa42dd61734a44cd886515"
+"B2P","B2 plus evaluated-after-offspring PDDR","cbf3ab826faddbff0455c152322031ced3e7080c6abfb58686c3f2dfb9d3579f"

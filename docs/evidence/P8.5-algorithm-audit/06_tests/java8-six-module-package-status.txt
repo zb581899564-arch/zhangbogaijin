@@ -1,0 +1,5 @@
+command=mvn -q "-DskipTests" "-Dgpg.skip=true" "-Dmaven.javadoc.skip=true" package
+workingDirectory=E:\学习\李明哲-毕业材料\张博改进\java-jmetal58
+exitCode=0
+date=2026-08-11
+note=Javadoc skipped because current PowerShell JAVA_HOME does not expose the javadoc executable; compilation and packaging completed.

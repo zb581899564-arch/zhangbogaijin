@@ -1,0 +1,1 @@
+﻿audited_at=2026-08-08T00:24:16.7462827+08:00 baseline_file_count=1806 baseline_readonly_count=1806 baseline_data_txt_count=45 baseline_has_git=False baseline_has_idea=False baseline_target_dir_count=0 baseline_has_20_2_3_1=True baseline_has_150_8_5_1=True workcopy_generated_target_dir_count=5 hardcoded_E_DHFSP4_hits=0

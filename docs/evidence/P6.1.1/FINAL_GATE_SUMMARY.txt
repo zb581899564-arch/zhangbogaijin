@@ -1,0 +1,13 @@
+P6.1.1 status=completed
+evaluated_pddr_engineering_validated=true
+smoke.population=100
+smoke.maxFEs=2000
+smoke.cfvfOffspring=1900
+smoke.pddrSelections=1900
+smoke.pddrGenerations=19
+offspringEvaluationCost=1
+parentReevaluationCost=0
+pddrComparisonCost=0
+defaultMode=AUTHOR_PDDR_ACTIVE
+nextGate=P6.2 completed in the same authorized plan
+

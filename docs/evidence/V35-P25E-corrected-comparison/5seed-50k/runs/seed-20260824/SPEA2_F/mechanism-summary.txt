@@ -1,0 +1,1 @@
+strengthRawFitness=true;archive=true;environmentalSelection=SPEA2;upstream=jmetal-5.8

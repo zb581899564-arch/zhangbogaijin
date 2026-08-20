@@ -1,0 +1,4 @@
+arm,status,FE,frontSize,minCmax,minTEC,minTWC,formalOuterCycles,formalQgRounds,cfvfOffspring,caTaLiteFE,formalLocalFE,dscrTeacherUses,archiveInsertions
+baseline,COMPLETED,500000,289,188.423822,8503.179611,12528.746238,18,900,0,0,409900,-1,0
+full,COMPLETED,500000,307,183.556098,8302.609967,12663.995319,18,900,90000,3997,405903,3600,1800
+cross,baselineDominatedByFull=49,fullDominatedByBaseline=122,unionSize=425,fullContribution=185,baselineContribution=240

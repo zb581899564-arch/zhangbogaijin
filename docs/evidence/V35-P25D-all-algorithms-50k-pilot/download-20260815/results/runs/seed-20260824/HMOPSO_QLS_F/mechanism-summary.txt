@@ -1,0 +1,1 @@
+adapter=HMOPSO-QLS-F,generations=499,offspring=49900,localCandidates=360,deCandidates=0,eventHash=e047aede73744e432e10390f648e241f75a5013884bfe8b18ed0c43168fb6000

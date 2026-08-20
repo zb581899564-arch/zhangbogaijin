@@ -1,0 +1,7 @@
+paperLabel=ZHANGBO_A4
+sourceKind=ZHANGBO_CURRENT
+implementationClass=org.uma.jmetal.algorithm.multiobjective.mypso.ZhangBoMOHPSOQ
+actualSourceSha256=70160A1BCF60BE8A55DCE968AF526451A582CD3905C59CE9A44D7A50344E8C57
+adaptationWhitelist=Problem,Solution,initialPopulation,randomSource,FE,logging
+forbiddenEnhancements=ZhangBoBaselineUpdater,CFVF,Qp,DSCR,CA-TA-Lite,directionalTeacherPool
+identityEvidence=p6EventsTotal=106210,p6EventsRetained=4096,formalOuterCycles=18,formalQgRounds=900,baselineUpdateEvents=0,fixedNeighborhoodEvents=472894,pddrEvents=18,qgSelections=3600,qgTdUpdates=2000,qpActions=80000,qpTransitions=40000,cfvfOffspring=90000,cfvfRepairs=0,archiveInsertions=1800,directionalPoolRequests=0,directionalPoolFiltered=0,caTaLiteTest=3162,caTaLiteApply=1091,caTaLiteFE=4253,pressureDiagnosisEvents=1800,shadowSamples=0,shadowEvaluations=0,formalLocalFE=405647,dualQWarmup=100,dualQP=400,dualQG=400,dscr=schema=v35-dscr-metrics-v2|teacherUses=3600|dominatedTeacherUses=0|dtur=0.000000000000|dturDefined=true|validityChecks=7192|replacements=128|scrr=0.017797552836,algorithmRunNanos=140368843600,decoder=calls=500000,baseDecodeNanos=6475568900,leftShiftNanos=0,rightShiftNanos=0,decoderTotalNanos=6502322800,frameworkOverheadNanos=26753900,leftRecomputations=0,rightRecomputations=0,leftAccepted=0,rightAccepted=0

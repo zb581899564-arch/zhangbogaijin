@@ -1,0 +1,1 @@
+binaryTournament=true;ranking=true;crowdingDistance=true;replacement=RankingAndCrowdingSelection;upstream=jmetal-5.8

@@ -1,0 +1,3 @@
+scope=ZhangBo P6 new main/test components
+patterns=Q-pbest,capacity6,personal archive,O10,O11,O12,O13,CA-TA,active rest,rest gene,multi-skill
+matches=0

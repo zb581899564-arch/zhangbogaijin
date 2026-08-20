@@ -1,0 +1,4 @@
+﻿jmetal-algorithm/target/classes/org/uma/jmetal/algorithm/multiobjective/mypso/ZhangBoMOHPSOQ.class	major=52
+jmetal-algorithm/target/classes/org/uma/jmetal/algorithm/multiobjective/mypso/zhangbo/ZhangBoSubSwarmSemantics.class	major=52
+jmetal-algorithm/target/classes/org/uma/jmetal/algorithm/multiobjective/mypso/zhangbo/cata/ZhangBoCaTaController.class	major=52
+jmetal-algorithm/target/classes/org/uma/jmetal/algorithm/multiobjective/mypso/zhangbo/cata/ZhangBoFactoryNeedSelector.class	major=52

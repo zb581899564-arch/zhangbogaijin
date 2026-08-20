@@ -1,0 +1,7 @@
+paperLabel=HMOPSO_QGS_F
+sourceKind=ZHANGBO_CURRENT
+implementationClass=org.uma.jmetal.algorithm.multiobjective.mypso.ZhangBoMOHPSOQ
+actualSourceSha256=E35B10DF91F6450EE58AF74EA22A3AEADBF6DD1D4B4B8F7F8CB273EEC44C1D71
+adaptationWhitelist=Problem,Solution,initialPopulation,randomSource,FE,logging
+forbiddenEnhancements=ZhangBoBaselineUpdater,CFVF,Qp,DSCR,CA-TA-Lite,directionalTeacherPool
+identityEvidence=p6EventsTotal=94518,p6EventsRetained=4096,formalOuterCycles=18,formalQgRounds=900,baselineUpdateEvents=90000,fixedNeighborhoodEvents=467952,pddrEvents=18,qgSelections=3600,qgTdUpdates=3600,qpActions=0,qpTransitions=0,cfvfOffspring=0,cfvfRepairs=0,archiveInsertions=0,directionalPoolRequests=0,directionalPoolFiltered=0,caTaLiteTest=0,caTaLiteApply=0,caTaLiteFE=0,pressureDiagnosisEvents=0,shadowSamples=0,shadowEvaluations=0,formalLocalFE=409900,dualQWarmup=0,dualQP=0,dualQG=0,dscr=disabled,algorithmRunNanos=23570942400,decoder=calls=500000,baseDecodeNanos=7981378600,leftShiftNanos=0,rightShiftNanos=0,decoderTotalNanos=8009428700,frameworkOverheadNanos=28050100,leftRecomputations=0,rightRecomputations=0,leftAccepted=0,rightAccepted=0

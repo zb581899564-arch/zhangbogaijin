@@ -1,0 +1,16 @@
+# I0答案锁
+
+```text
+particle_version=p8_6_common_gap_screened_v3
+left_illustration_gate_passed=true
+right_illustration_gate_passed=true
+numeric_schedule_answer_published=false
+manual_submission_received=false
+manual_submission_sha256=
+p8_6_decoder_semantics_frozen=true
+java_numeric_answer_run_allowed=false
+java_numeric_answer_run_completed=false
+comparison_completed=false
+```
+
+只有本人手算提交已经哈希封存，才允许在已经冻结的P8.6共同空档移位语义下生成程序答案。

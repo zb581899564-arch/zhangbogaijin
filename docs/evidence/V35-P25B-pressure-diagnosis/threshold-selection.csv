@@ -1,0 +1,2 @@
+status,tauAbs,tauGap,strictCoverage,missedPositiveBestRate,meanRegret,p95Regret,samples,positiveSamples
+SELECTED,0.7043115598804346,0.035867209301071235,0.1111111111111111,0.0,2.755691205027163E-17,4.960244169048894E-16,18,10

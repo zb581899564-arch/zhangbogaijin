@@ -1,0 +1,2 @@
+runId,seedSlot,seed,algorithm,status,FE,frontSize,initialPopulationHash,algorithmRunNanos
+seed-20260824-NSGA_II_F,3,20260824,NSGA_II_F,COMPLETED,50000,167,91439f037899eed0654b33e964f6a08baba9abd1e33003c5678d120700711061,5512411659

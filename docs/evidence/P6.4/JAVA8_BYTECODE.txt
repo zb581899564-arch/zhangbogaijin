@@ -1,0 +1,6 @@
+class=org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoDualQCoordinator
+majorVersion=52
+class=org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoDualQCoordinationConfiguration
+majorVersion=52
+class=org.uma.jmetal.algorithm.multiobjective.mypso.ZhangBoMOHPSOQ
+majorVersion=52

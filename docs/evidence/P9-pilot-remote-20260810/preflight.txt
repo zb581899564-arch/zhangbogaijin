@@ -1,0 +1,6 @@
+2026-08-10T11:11:24+08:00
+openjdk version "11.0.27" 2025-04-15
+OpenJDK Runtime Environment (build 11.0.27+6-post-Ubuntu-0ubuntu120.04)
+OpenJDK 64-Bit Server VM (build 11.0.27+6-post-Ubuntu-0ubuntu120.04, mixed mode, sharing)
+f266c1c91a4ea0a1592493483084fea9caf86ccbfd319440d9c19f3bfd8c683c  app.jar
+47d32d48e719219c5fa2b41e08278518c8162e3eb88398b5a4e8f54b61578a08  EADHFSP/20_2_3_1.txt

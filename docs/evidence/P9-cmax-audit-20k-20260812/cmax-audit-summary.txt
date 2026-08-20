@@ -1,0 +1,13 @@
+schema=cmax-audit-v1
+checkpointInterval=1000
+latestFE=20000
+recordCount=11
+enteredCandidateSet=11
+pddrRetained=10
+personalArchive=11
+globalArchive=10
+nextRoundSurvived=10
+recordSources={INITIAL/INITIAL=1, CFVF/CFVF=3, CA_TA/O1_O9=4, CA_TA/O12=3}
+initialPopulationSha256=ffca83d43be7a67b8860ad5ccbd5e3d51c2a0f7880509879c59ecbeac0dc9ebe
+mechanismVectorHash=f43cb84275651486f1947a4a4b207da550ec2af38ae2db7211be492f7fe858b2
+algorithmSemantics=p8-ablation-v5-shift

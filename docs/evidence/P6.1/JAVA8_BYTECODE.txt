@@ -1,0 +1,4 @@
+ZhangBoQgController.class major version: 52
+ZhangBoCfvfUpdater.class major version: 52
+ZhangBoMOHPSOQ.class major version: 52
+ZhangBoMOHPSOQRun.class major version: 52

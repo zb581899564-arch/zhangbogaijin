@@ -1,0 +1,9 @@
+matrix=FULL
+label=B2
+mechanism=fatigue plus CFVF
+configurationKey=B2
+status=COMPLETED
+reason=Registered exact configuration key B2
+populationSize=100
+maxFEs=2000
+physicalSubswarmSizes=[20, 40, 20, 20]

@@ -1,0 +1,7 @@
+paperLabel=MOHEADE_F
+sourceKind=PAPER_AUTHOR_SOURCE
+implementationClass=org.uma.jmetal.algorithm.multiobjective.mymohea.P25EAuthorMOHEADE
+actualSourceSha256=881BC08D67F9349B6EF40D52FB6B44549C694ADCDE9B03E38B8ACC50AFEE20E9
+adaptationWhitelist=Problem,Solution,initialPopulation,randomSource,FE,logging
+forbiddenEnhancements=ZhangBoBaselineUpdater,CFVF,Qp,DSCR,CA-TA-Lite,directionalTeacherPool
+identityEvidence=paperClass=mymohea.MOHEADE;elite=100;VEGA=100;DE=0.8;PMX=0.5;swapMutation=0.4;randomObjects=30010;suppressedConsoleLines=166;runtimeEvents=MOHEADE_REPRODUCTION=167;budgetStop=EXACT

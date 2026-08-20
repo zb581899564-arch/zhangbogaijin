@@ -1,0 +1,2 @@
+runId,seedSlot,seed,algorithm,status,FE,frontSize,initialPopulationHash,algorithmRunNanos
+seed-20260823-SPEA2_F,2,20260823,SPEA2_F,COMPLETED,50000,101,822810ea710b7d58b3a51543ff345de7f7e24979c93939f13d7324797a7f8289,11859342342

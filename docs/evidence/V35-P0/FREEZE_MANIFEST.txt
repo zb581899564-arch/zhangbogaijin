@@ -1,0 +1,12 @@
+﻿snapshotTag=pre-validation-audited-20260810
+projectRoot=E:\学习\李明哲-毕业材料\张博改进
+generatedAt=2026-08-12T19:49:16.6366033+08:00
+excluded=.git,.idea,target,results,.codex-temp,logs
+semanticMainline=v3.5
+familyMode=DEGENERATE_SINGLE_FAMILY
+familyCount=1
+setupMode=SEQUENCE_INDEPENDENT
+shiftMode=NONE
+sampled_reproduction_accepted=false
+full_reproduction_accepted=false
+formal_matrix_started=false

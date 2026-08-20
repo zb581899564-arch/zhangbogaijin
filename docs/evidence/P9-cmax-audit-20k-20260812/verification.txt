@@ -1,0 +1,21 @@
+schema=cmax-audit-verification-v1
+date=2026-08-12
+localTargetedTests=6 passed, 0 failures, 0 errors
+localTestClasses=ZhangBoCmaxAuditTest,ZhangBoCaTaIntegrationSmokeTest
+behaviorIsolation=FE/front/Qg/Qp/CA-TA unchanged with audit enabled
+localJavaCompile=reactor 5 modules BUILD SUCCESS
+remoteHost=inspur-NP5570M5
+remoteRoot=/home/inspur/aicomp/zhangbo-cmax-audit-20k-20260812
+remotePid=2432141
+remotePgid=2432138
+remoteAffinity=0-3
+remoteJava=openjdk 11.0.27
+remoteJarSha256=8a41d48cf053af1391fa15aff73286431ef031e3045613e89f57d046369ccb9a
+instanceSha256=47d32d48e719219c5fa2b41e08278518c8162e3eb88398b5a4e8f54b61578a08
+setupSha256=c39040dbc92f41ee95f37be96a24e24b53f95911de4c73e652766a11c5a3b2bc
+fatigueSha256=7116c996e84c229a5e8cf6b17cc3682b331c035202e7cbb87f7db3ba978787a9
+remoteCompletedAt=2026-08-12T17:03:55+08:00
+completionLine=CMAX_AUDIT_COMPLETED fe=20000 records=11
+rawEvidenceCopyHashValidation=all raw CSV/summary/front files matched remote manifest before local reporting additions
+fullReproductionAccepted=false
+formalMatrixStarted=false

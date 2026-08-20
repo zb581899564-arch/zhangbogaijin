@@ -1,0 +1,2 @@
+arm,status,FE,records,generatedRows,admittedConsistentRows,pendingRows,notSelectedRows,yesRows,noRows,pddrRetainedRows,personalArchiveRows,globalArchiveRows,lastRecordFE,lastRecordCmax,lastRecordSocialUses,lastRecordPersonalUses,lastRecordFirstTeacherFE,resolvedPendingByFinish,frontSize,minCmax
+full-20k-20_2_3_1,COMPLETED,20000,21,21,21,0,19,2,0,2,3,11,6373,196.162206,0,0,-1,21,82,196.162206

@@ -1,0 +1,1 @@
+adapter=MOPSODS-DE-F,generations=499,offspring=49900,localCandidates=0,deCandidates=39927,eventHash=8cde7ee390867403c57efad82797fd574fe9cad6591d7561c02811985ab6853e

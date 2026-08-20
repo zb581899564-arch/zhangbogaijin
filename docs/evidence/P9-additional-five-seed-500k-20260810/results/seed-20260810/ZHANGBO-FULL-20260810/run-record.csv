@@ -1,0 +1,2 @@
+algorithm,status,seed,fullEvaluations,wallClockMillis,cpuNanos,frontSize,minCmax,minTEC,minTWC,maxCmax,maxTEC,maxTWC,cfvfRepairs,localFullEvaluations,illegalSolutions,configurationSha256,initialPopulationSha256,reason
+"ZHANGBO-FULL",COMPLETED,20260810,500000,1068963,1065475212503,555,175.759647977,8425.04305835,12671.1171880,428.261074634,11116.2399595,19283.1301952,0,400000,0,17a278d9d14c6139c2ed6eccecb22691e11a624cb10fc8ead4257509a8cbf6c4,bd358176d9e5ec8ae89aa4bb51483e40751162eafe9c0513a6919bc5ff518f62,"MAX_FES_REACHED"

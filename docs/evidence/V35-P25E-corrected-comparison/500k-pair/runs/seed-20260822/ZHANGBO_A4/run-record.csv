@@ -1,0 +1,2 @@
+runId,seed,algorithm,sourceKind,status,FE,frontSize,initialPopulationHash,runNanos,representationRepairs
+seed-20260822-ZHANGBO_A4,20260822,ZHANGBO_A4,ZHANGBO_CURRENT,COMPLETED,500000,340,58c4c3b6be9869b3666595618cbd11ef9d076ebc4ff6f60e1321d0f63b2f4b00,135820977300,0

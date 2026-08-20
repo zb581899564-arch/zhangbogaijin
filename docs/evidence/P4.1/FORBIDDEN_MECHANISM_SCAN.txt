@@ -1,0 +1,1 @@
+﻿forbidden_scan_hits=0

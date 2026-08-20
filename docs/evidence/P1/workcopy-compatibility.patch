@@ -1,0 +1,163 @@
+﻿diff --git "a/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\baseline-li-jmetal58\\jmetal-algorithm\\pom.xml" "b/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\java-jmetal58\\jmetal-algorithm\\pom.xml"
+index 9abd460..2d7d412 100644
+--- "a/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\baseline-li-jmetal58\\jmetal-algorithm\\pom.xml"
++++ "b/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\java-jmetal58\\jmetal-algorithm\\pom.xml"
+@@ -80,10 +80,6 @@
+             <artifactId>jfuzzylite</artifactId>
+             <version>5.0</version>
+         </dependency>
+-        <dependency>
+-            <groupId>org.uma.jmetal</groupId>
+-            <artifactId>jmetal-exec</artifactId>
+-        </dependency>
+         <dependency>
+             <groupId>org.testng</groupId>
+             <artifactId>testng</artifactId>
+diff --git "a/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\baseline-li-jmetal58\\jmetal-exec\\pom.xml" "b/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\java-jmetal58\\jmetal-exec\\pom.xml"
+index 8e7bfea..11d03d3 100644
+--- "a/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\baseline-li-jmetal58\\jmetal-exec\\pom.xml"
++++ "b/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\java-jmetal58\\jmetal-exec\\pom.xml"
+@@ -74,9 +74,5 @@
+             <artifactId>xchart</artifactId>
+             <version>3.2.2</version>
+         </dependency>
+-        <dependency>
+-            <groupId>org.uma.jmetal</groupId>
+-            <artifactId>jmetal-algorithm</artifactId>
+-        </dependency>
+     </dependencies>
+ </project>
+diff --git "a/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\baseline-li-jmetal58\\jmetal-core\\src\\main\\java\\org\\uma\\jmetal\\solution\\impl\\DefaultIntegerPermutationSolution.java" "b/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\java-jmetal58\\jmetal-core\\src\\main\\java\\org\\uma\\jmetal\\solution\\impl\\DefaultIntegerPermutationSolution.java"
+index 1324fc4..6319628 100644
+--- "a/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\baseline-li-jmetal58\\jmetal-core\\src\\main\\java\\org\\uma\\jmetal\\solution\\impl\\DefaultIntegerPermutationSolution.java"
++++ "b/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\java-jmetal58\\jmetal-core\\src\\main\\java\\org\\uma\\jmetal\\solution\\impl\\DefaultIntegerPermutationSolution.java"
+@@ -5,6 +5,7 @@ import org.uma.jmetal.problem.Problem;
+ import org.uma.jmetal.solution.PermutationSolution;
+ 
+ import java.io.*;
++import java.nio.file.Paths;
+ import java.util.*;
+ 
+ /**
+@@ -29,7 +30,8 @@ public class DefaultIntegerPermutationSolution                     //编码
+ //  protected int[][] jobindex = new int[500][500];
+ 
+ 
+-  static String filename = "E:/DHFSP-4/EADHFSP/150_8_5_1.txt";
++  static String filename = Paths.get(
++      System.getProperty("dhfsp.data.dir", "EADHFSP"), "150_8_5_1.txt").toString();
+ 
+ 
+   /** Constructor */
+diff --git "a/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\baseline-li-jmetal58\\jmetal-problem\\src\\main\\java\\org\\uma\\jmetal\\problem\\multiobjective\\dfsp\\DHFSP.java" "b/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\java-jmetal58\\jmetal-problem\\src\\main\\java\\org\\uma\\jmetal\\problem\\multiobjective\\dfsp\\DHFSP.java"
+index 53b88b6..0529532 100644
+--- "a/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\baseline-li-jmetal58\\jmetal-problem\\src\\main\\java\\org\\uma\\jmetal\\problem\\multiobjective\\dfsp\\DHFSP.java"
++++ "b/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\java-jmetal58\\jmetal-problem\\src\\main\\java\\org\\uma\\jmetal\\problem\\multiobjective\\dfsp\\DHFSP.java"
+@@ -8,6 +8,7 @@ import java.io.BufferedReader;
+ import java.io.FileInputStream;
+ import java.io.IOException;
+ import java.io.InputStreamReader;
++import java.nio.file.Paths;
+ import java.text.DecimalFormat;
+ import java.util.*;
+ import java.util.stream.IntStream;
+@@ -373,17 +374,10 @@ public class DHFSP extends AbstractIntegerPermutationProblem{
+ //        sleep();
+         //idleflag = new int[numberOfMachines_];
+ 
+-        StringBuffer sbInputFileName = new StringBuffer();
+-        //String strFolderName = new String("/Users/mumumu/Desktop/EADHFSP-能耗数据集/"); //TODO 修改输入数据目录
+-        String strFolderName = new String("E:/DHFSP-4/EADHFSP/"); //TODO 修改输入数据目录
+-        //init("C:\\LocalDisk\\0.research\\journal-proposal-ZhangLiHouYangGen-PSO-DE-DFSP\\data-FSP\\" + numberOfJobs_ + "_" + numberOfMachines_ + "_"+snumber+".txt");
+-        sbInputFileName.append(strFolderName);
+-        sbInputFileName.append(numberOfJobs).append("_");
+-        sbInputFileName.append(numberOfStages).append("_");
+-        sbInputFileName.append(numberOfFactories);
+-        sbInputFileName.append("_").append(problemId);
+-        sbInputFileName.append(".txt");
+-        init(sbInputFileName.toString());
++        String instanceFileName = numberOfJobs + "_" + numberOfStages + "_"
++                + numberOfFactories + "_" + problemId + ".txt";
++        String dataDirectory = System.getProperty("dhfsp.data.dir", "EADHFSP");
++        init(Paths.get(dataDirectory, instanceFileName).toString());
+     }
+ 
+ 
+diff --git "a/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\baseline-li-jmetal58\\jmetal-problem\\src\\main\\java\\org\\uma\\jmetal\\problem\\multiobjective\\dfsp\\EDHHFSPW.java" "b/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\java-jmetal58\\jmetal-problem\\src\\main\\java\\org\\uma\\jmetal\\problem\\multiobjective\\dfsp\\EDHHFSPW.java"
+index e6dd7be..82fa82f 100644
+--- "a/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\baseline-li-jmetal58\\jmetal-problem\\src\\main\\java\\org\\uma\\jmetal\\problem\\multiobjective\\dfsp\\EDHHFSPW.java"
++++ "b/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\java-jmetal58\\jmetal-problem\\src\\main\\java\\org\\uma\\jmetal\\problem\\multiobjective\\dfsp\\EDHHFSPW.java"
+@@ -8,6 +8,7 @@ import java.io.BufferedReader;
+ import java.io.FileInputStream;
+ import java.io.IOException;
+ import java.io.InputStreamReader;
++import java.nio.file.Paths;
+ import java.util.*;
+ import java.util.stream.IntStream;
+ 
+@@ -375,17 +376,10 @@ public class EDHHFSPW extends AbstractIntegerPermutationProblem{
+ //        sleep();
+         //idleflag = new int[numberOfMachines_];
+ 
+-        StringBuffer sbInputFileName = new StringBuffer();
+-        //String strFolderName = new String("/Users/mumumu/Desktop/EADHFSP-能耗数据集/"); //TODO 修改输入数据目录
+-        String strFolderName = new String("E:/DHFSP-4/EADHFSP/"); //TODO 修改输入数据目录
+-        //init("C:\\LocalDisk\\0.research\\journal-proposal-ZhangLiHouYangGen-PSO-DE-DFSP\\data-FSP\\" + numberOfJobs_ + "_" + numberOfMachines_ + "_"+snumber+".txt");
+-        sbInputFileName.append(strFolderName);
+-        sbInputFileName.append(numberOfJobs).append("_");
+-        sbInputFileName.append(numberOfStages).append("_");
+-        sbInputFileName.append(numberOfFactories);
+-        sbInputFileName.append("_").append(problemId);
+-        sbInputFileName.append(".txt");
+-        init(sbInputFileName.toString());
++        String instanceFileName = numberOfJobs + "_" + numberOfStages + "_"
++                + numberOfFactories + "_" + problemId + ".txt";
++        String dataDirectory = System.getProperty("dhfsp.data.dir", "EADHFSP");
++        init(Paths.get(dataDirectory, instanceFileName).toString());
+     }
+ 
+ 
+diff --git "a/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\baseline-li-jmetal58\\jmetal-exec\\src\\main\\java\\org\\uma\\jmetal\\runner\\lc_psode\\ALLAlgorithmRun.java" "b/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\java-jmetal58\\jmetal-exec\\src\\main\\java\\org\\uma\\jmetal\\runner\\lc_psode\\ALLAlgorithmRun.java"
+index cc0c6af..435975e 100644
+--- "a/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\baseline-li-jmetal58\\jmetal-exec\\src\\main\\java\\org\\uma\\jmetal\\runner\\lc_psode\\ALLAlgorithmRun.java"
++++ "b/E:\\\345\255\246\344\271\240\\\346\235\216\346\230\216\345\223\262-\346\257\225\344\270\232\346\235\220\346\226\231\\\345\274\240\345\215\232\346\224\271\350\277\233\\java-jmetal58\\jmetal-exec\\src\\main\\java\\org\\uma\\jmetal\\runner\\lc_psode\\ALLAlgorithmRun.java"
+@@ -13,6 +13,7 @@ import org.uma.jmetal.solution.PermutationSolution;
+ 
+ 
+ import java.io.BufferedWriter;
++import java.io.File;
+ import java.io.FileWriter;
+ import java.io.IOException;
+ import java.util.ArrayList;
+@@ -34,12 +35,12 @@ public class  ALLAlgorithmRun {
+     //String[] algorithms = {"MOPSODSDE","MOPSODS","MOPSO","MOHEA","MOHEADE","NSGAII","SPEA2","MOEAD"};
+     protected static   String[] algorithms;
+ 
+-    protected static  String solutionFolderNameNonparametric = "E:/DHFSP-4/data result/";//原始数据路径 //TODO 创建result-solution 保存生成的solution
++    protected static  String solutionFolderNameNonparametric = outputSubdirectory("data-result");
+ //    protected static  String solutionFolderName = "E:/DHFSP/data result/";//原始数据路径 //TODO 创建result-solution 保存生成的solution
+ 
+-    protected static  String  solutionFolderName = "E:/DHFSP-4/50%/";//跑指标的时候
+-    protected static  String solutionFolderName1 = "E:/DHFSP-4/DOE/";//原始数据路径 //TODO 创建result-solution 保存生成的solution
+-    protected static  String indexFolderName = "E:/DHFSP-4/indicator data/";//指标数据路径//TODO 创建result-index 保存指标结果数据
++    protected static  String solutionFolderName = outputSubdirectory("50-percent");
++    protected static  String solutionFolderName1 = outputSubdirectory("doe");
++    protected static  String indexFolderName = outputSubdirectory("indicators");
+ 
+     protected static PermutationProblem<PermutationSolution<Integer>> problem;
+     protected static PermutationProblem<PermutationSolution<Integer>> problem1;
+@@ -66,6 +67,14 @@ public class  ALLAlgorithmRun {
+     protected static   boolean isFirstRun = false;
+     protected static   boolean Nonparametric = false;
+ 
++    private static String outputSubdirectory(String name) {
++        File directory = new File(System.getProperty("dhfsp.output.dir", "results"), name);
++        if (!directory.isDirectory() && !directory.mkdirs()) {
++            throw new IllegalStateException("Cannot create output directory: " + directory.getAbsolutePath());
++        }
++        return directory.getPath() + File.separator;
++    }
++
+     //此代码不能同时跑原始数据和指标，所有原始数据跑完之后才能跑指标
+     public static void main(String[] args) throws Exception {
+ 

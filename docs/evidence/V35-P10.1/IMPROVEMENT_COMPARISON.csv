@@ -1,0 +1,12 @@
+instance=20_2_3_1
+seed=20260808
+population=100
+decoder=FM3
+shiftMode=NONE
+directionalTeacherPoolK=10 (FULL arms only)
+poolOffReplaysPreP101FrontBitForBit=true
+
+arm,budget,frontSize,minCmax,minTEC,minTWC,auditRecords,cfvfNewRecords,o1o9Records,taughtRecords,maxTeacherLagFE,meanTeacherLagFE,finalBestCmaxGlobal,finalCurrentBestCmaxG1,minCurrentBestCmaxG1
+full-20k-pool-on,79,196.162206,9030.005182,13492.397715,21,6,11,8,1187,376.500000,226.497309,236.103250,226.497309
+full-20k-pool-off,65,208.528006,8890.454509,13575.604100,19,8,7,5,1762,452.800000,223.313240,244.873903,227.158981
+full-100k-pool-on,225,181.500617,8554.829810,12933.086091,47,10,33,14,22240,6189.857143,181.500617,192.494939,181.500617

@@ -1,0 +1,1 @@
+paperClass=MOPSODivSub;grouping=M3;subgroups=20/40/20/20;paperLabel=MOPSODS-DE;randomObjects=93963;suppressedConsoleLines=499;runtimeEvents=MOPSODS_DE_GROUPED_UPDATE=499;budgetStop=EXACT

@@ -1,0 +1,10 @@
+schema=cmax-audit-v3-v35-lifecycle
+checkpointInterval=1000
+latestFE=100000
+recordCount=56
+enteredCandidateSet=54
+pddrRetained=9
+personalArchive=9
+globalArchive=10
+nextRoundSurvived=2
+recordSources={INITIAL/INITIAL=4, CA_TA_LITE/N1=1, FIXED_VNS/O1_O9=50, INTER_FACTORY/INTER_FACTORY_INSERTION=1}

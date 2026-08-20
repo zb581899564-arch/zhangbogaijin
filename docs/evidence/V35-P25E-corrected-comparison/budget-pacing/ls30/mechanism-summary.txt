@@ -1,0 +1,27 @@
+diagnosticBudgetPacingOnly=true
+algorithm=ZHANGBO_A4
+seed=20260822
+instance=20_2_3_1
+population=100
+maxFEs=50000
+fullEvaluations=50000
+initialPopulationHash=58c4c3b6be9869b3666595618cbd11ef9d076ebc4ff6f60e1321d0f63b2f4b00
+localSearchTimes=30 (Table9 default=30)
+formalBaselineSha256=8C2D808121E4A397A6C31FB82D440A5AB131315BBDECE1BAE0CA13F1706149D2
+formalOuterCycles=2
+formalQgRounds=100
+pddrEvents=2
+qgSelections=400
+qgTdUpdates=296
+qpActions=5100
+qpTransitions=2600
+cfvfOffspring=10000
+cfvfRepairs=0
+archiveInsertions=200
+caTaLiteTest=252
+caTaLiteApply=147
+caTaLiteFE=399
+formalLocalFE=39501
+formalLocalFraction=0.79002
+frontSize=91
+runNanos=7224873500

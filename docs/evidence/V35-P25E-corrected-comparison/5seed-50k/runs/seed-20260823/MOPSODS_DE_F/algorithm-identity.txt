@@ -1,0 +1,7 @@
+paperLabel=MOPSODS_DE_F
+sourceKind=PAPER_AUTHOR_SOURCE
+implementationClass=org.uma.jmetal.algorithm.multiobjective.mypso.P25EAuthorMOPSODivSub
+actualSourceSha256=2129266B73772D6B2B70E83A0E7E0A7DE4DF012514D959770BE4EB2C54357EEB
+adaptationWhitelist=Problem,Solution,initialPopulation,randomSource,FE,logging
+forbiddenEnhancements=ZhangBoBaselineUpdater,CFVF,Qp,DSCR,CA-TA-Lite,directionalTeacherPool
+identityEvidence=paperClass=MOPSODivSub;grouping=M3;subgroups=20/40/20/20;paperLabel=MOPSODS-DE;randomObjects=93945;suppressedConsoleLines=499;runtimeEvents=MOPSODS_DE_GROUPED_UPDATE=499;budgetStop=EXACT

@@ -1,0 +1,6 @@
+org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoEvaluatedPddrSelector major version: 52
+org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoPersonalArchive major version: 52
+org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoLineageCoordinator major version: 52
+org.uma.jmetal.algorithm.multiobjective.mypso.ZhangBoMOHPSOQ major version: 52
+org.uma.jmetal.runner.lc_psode.ZhangBoMOHPSOQRun major version: 52
+

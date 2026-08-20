@@ -1,0 +1,4 @@
+schema=zhangbo-p8.5-replay-v1
+labels=B1,FULL
+runsPerLabel=3
+replay=true

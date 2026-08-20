@@ -1,0 +1,11 @@
+sha256	path
+932F5AF9151FD928369A6F0374BF89E1C736A3FE1075252257D4A21A0A31B4F7	java-jmetal58/jmetal-problem/src/main/java/org/uma/jmetal/problem/multiobjective/dfsp/fatigue/shift/ZhangBoShiftConfiguration.java
+DEDBFFE0358AC82630A34873CB9248B5A856601D021B453257AA49C5CC8E6D88	java-jmetal58/jmetal-problem/src/main/java/org/uma/jmetal/problem/multiobjective/dfsp/fatigue/shift/ZhangBoScheduleGraph.java
+9B802341634221EBDC1FB4C961F2E68E0AD8ACFEBB076D55376B1CAD2F7D7CE0	java-jmetal58/jmetal-problem/src/main/java/org/uma/jmetal/problem/multiobjective/dfsp/fatigue/shift/ZhangBoFatigueSchedulePropagator.java
+B29EB6426D8E84541A3000979F5202CC7DAFA447AF7B483D5C921049517FCC68	java-jmetal58/jmetal-problem/src/main/java/org/uma/jmetal/problem/multiobjective/dfsp/fatigue/shift/ZhangBoFatigueShiftRefiner.java
+12813DA833EF9E0B8F4E707073A94C4786555660C7240CD21CDD8D94454CE79B	java-jmetal58/jmetal-problem/src/main/java/org/uma/jmetal/problem/multiobjective/dfsp/fatigue/shift/ZhangBoShiftEvent.java
+1F53E0B8018928F8ABEEA824C1AAAEF0B9F74143969FCE9CB11A9C45C4E76DAB	java-jmetal58/jmetal-problem/src/main/java/org/uma/jmetal/problem/multiobjective/dfsp/fatigue/shift/ZhangBoShiftSummary.java
+7F6E6C4CD8FF355C9C8FC8D419CBEA0E3A8BBFA90EF6590217D77A16566A4A6A	java-jmetal58/jmetal-problem/src/main/java/org/uma/jmetal/problem/multiobjective/dfsp/fatigue/ZhangBoFatigueEvaluationResult.java
+B7087F9FF637005AF4292B93D1B28F43D729E251E8BACE660BF7A068CA45CEAF	java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/p8/P8AblationProfile.java
+D2C947B72AF6FCFE12B4FEF18BB0B6F4900E39A4FA20CEA35946C25E17677A1A	java-jmetal58/jmetal-exec/src/main/java/org/uma/jmetal/runner/lc_psode/ZhangBoShiftValidationRunner.java
+DE58F0A295EB28B8A5B39CCEFD974C809A8F965D389778EFC27E7C16E20D7492	java-jmetal58/jmetal-exec/target/jmetal-exec-5.8-jar-with-dependencies.jar

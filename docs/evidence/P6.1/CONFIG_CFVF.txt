@@ -1,0 +1,12 @@
+schemaVersion=1
+semanticTag=fatigue_improved
+globalLeaderMode=ORIGINAL_QG
+particleUpdateMode=CFVF
+seed=20260808
+qEpsilon=0.8
+qAlpha=1.0
+qGamma=0.8
+resourceCognitiveScale=0.4
+resourceSocialScale=0.4
+resourceInertia=0.5
+resourceExploration=0.05

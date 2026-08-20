@@ -1,0 +1,1 @@
+paperClass=MOPSODivSubDE;grouping=M2;QTimes=50;LSTimes=40;gamma=0.9;epsilon=0.8;randomObjects=236613;suppressedConsoleLines=6;runtimeEvents=HMOPSO_QLS_Q_LEARNING=1400;budgetStop=EXACT

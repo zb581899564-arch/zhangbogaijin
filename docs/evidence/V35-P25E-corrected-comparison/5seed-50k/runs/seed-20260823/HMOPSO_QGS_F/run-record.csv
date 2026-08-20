@@ -1,0 +1,2 @@
+runId,seed,algorithm,sourceKind,status,FE,frontSize,initialPopulationHash,runNanos,representationRepairs
+seed-20260823-HMOPSO_QGS_F,20260823,HMOPSO_QGS_F,ZHANGBO_CURRENT,COMPLETED,50000,120,822810ea710b7d58b3a51543ff345de7f7e24979c93939f13d7324797a7f8289,3626884600,0

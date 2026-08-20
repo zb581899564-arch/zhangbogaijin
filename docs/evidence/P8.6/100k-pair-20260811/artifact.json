@@ -1,0 +1,227 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "P8.6 100k FE 双算法工程比较",
+    "description": "ZHANGBO-FULL 与当前 HMOPSO-QGS-F 工程配置的单实例单seed诊断报告。",
+    "generatedAt": "2026-08-11T16:30:00+08:00",
+    "cards": [
+      {
+        "id": "headline_card",
+        "description": "本次pair-only reference下的主要结果。",
+        "dataset": "headline",
+        "sourceId": "report_dataset_sql",
+        "metrics": [
+          { "label": "HV提升", "field": "hv_gain", "format": "percent", "signed": true },
+          { "label": "IGD下降", "field": "igd_reduction", "format": "percent", "signed": true },
+          { "label": "FULL时间开销", "field": "runtime_overhead", "format": "percent", "signed": true },
+          { "label": "Reference中FULL占比", "field": "full_reference_share", "format": "percent" }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "relative_change_chart",
+        "title": "FULL相对基线的指标变化",
+        "subtitle": "正值表示FULL数值更大，负值表示更小；需结合每项优化方向解读。",
+        "headerMarkdown": "基准为当前 `HMOPSO-QGS-F` 工程配置，**不是论文50/30正式参数**。",
+        "intent": "comparison",
+        "type": "bar",
+        "dataset": "relative_changes",
+        "sourceId": "report_dataset_sql",
+        "valueFormat": "percent",
+        "encodings": {
+          "x": { "field": "metric", "type": "nominal", "label": "指标" },
+          "y": { "field": "change", "type": "quantitative", "label": "相对变化" },
+          "tooltip": [
+            { "field": "change", "type": "quantitative", "label": "变化", "format": "percent" },
+            { "field": "interpretation", "type": "text", "label": "解释" }
+          ]
+        },
+        "referenceLines": [
+          { "axis": "y", "value": 0, "label": "无变化" }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "id": "quality_table",
+        "title": "主目标与多目标质量指标",
+        "subtitle": "HV/IGD/Spacing使用本次两算法并集reference。",
+        "dataset": "quality",
+        "sourceId": "report_dataset_sql",
+        "columns": [
+          { "field": "metric", "label": "指标", "type": "text" },
+          { "field": "full", "label": "ZHANGBO-FULL", "format": "number" },
+          { "field": "baseline", "label": "HMOPSO-QGS-F", "format": "number" },
+          { "field": "winner", "label": "本次较优", "type": "text" }
+        ]
+      },
+      {
+        "id": "fatigue_table",
+        "title": "疲劳与负载诊断",
+        "subtitle": "疲劳指标不是第四优化目标。",
+        "dataset": "fatigue",
+        "sourceId": "report_dataset_sql",
+        "columns": [
+          { "field": "metric", "label": "指标", "type": "text" },
+          { "field": "full", "label": "ZHANGBO-FULL", "format": "number" },
+          { "field": "baseline", "label": "HMOPSO-QGS-F", "format": "number" },
+          { "field": "interpretation", "label": "解释", "type": "text" }
+        ]
+      },
+      {
+        "id": "mechanism_table",
+        "title": "机制真实触发计数",
+        "subtitle": "0表示该机制在对应配置中关闭。",
+        "dataset": "mechanisms",
+        "sourceId": "report_dataset_sql",
+        "columns": [
+          { "field": "mechanism", "label": "机制", "type": "text" },
+          { "field": "full", "label": "ZHANGBO-FULL", "format": "number" },
+          { "field": "baseline", "label": "HMOPSO-QGS-F", "format": "number" }
+        ]
+      }
+    ],
+    "sources": [
+      { "id": "report_dataset_sql", "label": "报告快照构造SQL", "path": "queries/report-datasets.sql" },
+      { "id": "comparison_metrics", "label": "比较指标CSV", "path": "results/comparison/metrics.csv" },
+      { "id": "full_status", "label": "FULL运行状态", "path": "results/ZHANGBO-FULL-20260808/status.properties" },
+      { "id": "base_status", "label": "基线运行状态", "path": "results/HMOPSO-QGS-F-20260808/status.properties" },
+      { "id": "full_mechanism", "label": "FULL机制摘要", "path": "results/ZHANGBO-FULL-20260808/mechanism-summary.txt" },
+      { "id": "base_mechanism", "label": "基线机制摘要", "path": "results/HMOPSO-QGS-F-20260808/mechanism-summary.txt" },
+      { "id": "reference_front", "label": "本次pair reference", "path": "results/comparison/reference-front.csv" },
+      { "id": "corrected_report", "label": "完整技术报告", "path": "REPORT_100K_ENGINEERING_COMPARISON.md" }
+    ],
+    "blocks": [
+      {
+        "id": "summary",
+        "type": "markdown",
+        "body": "## 结论\n\n本次得到 **值得继续验证的工程信号**：FULL的HV、IGD、Spacing、TEC、TWC与覆盖关系占优，最优Cmax及多数疲劳诊断量未占优。两条运行都完成100000 FE，无非法解、无repair。\n\n> 阻断项：实际使用 `Q_Times=2、LS_Times=1`，不是论文正式 `50/30`；当前结果不得称为李明哲正式复现。"
+      },
+      { "id": "headline", "type": "metric-strip", "cardIds": ["headline_card"] },
+      { "id": "relative_chart", "type": "chart", "chartId": "relative_change_chart" },
+      { "id": "quality", "type": "table", "tableId": "quality_table" },
+      {
+        "id": "reference_audit",
+        "type": "markdown",
+        "body": "## Reference审计\n\nreference共293点，其中FULL贡献230点、基线贡献63点，FULL占78.5%。独立重算与Java输出一致，因此没有发现指标实现错误，但IGD/HV只适合作为pair诊断。正式论文需使用跨算法、跨运行冻结的统一reference和固定归一化边界。"
+      },
+      { "id": "fatigue", "type": "table", "tableId": "fatigue_table" },
+      { "id": "mechanisms", "type": "table", "tableId": "mechanism_table" },
+      {
+        "id": "runtime",
+        "type": "markdown",
+        "body": "## 时间与下一步\n\nFULL耗时46分11秒，基线42分10秒，FULL慢9.56%，已不再是旧版本的数量级膨胀。但单次运行不足以通过100k性能门。下一步应先把运行时循环参数修正为50/30，再重跑一对100k；通过后再做3个seed和统一reference。"
+      },
+      {
+        "id": "status",
+        "type": "markdown",
+        "body": "## 验收状态\n\n`engineering_pair_run_completed=true`  \n`formal_hmopso_qgs_parameter_match=false`  \n`runtime_100k_gate_current_semantics=false`  \n`sampled_reproduction_accepted=false`  \n`full_reproduction_accepted=false`  \n`formal_matrix_started=false`"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-11T16:30:00+08:00",
+    "status": "partial",
+    "datasets": {
+      "headline": [
+        { "hv_gain": 0.2455171271, "igd_reduction": 0.6154441126, "runtime_overhead": 0.0955539188, "full_reference_share": 0.7849829352 }
+      ],
+      "relative_changes": [
+        { "metric": "HV", "change": 0.2455171271, "interpretation": "更高更好，FULL占优" },
+        { "metric": "IGD", "change": -0.6154441126, "interpretation": "更低更好，FULL占优" },
+        { "metric": "Spacing", "change": -0.4130820708, "interpretation": "更低更均匀，FULL占优" },
+        { "metric": "最优TEC", "change": -0.0402952406, "interpretation": "更低更好，FULL占优" },
+        { "metric": "最优TWC", "change": -0.0074174282, "interpretation": "更低更好，FULL占优" },
+        { "metric": "最优Cmax", "change": 0.0600876863, "interpretation": "更低更好，基线占优" },
+        { "metric": "运行时间", "change": 0.0955539188, "interpretation": "更低更快，FULL慢9.56%" }
+      ],
+      "quality": [
+        { "metric": "最优Cmax", "full": 203.733860495, "baseline": 192.185857005, "winner": "基线" },
+        { "metric": "最优TEC", "full": 8377.78148039, "baseline": 8729.5404115, "winner": "FULL" },
+        { "metric": "最优TWC", "full": 12295.8534416, "baseline": 12387.7386033, "winner": "FULL" },
+        { "metric": "HV", "full": 1.09734305666, "baseline": 0.881034096428, "winner": "FULL" },
+        { "metric": "IGD", "full": 0.050786486062, "baseline": 0.132065293298, "winner": "FULL" },
+        { "metric": "Spacing", "full": 0.02633105727, "baseline": 0.044863269565, "winner": "FULL" },
+        { "metric": "非支配解数", "full": 233, "baseline": 114, "winner": "FULL" }
+      ],
+      "fatigue": [
+        { "metric": "Fmax", "full": 0.999468375973, "baseline": 0.99753146436, "interpretation": "FULL略高" },
+        { "metric": "Favg", "full": 0.662191224625, "baseline": 0.651990636879, "interpretation": "FULL略高" },
+        { "metric": "疲劳超阈积分FE", "full": 32.392198702, "baseline": 24.4132420632, "interpretation": "FULL较高" },
+        { "metric": "Var(Fw)", "full": 0.064188085304, "baseline": 0.072792397585, "interpretation": "FULL更均衡" },
+        { "metric": "高疲劳比例", "full": 0.070851938359, "baseline": 0.070064293351, "interpretation": "接近，FULL略高" },
+        { "metric": "最长连续工作", "full": 212.488598564, "baseline": 166.932429666, "interpretation": "FULL较长" },
+        { "metric": "任务间自然恢复", "full": 599.959211173, "baseline": 432.957697597, "interpretation": "FULL空档更多" },
+        { "metric": "负载不均衡", "full": 0.437644408517, "baseline": 0.407545936996, "interpretation": "FULL较高" }
+      ],
+      "mechanisms": [
+        { "mechanism": "CFVF后代", "full": 33500, "baseline": 0 },
+        { "mechanism": "PDDR事件", "full": 335, "baseline": 80 },
+        { "mechanism": "谱系档案插入", "full": 33500, "baseline": 0 },
+        { "mechanism": "Qg选择", "full": 1340, "baseline": 640 },
+        { "mechanism": "Qp动作", "full": 30200, "baseline": 0 },
+        { "mechanism": "CA-TA Test", "full": 43850, "baseline": 0 },
+        { "mechanism": "CA-TA Apply", "full": 22550, "baseline": 0 },
+        { "mechanism": "关键工厂交换评价", "full": 0, "baseline": 7960 },
+        { "mechanism": "关键工厂插入评价", "full": 0, "baseline": 7960 },
+        { "mechanism": "O1-O9评价", "full": 0, "baseline": 67980 }
+      ]
+    },
+    "accessIssues": [
+      {
+        "id": "formal_parameter_mismatch",
+        "scope": "experiment",
+        "message": "本次实际qTimes=2、localSearchTimes=1，不等于论文正式50/30；禁止升级为正式复现。"
+      },
+      {
+        "id": "pair_only_reference",
+        "scope": "metrics",
+        "dataset": "quality",
+        "message": "HV/IGD reference仅由本次FULL与BASE两条前沿构造，FULL贡献78.5%。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "report_dataset_sql",
+      "query": {
+        "engine": "portable_snapshot",
+        "sql": "SELECT metric, full_value, baseline_value FROM p86_100k_engineering_comparison",
+        "description": "将已核验CSV与properties结果映射为报告快照。",
+        "executed_at": "2026-08-11T16:30:00+08:00"
+      }
+    },
+    {
+      "id": "comparison_metrics",
+      "query": {
+        "engine": "local_csv",
+        "description": "读取本次双算法比较指标。",
+        "executed_at": "2026-08-11T15:42:00+08:00"
+      }
+    },
+    {
+      "id": "full_status",
+      "query": {
+        "engine": "local_properties",
+        "description": "读取FULL运行预算、目标、疲劳和输入哈希。",
+        "executed_at": "2026-08-11T15:42:00+08:00"
+      }
+    },
+    {
+      "id": "full_mechanism",
+      "query": {
+        "engine": "local_text",
+        "description": "读取FULL及基线机制触发计数。",
+        "executed_at": "2026-08-11T15:42:00+08:00"
+      }
+    }
+  ],
+  "package_info": {
+    "originUrl": "artifact://zhangbo-p86-100k-engineering-comparison",
+    "controls": { "edit": false, "refresh": false }
+  }
+}

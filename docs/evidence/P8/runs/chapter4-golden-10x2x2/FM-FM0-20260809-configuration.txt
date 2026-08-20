@@ -1,0 +1,9 @@
+matrix=FM
+label=FM0
+mechanism=author fixed worker efficiency
+configurationKey=B0
+status=COMPLETED
+reason=Registered exact configuration key B0
+populationSize=100
+maxFEs=2000
+physicalSubswarmSizes=[20, 40, 20, 20]
