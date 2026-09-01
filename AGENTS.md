@@ -13,6 +13,7 @@
 - 项目根目录：`E:\学习\李明哲-毕业材料\张博改进`
 - 唯一主路线图：`docs/ROADMAP.md`
 - 后续所有代码、配置、测试、日志、报告和生成结果只能写入本项目目录。
+- 本项目以 GitHub 仓库 `https://github.com/zb581899564-arch/zhangbogaijin.git`（分支 `main`）作为持久镜像：每次更改完成后必须在同一工作会话内 commit 并 push 到 GitHub（详见 §35 GitHub 镜像同步纪律）。
 - 可以只读访问父目录及 `E:\学习\ziliao` 中的论文、Markdown 方案、Java 原件、算例和作者结果。
 - 禁止修改、删除、重命名、覆盖或“清理”以下原始材料：
   - 李明哲学位论文；
@@ -1359,3 +1360,30 @@ phaseA0Decision=PHASE_A0_PREREGISTRATION_PASSED（evidenceRepackComplete=true）
 5. 状态恢复：`memoryGatePassed=true`、`observerJarFrozen=true`、`observerSchemaFrozen=true`、
    `sourceAttribution500kEligible=true`、`sourceAttribution500kStarted=false`。
    冻结文档含完整Jar SHA。
+
+## 35. GitHub 镜像同步纪律（2026-09-01，追加）
+
+1. **唯一远端**：`origin = https://github.com/zb581899564-arch/zhangbogaijin.git`，分支 `main`。
+   GitHub 镜像是本项目在"本地工作副本 + G盘冷归档"之外的第三份持久副本，用于灾难恢复与跨机恢复。
+2. **强制同步规则**：每次更改（代码、配置、测试、文档、证据、清单、勘误、路线图决策，无论大小）
+   完成后，**必须在同一工作会话内 `git commit` 并 `git push origin main`**。推送未确认成功
+   （exit 0 且远端 ref 前移）前不得宣称"已同步/已保存"；只留本地 commit 而未推送视为同步未完成。
+3. **提交纪律**：
+   - 一次逻辑变更一个 commit，消息写明变更内容与原因；证据勘误、清单重生成、路线图裁决各自独立提交；
+   - 提交前必须检查 `git status`，不得遗漏证据文件；严禁提交任何凭据、密钥、token 或
+     `.git-credentials`（认证只走 credential helper，脚本不得硬编码密码）；
+   - 大批积压变更允许合并为一次"全量同步"提交，但消息必须概括覆盖的工作包范围。
+4. **纳入/排除边界（2026-09-01 起生效）**：
+   - `docs/evidence/**` 下的冻结 Jar、class 与活动工作包小体积日志**纳入镜像**
+     （见 `.gitignore` 证据例外段），保证各包 `evidence-sha256.tsv` 清单在仓库内可完整反向验证；
+     相同 Jar 副本在 git 对象库自动去重为单一 blob；
+   - `*.tar.gz`、`*.zip`、`*.7z` 等归档包、历史 campaign 大体积 `*.log`、`build/`、`target/`、
+     `tmp/`、`.codex-temp*` 维持排除，按 §19 "两份副本"纪律保存在本地与 G 盘冷归档；
+   - `.gitignore` 的证据纳入/排除边界变更本身必须单独 commit 并说明理由。
+5. **GitHub 硬限制预案**：单文件必须 `<100 MB`（当前镜像最大文件 79.5 MB CSV / 46.3 MB Jar）。
+   未来 500k 级遥测若产生 ≥100 MB 单文件：禁止强行入库，先压缩拆分或改为"归档+清单哈希登记"；
+   确需 Git LFS 时必须先征得用户同意。
+6. **推送失败处理**：网络/认证失败时保留本地 commit 并向用户如实报告，不得静默放弃；恢复后立即
+   补推。远端出现非 fast-forward（他处有新提交）时先 `git pull --rebase` 复核无冲突再推。
+7. **镜像基线**：2026-09-01 已完成全量现状同步（`c108f287` 文本/证据层 + `0449f765` 冻结
+   Jar/class 层），此后每次更改按本节规则增量维护。
