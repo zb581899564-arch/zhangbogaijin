@@ -1404,3 +1404,32 @@ phaseA0Decision=PHASE_A0_PREREGISTRATION_PASSED（evidenceRepackComplete=true）
 5. 状态：`v5ObserverJarFrozen=true`、`sourceAttribution500kEligible=true`；但
    `correctedSaHard500kStarted=false`、`saNormalStarted=false`、`sourceAttributionRootCauseEstablished=false`。
    下一步必须单独批准V5 SA-HARD 500k；未验收该运行前不得启动SA-NORMAL或做根因裁决。
+
+## 37. V5 SA-HARD 500k完成与来源归因边界（2026-09-01，追加）
+
+1. 已按D-113资格执行**唯一一条**V5 SA-HARD 500k：`100_5_3_1/20260901/A4/C0_BETA_MAX_065/500k/observer ON`，
+   训练机 `/home/inspur/aicomp/zhangbo-v35-source-attribution-v5-sa-hard-500k-20260901`（全新目录、单JVM、nice 10、
+   `-Xms1g -Xmx4g`、classpath=V5观察器在前+正式Jar在后）。`exit=0`、`status=COMPLETED`、`actualFE=decoderCalls=500000`、
+   `remainingFE=0`、`utilizationRate=1.0`、`EXACT_MAX_FE`；机制指纹（62外循环/12400 Qg/271800 Qp/310000 CFVF子代、
+   `pddrEventStreamHash=d698245e…`、`qgTableHash=F0E6D62B…`、`qpTableHash=9328966A…`）与冻结F1逐项一致。
+2. 运行验收61/61通过（预算、完整性、ledger=actualFE、UNSET=0、V5五列+十类生命周期事件、B0独立重算11/11逐点一致、
+   19+1检查点overshoot=0、正式Jar前后SHA不变、运行自身清单67项0缺失0不匹配）。证据：
+   `docs/evidence/V35-SOURCE-ATTRIBUTION-500K/09-v5-sa-hard-500k/`（110项包级清单闭合）。
+3. 失败类复现门**PASSED**：终态前沿 `f3755d83…1239bdd` 与历史A4逐字节且规范排序一致；gold自检1e-12通过后
+   HV=`0.5545772540415207`、IGD=`0.15898065502479636`，`deltaHV=-0.3155<-0.05`、`deltaIGD=-1.7503<-0.20`。
+   reference、归一化边界与指标实现均沿用Phase A0冻结合同，未重建。
+4. 本包**只能**产出HARD单侧窗口证据（20窗全部计算）。hard–normal deficit、`t_div`、G1/G3裁决均为
+   `NOT_COMPUTABLE/UNDECIDED`，必须等待SA-NORMAL（`100_2_3_1/20260901/A4/500k/V5 ON`）。禁止用单侧轨迹自配对
+   构造伪门，禁止宣布G1或G3成立。
+5. 描述性预算占比（GLOBAL_CFVF 62.00%、INHERITED_LS 34.94%、CATA 3.04%、PARENT_CARRYOVER 0.02%）**不是**根因结论；
+   任何"CFVF占62%即根因"的表述继续无效。窗口份额（`WHVGShare`/`ExclusiveNDShare`）是窗口内相对划分，
+   其变化只描述来源间结构变化。
+6. 登记偏差（不推翻验收）：(a) 堆峰值3.5666GB为20k分解模型预测（比值0.3221≈1.29GB）的约2.8倍，与V4同类（2.92倍），
+   堆未扩、无OOM、缓存有界，登记为模型外推精度问题，**不授权**任何扩堆掩盖；
+   (b) 生命周期利用层中 `PERSONAL_ARCHIVE`、`QP_TEACHER`、`QP_ACTION` 的主体指纹不在评价账本中
+   （1,323,122行）无法按来源归属，登记为 `NOT_ATTRIBUTABLE_BY_FINGERPRINT_JOIN`，未猜测填补。
+7. 证据治理：`source-ledger.csv`(165MB) 与 `source-lifecycle-events.csv`(448MB) 超过GitHub单文件100MB限制，
+   按§35.5改为G盘冷归档+包级清单SHA登记（本地+训练机+冷归档三份），`.gitignore` 已单独登记排除。
+8. 停止边界保持：`SA_NORMAL_STARTED=false`、`SA_A2_CONDITIONAL_STARTED=false`、
+   `SOURCE_ATTRIBUTION_ROOT_CAUSE_CONFIRMED=false`、`DOE/QP_V2/CONFIG_RACE/VALIDATION/FORMAL_AUTHORIZED=false`、
+   `formalMatrixRunning=false`、`PDDR/CFVF/DualQ/CaTa/正式Jar全部零改动`。SA-NORMAL须用户另行批准。

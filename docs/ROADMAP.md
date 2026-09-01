@@ -2523,3 +2523,52 @@ sourceAttributionRootCauseEstablished=false
 formalMatrixRunning=false
 formalJarChanged=false
 ```
+
+### D-114：V5 SA-HARD 500k完成，来源归因只到HARD侧（2026-09-01）
+
+- 唯一运行 `SA-HARD-V5`（`100_5_3_1/20260901/A4/C0_BETA_MAX_065/500k/observer V5 ON`）完成并验收：
+  运行门61/61通过，`actualFE=decoderCalls=500000`、`remainingFE=0`、`EXACT_MAX_FE`，机制指纹与冻结F1逐项一致，
+  V5来源账本500000行（含 `nominalFE/generation/outerCycle/qRound`）、生命周期账本2,430,744行十类事件齐全、
+  B0独立重算逐点一致（11/11）、19+1检查点`overshoot=0`、正式Jar运行前后SHA不变。训练机目录
+  `/home/inspur/aicomp/zhangbo-v35-source-attribution-v5-sa-hard-500k-20260901`（全新目录、单JVM、未扩堆）。
+- **失败类复现门PASSED**：终态前沿与历史A4逐字节且规范排序一致（`f3755d83…1239bdd`）；
+  HV=`0.5545772540415207`、IGD=`0.15898065502479636`，相对冻结A2锚 `deltaHV=-0.3155`、`deltaIGD=-1.7503`，
+  同时越过 `-0.05/-0.20` 门。reference与指标实现沿用Phase A0冻结合同，未重建。
+- 来源分析只到**HARD单侧窗口证据**（20窗全部计算：`source-window-metrics.csv`、`source-lifecycle-summary.csv`、
+  `direction-extreme-contributions.csv`）。hard–normal deficit、`t_div`、G1/G3全部 `NOT_COMPUTABLE/UNDECIDED`，
+  `SOURCE_LEVER_CANDIDATE=NONE`。窗口计算以numpy逐算复刻`fc6.dominates/equal`并三重等价验证
+  （V1/V1c/V1d随机与回归、V2与冻结`threshold_recompute.window_metrics`子样本全等、V3反事实单调界）。
+- 登记偏差：堆峰值3.5666GB为20k模型外推值约2.8倍（与V4同类，未扩堆、无OOM），登记不授权扩堆；
+  生命周期利用层 `PERSONAL_ARCHIVE/QP_TEACHER/QP_ACTION` 主体指纹不在评价账本（1,323,122行）无法按来源归属，如实登记。
+- 证据治理：两文件≥100MB改G盘冷归档+包级清单SHA登记（110项清单0缺失0不匹配），`.gitignore`单独登记排除。
+
+```ini
+currentStage=V5_SA_HARD_500K_COMPLETED_HARD_SIDE_ONLY
+V5_SA_HARD_500K_STARTED=true
+V5_SA_HARD_500K_COMPLETED=true
+RUN_ACCEPTANCE=PASSED
+FAILURE_CLASS_REPRODUCTION=PASSED
+HARD_WINDOW_EVIDENCE=COMPUTED
+HARD_NORMAL_DEFICIT=NOT_COMPUTABLE
+G1_GLOBAL_CFVF=UNDECIDED_NEEDS_SA_NORMAL
+G3_CATA=UNDECIDED_NEEDS_SA_NORMAL
+t_div=NOT_COMPUTABLE_NEEDS_SA_NORMAL
+SOURCE_LEVER_CANDIDATE=NONE
+SOURCE_ATTRIBUTION_ROOT_CAUSE_CONFIRMED=false
+SA_NORMAL_STARTED=false
+SA_A2_CONDITIONAL_STARTED=false
+DOE_AUTHORIZED=false
+QP_V2_AUTHORIZED=false
+CONFIG_RACE_AUTHORIZED=false
+VALIDATION_AUTHORIZED=false
+FORMAL_AUTHORIZED=false
+formalMatrixRunning=false
+PDDRChanged=false
+CFVFChanged=false
+DualQChanged=false
+CaTaChanged=false
+formalJarChanged=false
+```
+
+唯一在册下一步为 `SA-NORMAL`（`100_2_3_1/20260901/A4/500k/V5 ON`，同一25k网格），须用户单独批准；
+未完成该运行前不得计算hard–normal差值门或宣布G1/G3。

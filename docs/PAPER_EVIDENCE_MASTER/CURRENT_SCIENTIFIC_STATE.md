@@ -462,3 +462,26 @@ sourceAttributionRootCauseEstablished = false
 - V5补齐真实生命周期、25k nominal窗口、轮次上下文、严格B0、parent lineage和Qp action。
 - 本地2k及训练机20k OFF/ON均通过；正式Jar仍为`8DAD8F40…BAD8B9`，算法/PDDR/CFVF/Dual-Q/CA-TA均未变。
 - 下一步如获批准，只重跑一条V5 SA-HARD 500k；通过失败复现与来源证据验收后才允许SA-NORMAL。
+
+### V5 SA-HARD 500k（2026-09-01，完成：运行验收+失败类复现通过，来源证据仅HARD侧）
+
+```ini
+V5_SA_HARD_500K_STARTED=true
+V5_SA_HARD_500K_COMPLETED=true
+RUN_ACCEPTANCE=PASSED(61/61)
+FAILURE_CLASS_REPRODUCTION=PASSED
+frontSha256Raw=f3755d83a2acb4280ff8dd566025340c8b64edc71050e05bbd6a3ff4b1239bdd（=历史A4，规范排序亦一致）
+hv=0.5545772540415207  igd=0.15898065502479636  deltaHV=-0.3155  deltaIGD=-1.7503
+actualFE=decoderCalls=500000  remainingFE=0  utilizationRate=1.0  EXACT_MAX_FE
+sourceLedgerRows=500000  lifecycleRows=2430744(十类)  b0=11/11逐点一致  checkpointOvershoot=0
+HARD_WINDOW_EVIDENCE=COMPUTED(20/20)
+HARD_NORMAL_DEFICIT=NOT_COMPUTABLE  G1/G3=UNDECIDED_NEEDS_SA_NORMAL  t_div=NOT_COMPUTABLE
+SOURCE_LEVER_CANDIDATE=NONE  SOURCE_ATTRIBUTION_ROOT_CAUSE_CONFIRMED=false
+SA_NORMAL_STARTED=false  formalMatrixRunning=false  formalJarChanged=false
+```
+
+- 含义：V5为纯观察重跑，确定性复现冻结A4失败类，来源账本首次满足Phase A0合同（nominal窗口/轮次上下文/真实生命周期/严格B0）。
+  但**只有HARD一条轨迹**，hard–normal差值门未建立，因此不得宣布任何来源级根因或修复杠杆。
+- 禁止：把"GLOBAL_CFVF占62%评价量"或任何窗口份额写为根因；用单侧轨迹自配对构造t_div代理值；据本包启动SA-NORMAL。
+- 证据：`docs/evidence/V35-SOURCE-ATTRIBUTION-500K/09-v5-sa-hard-500k/`（110项包级清单0缺失0不匹配；
+  两文件≥100MB已G盘冷归档+SHA登记）。决策：`07-decision/SA_HARD_V5_DECISION.{md,properties}`。
