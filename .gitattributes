@@ -1,0 +1,2 @@
+# Evidence manifests address exact file bytes. Never normalize their line endings.
+docs/evidence/** -text
