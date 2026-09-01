@@ -243,7 +243,10 @@ public class ZhangBoMOHPSOQBuilder implements AlgorithmBuilder<ZhangBoMOHPSOQ> {
         this.globalSearchConfiguration = ZhangBoGlobalSearchConfiguration.forV35(configuration);
         setFormalBaselineConfiguration(ZhangBoFormalHmopsoQgsConfiguration.table9());
         if (configuration.getPopulationSize() == 100) {
-            setPhysicalSubswarmSizes(20, 40, 20, 20);
+            org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35SubSwarmMixture mixture =
+                configuration.getSubSwarmMixtureOrDefault();
+            setPhysicalSubswarmSizes(mixture.getGroupU1(), mixture.getGroupC2(),
+                mixture.getGroupD3(), mixture.getGroupUNew());
         } else if (configuration.getPopulationSize() == 10) {
             setPhysicalSubswarmSizes(2, 4, 2, 2);
         } else {

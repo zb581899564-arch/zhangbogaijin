@@ -1,0 +1,8 @@
+remoteRun=false
+instance=20_2_3_1
+population=100
+maxFEs=50000
+arm=A3
+seed=20260824
+postRunObservationOnly=true
+randomStreamUnchanged=true

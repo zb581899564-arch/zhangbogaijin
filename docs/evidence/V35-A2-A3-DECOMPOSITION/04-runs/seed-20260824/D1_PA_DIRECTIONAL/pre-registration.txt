@@ -1,0 +1,11 @@
+workPackage=V35-A3-D
+arm=D1_PA_DIRECTIONAL
+instance=20_2_3_1
+seed=20260824
+population=100
+maxFEs=50000
+profileSha256=6de3d459df8c479813a9d97b04eac5d1d6c0e3d6f8c2f10713008c5a0fd44a7d
+commonBoundary=FM3;ShiftMode.NONE;singleFamily;sequenceIndependentSUT;mixture=20/40/20/20;PDDR=GLOBAL_ORIGINAL;LS=CATA_THEN_INHERITED;teacherPool=OFF
+notDoe=true
+notFormalAblation=true
+formalJarModified=false

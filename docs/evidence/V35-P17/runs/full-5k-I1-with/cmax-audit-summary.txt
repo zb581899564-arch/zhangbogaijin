@@ -9,9 +9,9 @@ globalArchive=8
 nextRoundSurvived=1
 resolvedPendingByFinish=9
 bestCmaxGlobal=45.666708176441
-bestTECGlobal=1961.682987271599
-bestTWCGlobal=2662.941007276898
+bestTECGlobal=1945.229177753786
+bestTWCGlobal=2662.454472473410
 bestCmaxGenerated=45.666708176441
-bestTECGenerated=1961.682987271599
-bestTWCGenerated=2662.941007276898
+bestTECGenerated=1945.229177753786
+bestTWCGenerated=2662.454472473410
 recordSources={INITIAL/INITIAL=4, CFVF/CFVF=3, FIXED_VNS/O1_O9=3}

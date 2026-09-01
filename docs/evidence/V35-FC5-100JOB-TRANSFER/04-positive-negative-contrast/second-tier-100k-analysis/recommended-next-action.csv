@@ -1,0 +1,5 @@
+field,value,note
+run250k,INCONCLUSIVE_SEE_MORE,100k 不确定；需要更多 seed 或更长预算来区分，但需独立预注册。
+run250k_auto,NO,本脚本/分析绝不自动启动 250k，README 缺省保持不运行。
+verdict,FC5_TRANSFER_100K_INCONCLUSIVE,情形 C：既未同时满足情形 A 五条件，也未满足情形 B 全条件。包括：90<=Nnd<=100 / 仅1/3 seed 超100 / Nnd增加但代表仍被保留利用。注意：Nnd 增加但代表仍被保留、教师仍正常利用时，说明候选多本身不是根因，禁止据此修改 PDDR。
+acceptedRuns,6,已验收且属预注册对照集的运行数。

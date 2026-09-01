@@ -1,0 +1,96 @@
+{
+  "freezeId": "V35-FINAL-DOE1-FROZEN",
+  "capturedAt": "2026-08-22T23:43:27+08:00",
+  "freezeStatus": "CANDIDATE_WITH_DIRTY_WORKTREE",
+  "boundary": {
+    "freezeId": "V35-FINAL-DOE1-FROZEN",
+    "mixture": {
+      "order": ["G1_CMAX", "G4_BALANCED", "G2_TEC", "G3_TWC"],
+      "values": [20, 40, 20, 20]
+    },
+    "decoderMode": "FM3",
+    "familyMode": "DEGENERATE_SINGLE_FAMILY",
+    "setupMode": "SEQUENCE_INDEPENDENT",
+    "shiftMode": "NONE",
+    "objectives": [0, 1, 6],
+    "population": 100,
+    "maxFEs": 500000,
+    "pddrSelectionMode": "GLOBAL_ORIGINAL",
+    "localSearchOrder": "CATA_THEN_INHERITED",
+    "mainVariant": "A4_PACING",
+    "localFeBudget": {
+      "betaMin": 0.25,
+      "betaMax": 0.65,
+      "schedule": "betaMin+(betaMax-betaMin)*u^2",
+      "formula": "B_L=floor(beta/(1-beta)*B_G)"
+    },
+    "dualQ": {"warmupRatio": 0.1, "pBlockLength": 5, "gBlockLength": 5, "rho": 0.0},
+    "directionalTeacherPool": false,
+    "pressure": {
+      "classifier": "diagnostic_only",
+      "actualBottleneck": "BAL",
+      "strictMask": false,
+      "shadowAudit": false,
+      "enabledMacroNeighborhoods": ["N1", "N2", "N3", "N4", "N5"]
+    },
+    "closedBranches": ["ORDER_SWAP", "REGION_AWARE", "BP_RESERVED_LEGACY", "activeShift", "PF_SDST", "rho>0"]
+  },
+  "frozenBoundaryHash": "d85a07381da31dffb403a5fa08caaa3093f3d4d4ff2d10fb81c4a85b3081c34f",
+  "git": {
+    "head": "e034faafce5f9458a324a03a4aea7ef7098e698d",
+    "worktreeStatusEntries": 990,
+    "worktreeStatusSha256": "ee79b37f35e52549da0dadfef44aa65a585766d9302d85af8136d07af01126e0",
+    "javaWorktreeStatusEntries": 28,
+    "headAloneRepresentsFrozenSource": false
+  },
+  "source": {
+    "definition": "UTF-8 SHA-256 over sorted '<fileSha256> TAB <project-relative-path> LF' rows for all java-jmetal58/**/*.java plus pom.xml, excluding target.",
+    "fileCount": 1144,
+    "treeSha256": "e596debfce2d377c82a1b02fc7c213305244b2f13db59edd75d8f6a5b6990367",
+    "latestSourceWriteUtc": "2026-08-22T15:39:00.6985273Z"
+  },
+  "localJarCandidate": {
+    "path": "java-jmetal58/jmetal-exec/target/jmetal-exec-5.8-jar-with-dependencies.jar",
+    "sha256": "17a1ec2e50dd9080e38ee7583a102b58cb0ef6304021c991f5cce0994e982b47",
+    "bytes": 48214858,
+    "lastWriteUtc": "2026-08-22T07:22:49.8206473Z",
+    "containsDoe1Runner": true,
+    "freshAgainstCapturedSource": false,
+    "eligibility": "recorded_only_not_a_fresh_build; source is newer than this jar"
+  },
+  "remoteDoe1HeldoutArtifact": {
+    "host": "aic-inspur-home",
+    "root": "/home/inspur/aicomp/zhangbo-v35-doe1-heldout-20260822",
+    "jarSha256": "fc5fff0381ff5c200d35c16b8f310af8da796d2dc64a38962b29f641f3d29ef9",
+    "scriptSha256": "7c72c3b236e9df2df1fbae63cd94f9f6ade3de4103ae8bc78c89c72606ba628a",
+    "java": "openjdk version 11.0.27",
+    "evidence": "docs/evidence/V35-DOE1-subgroup-mixture/06-heldout-confirmation/HELDOUT_ACCEPTANCE_REPORT.md"
+  },
+  "historicalHeldoutCanonicalConfiguration": {
+    "instance": "20_5_4_1",
+    "seed": 20260901,
+    "maxFEs": 500000,
+    "mixtureHash": "7dee88952ca12071bc76ca6e110eb74dcaa03aa85a3340a6f39dbe75ec8a8c69",
+    "mechanismVectorHash": "0b26bb85320ca00145753ad1951de5a34efeefe1bfda54b195c720eb2f22b188",
+    "formalBaselineSha256": "8C2D808121E4A397A6C31FB82D440A5AB131315BBDECE1BAE0CA13F1706149D2"
+  },
+  "doe1Evidence": {
+    "completedRuns": 60,
+    "expectedRuns": 60,
+    "decision": "DOE1_HELDOUT_RETAIN_BASELINE_20_40_20_20",
+    "confirmationGate": "median Delta Cmax >= +2%",
+    "candidateResults": {"T1": 1.7236, "T2": 1.2324, "T3": 0.4419},
+    "evidenceFilesVerified": 973
+  },
+  "runtime": {
+    "localJava": "Oracle JDK 17.0.12",
+    "localJavaHomeFromP24_1": "E:\\javavava",
+    "remoteJava": "OpenJDK 11.0.27"
+  },
+  "acceptance": {
+    "formal_matrix_started": false,
+    "sampled_reproduction_accepted": false,
+    "full_reproduction_accepted": false,
+    "semanticDriftIntroducedByTrackA": false
+  }
+}

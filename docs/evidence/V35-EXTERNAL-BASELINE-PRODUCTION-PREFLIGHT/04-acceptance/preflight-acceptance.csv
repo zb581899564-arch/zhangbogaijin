@@ -1,0 +1,7 @@
+runId,algorithm,instance,seed,actualFE,frontSize,canonicalFrontHash,statusCompleted,feClosed,remainingZero,illegalZero,duplicateZero,unexplainedRepairsZero,forbiddenZero,frontNonEmpty,frontFinite,identityEventsAllTrue,allGates
+PRE20-NSGAIIF-20_2_3_1,NSGA-II-F,20_2_3_1,20260822,20000,100,5b85f3d3d403ffbd43724792e33dd783e3cab4bacab4930924d58b5fb3c789e7,true,true,true,true,true,true,true,true,true,true,true
+PRE20-NSGAIIF-50_2_3_1,NSGA-II-F,50_2_3_1,20260822,20000,100,24df9d48a3247e3df24d39ab2aafe043fa2801b6cd0a30ff33dad7b379e30a9a,true,true,true,true,true,true,true,true,true,true,true
+PRE20-NSGAIIF-100_2_4_1,NSGA-II-F,100_2_4_1,20260822,20000,100,4aa08ec613cd6acde7590b5405014530db56be5bfde67419bfeca60432b69667,true,true,true,true,true,true,true,true,true,true,true
+PRE20-SPEA2F-20_2_3_1,SPEA2-F,20_2_3_1,20260822,20000,100,2d43baff1f1f107ea8817f1ca5dd326a943c20dfcc67756b445c3286d8af36a0,true,true,true,true,true,true,true,true,true,true,true
+PRE20-SPEA2F-50_2_3_1,SPEA2-F,50_2_3_1,20260822,20000,100,d6c651f3aa9a5b1a7fa8be123cf49484480518d53943894b099fb65f5bad67d0,true,true,true,true,true,true,true,true,true,true,true
+PRE20-SPEA2F-100_2_4_1,SPEA2-F,100_2_4_1,20260822,20000,100,f9546711bd5756dae58d657be369d18c565b78c2b57bc5a65cc6dad757020736,true,true,true,true,true,true,true,true,true,true,true

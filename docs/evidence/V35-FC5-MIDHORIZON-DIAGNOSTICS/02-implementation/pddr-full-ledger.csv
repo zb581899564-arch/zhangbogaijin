@@ -1,0 +1,2 @@
+instance,seed,arm,cycle,FE,poolIndex,stableFingerprint,Cmax,TEC,TWC,source,strictNondominated,exactObjectiveDuplicate,PDDRScore,PDDRRank,selected,selectedSlot,selectedSemanticRole,poolSize,uniqueObjectiveCount,strictNdCount,cutoffRank,cutoffScore,scoreAtRank99,scoreAtRank100,scoreAtRank101
+100_5_3_1,20260901,A4,1,1023,0,FP_A4_001,815,114500,308000,parent,true,false,12.5,1,true,0,G1_CMAX,200,198,45,100,8.2,8.1,8.2,8.3

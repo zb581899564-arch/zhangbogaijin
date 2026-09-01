@@ -1,0 +1,9 @@
+﻿telemetryClass,file,columns(50k),rows(50k),bytes(50k),coversDomain,frozenByOrder
+1,telemetry-teacher-use-events.csv,43,26300,83334679,Teacher,是（7类schema之一）
+2,telemetry-teacher-concentration.csv,18,6,2263,Teacher,是
+3,telemetry-pddr-full-ledger.csv,37,1553,2855598,PDDR,是
+4,telemetry-pddr-cycle-summary.csv,19,6,2334,PDDR,是
+5,telemetry-cata-contribution-events.csv,41,1394,4606124,CA-TA,是
+6,telemetry-cata-contribution-summary.csv,23,10,3280,CA-TA,是
+7,telemetry-checkpoint-fronts.csv,24,2012,1075851,checkpoint,是
+（缺失）,（无 telemetry-cfvf-* 文件）,0,0,0,CFVF,不适用——7类schema内不存在CFVF类

@@ -1,10 +1,17 @@
 # v3.5 论文正式实验子路线图
 
+> **D-110 当前执行覆盖（2026-08-30）**：本文件保留论文实验结构与历史Stage2记录，但旧4500条
+> A0--A4矩阵不再是下一正式入口。当前必须先完成
+> [`V35_COMPETITIVE_SUPERIORITY_EXECUTION_ROADMAP.md`](V35_COMPETITIVE_SUPERIORITY_EXECUTION_ROADMAP.md)
+> 规定的 Gap Probe、单一repair family开发、DOE迁移、未污染Validation和Final Freeze。正式主消融改为
+> leave-one-component-out优先；Formal Main先45实例×10seed，是否补到20seed由功效与稳定性规则决定。
+> 任何旧manifest均不得自动恢复。
+
 版本：`1.0`  
 建立日期：`2026-08-15`  
 父路线图：[`ROADMAP.md`](ROADMAP.md)  
 来源论文：`E:\学习\eswa2026-最新李明哲第四.pdf`  
-当前状态：`planning_completed；formal_matrix_started=false`
+当前状态：`A4_NOT_PROMOTED；A2/A0 final-candidate confirmation pre-registered；formal_matrix_running=false`
 
 ## 1. 文档定位
 
@@ -17,6 +24,13 @@
 - 运行证据、失败保留、停止条件和论文结论边界。
 
 本文件不授权启动实验。任何 `500000 FE`、多实例、多种子或正式统计运行仍须用户针对相应工作包单独批准。
+
+> **D-103/D-104优先级覆盖（2026-08-25）**：本文件原有“DOE后进入A0--A4正式矩阵”的顺序已经被
+> `docs/V35_A2_A4_MULTISCALE_CONFIRMATION_PROTOCOL.md`覆盖。任何Final freeze、preflight、吞吐重验和
+> Master campaign之前，必须先完成其中预注册的A2/A4六实例、五seed确认，并按其通过/否决分支裁决。
+> 旧A0--A4 roster仅是条件性执行候选，不能因历史manifest存在而自动恢复。D-104已否决A4；下一唯一
+> 候选算法验证是预注册的[`V35_A2_FINAL_CANDIDATE_CONFIRMATION_PROTOCOL.md`](V35_A2_FINAL_CANDIDATE_CONFIRMATION_PROTOCOL.md)，
+> 即A2与A0的新实例/新seed确认。A2通过前，不得启动任何Final Freeze、吞吐或正式矩阵。
 
 旧 `docs/P9_FORMAL_EXPERIMENT_PLAN.md`、P8/P9移位实验和P25A旧压力语义结果只保留为历史记录，不得覆盖本路线图或进入当前正式参考前沿。
 
@@ -82,7 +96,8 @@ enabledMacroNeighborhoods = N1,N2,N3,N4,N5
 shadowAudit = false
 ```
 
-当前主版本候选为 `A4`；方向top-k教师池对应 `A5`，默认关闭并作为可选极值增强模块。只有新的主版本门通过后，才能把候选写成论文主算法。
+`D-104`已使A4失去主版本候选资格；方向top-k教师池对应 `A5`，继续关闭。当前唯一主候选为 `A2`，但只有
+`V35_A2_FINAL_CANDIDATE_CONFIRMATION_PROTOCOL.md`通过后才可写成论文主算法。
 
 2026-08-17起，A4进入v3.5-Final Candidate收口流水线（`V35-FC-0..FC-9`，见[`V35_P26_FINAL_CANDIDATE_PLAN.md`](V35_P26_FINAL_CANDIDATE_PLAN.md)与`docs/ROADMAP.md` D-082）：局部搜索预算（β(u)动态local FE配额）与双Q冻结策略（贡献门控软冻结ρ）分别待FC-2/FC-4实验冻结；在此之前，当前A4-PREFINAL维持gb5+LS30存档语义。2026-08-18 D-083插入`FC-TIME`时间收口阶段（见`docs/V35_FC_TIME_PLAN.md`）。本子路线图的EXP-1（主版本冻结）以FC-8四规模Champion Gate通过为前置，**且 FC-8 前须过 TIME 时间门（同机 Final/QGS ≤8× 才允许启动正式对比矩阵；>10× 继续瘦身）**；EXP-3（45×20主比较）以FC-9启动门为前置。
 
@@ -142,7 +157,7 @@ instances = 5 × 3 × 3 = 45
 ### 6.1 必须首先完成的两算法公平比较
 
 - `A0 / V35_BASELINE`：规范、确定性、无作者遗留缺陷的HMOPSO-QGS公平基线；与主算法共享FM3。
-- `V35_MAIN`：经主版本门冻结的A4或A5。当前只允许写为“候选A4”，不得提前定名为最终FULL。
+- `V35_MAIN`：经主版本门冻结的A2。当前仅允许写为“候选A2”，不得提前写成最终算法。
 
 `A0_AUTHOR_DIAGNOSTIC`不得进入正式前沿、指标、统计或论文结论。
 
@@ -434,3 +449,26 @@ full_reproduction_accepted=false
 ```
 
 当前只完成实验协议文档。下一可申请工作包是 `EXP-1`：在BAL全开放、压力分类仅诊断、Shift关闭的当前安全语义下冻结主版本。未经用户明确批准，不启动EXP-1及任何500000 FE运行。
+
+## 19. Stage2 后续人工批准覆盖（2026-08-23）
+
+本节是后续用户对 V35 FINAL Stage2 的明确批准，覆盖本文件中“FC-8/FC-9/EXP-1 仍是启动前置”
+的历史表述，但不删除历史路线及其证据。当前状态改为：
+
+```text
+FC-8 Champion Gate = SUPERSEDED_BY_FC6_AND_DOE1_EVIDENCE
+FC-9 before formal experiment = SUPERSEDED_BY_FC6_AND_DOE1_EVIDENCE
+FINAL_SEARCH_MIXTURE = [20,40,20,20]
+FINAL_SOURCE_FREEZE = ACCEPTED
+FORMAL_MANIFEST_FREEZE = ACCEPTED (45 instances, 20 seeds, 900 shared snapshots)
+A0_A4_FINAL_SEMANTICS = ACCEPTED
+```
+
+Stage2 的唯一 Master roster 为 A0--A4；A0/A4 raw runs 同时作为主两算法比较输入，不能重复运行。
+新的自动启动门不再是 FC-8/FC-9，而是 `FINAL_SOURCE_FREEZE`、`FORMAL_MANIFEST_FREEZE`、
+`A0_A4_PRODUCTION_PREFLIGHT`、`FORMAL_MAX_PARALLEL` 与 A0--A4语义身份复核。
+
+截至本文件更新时，生产预检仍 `BLOCKED`：冻结 A4 在非正式20k诊断中安全结束于
+`actualFE=decoderCalls=15258`，不满足 Stage2 临时指定的 `requestedFE=actualFE`。在用户明确裁决
+精确FE政策前，禁止启动500k或4500-run Master矩阵；不得修改算法/参数/Q/LS时序来跨越该门。见
+`docs/evidence/V35-PRODUCTION-PREFLIGHT/FINAL_GATE3_EXACT_FE_REPORT.md`。

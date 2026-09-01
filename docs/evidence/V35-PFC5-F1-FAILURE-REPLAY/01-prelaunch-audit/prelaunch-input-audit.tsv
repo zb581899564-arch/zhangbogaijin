@@ -1,0 +1,34 @@
+﻿checkId	item	expected	actual	source	verdict
+C01	phase0Evidence	139/139 matched, 0 missing, 0 mismatch	139/139 matched, 0 missing, 0 mismatch	01-prelaunch-audit/phase0-evidence-reverify.tsv	PASS
+C02	formalAlgorithmJarSha256	8dad8f40266feeaa4cdb9b47dbe4e342d9064847df32c7f2933149b9b6bad8b9	8dad8f40266feeaa4cdb9b47dbe4e342d9064847df32c7f2933149b9b6bad8b9	sha256sum _isolated-v35-final-doe1-freeze-20260823/java-jmetal58/jmetal-exec/target/jmetal-exec-5.8-jar-with-dependencies.jar	PASS
+C03	armProfileSha256	5b3cc542dafc22c1a32f1c0994bae25ffef040f6bfdf2aa6090a42f86cfd79d1	5b3cc542dafc22c1a32f1c0994bae25ffef040f6bfdf2aa6090a42f86cfd79d1	远端 input/profile-registry.csv A4,20260901,100,500000 行	PASS
+C04	runtimeConfigurationSha256	8c68f2a5c3ada79cefe0f8900465e6f503cf8295d1810ceac6aaec5f484b44b3	8c68f2a5c3ada79cefe0f8900465e6f503cf8295d1810ceac6aaec5f484b44b3	远端 input/profile-registry.csv；待S4零FE复算交叉验证	PASS_PENDING_CROSSCHECK
+C05	instanceSha256	2e88fa97a6f84af347a4603f04c387a65c8f9891bcab8ac6b70fdec622ea35cf	2e88fa97a6f84af347a4603f04c387a65c8f9891bcab8ac6b70fdec622ea35cf	sha256sum java-jmetal58/EADHFSP/100_5_3_1.txt	PASS
+C06	setupFileSha256 (SUT)	4b49b780f6ee887099574f9008bebdc106e9cf5808a11b5af97a5ee4512c1d90	4b49b780f6ee887099574f9008bebdc106e9cf5808a11b5af97a5ee4512c1d90	sha256sum java-jmetal58/instance-extensions/v1/100_5_3_1.setup.txt	PASS
+C07	setupConfigurationSha256	E7E9FF7F646351FECB5801EC2EC177CEE2C00775173E4DE6841577695E8E58E1	E7E9FF7F646351FECB5801EC2EC177CEE2C00775173E4DE6841577695E8E58E1	snapshot 头部 SUTSHA256 + 历史 provenance.properties	PASS
+C08	fatigueFileSha256	cf611bfb3690d50f1b4dc8d6d6631dd9d04546d3ca4c4020cc9017475d4bf457	cf611bfb3690d50f1b4dc8d6d6631dd9d04546d3ca4c4020cc9017475d4bf457	sha256sum java-jmetal58/fatigue-parameters/v1/100_5_3_1.fatigue.txt	PASS
+C09	fatigueConfigurationSha256	81CAD959F27E461E41882E7353AC5F23574FA6DC50637F59E281B1E8788967A1	81CAD959F27E461E41882E7353AC5F23574FA6DC50637F59E281B1E8788967A1	snapshot 头部 fatigueParameterSHA256 + 历史 provenance.properties	PASS
+C10	problemConfigurationSha256	892c7c3feddd09848bf35bac1a90a529153ad77b3cb712a36f357cd214cc79f4	892c7c3feddd09848bf35bac1a90a529153ad77b3cb712a36f357cd214cc79f4	snapshot 头部 problemConfigurationSHA256 + 历史 provenance.properties	PASS
+C11	historicalSnapshotSha256 (physical)	84d845233e332a6612e5dfe93c97cbbeef40c4ee05766cbfd0e9446bd3043769	84d845233e332a6612e5dfe93c97cbbeef40c4ee05766cbfd0e9446bd3043769	sha256sum docs/evidence/V35-PFC5-PHASE0/fetched-remote/snapshots/100_5_3_1/seed-20260901.fourvec	PASS
+C12	initialPopulationHashV35 (logical)	179a82a3825566380ab6798aa898002d31565dad9d65802e57b295c2a4294c2d	179a82a3825566380ab6798aa898002d31565dad9d65802e57b295c2a4294c2d	snapshot 头部 initialPopulationSHA256；运行期由 launcher requireEquals 强制复核	PASS
+C13	initialPopulationHashP8 (logical)	7c6f8b425f2781653ce9705b82050652f063b461b24c0f93d9486e2c686ca2d3	7c6f8b425f2781653ce9705b82050652f063b461b24c0f93d9486e2c686ca2d3	snapshot 头部 initialPopulationP8SHA256；运行期由 launcher requireEquals 强制复核	PASS
+C14	failureReplayReferenceContractSha256	ecdc5589ab4d36a028a0d53e9fcdbfc40ee1e04864df929c2e5c035b4481235f	ecdc5589ab4d36a028a0d53e9fcdbfc40ee1e04864df929c2e5c035b4481235f	sha256sum 04-reference-contract/reference-contract.properties	PASS
+C15	pfrefCanonicalSha256	4dc85dd4fa3c7824ed2bf302b648355df796be7f15375db84047d23c4de683da	4dc85dd4fa3c7824ed2bf302b648355df796be7f15375db84047d23c4de683da	sha256sum 04-reference-contract/pfref-100_5_3_1.csv	PASS
+C16	launcherBytecodeSha256 (Runner)	3f35a72aa84b993081b1512005b930610e678a6d5dc4b24f6207ceb3c0eb45c1	3f35a72aa84b993081b1512005b930610e678a6d5dc4b24f6207ceb3c0eb45c1	sha256sum docs/evidence/V35-STAGE2-MASTER-V2/build/classes/.../ZhangBoV35FormalAblationArmRunner.class	PASS
+C17	launcherBytecodeSha256 (Budget)	998187adc388364773c52dedce90e2150bb3cd3ab54f939aa258dd95e6d3ae7c	998187adc388364773c52dedce90e2150bb3cd3ab54f939aa258dd95e6d3ae7c	sha256sum ...ZhangBoV35FormalAblationArmRunner$Budget.class	PASS
+C18	launcherBytecodeMajorVersion	52	52	od -j6 -N2 读取 class 魔数后 2 字节；冻结 Jar 内 V35FairRunner/V35FinalAblationProfile 同为 52	PASS
+C19	seed / population / requestedMaxFEs	20260901 / 100 / 500000	20260901 / 100 / 500000	06-f1-preregistration/f1-run-contract.properties + 历史 plan	PASS
+C20	telemetry	OFF	OFF (structural)	冻结 Jar 内 V35MidHorizonTelemetry / V35CheckpointFrontObserver / V35FullPddrLedgerObserver / V35TeacherConcentrationObserver / V35CaTaContributionObserver 命中数均为 0；launcher 调用 V35FairRunner.run 9 参重载，无 telemetry 参数	PASS
+C21	remoteFreeDisk	充足	249G 可用（/ 879G 用 586G）	远端 df -h /	PASS
+C22	remoteJvmVersion	可加载 major 52 字节码	openjdk version "11.0.27" 2025-04-15（/usr/bin/java，与历史运行同一默认 java）	远端 java -version	PASS
+C23	remoteJvmArgs	-Xmx4g	-Xmx4g（不附加任何 GC/编码/locale 参数）	启动脚本固定；历史运行同	PASS
+C24	remoteCpuAffinity	明确绑定且与他人任务不重叠	22-23（与历史 A4 500k 运行同一 cpuSet；同属 NUMA node0 = 0-7,16-23）	远端 lscpu + ps 占用核查	PASS
+C25	remoteConcurrentJavaProcesses	0	0	远端 pgrep -c java	PASS
+C26	remoteConcurrentExperimentProcesses	0	0	远端 pgrep -af "jmetal-exec|V35MidHorizon|ZhangBoV35"	PASS
+C27	remoteCores22-23Occupancy	无计算负载	仅内核线程与 0.0% 空闲守护进程（sshd/gsd-*/gvfs/colord/acpid 等）；整机 loadavg=0.37 0.09 0.02，最重进程 ToDesk 1.9% 位于 core 25	远端 ps -eo pid,psr,pcpu,comm	PASS
+C28	remoteOutputDirEmpty	不存在（launcher 拒绝覆盖已存在目录）	不存在	远端 test -e /home/inspur/aicomp/zhangbo-v35-pfc5-f1-20260829	PASS
+C29	remoteSameRunIdResult	0	0	远端 find /home/inspur/aicomp -maxdepth 6 -type d -name "V35PFC5F1-*"	PASS
+C30	remoteSameNameRunningProcess	0	0	远端 pgrep -af "ZhangBoV35FormalAblationArmRunner"	PASS
+C31	remoteHostIdentity	训练机 inspur-NP5570M5	inspur-NP5570M5（Intel Xeon Silver 4215R @3.20GHz，32 逻辑核，2 NUMA 节点）	远端 hostname/lscpu	PASS
+C32	remoteMemory	充足	可用 117Gi（总 125Gi）	远端 free -g	PASS
+C33	foreignTmuxSessions	不得触碰	fc6-stage1..4（2026-08-19 建立）已登记；本任务不使用 tmux	远端 tmux ls	PASS

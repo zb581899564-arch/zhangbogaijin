@@ -1,0 +1,100 @@
+{
+  "contractId": "V35-SOURCE-ATTRIBUTION-500K-PHASEA0-PERFORMANCE-DIVERGENCE-THRESHOLDS-V1",
+  "frozenDate": "2026-08-31",
+  "frozenAtPhaseAFE": 0,
+  "authority": {
+    "plan": "docs/V35_SOURCE_ATTRIBUTION_500K_PHASE_A_PLAN.md",
+    "section": "3.8",
+    "owner": "Agent B (threshold & metric contract)",
+    "scope": "coverage divergence 时间 t_div 的指标合同 + 历史材料充足性判定 + 阈值冻结"
+  },
+  "amendmentPolicy": "THRESHOLDS_FROZEN_BEFORE_RUN — 首个评估候选产生后禁止修改本文件任何字段；运行后禁止改阈值。",
+  "tDivSemantics": {
+    "definition": "t_div 是解释性（explanatory）divergence 时间：HARD 相对 NORMAL 在 decision-front 性能上『最早同时明显落后且连续两个 checkpoint 保持』的 25k nominal checkpoint 序号",
+    "notCausalOnset": "t_div 不得表述或用作真正因果 onset；它与来源贡献窗口异常的先后关系只用于 G1/G3 的『不晚于 t_div』时序判据",
+    "unit": "checkpoint 序号 i（i = 1..20，对应 nominal FE = i*25000）；报告时同时给出对应 nominal FE"
+  },
+  "checkpointGrid": {
+    "stepNominalFE": 25000,
+    "count": 20,
+    "checkpoints": [25000, 50000, 75000, 100000, 125000, 150000, 175000, 200000, 225000, 250000, 275000, 300000, 325000, 350000, 375000, 400000, 425000, 450000, 475000, 500000],
+    "baseline": "i=1 的差分基线为 B_0（初始种群 decision front，nominal FE=0 时刻 phase-consistent snapshot）；B_0 缺失 → lag(1)=false（确定性预冻结规则）",
+    "data": "decision-front-trajectory.csv（plan §9 交付物）或 checkpoint snapshot 的 decision front，逐 checkpoint 记录 nominal 与 actualFE"
+  },
+  "frontAndMetricContract": {
+    "front": "每 checkpoint 的 decision front（严格 ND，口径同 source-attribution-thresholds.json 的 ndDefinition：fc6 raw 去重 → raw 严格 ND）",
+    "normalization": "RUN 级统一参考（与窗口级锚不同）：该实例 Reference Contract（plan §3.6，禁止重建）的 PFref_terminal，以其 raw ideal/nadir 归一化（不 clamp，fc6.normalize clamp=False）；全部 checkpoint 共用同一参考（02-front-coverage §3 登记的统一参考选择）",
+    "hv": "fc6.hypervolume，参考点 (1.1, 1.1, 1.1)，盒外坐标收敛到盒边界属 HV 定义；HV 可 >1",
+    "igd": "fc6.igd（归一化空间欧氏）：IGD(A,R) = (1/|R|) Σ_{r∈R} min_{a∈A} ||r-a||_2；A = 归一化后 decision front 严格 ND 点；R = 归一化后完整 PFref_terminal（r_raw = fc6.nondominated(unique(PFref))，用其自身 ideal/nadir 归一化）",
+    "perInstanceReference": "HARD 与 NORMAL 各用其实例自身的 PFref（逐目标归一化不改变支配关系与 IGD 的实例内可比性）；deficit 是跨实例、各自归一化空间内的相对量比较",
+    "noRebuild": "HV/IGD/ND 实现一律 import scripts/fc6_metrics.py，禁止重建（plan §3.6）"
+  },
+  "metrics": {
+    "hvProgress_i": {
+      "formula": "hvProgress(i) = 100 * (HV_i - HV_{i-1}) / max(HV_{i-1}, 1e-12)",
+      "baseline": "HV_0 = B_0 decision front 在 run 级归一化下的 HV",
+      "semantics": "decision-front HV 的相对窗口进度（%）；负值 = HV 倒退",
+      "epsilon": 1e-12
+    },
+    "igdRelImp_i": {
+      "formula": "igdRelImp(i) = 100 * (IGD_{i-1} - IGD_i) / max(IGD_{i-1}, 1e-12)",
+      "baseline": "IGD_0 = B_0 decision front 对同一 PFref 的 IGD",
+      "semantics": "IGD 相对改进（%）；负值 = IGD 恶化",
+      "epsilon": 1e-12
+    }
+  },
+  "deficits": {
+    "pairing": "hard = 100_5_3_1/20260901/A4/500k；normal = NORMAL Control Resolver（plan §3.1）冻结选出的实例；同 nominal checkpoint 序号一一配对",
+    "signConvention": "deficitHV(i) = hvProgress_normal(i) - hvProgress_hard(i)；deficitIGD(i) = igdRelImp_normal(i) - igdRelImp_hard(i)；正值 = hard 更差（与 source-attribution-thresholds.json 的符号冻结一致）",
+    "thresholdUnits": "percentage points（百分点）：两个相对百分数之差，非相对百分比"
+  },
+  "tDivRule": {
+    "lagCondition": "lag(i) := deficitHV(i) >= 1.0 AND deficitIGD(i) >= 10.0",
+    "consecutiveRequirement": "连续两个 checkpoint：lag(i) 且 lag(i+1)",
+    "t_div": "t_div = min{ i : lag(i) 且 lag(i+1) }，取该对中较早的 checkpoint i",
+    "notReached": "若不存在这样的 i，登记 t_div=NOT_REACHED（其本身是登记结果；G1/G3 的『不晚于 t_div』条款按最终报告规则裁决，不属本文件范围）",
+    "missingCheckpoint": "checkpoint 缺失（unobservable，plan §4 hardGate15 语义）→ 计算网格取两侧 nominalFE 的并集（去 0 基线），任一侧缺失或上一网格点缺失的 checkpoint 记 lag(i)=false 且明细标 missing，确定性打断连续对",
+    "missingBaseline": "B_0 缺失 → lag(1)=false",
+    "thresholdComparisonEpsilon": 1e-9,
+    "thresholdComparisonNote": "deficit 与阈值的比较采用 deficit >= threshold - 1e-9，仅吸收浮点 1-ulp 误差（例如数学上恰为 10.0pp 的差值在 IEEE754 下可能算得 9.999999999999998）；不改变阈值本身",
+    "noRounding": "判据用全精度浮点计算；报告值四舍五入仅用于展示"
+  },
+  "historicalSufficiency": {
+    "question": "是否存在 500k A4 HARD/NORMAL 成对 decision-front 逐 25k checkpoint 轨迹，足以从历史推导 t_div 阈值",
+    "sufficient": false,
+    "verdict": "FALLBACK_ACTIVATED",
+    "searchedEvidence": [
+      "H1 docs/evidence/V35-PFC5-PHASE0/fetched-remote/100_5_3_1/seed-{20260901..20260905}/{A2,A4}/：500k（requestedMaxFE=500000, actualFE=500000, EXACT_MAX_FE, frozenJarSha256=8dad8f40…），HARD 侧历史 500k 复现材料，但每 run 仅终态 front.csv 等 10 个文件，无 checkpoints/ 目录、无逐 25k 前沿——无轨迹",
+      "H2 docs/evidence/V35-PFC5-GAP-PROBE/04-v2-remote-500k-runs/sync/run-GAP500-{A0,A4,NSGA2F,SPEA2F}-*：500k（EXACT_MAX_FE），仅终态 front.csv，无 checkpoints；normal 侧实例 50_2_3_1 为 50-job，不是 100-job NORMAL",
+      "H3 全库检索（docs/evidence 下 find/grep）：不存在任何 100-job NORMAL 候选实例（如 100_2_4_1）的 500k A4 运行；100_2_4_1 仅有外部基线 preflight（NSGA2F/SPEA2F）与 20k gate 材料",
+      "H4 其余 500k 材料（P9-single-500k / P9-additional-five-seed-500k / P9-current-shift-decoder-timing-500k / V35-P21/runs/*-500k / P22 / P23 / P25E 500k-pair）：instance=20_2_3_1（20-job）或 10-job 或外部算法对照（HMOPSO_QGS_F vs ZHANGBO_A4），非 100-job A4 HARD/NORMAL 成对轨迹，且属旧管线世代",
+      "H5 唯一具备 25k 粒度 decision-front checkpoint 的历史材料：V35-FC5-MIDHORIZON-250K（checkpoint-metrics.csv，250k 预算，10 个名义 checkpoint）与 V3 GAPLSRC 100k（checkpoints/ 25k 粒度）——预算均非 500k、无 NORMAL 500k 成对、无法在 25k×500k 网格上成对推导"
+    ],
+    "conclusion": "历史材料不足以从数据推导 t_div 阈值；按 plan §3.8 冻结 fallback 定义并激活"
+  },
+  "thresholds": {
+    "mode": "FALLBACK",
+    "fallbackReason": "historicalSufficiency.sufficient=false（plan §3.8：历史不足时 fallback）",
+    "hvProgressDeficitPp": 1.0,
+    "igdRelativeImprovementDeficitPp": 10.0,
+    "consecutiveCheckpoints": 2,
+    "expression": "t_div = 最早的 i 使 deficitHV(i) >= 1.0pp 且 deficitIGD(i) >= 10.0pp 且 lag(i+1) 同样成立（详见 tDivRule）"
+  },
+  "recompute": {
+    "script": "docs/evidence/V35-SOURCE-ATTRIBUTION-500K/00-preregistration/threshold_recompute.py",
+    "modes": {
+      "--audit": "重算历史充足性判定（H1–H5 的文件级证据）并与本文件冻结值比对（只读）",
+      "--selftest": "参考实现行序无关性与 HV/IGD 健全性自检",
+      "--divergence": "运行后 t_div 参考实现（输入：两 run 的 decision-front-trajectory.csv，含 checkpoint nominalFE/HV/IGD 列，或 checkpoint front 文件 + 各自 PFref）"
+    },
+    "determinism": "checkpoint 按 nominalFE 排序后计算，不依赖 CSV 行序；hvProgress/igdRelImp 分母 epsilon=1e-12",
+    "registeredInputs": [
+      "docs/V35_SOURCE_ATTRIBUTION_500K_PHASE_A_PLAN.md",
+      "scripts/fc6_metrics.py",
+      "docs/evidence/V35-FC5-MIDHORIZON-250K/01-root-cause-analysis/remote-results/checkpoint-metrics.csv",
+      "docs/evidence/V35-PFC5-PHASE0/fetched-remote/100_5_3_1/seed-20260901/A4/budget-termination.properties",
+      "docs/evidence/V35-PFC5-GAP-PROBE/04-v2-remote-500k-runs/sync/run-GAP500-A4-100_5_3_1-20260906/budget-termination.properties",
+      "docs/evidence/V35-GAP-SOURCE-CONTRIBUTION-DIAGNOSTICS-V1/04-remote-100k/sync/seed-20260919/results/run-GAPLSRC-C0-100_5_3_1-20260919/checkpoints/"
+    ]
+  }
+}

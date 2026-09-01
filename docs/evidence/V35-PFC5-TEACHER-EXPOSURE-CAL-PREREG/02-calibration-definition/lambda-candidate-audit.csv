@@ -1,0 +1,19 @@
+﻿exposureNormalization,exposureMin,exposureMax,maxDeltaExposure,baseLossPairGapMedian,lambda,maxPenaltyDifferential,canFlipMedianGap,lambdaNeededForMedianGap,verdict
+count/totalCount,0.00338983,0.01355932,0.01016949,0.255070,0.05,0.00050847,no,25.08,REJECTED_NO_LEVER
+count/totalCount,0.00338983,0.01355932,0.01016949,0.255070,0.15,0.00152542,no,25.08,REJECTED_NO_LEVER
+count/totalCount,0.00338983,0.01355932,0.01016949,0.255070,0.30,0.00305085,no,25.08,REJECTED_NO_LEVER
+count/maxCount,0.00000000,1.00000000,0.75000000,0.255070,0.05,0.03750000,only near-ties,n/a,ADOPTED_C1_LIKE
+count/maxCount,0.00000000,1.00000000,0.75000000,0.255070,0.15,0.11250000,small-to-mid gaps,n/a,ADOPTED_C1_LIKE
+count/maxCount,0.00000000,1.00000000,0.75000000,0.255070,0.30,0.22500000,up to near-median gaps,n/a,ADOPTED_C1_LIKE
+structureCeiling,na,na,na,na,na,0.24583333,na,na,MAX_CHANGEABLE_FRACTION_OF_QG_SELECTIONS
+structureCeilingAll,na,na,na,na,na,0.01121673,na,na,MAX_CHANGEABLE_FRACTION_OF_ALL_TEACHER_SELECTIONS
+targetC1,na,na,na,na,na,0.05-0.15,na,na,REACHABLE
+targetC2,na,na,na,na,na,0.15-0.35,na,na,PARTIALLY_REACHABLE_UP_TO_0.2458
+targetC3,na,na,na,na,na,0.35-0.60,na,na,UNREACHABLE
+observedConcentrationQG_ALL,uniq=276,top1=0.0558,top5=0.2167,Hn=0.8347,na,na,na,na,REFERENCE
+observedConcentrationQG_TOURNAMENT,uniq=237,top1=0.0136,top5=0.0610,Hn=0.9850,na,na,na,na,TOURNAMENT_PATH_ALREADY_DISPERSED
+observedConcentrationQG_HISTORICAL_CACHE,uniq=58,top1=0.0891,top5=0.3709,Hn=0.8593,na,na,na,na,CACHE_PATH_CONCENTRATED_BUT_UNREACHABLE
+observedConcentrationQG_PREVIOUS_CACHE,uniq=88,top1=0.0789,top5=0.2789,Hn=0.8744,na,na,na,na,CACHE_PATH_CONCENTRATED_BUT_UNREACHABLE
+observedDirectionalRegret,min=0,p25=0.135030,median=0.255070,p75=0.382329,max=0.848098,na,na,na,BASE_LOSS_GAP_SCALE_PROXY
+observedCandidateViewSize,min=7,p25=54,median=147,p75=187,max=254,na,na,na,POOL_SIZE
+dataSource,telemetry-teacher-use-events.csv,26300 rows,QG=1200,QP=25100,tournament=295,na,na,na,EXISTING_50K_ON_TELEMETRY_100_5_3_1_seed20260901_A4

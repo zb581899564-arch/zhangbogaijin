@@ -1,0 +1,17 @@
+﻿instance,field,refValue,c0Value,equal
+50_2_3_1,frontCsvSha256,a96122f3e543b4f5...,a96122f3e543b4f5...,True
+50_2_3_1,budget-termination.properties,fileSha256,5FA91761BD8A25AC...,5FA91761BD8A25AC...,True
+50_2_3_1,initial-population.sha256,fileSha256,01D0ED6C6235DB73...,01D0ED6C6235DB73...,True
+50_2_3_1,mechanismSummary.algorithmRunNanos,11216055977,11158439834,wallClockOnly=True
+50_2_3_1,mechanismSummary.baseDecodeNanos,1714811806,1848542457,wallClockOnly=True
+50_2_3_1,mechanismSummary.decoderTotalNanos,1716113620,1849852658,wallClockOnly=True
+50_2_3_1,mechanismSummary.frameworkOverheadNanos,1301814,1310201,wallClockOnly=True
+50_2_3_1,mechanismSummaryBehaviorFieldDiffCount,0,0,MUST_BE_ZERO
+100_5_3_1,frontCsvSha256,4bfa27d9452083fb...,4bfa27d9452083fb...,True
+100_5_3_1,budget-termination.properties,fileSha256,7D2538F9D903A59C...,7D2538F9D903A59C...,True
+100_5_3_1,initial-population.sha256,fileSha256,DE8F48B86B8294A5...,DE8F48B86B8294A5...,True
+100_5_3_1,mechanismSummary.algorithmRunNanos,19076948031,16904852398,wallClockOnly=True
+100_5_3_1,mechanismSummary.baseDecodeNanos,8080438991,5937681057,wallClockOnly=True
+100_5_3_1,mechanismSummary.decoderTotalNanos,8081999830,5939213118,wallClockOnly=True
+100_5_3_1,mechanismSummary.frameworkOverheadNanos,1560839,1532061,wallClockOnly=True
+100_5_3_1,mechanismSummaryBehaviorFieldDiffCount,0,0,MUST_BE_ZERO

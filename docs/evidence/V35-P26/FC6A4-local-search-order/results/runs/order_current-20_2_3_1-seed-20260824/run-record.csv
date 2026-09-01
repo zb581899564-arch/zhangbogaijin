@@ -1,0 +1,2 @@
+runId,phase,instance,seed,status,FE,frontSize,initialPopulationHash,algorithmRunNanos
+order_current-20_2_3_1-seed-20260824,ORDER_CURRENT,20_2_3_1,20260824,COMPLETED,500000,752,91439f037899eed0654b33e964f6a08baba9abd1e33003c5678d120700711061,328559257197

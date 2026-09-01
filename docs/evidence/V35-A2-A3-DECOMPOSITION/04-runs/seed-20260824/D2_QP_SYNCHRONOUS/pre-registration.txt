@@ -1,0 +1,11 @@
+workPackage=V35-A3-D
+arm=D2_QP_SYNCHRONOUS
+instance=20_2_3_1
+seed=20260824
+population=100
+maxFEs=50000
+profileSha256=56e8d769e0e3390da723161fa32a5485a8d79c11e6169ebb3074a8e2036c7b60
+commonBoundary=FM3;ShiftMode.NONE;singleFamily;sequenceIndependentSUT;mixture=20/40/20/20;PDDR=GLOBAL_ORIGINAL;LS=CATA_THEN_INHERITED;teacherPool=OFF
+notDoe=true
+notFormalAblation=true
+formalJarModified=false

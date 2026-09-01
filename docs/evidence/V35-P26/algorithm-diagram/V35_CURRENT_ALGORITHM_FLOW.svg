@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1320" viewBox="0 0 2400 1320">
+  <defs>
+    <linearGradient id="pop" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#dbeafe"/><stop offset="1" stop-color="#9bbcf4"/>
+    </linearGradient>
+    <linearGradient id="global" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#fee2e2"/><stop offset="1" stop-color="#fca5a5"/>
+    </linearGradient>
+    <linearGradient id="local" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/><stop offset="1" stop-color="#fed7aa"/>
+    </linearGradient>
+    <linearGradient id="next" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ede9fe"/><stop offset="1" stop-color="#c4b5fd"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#ed8a24"/>
+    </marker>
+    <marker id="blueArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#4778bb"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#64748b" flood-opacity="0.18"/>
+    </filter>
+    <style>
+      .title{font:700 34px Arial,Helvetica,sans-serif;fill:#1f2937}
+      .stage{font:700 28px Arial,Helvetica,sans-serif;fill:#111827}
+      .head{font:700 21px Arial,Helvetica,sans-serif;fill:#111827}
+      .body{font:400 18px Arial,Helvetica,sans-serif;fill:#1f2937}
+      .small{font:400 15px Arial,Helvetica,sans-serif;fill:#374151}
+      .tiny{font:400 13px Arial,Helvetica,sans-serif;fill:#4b5563}
+      .label{font:700 17px Arial,Helvetica,sans-serif;fill:#111827}
+      .white{fill:#fff}
+      .box{stroke:#64748b;stroke-width:2}
+      .dashed{fill:#fff;stroke:#64748b;stroke-width:2;stroke-dasharray:9 7}
+      .orange{stroke:#ed8a24;stroke-width:8;fill:none;marker-end:url(#arrow)}
+      .blue{stroke:#4778bb;stroke-width:4;fill:none;marker-end:url(#blueArrow)}
+    </style>
+  </defs>
+
+  <rect width="2400" height="1320" fill="#ffffff"/>
+  <path d="M35 78 H2365 M35 1242 H2365" stroke="#d1d5db" stroke-width="1" stroke-dasharray="2 9"/>
+  <path d="M700 95 V1215 M1510 95 V1215" stroke="#d1d5db" stroke-width="1" stroke-dasharray="2 9"/>
+
+  <text x="1200" y="48" text-anchor="middle" class="title">V35-FC6 ZhangBo HMOPSO-QGS: current algorithm flow</text>
+  <text x="1200" y="77" text-anchor="middle" class="small">FM3 fatigue decoding · ShiftMode = NONE · single-family / sequence-independent SUT · objectives = [0,1,6] = [Cmax, TEC, TWC]</text>
+
+  <text x="330" y="130" text-anchor="middle" class="stage">generation t</text>
+  <text x="1100" y="130" text-anchor="middle" class="stage">teacher-guided offspring</text>
+  <text x="1940" y="130" text-anchor="middle" class="stage">selection and generation t + 1</text>
+
+  <!-- Generation t population -->
+  <rect x="130" y="175" width="400" height="445" rx="3" fill="url(#pop)" class="box" filter="url(#shadow)"/>
+  <rect x="130" y="175" width="400" height="58" fill="#82a9ed" opacity="0.78"/>
+  <text x="330" y="211" text-anchor="middle" class="head">evaluated population P(t)</text>
+  <line x1="130" y1="288" x2="530" y2="288" stroke="#64748b"/>
+  <line x1="130" y1="402" x2="530" y2="402" stroke="#64748b"/>
+  <line x1="130" y1="516" x2="530" y2="516" stroke="#64748b"/>
+  <text x="330" y="270" text-anchor="middle" class="label">G1_CMAX</text>
+  <text x="330" y="326" text-anchor="middle" class="small">Cmax direction</text>
+  <text x="330" y="384" text-anchor="middle" class="label">G4_BALANCED</text>
+  <text x="330" y="440" text-anchor="middle" class="small">balanced / PDDR direction</text>
+  <text x="330" y="498" text-anchor="middle" class="label">G2_TEC · G3_TWC</text>
+  <text x="330" y="552" text-anchor="middle" class="small">two boundary directions</text>
+  <text x="330" y="592" text-anchor="middle" class="tiny">four physical slots are retained; roles are semantic</text>
+
+  <rect x="130" y="670" width="400" height="170" rx="3" fill="#fed7aa" class="box" filter="url(#shadow)"/>
+  <text x="330" y="715" text-anchor="middle" class="head">lineage archive PA(t)</text>
+  <text x="330" y="751" text-anchor="middle" class="body">capacity L = 6 · pbest memory</text>
+  <text x="330" y="783" text-anchor="middle" class="body">only evaluated same-lineage candidates</text>
+  <text x="330" y="815" text-anchor="middle" class="small">archive → Qp personal leader</text>
+
+  <path d="M575 300 C620 300 620 300 665 300" class="orange"/>
+  <text x="620" y="270" text-anchor="middle" class="body">freeze evaluated</text>
+  <text x="620" y="292" text-anchor="middle" class="body">social snapshot</text>
+  <path d="M575 680 C620 680 620 680 665 680" class="blue"/>
+  <text x="620" y="650" text-anchor="middle" class="small">personal memory</text>
+
+  <!-- Teacher and update middle -->
+  <rect x="760" y="170" width="650" height="155" rx="12" fill="#eff6ff" stroke="#4778bb" stroke-width="3"/>
+  <text x="1085" y="205" text-anchor="middle" class="head">social / cognitive guidance</text>
+  <text x="790" y="244" class="body">DSCR: sanitize Qg previous + historical cache</text>
+  <text x="790" y="274" class="body">Qg: KEEP / HISTORICAL / seeded tournament</text>
+  <text x="790" y="304" class="body">Qp: KEEP / DIRECTIONAL / EPSILON / COMPLEMENTARY</text>
+
+  <rect x="760" y="360" width="650" height="190" rx="12" fill="#fef2f2" stroke="#d96666" stroke-width="3"/>
+  <text x="1085" y="398" text-anchor="middle" class="head">CFVF full-vector update</text>
+  <text x="790" y="435" class="body">identity-aligned JS / FA / MA / WA actions</text>
+  <text x="790" y="466" class="body">FMW · MW · M · W conflict resolution</text>
+  <text x="790" y="497" class="body">one global offspring per particle</text>
+  <text x="790" y="528" class="small">resource package remains aligned with job identity</text>
+
+  <path d="M1085 325 V355" class="orange"/>
+  <text x="1125" y="344" class="small">leaders</text>
+  <rect x="760" y="590" width="650" height="190" rx="12" fill="#fefce8" stroke="#d2b548" stroke-width="3"/>
+  <text x="1085" y="628" text-anchor="middle" class="head">FM3 canonical fatigue decoder</text>
+  <text x="790" y="665" class="body">JS/FA → job and factory identity</text>
+  <text x="790" y="696" class="body">MA/WA first-stage identity mapping</text>
+  <text x="790" y="727" class="body">ECT/FIFO/FAM + machine/worker availability</text>
+  <text x="790" y="758" class="small">PT0 + SET0 → fatigue recovery → duration feedback → objectives</text>
+  <path d="M1085 550 V585" class="orange"/>
+  <text x="1125" y="575" class="small">candidate</text>
+
+  <rect x="760" y="820" width="650" height="115" rx="12" fill="#e0f2fe" stroke="#3b82b6" stroke-width="2"/>
+  <text x="1085" y="855" text-anchor="middle" class="head">one complete evaluation + audit record</text>
+  <text x="1085" y="891" text-anchor="middle" class="body">FE counted once · Qg/Qp reward only reads global offspring</text>
+  <text x="1085" y="917" text-anchor="middle" class="small">Cmax audit / module timing / provenance hashes</text>
+  <path d="M1085 780 V815" class="orange"/>
+
+  <!-- right side local and PDDR -->
+  <rect x="1560" y="170" width="700" height="220" rx="12" fill="url(#local)" class="box" filter="url(#shadow)"/>
+  <text x="1910" y="208" text-anchor="middle" class="head">CA-TA-Lite local search</text>
+  <text x="1590" y="246" class="body">24 contexts: 4 semantic roles × 6 bottlenecks</text>
+  <text x="1590" y="278" class="body">N1 critical reorder · N2 factory reallocation</text>
+  <text x="1590" y="310" class="body">N3 joint resource · N4 recovery window</text>
+  <text x="1590" y="342" class="body">N5 light mixed action</text>
+  <text x="1590" y="374" class="small">Test all valid actions → Apply one candidate → local FE</text>
+
+  <rect x="1560" y="430" width="700" height="180" rx="12" fill="#fff7ed" stroke="#d97706" stroke-width="3"/>
+  <text x="1910" y="468" text-anchor="middle" class="head">inherited local search</text>
+  <text x="1590" y="506" class="body">inter-factory critical exchange / insertion</text>
+  <text x="1590" y="538" class="body">fixed O1–O9 neighborhoods</text>
+  <text x="1590" y="570" class="small">order is configurable: CA-TA → inherited LS (default)</text>
+  <text x="1590" y="592" class="small">or inherited LS → CA-TA (FC-6A comparison)</text>
+  <path d="M1415 865 C1490 865 1490 280 1550 280" class="orange"/>
+  <path d="M1415 865 C1490 865 1490 520 1550 520" class="orange"/>
+
+  <rect x="1560" y="660" width="700" height="245" rx="12" fill="#f3f4f6" stroke="#4b5563" stroke-width="3"/>
+  <text x="1910" y="698" text-anchor="middle" class="head">merge evaluated candidates</text>
+  <text x="1590" y="736" class="body">parents + global offspring + accepted local offspring</text>
+  <text x="1590" y="770" class="body">strict evaluated PDDR-FF; zero extra FE</text>
+  <text x="1590" y="804" class="body">default: BP_RESERVED_LEGACY</text>
+  <text x="1590" y="837" class="body">FC-6B candidate: REGION_AWARE slots</text>
+  <text x="1590" y="870" class="small">G1=15 · G4=55 · G2=15 · G3=15; overflow uses global ranking</text>
+  <path d="M1910 610 V650" class="orange"/>
+
+  <rect x="1740" y="970" width="410" height="175" rx="3" fill="url(#next)" class="box" filter="url(#shadow)"/>
+  <text x="1945" y="1012" text-anchor="middle" class="head">generation t + 1</text>
+  <text x="1945" y="1055" text-anchor="middle" class="body">updated four physical slots</text>
+  <text x="1945" y="1086" text-anchor="middle" class="body">new lineage / archive / pbest</text>
+  <text x="1945" y="1117" text-anchor="middle" class="small">repeat until FE budget</text>
+  <path d="M1910 905 V955" class="orange"/>
+
+  <rect x="180" y="1000" width="580" height="130" rx="12" fill="#f9fafb" stroke="#9ca3af" stroke-width="2"/>
+  <text x="470" y="1036" text-anchor="middle" class="head">formal boundary</text>
+  <text x="470" y="1072" text-anchor="middle" class="body">ShiftMode = NONE · no FCLS/FCRS/ReleaseOverride</text>
+  <text x="470" y="1102" text-anchor="middle" class="body">single-family placeholder · sequence-independent SUT</text>
+
+  <rect x="825" y="1000" width="620" height="130" rx="12" fill="#f9fafb" stroke="#9ca3af" stroke-width="2"/>
+  <text x="1135" y="1036" text-anchor="middle" class="head">three innovation responsibilities</text>
+  <text x="1135" y="1072" text-anchor="middle" class="body">FM3 = what the schedule really is</text>
+  <text x="1135" y="1102" text-anchor="middle" class="body">CFVF + dual-Q = where to learn · CA-TA-Lite = where to deepen</text>
+
+  <text x="1200" y="1280" text-anchor="middle" class="tiny">Solid boxes are the current production chain; dashed/annotated branches are FC-6 candidate variants and remain separately versioned.</text>
+</svg>

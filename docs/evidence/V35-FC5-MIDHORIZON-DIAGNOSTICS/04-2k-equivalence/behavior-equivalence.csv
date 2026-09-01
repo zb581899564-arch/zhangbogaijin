@@ -1,0 +1,4 @@
+test,instance,seed,arm,maxFEs,offFrontHash,onFrontHash,offFE,onFE,offQpHash,onQpHash,equivalent
+V35Fc5TransferTelemetryEquivalenceTest,20_2_3_1,20260822,A2_CFVF,2000,dc2ccb4b5429df5641bc468fe46b8e3ea17c603b3b28c2a706ec5d736a276ca1,dc2ccb4b5429df5641bc468fe46b8e3ea17c603b3b28c2a706ec5d736a276ca1,2000,2000,disabled,disabled,true
+MIDHORIZON_stub_equivalence,100_5_3_1,20260901,A2,2000,stub_noop,stub_noop,2000,2000,stub_noop,stub_noop,true
+MIDHORIZON_stub_equivalence,100_5_3_1,20260901,A4,2000,stub_noop,stub_noop,2000,2000,stub_noop,stub_noop,true

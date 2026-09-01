@@ -45,6 +45,9 @@ public final class ZhangBoQpController implements Serializable {
   private long pbestSwitches;
   private long trainedTransitionCount;
   private long frozenObservationCount;
+  private long rewardSampleCount;
+  private double minimumReward = Double.POSITIVE_INFINITY;
+  private double maximumReward = Double.NEGATIVE_INFINITY;
 
   public ZhangBoQpController(
       ZhangBoQpConfiguration configuration,
@@ -156,6 +159,19 @@ public final class ZhangBoQpController implements Serializable {
       ZhangBoQpAction action = ZhangBoQpAction.values()[actionIndex];
       ZhangBoArchiveEntry selected = value.candidates.get(action);
       if (selected == null) throw new IllegalStateException("Selected masked Qp action has no candidate");
+      double selectedDirectionalScore = ZhangBoQpCandidateSelector.phi(selected, group, bounds);
+      double eligibleBestDirectionalScore = Double.POSITIVE_INFINITY;
+      for (ZhangBoQpAction candidateAction : ZhangBoQpAction.values()) {
+        if (!value.candidates.isValid(candidateAction)) continue;
+        ZhangBoArchiveEntry candidate = value.candidates.get(candidateAction);
+        if (candidate != null) {
+          eligibleBestDirectionalScore = Math.min(eligibleBestDirectionalScore,
+              ZhangBoQpCandidateSelector.phi(candidate, group, bounds));
+        }
+      }
+      if (!Double.isFinite(eligibleBestDirectionalScore)) {
+        throw new IllegalStateException("Qp eligible directional score is not finite");
+      }
       if (!selected.getFingerprint().equals(value.resolvedFingerprint)) pbestSwitches++;
       actionCounts[actionIndex]++;
       value.particle.setAttribute(ZhangBoQpLineageState.class,
@@ -163,7 +179,8 @@ public final class ZhangBoQpController implements Serializable {
       Selection selection = new Selection(value.branchId, value.memory.getLineageId(), group, state, action,
           value.candidates.getMask(), value.current, value.gbest, selected,
           value.memory.getEntries(), value.memory.getNoArchiveUpdateCount(), currentStats,
-          exploration, value.rho, redundancyThreshold);
+          exploration, value.rho, redundancyThreshold, selectedDirectionalScore,
+          eligibleBestDirectionalScore);
       result.add(selection);
       log(group, "select", "lineage=" + value.memory.getLineageId() + ",state=" + state
           + ",E=" + evolutionNeed + ",H=" + stagnation + ",R=" + redundancy
@@ -277,6 +294,7 @@ public final class ZhangBoQpController implements Serializable {
           Reward reward = reward(value.selection.current, value.childEntry, group,
               value.archiveSurvived, bounds);
           actionRewards[value.selection.action.ordinal()] += reward.total;
+          recordReward(reward.total);
           transitions.add(new Transition(value.selection.branchId, value.selection.state,
               value.selection.action.ordinal(), reward.total, nextState,
               nextCandidates.getMask()));
@@ -363,6 +381,10 @@ public final class ZhangBoQpController implements Serializable {
     double newPhi = ZhangBoQpCandidateSelector.phi(child, group, bounds);
     double direction = (oldPhi - newPhi)
         / (Math.abs(oldPhi) + archiveConfiguration.getNormalizationEpsilon());
+    if (configuration.getDirectionRewardMode()
+        == ZhangBoQpConfiguration.DirectionRewardMode.V35_CLIPPED) {
+      direction = Math.max(-1.0, Math.min(1.0, direction));
+    }
     double archiveContribution = archiveSurvived ? 1.0 : 0.0;
     double fatigue = bounds.fatigueRisk(parent, archiveConfiguration)
         - bounds.fatigueRisk(child, archiveConfiguration);
@@ -456,14 +478,24 @@ public final class ZhangBoQpController implements Serializable {
       log(group, "random", "lineage=" + lineageId + ",draw=" + draw
           + ",epsilon=" + exploration + ",mode=explore,action=" + selected);
     } else {
-      selected = valid.get(0);
-      for (int action : valid) {
-        if (q[action] > q[selected]) selected = action;
-      }
+      selected = selectConfiguredGreedyAction(q, mask);
       log(group, "random", "lineage=" + lineageId + ",draw=" + draw
           + ",epsilon=" + exploration + ",mode=greedy,action=" + selected);
     }
     return selected;
+  }
+
+  private int selectConfiguredGreedyAction(double[] q, boolean[] mask) {
+    int selected = selectGreedyAction(q, mask);
+    if (configuration.getGreedyTiePolicy()
+        != ZhangBoQpConfiguration.GreedyTiePolicy.DIRECTIONAL_IF_TIED) {
+      return selected;
+    }
+    int directional = ZhangBoQpAction.DIRECTIONAL.ordinal();
+    if (!mask[directional] || q[directional] != q[selected]) return selected;
+    int ties = 0;
+    for (int action : validActions(mask)) if (q[action] == q[selected]) ties++;
+    return ties > 1 ? directional : selected;
   }
 
   private static int selectGreedyAction(double[] q, boolean[] mask) {
@@ -639,10 +671,57 @@ public final class ZhangBoQpController implements Serializable {
   }
   public long getTrainedTransitionCount() { return trainedTransitionCount; }
   public long getFrozenObservationCount() { return frozenObservationCount; }
+  /** Read-only run-end reward range; no controller decision reads these counters. */
+  public String rewardSummary() {
+    return "rewardSamples=" + rewardSampleCount + '\n'
+        + "rewardMinimum=" + (rewardSampleCount == 0L ? 0.0 : minimumReward) + '\n'
+        + "rewardMaximum=" + (rewardSampleCount == 0L ? 0.0 : maximumReward) + '\n';
+  }
+  /** Deterministic absolute-value entropy and range for diagnostic evidence only. */
+  public String tableSummary() {
+    int finite = 0;
+    int nonZero = 0;
+    double minimum = Double.POSITIVE_INFINITY;
+    double maximum = Double.NEGATIVE_INFINITY;
+    double totalAbs = 0.0;
+    for (ZhangBoSubSwarm group : ZhangBoSubSwarmSemantics.roles()) {
+      double[][] table = tables.get(group);
+      for (double[] row : table) for (double value : row) {
+        if (!Double.isFinite(value)) continue;
+        finite++;
+        if (value != 0.0) nonZero++;
+        minimum = Math.min(minimum, value);
+        maximum = Math.max(maximum, value);
+        totalAbs += Math.abs(value);
+      }
+    }
+    double entropy = 0.0;
+    if (totalAbs > 0.0 && finite > 1) {
+      for (ZhangBoSubSwarm group : ZhangBoSubSwarmSemantics.roles()) {
+        double[][] table = tables.get(group);
+        for (double[] row : table) for (double value : row) {
+          double probability = Math.abs(value) / totalAbs;
+          if (probability > 0.0) entropy -= probability * Math.log(probability);
+        }
+      }
+      entropy /= Math.log(finite);
+    }
+    return "tableFiniteCells=" + finite + '\n'
+        + "tableNonZeroCells=" + nonZero + '\n'
+        + "tableMinimum=" + (finite == 0 ? 0.0 : minimum) + '\n'
+        + "tableMaximum=" + (finite == 0 ? 0.0 : maximum) + '\n'
+        + "tableAbsEntropy=" + entropy + '\n';
+  }
   public long getExecutedActionCount() {
     long total = 0L;
     for (long value : actionCounts) total += value;
     return total;
+  }
+
+  private void recordReward(double reward) {
+    rewardSampleCount++;
+    minimumReward = Math.min(minimumReward, reward);
+    maximumReward = Math.max(maximumReward, reward);
   }
 
   public String tableHash() {
@@ -707,13 +786,16 @@ public final class ZhangBoQpController implements Serializable {
     private final double explorationProbability;
     private final double redundancyCosine;
     private final double redundancyThreshold;
+    private final double selectedDirectionalScore;
+    private final double eligibleBestDirectionalScore;
 
     private Selection(
         long branchId, long lineageId, ZhangBoSubSwarm group, int state, ZhangBoQpAction action,
         boolean[] mask, ZhangBoArchiveEntry current, ZhangBoArchiveEntry gbest,
         ZhangBoArchiveEntry selectedPbest, List<ZhangBoArchiveEntry> previousArchive,
         int previousNoUpdate, GroupStats groupBefore, double explorationProbability,
-        double redundancyCosine, double redundancyThreshold) {
+        double redundancyCosine, double redundancyThreshold,
+        double selectedDirectionalScore, double eligibleBestDirectionalScore) {
       this.branchId = branchId;
       this.lineageId = lineageId;
       this.group = group;
@@ -729,6 +811,8 @@ public final class ZhangBoQpController implements Serializable {
       this.explorationProbability = explorationProbability;
       this.redundancyCosine = redundancyCosine;
       this.redundancyThreshold = redundancyThreshold;
+      this.selectedDirectionalScore = selectedDirectionalScore;
+      this.eligibleBestDirectionalScore = eligibleBestDirectionalScore;
     }
 
     public long getBranchId() { return branchId; }
@@ -744,6 +828,9 @@ public final class ZhangBoQpController implements Serializable {
     public double getExplorationProbability() { return explorationProbability; }
     public double getRedundancyCosine() { return redundancyCosine; }
     public double getRedundancyThreshold() { return redundancyThreshold; }
+    public int getPreviousArchiveSize() { return previousArchive.size(); }
+    public double getSelectedDirectionalScore() { return selectedDirectionalScore; }
+    public double getEligibleBestDirectionalScore() { return eligibleBestDirectionalScore; }
   }
 
   public static final class Transition {

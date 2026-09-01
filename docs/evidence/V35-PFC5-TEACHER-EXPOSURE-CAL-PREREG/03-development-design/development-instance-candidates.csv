@@ -1,0 +1,22 @@
+﻿instance,size,scale,currentRole,futureAllowedUse,usedForValidation,usedForFormal,usedForFC5,slotEligibility,decision,decisionReason
+20_2_3_1,20,20x2x3,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,false?unknown,JOB20_DEVELOPMENT,SELECTED,lexicographically smallest size-20 CONTAMINATED_DEVELOPMENT instance
+20_2_4_1,20,20x2x4,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,unknown,JOB20_DEVELOPMENT,CANDIDATE_NOT_SELECTED,larger instance ID than 20_2_3_1
+20_2_5_1,20,20x2x5,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,unknown,JOB20_DEVELOPMENT,CANDIDATE_NOT_SELECTED,larger instance ID than 20_2_3_1
+20_5_3_1,20,20x5x3,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,unknown,JOB20_DEVELOPMENT,CANDIDATE_NOT_SELECTED,larger instance ID than 20_2_3_1
+20_5_4_1,20,20x5x4,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,unknown,JOB20_DEVELOPMENT,CANDIDATE_NOT_SELECTED,larger instance ID than 20_2_3_1
+20_8_3_1,20,20x8x3,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,unknown,JOB20_DEVELOPMENT,CANDIDATE_NOT_SELECTED,larger instance ID than 20_2_3_1
+50_2_3_1,50,50x2x3,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,unknown,JOB50_DEVELOPMENT,SELECTED,lexicographically smallest size-50 CONTAMINATED_DEVELOPMENT instance
+50_2_4_1,50,50x2x4,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,unknown,JOB50_DEVELOPMENT,CANDIDATE_NOT_SELECTED,larger instance ID than 50_2_3_1
+50_2_5_1,50,50x2x5,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,unknown,JOB50_DEVELOPMENT,CANDIDATE_NOT_SELECTED,larger instance ID than 50_2_3_1
+50_5_3_1,50,50x5x3,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,unknown,JOB50_DEVELOPMENT,CANDIDATE_NOT_SELECTED,larger instance ID than 50_2_3_1
+50_5_4_1,50,50x5x4,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,unknown,JOB50_DEVELOPMENT,CANDIDATE_NOT_SELECTED,larger instance ID than 50_2_3_1
+50_8_3_1,50,50x8x3,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,unknown,JOB50_DEVELOPMENT,CANDIDATE_NOT_SELECTED,larger instance ID than 50_2_3_1
+100_2_3_1,100,100x2x3,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,true,100_JOB,REJECTED_FOR_100_SLOTS,no documented normal/hard label in existing evidence; usedForAlgorithmDecision=false
+100_2_4_1,100,100x2x4,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,true,NORMAL100_DEVELOPMENT,SELECTED,documented normal (positive) example for the A2-vs-A4 pair in ROADMAP D-107
+100_2_5_1,100,100x2x5,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,true,100_JOB,REJECTED_FOR_100_SLOTS,its positive-example label belongs to the A0-vs-A2 pair, not the A2-vs-A4 pair relevant here
+100_5_3_1,100,100x5x3,CASE_SELECTED_DIAGNOSTIC_ONLY,diagnostic only,false,false,true,none,EXCLUDED_BY_ROLE,F1 failure-replay case; role forbids entry into the Race
+100_5_4_1,100,100x5x4,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,false,100_JOB,REJECTED_FOR_100_SLOTS,no documented normal/hard label in existing evidence
+100_5_5_1,100,100x5x5,VALIDATION_RESERVED,validation holdout,unknown,unknown,false,none,EXCLUDED_BY_ROLE,role forbids development use
+100_8_3_1,100,100x8x3,CONTAMINATED_DEVELOPMENT,development incl. Configuration Race; never Validation holdout,false,false,true,HARD100_DEVELOPMENT,SELECTED,documented degenerate (hard) example in ROADMAP D-107; explicitly suggested for audit by the task
+100_8_4_1,100,100x8x4,VALIDATION_RESERVED,validation holdout,unknown,unknown,false,none,EXCLUDED_BY_ROLE,role forbids development use
+100_8_5_1,100,100x8x5,VALIDATION_RESERVED,validation holdout,unknown,unknown,false,none,EXCLUDED_BY_ROLE,role forbids development use

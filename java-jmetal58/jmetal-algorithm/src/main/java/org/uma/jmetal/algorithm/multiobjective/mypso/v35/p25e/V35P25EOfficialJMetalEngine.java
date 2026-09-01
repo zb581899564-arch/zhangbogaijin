@@ -6,6 +6,7 @@ import org.uma.jmetal.algorithm.multiobjective.mypso.v35.p25e.official.OfficialJ
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoResourceDomain;
 import org.uma.jmetal.operator.CrossoverOperator;
 import org.uma.jmetal.operator.MutationOperator;
+import org.uma.jmetal.operator.SelectionOperator;
 import org.uma.jmetal.operator.impl.selection.BinaryTournamentSelection;
 import org.uma.jmetal.problem.multiobjective.dfsp.fatigue.V35ComparisonProblemAdapter;
 import org.uma.jmetal.solution.PermutationSolution;
@@ -26,31 +27,59 @@ public final class V35P25EOfficialJMetalEngine {
   public static V35P25EAlgorithmResult run(Algorithm algorithm,
       V35ComparisonProblemAdapter problem, int populationSize, int maxEvaluations,
       long seed) {
+    return run(algorithm, problem, populationSize, maxEvaluations, seed, null, null, null);
+  }
+
+  /**
+   * Operator-injection overload for external fair-baseline instrumentation.
+   * Search semantics are identical to {@link #run}: null overrides fall back to the
+   * canonical P25E operators, and the decoder FE contract is unchanged.
+   */
+  public static V35P25EAlgorithmResult run(Algorithm algorithm,
+      V35ComparisonProblemAdapter problem, int populationSize, int maxEvaluations,
+      long seed,
+      CrossoverOperator<PermutationSolution<Integer>> crossoverOverride,
+      MutationOperator<PermutationSolution<Integer>> mutationOverride,
+      SelectionOperator<List<PermutationSolution<Integer>>, PermutationSolution<Integer>>
+          selectionOverride) {
     if (algorithm == null || problem == null || populationSize <= 0
         || maxEvaluations < populationSize || maxEvaluations % populationSize != 0) {
       throw new IllegalArgumentException("invalid official jMetal P25E request");
+    }
+    if (problem.getObjectiveView()
+        != V35ComparisonProblemAdapter.ObjectiveView.THREE_OBJECTIVE) {
+      throw new IllegalArgumentException(
+          "official jMetal cores require the THREE_OBJECTIVE comparison view");
     }
     JMetalRandom.getInstance().setSeed(seed);
     ZhangBoResourceDomain domain = new ZhangBoResourceDomain(
         problem.getCanonicalProblem().getInstance());
     JavaRandomGenerator crossoverRandom = new JavaRandomGenerator(domainSeed(seed, 1));
     JavaRandomGenerator mutationRandom = new JavaRandomGenerator(domainSeed(seed, 2));
-    CrossoverOperator<PermutationSolution<Integer>> crossover;
-    MutationOperator<PermutationSolution<Integer>> mutation;
+    CrossoverOperator<PermutationSolution<Integer>> crossover = crossoverOverride;
+    MutationOperator<PermutationSolution<Integer>> mutation = mutationOverride;
+    SelectionOperator<List<PermutationSolution<Integer>>, PermutationSolution<Integer>>
+        selection = selectionOverride;
     long start = System.nanoTime();
     List<PermutationSolution<Integer>> result;
     String implementation;
     String identity;
     if (algorithm == Algorithm.NSGA_II_F) {
-      crossover = new V35FourVectorVariation.Crossover(
-          0.40, 0.30, 0.30, 0.40, domain, crossoverRandom);
-      mutation = new V35FourVectorVariation.Mutation(
-          0.30, 0.04, 0.15, 0.15, domain, mutationRandom);
+      if (crossover == null) {
+        crossover = new V35FourVectorVariation.Crossover(
+            0.40, 0.30, 0.30, 0.40, domain, crossoverRandom);
+      }
+      if (mutation == null) {
+        mutation = new V35FourVectorVariation.Mutation(
+            0.30, 0.04, 0.15, 0.15, domain, mutationRandom);
+      }
+      if (selection == null) {
+        selection = new BinaryTournamentSelection<PermutationSolution<Integer>>(
+            new RankingAndCrowdingDistanceComparator<PermutationSolution<Integer>>());
+      }
       OfficialJMetal58NSGAII<PermutationSolution<Integer>> core =
           new OfficialJMetal58NSGAII<>(problem, maxEvaluations, populationSize,
-              populationSize, populationSize, crossover, mutation,
-              new BinaryTournamentSelection<PermutationSolution<Integer>>(
-                  new RankingAndCrowdingDistanceComparator<PermutationSolution<Integer>>()),
+              populationSize, populationSize, crossover, mutation, selection,
               new SequentialSolutionListEvaluator<PermutationSolution<Integer>>());
       core.run();
       result = core.getResult();
@@ -58,15 +87,21 @@ public final class V35P25EOfficialJMetalEngine {
       identity = "binaryTournament=true;ranking=true;crowdingDistance=true;"
           + "replacement=RankingAndCrowdingSelection;upstream=" + UPSTREAM_TAG;
     } else {
-      crossover = new V35FourVectorVariation.Crossover(
-          0.50, 0.20, 0.30, 0.30, domain, crossoverRandom);
-      mutation = new V35FourVectorVariation.Mutation(
-          0.30, 0.04, 0.10, 0.15, domain, mutationRandom);
+      if (crossover == null) {
+        crossover = new V35FourVectorVariation.Crossover(
+            0.50, 0.20, 0.30, 0.30, domain, crossoverRandom);
+      }
+      if (mutation == null) {
+        mutation = new V35FourVectorVariation.Mutation(
+            0.30, 0.04, 0.10, 0.15, domain, mutationRandom);
+      }
+      if (selection == null) {
+        selection = new BinaryTournamentSelection<PermutationSolution<Integer>>();
+      }
       int iterations = maxEvaluations / populationSize;
       OfficialJMetal58SPEA2<PermutationSolution<Integer>> core =
           new OfficialJMetal58SPEA2<>(problem, iterations, populationSize,
-              crossover, mutation,
-              new BinaryTournamentSelection<PermutationSolution<Integer>>(),
+              crossover, mutation, selection,
               new SequentialSolutionListEvaluator<PermutationSolution<Integer>>(), 1);
       core.run();
       result = core.getResult();
@@ -84,7 +119,8 @@ public final class V35P25EOfficialJMetalEngine {
         implementation, evaluations, System.nanoTime() - start, result, identity);
   }
 
-  private static long domainSeed(long seed, int domain) {
+  /** splitmix-style domain separation shared with the external fair-baseline runner. */
+  public static long domainSeed(long seed, int domain) {
     long value = seed ^ (0x9E3779B97F4A7C15L * domain);
     value ^= value >>> 30; value *= 0xBF58476D1CE4E5B9L;
     value ^= value >>> 27; value *= 0x94D049BB133111EBL;

@@ -1,0 +1,18 @@
+metric,normal_50_2_3_1,hard_100_5_3_1,directionNote,source
+formalOuterCycles,62 (both seeds),62 (both seeds),identical - fixed FE schedule instance-blind,sync/*/status.properties mechanismSummary
+cfvfOffspring,310000 = 62.0% FE (both),310000 = 62.0% FE (both),identical,same
+qpActions,271800 = 54.4% FE (both),271800 = 54.4% FE (both),identical,same
+formalLocalFE,175439/175328 = 35.0% FE,173563/175380 = 34.9% FE,rigid 35% while A0 adapts 70%->84%,status.properties
+caTaLiteTest,10567/10730,13023/10668,per-seed variance not systematic,same
+caTaApplyAcceptanceRate,36.86%/35.80%,25.45%/36.11%,NOT collapsed on hard instance,caTaLiteFE=test+apply check
+dscrScrr,0.0182/0.0184,0.0154/0.0134,teacher transmission success declines with difficulty (F1 0.0096),dscr-summary.properties
+bestCmaxReachedAtFE,352000(70.4%)/383000(76.6%),252000(50.4%)/129000(25.8%),hard instance stops improving at half budget or less,cmax-audit-curves.csv
+tailNoImprovementFE,148k/117k,248k(49.6%)/371k(74.2%),hard instance wastes half or more of budget after last best,cmax-audit-curves.csv
+localBudgetAfter250kFE,not dominant,62.3% of 4-run local budget (118402 FE) lands after FE>=250000,tail windows coincide with zero-improvement segment,bottleneck-pressure-events.csv (62 cycles, Agent C)
+minCmaxVsOfficial,323.0/319.8 vs 320.7/315.8 (mixed),767.5/768.1 vs 750.8/753.6 (lag 1.9-2.2%),extremes nearly hold on hard instance,metrics.csv
+hvGapVsOfficial,vs SPEA2 +4.0% median,vs SPEA2 +63.5% median,lag concentrated on hard instance,gap-pairwise.csv
+igdGapVsOfficial,vs SPEA2 -38.5%,vs SPEA2 +260.7%,same,gap-pairwise.csv
+frontSize,645/475,373/347 (official capped 100),A4 keeps larger fronts but worse coverage on hard,front.csv
+onset250k,HV gap from checkpoint 25k (-10.4%) stable -12~-15%; IGD gap grows +11.8%->+54.5%,minCmax advantage 5.4%->2.7% throughout,extreme-first coverage-lag dynamics from early on,checkpoint-metrics.csv (FORMAL_DECISION)
+shiftActivity,0,0,incremental shift decoder never triggered,leftShift/rightShiftNanos
+a0SeedAnomaly,A0 hv 0.515/0.596,A0 hv 0.131/0.369 (0906 BEATS A4 0.207),hard-instance bimodality is cross-algorithm,metrics.csv

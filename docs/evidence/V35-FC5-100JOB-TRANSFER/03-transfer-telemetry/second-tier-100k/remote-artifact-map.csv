@@ -1,0 +1,13 @@
+remotePath,localPath,sha256,bytes
+/home/inspur/aicomp/zhangbo-v35-fc5-transfer-100k-20260825/FIRST_TIER_100K_TASKS.tsv,E:\学习\李明哲-毕业材料\张博改进\docs\evidence\V35-FC5-100JOB-TRANSFER\03-transfer-telemetry\second-tier-100k\FIRST_TIER_100K_TASKS.tsv,9fb73c9a69b2aab5e7cfbc92f812f98568b32d5fa13e739afc094f8191b4fbf8,243
+/home/inspur/aicomp/zhangbo-v35-fc5-transfer-100k-20260825/FIRST_TIER_100K_ACCEPTANCE.csv,E:\学习\李明哲-毕业材料\张博改进\docs\evidence\V35-FC5-100JOB-TRANSFER\03-transfer-telemetry\second-tier-100k\FIRST_TIER_100K_ACCEPTANCE.csv,2ef8290e48f3f039af48883c2357b1c72b2f740da2a469189fad93a2342af63e,3201
+/home/inspur/aicomp/zhangbo-v35-fc5-transfer-100k-20260825/FIRST_TIER_100K_ACCEPTANCE.properties,E:\学习\李明哲-毕业材料\张博改进\docs\evidence\V35-FC5-100JOB-TRANSFER\03-transfer-telemetry\second-tier-100k\FIRST_TIER_100K_ACCEPTANCE.properties,059d6ea2f3df6ac62165f64e120e29e45968af1ca91c0f8b5b08e593d66cd109,491
+/home/inspur/aicomp/zhangbo-v35-fc5-transfer-100k-20260825/RUNNER_SHA256.txt,E:\学习\李明哲-毕业材料\张博改进\docs\evidence\V35-FC5-100JOB-TRANSFER\03-transfer-telemetry\second-tier-100k\RUNNER_SHA256.txt,44a030c6690f3fbb2903df88fd5b92c2cae690aa0553e47cae97735b141a74f0,183
+/home/inspur/aicomp/zhangbo-v35-fc5-transfer-100k-20260825/INPUT_SHA256.tsv,E:\学习\李明哲-毕业材料\张博改进\docs\evidence\V35-FC5-100JOB-TRANSFER\03-transfer-telemetry\second-tier-100k\INPUT_SHA256.tsv,52c3dbde1871b82a518c5132c927c18f94e44e3290e7dc9583ef59686df5c373,1166
+/home/inspur/aicomp/zhangbo-v35-fc5-transfer-100k-20260825/bin/fc5-transfer-diagnostic.jar,(remote-only; sha pinned by RUNNER_SHA256.txt downloaded above),e59698030af2215994d4fd179aa2b1f26787a0f1239628543339477e119fa8b5,48393864
+/home/inspur/aicomp/zhangbo-v35-fc5-transfer-100k-20260825/output/100k/100_5_3_1/seed-20260901/A2_CFVF,(remote-only; 26 evidence files each, not downloaded locally),n/a,n/a
+/home/inspur/aicomp/zhangbo-v35-fc5-transfer-100k-20260825/output/100k/100_5_3_1/seed-20260901/A4_BUDGET_AWARE_CATA,(remote-only; 26 evidence files each, not downloaded locally),n/a,n/a
+/home/inspur/aicomp/zhangbo-v35-fc5-transfer-100k-20260825/output/100k/100_5_3_1/seed-20260902/A2_CFVF,(remote-only; 26 evidence files each, not downloaded locally),n/a,n/a
+/home/inspur/aicomp/zhangbo-v35-fc5-transfer-100k-20260825/output/100k/100_5_3_1/seed-20260902/A4_BUDGET_AWARE_CATA,(remote-only; 26 evidence files each, not downloaded locally),n/a,n/a
+/home/inspur/aicomp/zhangbo-v35-fc5-transfer-100k-20260825/output/100k/100_5_3_1/seed-20260903/A2_CFVF,(remote-only; 26 evidence files each, not downloaded locally),n/a,n/a
+/home/inspur/aicomp/zhangbo-v35-fc5-transfer-100k-20260825/output/100k/100_5_3_1/seed-20260903/A4_BUDGET_AWARE_CATA,(remote-only; 26 evidence files each, not downloaded locally),n/a,n/a

@@ -1,0 +1,1 @@
+formal Q final -> [CA-TA-Lite | inherited critical swap/insert/O1-O9] -> evaluated PDDR merge pool -> selector -> next physical slots

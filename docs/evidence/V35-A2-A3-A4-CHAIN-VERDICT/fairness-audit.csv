@@ -1,0 +1,13 @@
+seed,arms,sameInitialPopulation,minActualFE,maxActualFE,rangeActualFE,allUtilizationAbove99Percent,valid
+20260808,"A2,A3,A4",true,500000.0,500000.0,0.0,true,true
+20260809,"A2,A3,A4",true,495301.0,500000.0,4699.0,true,true
+20260810,"A2,A3,A4",true,495590.0,500000.0,4410.0,true,true
+20260811,"A2,A3,A4",true,500000.0,500000.0,0.0,true,true
+20260812,"A2,A3,A4",true,500000.0,500000.0,0.0,true,true
+20260813,"A2,A3,A4",true,500000.0,500000.0,0.0,true,true
+20260814,"A2,A3,A4",true,500000.0,500000.0,0.0,true,true
+20260815,"A2,A3,A4",true,499452.0,500000.0,548.0,true,true
+20260816,"A2,A3,A4",true,500000.0,500000.0,0.0,true,true
+20260817,"A2,A3,A4",true,499607.0,500000.0,393.0,true,true
+20260818,"A2,A3,A4",true,500000.0,500000.0,0.0,true,true
+20260819,"A2,A3,A4",true,500000.0,500000.0,0.0,true,true

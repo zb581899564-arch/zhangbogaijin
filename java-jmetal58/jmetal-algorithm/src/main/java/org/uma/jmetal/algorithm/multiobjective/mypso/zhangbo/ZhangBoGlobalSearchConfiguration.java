@@ -7,6 +7,8 @@ import java.security.NoSuchAlgorithmException;
 import org.uma.jmetal.algorithm.multiobjective.mypso.p8.P8AblationProfile;
 import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ProductionConfiguration;
 import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35BottleneckDiagnosisConfiguration;
+import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35LocalSearchOrder;
+import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35QpSettlementPolicy;
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.cata.ZhangBoCaTaConfiguration;
 
 /** Immutable switches and engineering defaults for the Zhang Bo global-search path. */
@@ -48,6 +50,7 @@ public final class ZhangBoGlobalSearchConfiguration implements Serializable {
   private final ZhangBoCaTaConfiguration caTaConfiguration;
   private final P8AblationProfile p8AblationProfile;
   private final boolean dscrEnabled;
+  private final V35QpSettlementPolicy v35QpSettlementPolicy;
   private boolean directionalTeacherPool;
   private int teacherPoolSize = 10;
   private V35BottleneckDiagnosisConfiguration v35BottleneckDiagnosis =
@@ -59,6 +62,10 @@ public final class ZhangBoGlobalSearchConfiguration implements Serializable {
   private org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35CaTaLiteConfiguration
       v35CaTaLiteConfiguration =
           org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35CaTaLiteConfiguration.standard();
+  /** FC-6: BP is retained only as a historical default; new FC runners set this explicitly. */
+  private PddrSelectionMode pddrSelectionMode = PddrSelectionMode.BP_RESERVED_LEGACY;
+  /** FC-6A.4 explicit ordering of CA-TA-Lite and inherited local search. */
+  private V35LocalSearchOrder v35LocalSearchOrder = V35LocalSearchOrder.CATA_THEN_INHERITED;
 
   public ZhangBoGlobalSearchConfiguration(
       GlobalLeaderMode globalLeaderMode,
@@ -159,7 +166,8 @@ public final class ZhangBoGlobalSearchConfiguration implements Serializable {
     this(globalLeaderMode, particleUpdateMode, seed, qEpsilon, qAlpha, qGamma,
         resourceCognitiveScale, resourceSocialScale, resourceInertia, resourceExploration,
         environmentalSelectionMode, personalArchiveConfiguration, qpConfiguration,
-        dualQCoordinationConfiguration, caTaConfiguration, null, false);
+        dualQCoordinationConfiguration, caTaConfiguration, null, false,
+        V35QpSettlementPolicy.STANDARD_BY_DUAL_Q);
   }
 
   private ZhangBoGlobalSearchConfiguration(
@@ -179,13 +187,14 @@ public final class ZhangBoGlobalSearchConfiguration implements Serializable {
       ZhangBoDualQCoordinationConfiguration dualQCoordinationConfiguration,
       ZhangBoCaTaConfiguration caTaConfiguration,
       P8AblationProfile p8AblationProfile,
-      boolean dscrEnabled) {
+      boolean dscrEnabled,
+      V35QpSettlementPolicy v35QpSettlementPolicy) {
     if (globalLeaderMode == null || particleUpdateMode == null) {
       throw new IllegalArgumentException("Global-search modes cannot be null");
     }
     if (environmentalSelectionMode == null || personalArchiveConfiguration == null
         || qpConfiguration == null || dualQCoordinationConfiguration == null
-        || caTaConfiguration == null) {
+        || caTaConfiguration == null || v35QpSettlementPolicy == null) {
       throw new IllegalArgumentException("PDDR and personal-archive configuration cannot be null");
     }
     requireProbability(qEpsilon, "qEpsilon");
@@ -250,6 +259,7 @@ public final class ZhangBoGlobalSearchConfiguration implements Serializable {
     this.caTaConfiguration = caTaConfiguration;
     this.p8AblationProfile = p8AblationProfile;
     this.dscrEnabled = dscrEnabled;
+    this.v35QpSettlementPolicy = v35QpSettlementPolicy;
   }
 
   /** Builds an explicit P8 profile without changing any legacy/default factory. */
@@ -321,7 +331,8 @@ public final class ZhangBoGlobalSearchConfiguration implements Serializable {
         resourceFlightScale, resourceFlightScale,
         profile.hasResourceInertia() ? DEFAULT_RESOURCE_INERTIA : 0.0,
         profile.hasLegalExploration() ? DEFAULT_RESOURCE_EXPLORATION : 0.0,
-        pddr, archive, qp, dual, caTa, profile, false);
+        pddr, archive, qp, dual, caTa, profile, false,
+        V35QpSettlementPolicy.STANDARD_BY_DUAL_Q);
   }
 
   /**
@@ -334,11 +345,16 @@ public final class ZhangBoGlobalSearchConfiguration implements Serializable {
         ? GlobalLeaderMode.ORIGINAL_QG : GlobalLeaderMode.AUTHOR_ACTIVE;
     ParticleUpdateMode update = configuration.isCfvfEnabled()
         ? ParticleUpdateMode.CFVF : ParticleUpdateMode.PUBLISHED_BASELINE;
-    ZhangBoPersonalArchiveConfiguration archive = configuration.isQpEnabled()
+    // The V35 causal diagnostic may isolate a directional lineage archive
+    // before enabling Qp.  Existing production profiles infer this as true
+    // whenever Qp is true, so their behaviour remains unchanged.
+    ZhangBoPersonalArchiveConfiguration archive = configuration.isLineageArchiveEnabled()
         ? ZhangBoPersonalArchiveConfiguration.standard()
         : ZhangBoPersonalArchiveConfiguration.disabled();
     ZhangBoQpConfiguration qp = configuration.isQpEnabled()
-        ? ZhangBoQpConfiguration.standard() : ZhangBoQpConfiguration.disabled();
+        ? (configuration.getQpConfiguration() == null
+            ? ZhangBoQpConfiguration.standard() : configuration.getQpConfiguration())
+        : ZhangBoQpConfiguration.disabled();
     ZhangBoDualQCoordinationConfiguration dual = configuration.getDualQCoordination() != null
         ? configuration.getDualQCoordination()
         : (configuration.isQpEnabled()
@@ -350,11 +366,14 @@ public final class ZhangBoGlobalSearchConfiguration implements Serializable {
         leader, update, configuration.getSeed(), DEFAULT_Q_EPSILON, DEFAULT_Q_ALPHA,
         DEFAULT_Q_GAMMA, 0.6, 0.6, DEFAULT_RESOURCE_INERTIA,
         DEFAULT_RESOURCE_EXPLORATION, EnvironmentalSelectionMode.EVALUATED_PDDR,
-        archive, qp, dual, cata, null, configuration.isDscrEnabled());
+        archive, qp, dual, cata, null, configuration.isDscrEnabled(),
+        configuration.getQpSettlementPolicy());
     result.setDirectionalTeacherPool(configuration.isDirectionalTeacherPoolEnabled(),
         configuration.getTeacherPoolSize());
     result.v35BottleneckDiagnosis = configuration.getBottleneckDiagnosis();
     result.localFeBudget = configuration.getLocalFeBudget();
+    result.pddrSelectionMode = configuration.getPddrSelectionMode();
+    result.v35LocalSearchOrder = configuration.getLocalSearchOrder();
     if (configuration.getCaTaLiteConfiguration() != null) {
       result.v35CaTaLiteConfiguration = configuration.getCaTaLiteConfiguration();
     }
@@ -453,6 +472,10 @@ public final class ZhangBoGlobalSearchConfiguration implements Serializable {
   public double getResourceExploration() { return resourceExploration; }
   public boolean isQgEnabled() { return globalLeaderMode == GlobalLeaderMode.ORIGINAL_QG; }
   public boolean isDscrEnabled() { return dscrEnabled; }
+  /** V35-A3-D2 diagnostic override; frozen production profiles always use STANDARD. */
+  public V35QpSettlementPolicy getV35QpSettlementPolicy() {
+    return v35QpSettlementPolicy;
+  }
 
   /** Directional top-k teacher pool (V35-P10.1). Default off; disabled behaviour is legacy-identical. */
   public void setDirectionalTeacherPool(boolean enabled, int poolSize) {
@@ -519,6 +542,18 @@ public final class ZhangBoGlobalSearchConfiguration implements Serializable {
   public V35BottleneckDiagnosisConfiguration getV35BottleneckDiagnosis() {
     return v35BottleneckDiagnosis;
   }
+  /** Explicit FC-6 PDDR boundary; never inferred from source-file state. */
+  public PddrSelectionMode getPddrSelectionMode() { return pddrSelectionMode; }
+  public void setPddrSelectionMode(PddrSelectionMode value) {
+    if (value == null) throw new IllegalArgumentException("pddrSelectionMode");
+    pddrSelectionMode = value;
+  }
+  /** Explicit FC-6A.4 shared-local-window ordering. */
+  public V35LocalSearchOrder getV35LocalSearchOrder() { return v35LocalSearchOrder; }
+  public void setV35LocalSearchOrder(V35LocalSearchOrder value) {
+    if (value == null) throw new IllegalArgumentException("v35LocalSearchOrder");
+    v35LocalSearchOrder = value;
+  }
   public boolean isLocalSearchEnabled() {
     // The non-profile P6 factory is a production CA-TA configuration too.  A
     // profile may additionally select fixed/Need-aware VNS, so both sources
@@ -565,6 +600,10 @@ public final class ZhangBoGlobalSearchConfiguration implements Serializable {
         + "resourceInertia=" + resourceInertia + "\n"
         + "resourceExploration=" + resourceExploration + "\n"
         + "dscrEnabled=" + dscrEnabled + "\n"
+        + (v35QpSettlementPolicy == V35QpSettlementPolicy.STANDARD_BY_DUAL_Q ? ""
+            : "v35QpSettlementPolicy=" + v35QpSettlementPolicy + "\n")
+        + "pddrSelectionMode=" + pddrSelectionMode + "\n"
+        + "v35LocalSearchOrder=" + v35LocalSearchOrder + "\n"
         + (environmentalSelectionMode == EnvironmentalSelectionMode.AUTHOR_PDDR_ACTIVE
             ? "" : "environmentalSelectionMode=" + environmentalSelectionMode + "\n")
         + (personalArchiveConfiguration.isEnabled()

@@ -1,0 +1,7 @@
+phase,seed,directory,manifestSha256
+ORDER_CURRENT,20260822,/home/inspur/aicomp/zhangbo-fc6a4-order-20260820/results/runs/order_current-20_2_3_1-seed-20260822,326475a962d375ab822cd4bd50c536b6f4bfc49a0c3835aaafda8270d37f714e
+ORDER_SWAP,20260822,/home/inspur/aicomp/zhangbo-fc6a4-order-20260820/results/runs/order_swap-20_2_3_1-seed-20260822,9b653a0f1b02e1029d54d6c6342a1164c1112349c48956a64ba2c82c1fb159a9
+ORDER_CURRENT,20260823,/home/inspur/aicomp/zhangbo-fc6a4-order-20260820/results/runs/order_current-20_2_3_1-seed-20260823,ce110f24a7d0a68e969eeeadf8379843a94eead30d13c335c687dab3081a1552
+ORDER_SWAP,20260823,/home/inspur/aicomp/zhangbo-fc6a4-order-20260820/results/runs/order_swap-20_2_3_1-seed-20260823,403bfe5703eea0ebe5b8468d29a128a84be98836a8a65a01924e35d1f8c5da58
+ORDER_CURRENT,20260824,/home/inspur/aicomp/zhangbo-fc6a4-order-20260820/results/runs/order_current-20_2_3_1-seed-20260824,40aba24e5c9937d4e056c9a51f3ce674387fac1f42afbeffd34c0289bc59b573
+ORDER_SWAP,20260824,/home/inspur/aicomp/zhangbo-fc6a4-order-20260820/results/runs/order_swap-20_2_3_1-seed-20260824,e374727f33a99f6abd3b197a9e2a143ec14eaab704ea11460e78c2aa14718f96

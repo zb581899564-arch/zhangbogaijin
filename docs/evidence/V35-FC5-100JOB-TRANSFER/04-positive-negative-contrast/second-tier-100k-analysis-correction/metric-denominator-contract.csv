@@ -1,0 +1,10 @@
+field,granularity,denominatorDefinition,correctFormula,unit,source
+poolPresent,DIRECTION_LABEL_EVENT,always 4 per cycle (hardcoded true),count(poolPresent)/count(poolPresent)=1,events,Representative.csv:244
+pddrSelected,DIRECTION_LABEL_EVENT,poolPresent events,poolToPddrRate = pddrSelected / poolPresent,rate,V35Fc5TransferAudit:110
+enteredNextPopulation,DIRECTION_LABEL_EVENT,poolPresent or pddrSelected,"poolToNextRate = enteredNext/poolPresent; pddrToNextRate = enteredNext/pddrSelected",rate,Representative:nextSlot>0
+nextCycleEligible,DIRECTION_LABEL_EVENT,enteredNext AND cycle<maxCycle,nextToNextCycleRate = survivedNextCycle / nextCycleEligible,rate,retireMissing:287-298 + right-censor rule
+teacherUsed,DIRECTION_LABEL_EVENT,enteredNextPopulation (unique fingerprint deduped),nextToTeacherRate = teacherUsed / enteredNext,rate,observeTeacherUse:132-133 deduped by (fingerprint+useCycle)
+improvedAnyDirection,DIRECTION_LABEL_EVENT,teacherUsed,teacherToImprovementRate = teacherProducedImprovement / teacherUsed,rate,observeEvaluatedCandidate:182-189
+Nnd,RPDDR_ROUND,unique candidates,strict nondominated count on [0,1,6],count,strictNondominatedCount:354-369
+Roverflow,RPDDR_ROUND,TARGET_WORKING_POPULATION=100,Roverflow=Nnd/100,ratio,Round:90-91
+teacherExposure,UNIQUE_DIRECTIONAL_REPRESENTATIVE,(fingerprint,cycle) deduped total,exposures = sum(max multiplicity per (fingerprint,useCycle)),count,analyze_100k_correction.py:341-353

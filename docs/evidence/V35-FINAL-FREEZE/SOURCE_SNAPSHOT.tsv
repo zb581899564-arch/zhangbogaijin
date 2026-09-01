@@ -1,0 +1,9 @@
+sha256	path	role
+e596debfce2d377c82a1b02fc7c213305244b2f13db59edd75d8f6a5b6990367	java-jmetal58/**/*.java + pom.xml (1144 files; canonical aggregate)	full source-tree fingerprint
+AF800B424E27B886D86C692A770D4101C6DB0797E0E6075FCD51460470985641	java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35FairRunner.java	fair runtime entry
+FF31DC1EA04DD8B8A2B86CD5911C6241712356BAF9159249028807BD62851766	java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35ProductionConfiguration.java	canonical production config
+B732A1BDB96F3CF5D4A29E51548FA356F19BA827D21735AB7D7575714E0D44EF	java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35SubSwarmMixture.java	mixture invariant
+94CF8ED74F741CCD1FEEFD991ABE263AEC5173723E8593E37E46E45981AF7C03	java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35SubSwarmMixtureDesign.java	DOE-1 design
+9FCFDD8E962FED98118048E4681127AA805CD6658D4F89AEDE57F6F0AC34CF8B	java-jmetal58/jmetal-exec/src/main/java/org/uma/jmetal/runner/lc_psode/ZhangBoV35Doe1MixtureRunner.java	short preflight and final mixture runner
+714414320E392D15A1611D348212C26846F9BE4C418715B109FBCFBC685D0249	java-jmetal58/jmetal-exec/src/main/java/org/uma/jmetal/runner/lc_psode/ZhangBoV35Doe1ConfirmationRunner.java	60-run held-out runner
+AC3010B0EA99E97AF5335C0D49F513CA64477281455B6C9C44FD5E28EDC70C49	java-jmetal58/jmetal-problem/src/main/java/org/uma/jmetal/problem/multiobjective/dfsp/fatigue/ZhangBoCanonicalProductionProblem.java	FM3 production problem

@@ -1,0 +1,14 @@
+knob,family,injectionPoint,evidenceCoverage,touchesFrozenSemantics,structurallyReachable,directionConsistentWithCoverageContraction,verdict
+betaMax (local-search window share upper bound, beta(u)=betaMin+(betaMax-betaMin)*u^2),CATA_BUDGET,V35FinalAblationProfile.java L26 LOCAL_FE_BETA_MAX=0.65 -> V35LocalFeBudgetConfiguration.of(); CLI precedent --local-fe-budget (ZhangBoV35P25EBudgetDiagnosticRunner L248),37.98% of total FE (caTaLiteFE+formalLocalFE=189900/500000, constant across instances); 62.3% of local budget lands after FE>=250000 (hard-instance zero-improvement tail),NO (schedule parameter; not in forbidden list),YES (constant+existing CLI),YES (tail windows allocate ~65% to LS while hard-instance best stopped improving at 25-50% budget; LS tail acceptance 1.7-6.5%),SELECTED
+testFeShareCap 1.0->0.20 (cheap-test),CATA_BUDGET,CLI --cheap-test (FC-3 prebuilt),1.6-2.2% alone,YES-adjacent (master plan §4 forbids Cheap-Test re-enable),YES,unclear,EXCLUDED (below 10% lever + prohibition; aux only)
+CFVF variation rates 0.6/0.6/0.5/0.05,CFVF_QP,ZhangBoGlobalSearchConfiguration.forV35 L365-370 (hardcoded, not exposed),62% of FE,YES (CFVF semantics frozen),NO (not exposed; change = semantics change),n/a,FORBIDDEN
+Qp epsilon-greedy / action distribution,CFVF_QP,QpController select (L451/455),54.4% of FE (qpActions),YES (Q action semantics frozen),NO,unclear,FORBIDDEN
+teacher identity reselection (lambda),CFVF_QP,Qg action-2 tournament only,covers 1.12% of teacher events; A4 directionalPoolRequests=0,NO,but no leverage,NO,EXCLUDED (CAL closure)
+Qp COMPLEMENTARY qualityTolerance=0.15,CFVF_QP,QpCandidateSelector cascade,UNPROVABLE (per-action counts absent from D1 evidence; would need observation-on rerun),borderline,YES (single numeric param),unclear,INSUFFICIENT_EVIDENCE
+mixture 20/40/20/20,CFVF_QP,V35SubSwarmMixture (configurable),100% of schedule,YES (mixture frozen by D-109/DOE1),configurable,unclear,FORBIDDEN
+passive archive capacity,CFVF_QP,none (pure evidence export, no capacity param, not on guidance chain),0,NO,n/a,n/a,NOT_ON_GUIDANCE_CHAIN
+Qp/CA-TA reward weights & update timing,CREDIT_TIMING,frozen in Q controllers,no offline evidence source quantifies instance-level timing differences; measuring requires new telemetry tool version (iteration forbidden by user decision),YES (Q reward frozen),NO (cannot be measured offline),plausible but unmeasured,INSUFFICIENT_EVIDENCE
+LS order swap (CA-TA -> inherited),CATA_BUDGET,frozen LS order,100% of LS FE,YES (order frozen),NO,n/a,FORBIDDEN
+applyMultiplier,CATA_BUDGET,configuration,applies are 3314-3852 per run (<1% FE),NO,YES,unclear,INSUFFICIENT (<10%)
+--local-search-times cap,CATA_BUDGET,runner flag,never triggers under DYNAMIC_BETA (window fully consumed),NO,YES,n/a,INEFFECTIVE
+80/20 factory gate,CFVF_QP,needWeightedProbability=0.80 hardcoded,no config path,YES (selection semantics),NO,unclear,NOT_REACHABLE

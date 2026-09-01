@@ -1,0 +1,5 @@
+candidate,betaMax,50kVerdictOriginal,50kVerdictCorrected,reasonOriginal,reasonCorrected
+C1,0.55,REJECTED,REJECTED,hard-instance improvement gate FAIL (complete-gate failure, unrelated to caliber issue),unchanged
+C2,0.45,REJECTED,ELIGIBLE_FOR_250K,dual-caliber TWC sign flip (terminal +0.1293% vs common-FE -0.1059% pooled),flip is MINOR_FLUCTUATION (~0.235pp no 2/3-seed consistency); caliber asymmetry (front HV/IGD vs scalar extremes) made elimination unjustified; C2 dominates C3 on terminal HV/IGD both instances
+C3,0.35,ADVANCED,ELIGIBLE_FOR_250K,passed all four gates,retained (50k screening values unchanged)
+C0,0.65,CONTROL,CONTROL,current A4 semantics baseline,unchanged

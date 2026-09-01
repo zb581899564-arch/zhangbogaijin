@@ -1,0 +1,17 @@
+seed,verdict,evidence
+20260915,CONSUMED,actual runs on local evidence and training machine (FC5 diagnostics + campaign); excluded
+20260916,SELECTED,zero actual runs locally and remotely; zero genuine seed mentions anywhere (single telemetry-CSV hit is a hash-substring coincidence inside a seed-20260902 row)
+20260917,SELECTED,same audit result as 20260916
+20260918,SELECTED,same audit result as 20260916
+20260919,NOT_SELECTED,eligible (never run) but larger than the three smallest
+20260920,NOT_SELECTED,eligible (never run) but larger than the three smallest
+20260921,NOT_SELECTED,mention-only in 50k preregistration draft (mention does not consume); eligible but larger than the three smallest
+20260832,CONSUMED,training-machine campaign runs
+20260836,CONSUMED,training-machine campaign runs
+20260840,CONSUMED,training-machine campaign runs
+20260844,CONSUMED,training-machine campaign runs
+20260907,CONSUMED,repair 20k/50k + checkpoint equivalence gates (engineering seed)
+20260914,CONSUMED,repair 50k
+20260827,CONSUMED,Gap Probe + FC5
+20260906,CONSUMED,Gap Probe
+20260901,CONSUMED,Failure Replay + FC5 diagnostics

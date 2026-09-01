@@ -1,0 +1,188 @@
+{
+ "instances": {
+  "50_2_3_1": {
+   "pfrefPoints": 426,
+   "pfrefCanonicalSha256": "9bb463ff578271b006729bd39ed5661c7a464757ca54a9f98a1158975892394c",
+   "orderIndependent": true,
+   "gaps": [
+    {
+     "instance": "50_2_3_1",
+     "competitor": "A0(HMOPSO-QGS-F)",
+     "gapHV_s20260827": -0.6304573075716188,
+     "gapHV_s20260906": -0.3788543960729658,
+     "medianGapHV": -0.5046558518222923,
+     "gapIGD_s20260827": -0.8412342426097948,
+     "gapIGD_s20260906": -0.8027700163776903,
+     "medianGapIGD": -0.8220021294937425,
+     "band": "GAP_WITHIN_5"
+    },
+    {
+     "instance": "50_2_3_1",
+     "competitor": "SPEA2-F",
+     "gapHV_s20260827": 0.005737176937871133,
+     "gapHV_s20260906": 0.07430579006899665,
+     "medianGapHV": 0.040021483503433895,
+     "gapIGD_s20260827": -0.457226892056234,
+     "gapIGD_s20260906": -0.31218282831058103,
+     "medianGapIGD": -0.38470486018340755,
+     "band": "GAP_WITHIN_5"
+    },
+    {
+     "instance": "50_2_3_1",
+     "competitor": "NSGA-II-F",
+     "gapHV_s20260827": -0.21511628528955049,
+     "gapHV_s20260906": -0.10445213662770671,
+     "medianGapHV": -0.1597842109586286,
+     "gapIGD_s20260827": -0.750490365090978,
+     "gapIGD_s20260906": -0.6009049214369407,
+     "medianGapIGD": -0.6756976432639594,
+     "band": "GAP_WITHIN_5"
+    }
+   ],
+   "verdictBand": "GAP_WITHIN_5"
+  },
+  "100_5_3_1": {
+   "pfrefPoints": 146,
+   "pfrefCanonicalSha256": "7fcf13fa95bf606d4ff4a0294920f096c3e635b6748a7cac65577962d5ce9683",
+   "orderIndependent": true,
+   "gaps": [
+    {
+     "instance": "100_5_3_1",
+     "competitor": "A0(HMOPSO-QGS-F)",
+     "gapHV_s20260827": -1.3088916438244358,
+     "gapHV_s20260906": 0.44069231320232666,
+     "medianGapHV": -0.4340996653110546,
+     "gapIGD_s20260827": -0.27563760823688765,
+     "gapIGD_s20260906": 0.5462780572761943,
+     "medianGapIGD": 0.1353202245196533,
+     "band": "GAP_5_TO_15"
+    },
+    {
+     "instance": "100_5_3_1",
+     "competitor": "SPEA2-F",
+     "gapHV_s20260827": 0.5669511672569435,
+     "gapHV_s20260906": 0.7036869477279784,
+     "medianGapHV": 0.635319057492461,
+     "gapIGD_s20260827": 2.5066777924022525,
+     "gapIGD_s20260906": 2.7065251937159704,
+     "medianGapIGD": 2.6066014930591113,
+     "band": "GAP_GT_15"
+    },
+    {
+     "instance": "100_5_3_1",
+     "competitor": "NSGA-II-F",
+     "gapHV_s20260827": 0.6482870687263541,
+     "gapHV_s20260906": 0.7070892200223557,
+     "medianGapHV": 0.677688144374355,
+     "gapIGD_s20260827": 3.861057914010663,
+     "gapIGD_s20260906": 2.3645505599482832,
+     "medianGapIGD": 3.112804236979473,
+     "band": "GAP_GT_15"
+    }
+   ],
+   "verdictBand": "GAP_GT_15"
+  }
+ },
+ "seedGaps": {
+  "50_2_3_1": {
+   "A0(HMOPSO-QGS-F)": [
+    {
+     "seed": "20260827",
+     "gapHV": -0.6304573075716188,
+     "gapIGD": -0.8412342426097948
+    },
+    {
+     "seed": "20260906",
+     "gapHV": -0.3788543960729658,
+     "gapIGD": -0.8027700163776903
+    }
+   ],
+   "SPEA2-F": [
+    {
+     "seed": "20260827",
+     "gapHV": 0.005737176937871133,
+     "gapIGD": -0.457226892056234
+    },
+    {
+     "seed": "20260906",
+     "gapHV": 0.07430579006899665,
+     "gapIGD": -0.31218282831058103
+    }
+   ],
+   "NSGA-II-F": [
+    {
+     "seed": "20260827",
+     "gapHV": -0.21511628528955049,
+     "gapIGD": -0.750490365090978
+    },
+    {
+     "seed": "20260906",
+     "gapHV": -0.10445213662770671,
+     "gapIGD": -0.6009049214369407
+    }
+   ]
+  },
+  "100_5_3_1": {
+   "A0(HMOPSO-QGS-F)": [
+    {
+     "seed": "20260827",
+     "gapHV": -1.3088916438244358,
+     "gapIGD": -0.27563760823688765
+    },
+    {
+     "seed": "20260906",
+     "gapHV": 0.44069231320232666,
+     "gapIGD": 0.5462780572761943
+    }
+   ],
+   "SPEA2-F": [
+    {
+     "seed": "20260827",
+     "gapHV": 0.5669511672569435,
+     "gapIGD": 2.5066777924022525
+    },
+    {
+     "seed": "20260906",
+     "gapHV": 0.7036869477279784,
+     "gapIGD": 2.7065251937159704
+    }
+   ],
+   "NSGA-II-F": [
+    {
+     "seed": "20260827",
+     "gapHV": 0.6482870687263541,
+     "gapIGD": 3.861057914010663
+    },
+    {
+     "seed": "20260906",
+     "gapHV": 0.7070892200223557,
+     "gapIGD": 2.3645505599482832
+    }
+   ]
+  }
+ },
+ "red": false,
+ "redDetail": [],
+ "overallBand": "GAP_GT_15",
+ "externalSelection": [
+  {
+   "arm": "SPEA2-F",
+   "meanRankHV": 3.0,
+   "meanRankIGD": 1.5,
+   "score": 2.25
+  },
+  {
+   "arm": "A0(HMOPSO-QGS-F)",
+   "meanRankHV": 1.5,
+   "meanRankIGD": 3.5,
+   "score": 2.5
+  },
+  {
+   "arm": "NSGA-II-F",
+   "meanRankHV": 4.0,
+   "meanRankIGD": 1.5,
+   "score": 2.75
+  }
+ ],
+ "strongestExternal": "SPEA2-F"
+}

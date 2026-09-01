@@ -1,0 +1,15 @@
+sourceId	path	sha256	note
+instance-exposure-role-registry	docs/evidence/V35-PFC5-PHASE0/02-instance-role-registry/instance-exposure-role-registry.csv	94f5a38fe60b8b3f8656cb69a71551ff87f62fdf18fa7208137239ef7c3fe191	preregistration input
+accepted-run-ledger	docs/PAPER_EVIDENCE_MASTER/run-ledger.csv	aee626080dc4b24d4466e8647658f9b5c53c27e37a53ad17163c4ff8d2631b4b	preregistration input
+stage2-status	docs/evidence/V35-STAGE2-MASTER-V2/STAGE2_STATUS.properties	a89b76f44081bca9e240ceb42bf729b42cb7a6e4a2ea48725aea7a5648831121	preregistration input
+hard-instance	java-jmetal58/EADHFSP/100_5_3_1.txt	2e88fa97a6f84af347a4603f04c387a65c8f9891bcab8ac6b70fdec622ea35cf	preregistration input
+normal-instance	java-jmetal58/EADHFSP/100_2_3_1.txt	4fb1fad50b5c6f798580a37ff155eb9168932f1791c0262f37571d6ce91a39fa	preregistration input
+hard-snapshot	docs/evidence/V35-PFC5-PHASE0/fetched-remote/snapshots/100_5_3_1/seed-20260901.fourvec	84d845233e332a6612e5dfe93c97cbbeef40c4ee05766cbfd0e9446bd3043769	preregistration input
+hard-reference-contract	docs/evidence/V35-PFC5-PHASE0/04-reference-contract/reference-contract.properties	ecdc5589ab4d36a028a0d53e9fcdbfc40ee1e04864df929c2e5c035b4481235f	preregistration input
+hard-pfref	docs/evidence/V35-PFC5-PHASE0/04-reference-contract/pfref-100_5_3_1.csv	4dc85dd4fa3c7824ed2bf302b648355df796be7f15375db84047d23c4de683da	preregistration input
+hard-hvigd-implementation	docs/evidence/V35-A2-A4-MULTIINSTANCE-CONFIRMATION/tools/python/analyze_confirmation.py	13692c03d21cfdfa40852cc1860ab3b07c195d0a97f0cd2953cb9807d53b7614	original HV/IGD tool (historicalToolSha256=13692c03... in contract; contract embeds exact copy)
+fc5-250k-remote-results	docs/evidence/V35-FC5-MIDHORIZON-250K/01-root-cause-analysis/remote-results	DIRECTORY	referenced input (directory)
+fc5-diag-50k-ledger	docs/evidence/V35-FC5-MIDHORIZON-DIAGNOSTICS/18-final-2k-20k-50k-gates/A4-50k-ON-final/telemetry-pddr-full-ledger.csv	3451148003714880adb5f97c1681e44ebbb869b6c1976da2b87651e37b43db96	preregistration input
+v3-100k-ledger-sample	docs/evidence/V35-GAP-SOURCE-CONTRIBUTION-DIAGNOSTICS-V1/04-remote-100k/sync	DIRECTORY	referenced input (directory)
+phase-a-plan	docs/V35_SOURCE_ATTRIBUTION_500K_PHASE_A_PLAN.md	eac6a4580df64f065dbe9451132186421f66a0fbf8a5c4001db3331c2e12606a	preregistration input
+frozen-zhangbomohpsoq-source	_isolated-v35-final-doe1-freeze-20260823/java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/ZhangBoMOHPSOQ.java	233b6d3dc5b4e6dac03a6cd218b7e69263264c626ac4e4e42ccbf473a77a015b	frozen-tag source (absolute outside repo: E:\...\_isolated-v35-final-doe1-freeze-20260823\...)

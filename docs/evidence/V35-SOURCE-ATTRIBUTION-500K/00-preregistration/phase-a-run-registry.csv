@@ -1,0 +1,4 @@
+runKey,arm,instance,seed,role,maxFEs,observerMode,executionCondition,executionOrder,notes
+SA-HARD,A4,100_5_3_1,20260901,CASE_SELECTED_DIAGNOSTIC_ONLY,500000,ON,unconditional-first,1,must satisfy historical FAIL class at terminal else SOURCE_ATTRIBUTION_CASE_NOT_REPRODUCED and stop
+SA-NORMAL,A4,100_2_3_1,20260901,CONTAMINATED_DEVELOPMENT,500000,ON,after SA-HARD failure-class reproduction gate,2,reference=frozen NORMAL_SOURCE_REFERENCE_CONTRACT only; no backfill
+SA-A2-CONDITIONAL,A2,100_5_3_1,20260901,CASE_SELECTED_DIAGNOSTIC_ONLY,500000,ON,onlyIf=G1_TRIGGERED,3,conditional arm; never run if G1 not established

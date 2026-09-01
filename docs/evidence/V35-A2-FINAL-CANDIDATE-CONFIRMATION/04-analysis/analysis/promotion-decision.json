@@ -1,0 +1,21 @@
+{
+  "decision": "A2_NOT_PROMOTED",
+  "overall": {
+    "medianDeltaCmax": -0.007410400454707268,
+    "medianDeltaTEC": 0.0069767673571914796,
+    "medianDeltaTWC": 0.005998402044811691,
+    "medianDeltaHV": 0.057323429334649116,
+    "medianDeltaIGD": 0.06806652724799536
+  },
+  "conditions": {
+    "allPairsAccepted": true,
+    "overallPositiveHvIgdAndNonnegativeCmax": false,
+    "fourOfSixInstanceJointNonnegative": false,
+    "allScalePooledJointNonnegative": false,
+    "no100JobVeto": false,
+    "noTecTwcThreeScaleSystemicRegression": true
+  },
+  "validPairs": 30,
+  "validRuns": 60,
+  "protocol": "v35-a2-final-candidate-confirmation-v1"
+}

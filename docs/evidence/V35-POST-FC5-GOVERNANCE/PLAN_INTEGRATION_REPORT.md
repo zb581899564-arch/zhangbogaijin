@@ -1,0 +1,41 @@
+# V35 Post-FC5治理计划接入报告
+
+日期：2026-08-29
+
+## 范围
+
+本工作包只接入文档治理，不修改算法源码、冻结Jar、配置、PDDR或实验数据，也未启动本地/远端训练。
+
+## 输入
+
+- 用户批准原文：`C:\Users\33056\.codex\attachments\9f44b63e-2c37-47c0-a53b-608311ea8a1e\pasted-text.txt`
+- 原文SHA-256：`CA0A021C29096DE57CC30FC2C80742CB27DB203E98F8C1B59AF1AB11A7D3708E`
+- 250k裁决依据：`docs/evidence/V35-FC5-MIDHORIZON-250K/01-root-cause-analysis/remote-results/FC5_250K_ROOT_CAUSE_REPORT.md`
+
+## 已完成
+
+1. 原文完整固化为`docs/V35_POST_FC5_EXECUTION_MASTER_PLAN.md`。
+2. `AGENTS.md`新增第21节，将当前状态、禁止项、F1/F2/F3门、单旋钮校准、Race、Validation、Final与证据纪律设为强制约束。
+3. `docs/ROADMAP.md`新增D-109，登记250k否证和PDDR降级；新增第13节，把后续路线拆成有前置门的工作包。
+4. 明确最近只允许0-FE的`PFC5-1/PFC5-2`，完成后停在F1预登记，不自动启动500k replay。
+
+## 前后哈希
+
+| 文件 | 修改前SHA-256 | 修改后SHA-256 |
+|---|---|---|
+| `AGENTS.md` | `E91036EDF3694DDDEF40AA606FE0ADEAC55CE2FE7E92DC3F12E668B275D28D7C` | `1826F314ED84B12D428017B1B3291774CC35A7D8B63DF61402D5F559C7243512` |
+| `docs/ROADMAP.md` | `6F47BE5C5CDE65100BDE7D82F719FE179F058178A501096DD705B5F3FCF2813A` | `58912A9A9AAB0F5DF5656FEBA6E79C59A7DD97E65C904E60AE8F125407E8CC1C` |
+| `docs/V35_POST_FC5_EXECUTION_MASTER_PLAN.md` | `NOT_APPLICABLE` | `1E91857F93F7685D481009DD91AB1F2DD96A4D684C1AD06AEE23DD58BEECB493` |
+
+## 当前状态
+
+```ini
+planIntegrated=true
+fc5OverflowHypothesis=NOT_SUPPORTED_THROUGH_250K
+pddr=GLOBAL_ORIGINAL
+formalMatrix=PAUSED
+FINAL_FROZEN=false
+newTrainingStarted=false
+algorithmChanged=false
+```
+

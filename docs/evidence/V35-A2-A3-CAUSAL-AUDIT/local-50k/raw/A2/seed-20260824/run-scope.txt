@@ -1,0 +1,7 @@
+remoteRun=false
+sourceTreeModified=false
+postRunOnlyExport=true
+randomStreamResetOnceAtRunBoundary=true
+fullCapture=false
+eventCapacity=4096
+algorithmDecisionsUnchanged=true

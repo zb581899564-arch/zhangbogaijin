@@ -1,0 +1,1 @@
+run_id,algorithm,instance,seed,status,config_hash,budget,initial_population_hash,instance_sha256,instance_extension_sha256,fatigue_manifest_sha256,decoder_mode,family_mode,setup_mode,shift_mode,objectives,front_path,wall_clock_ms,cpu_time_ms

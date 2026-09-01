@@ -1,0 +1,2 @@
+generation,FE,parentFingerprint,candidateFingerprint,context,bottleneck,macroNeighborhood,TEST_APPLY,candidateConstructed,candidateEvaluated,objectives,acceptedLocally,enteredPddrPool,pddrSelected,enteredArchive,survivedNextCycle
+1,1023,FP_PAR_001,FP_CAND_001,G1_CMAX,SEQ,N1,TEST,true,true,820|115000|310000,true,true,true,false,false

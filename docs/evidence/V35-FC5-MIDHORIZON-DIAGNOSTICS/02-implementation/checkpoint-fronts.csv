@@ -1,0 +1,6 @@
+instance,seed,arm,nominalCheckpointFE,actualSnapshotFE,overshootFE,generation,formalOuterCycle,qRound,frontType,solutionFingerprint,Cmax,TEC,TWC
+100_5_3_1,20260901,A2,1000,1023,23,1,1,2,workingPopulationND,FP_A2_001,820.5,115000,310000
+100_5_3_1,20260901,A2,1000,1023,23,1,1,2,decisionArchiveFront,FP_A2_001,820.5,115000,310000
+100_5_3_1,20260901,A2,1000,1023,23,1,1,2,observedFullFront,FP_A2_001,820.5,115000,310000
+100_5_3_1,20260901,A4,1000,1015,15,1,1,2,workingPopulationND,FP_A4_001,815.2,114500,308000
+100_5_3_1,20260901,A4,2000,2033,33,2,2,4,workingPopulationND,FP_A4_002,810.1,114000,307500

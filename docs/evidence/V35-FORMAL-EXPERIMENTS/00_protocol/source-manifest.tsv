@@ -1,0 +1,3 @@
+path	sha256	role	frozenBy
+# Populate from a reviewed source freeze. Do not substitute a working-tree hash for an approved freeze manifest.
+

@@ -1,0 +1,18 @@
+itemId,itemType,title,inputEvidence,status,paperSection
+FIG_M1,figure,Factory-machine-worker structure,paper_evidence/I1/01_input,READY,Problem definition
+FIG_M2,figure,Four-vector encoding,paper_evidence/I1/01_input;docs/evidence/P2,READY,Encoding
+FIG_M3,figure,FM3 decoding trajectory,paper_evidence/I0-v35;paper_evidence/I1,READY,Decoder
+FIG_M4,figure,Gantt chart,paper_evidence/I1,READY,Running example
+FIG_M5,figure,Fatigue recovery curve,paper_evidence/I1,READY,Running example
+FIG_M6,figure,V35 algorithm flow,docs/evidence/V35-P26/algorithm-diagram,READY_WITH_METHOD_REVIEW,Method
+FIG_P1,figure,DOE1 mixture design,docs/evidence/V35-DOE1-subgroup-mixture/02-design-selection,READY,Parameter selection
+FIG_P2,figure,DOE1 heldout confirmation,D:/CodexTemp/V35-DOE1-heldout-audit-20260822,READY,Parameter selection
+FIG_A1,figure,A0-A4 pilot increments,docs/evidence/V35-STAGE2-PILOT-A0-A4-20260823/results/paired-summary.csv,PILOT_ONLY,Pilot analysis
+FIG_A2,figure,PDDR Cmax lifecycle,docs/evidence/V35-STAGE2-PILOT-A0-A4-20260823/results/pddr-cmax-lifecycle.csv,PILOT_ONLY,Diagnostic analysis
+FIG_C1,figure,Formal algorithm comparison,,PENDING_FORMAL_DATA,Results
+FIG_C2,figure,Formal statistical tests,,PENDING_FORMAL_DATA,Results
+TABLE_E1,table,Frozen experimental configuration,docs/evidence/V35-FINAL-FREEZE,READY,Experiments
+TABLE_E2,table,FE utilization,docs/evidence/V35-PHASE-BUDGET-PROTOCOL,PARTIAL,Experiments
+TABLE_E3,table,Formal A0-A4 ablation,,PENDING_FORMAL_DATA,Results
+FIG_A1,figure,Full decision front with deterministic K30 presentation subset,docs/evidence/V35-ND-ARCHIVE,TOOLING_READY_DATA_PENDING,Archive cardinality audit
+TABLE_A1,table,K25 K30 K50 cardinality protocol and sensitivity results,docs/evidence/V35-ND-ARCHIVE,PROTOCOL_READY_REMOTE_DATA_PENDING,Archive cardinality audit

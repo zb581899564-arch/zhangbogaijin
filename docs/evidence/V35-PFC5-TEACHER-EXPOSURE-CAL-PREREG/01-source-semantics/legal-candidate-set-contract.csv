@@ -1,0 +1,15 @@
+﻿contractId,condition,sourceClass,sourceMethod,line,effect,frozenByCalibration,notes
+LCS-01,candidates null or empty,org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoQgController,requireCandidates,464-466,throw IllegalArgumentException,YES,must remain identical for C0
+LCS-02,candidate solution null or any of objectives 0/1/6 non-finite,org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35SocialKnowledgeSnapshot,fromEvaluatedSolutions,46-50,throw IllegalArgumentException,YES,guarantees no unevaluated solution can enter the set
+LCS-03,solution strictly dominated by any snapshot teacher,org.uma.jmetal.algorithm.multiobjective.mypso.ZhangBoMOHPSOQ,applyV35Dscr,2826-2829,excluded from filtered candidates,YES,DSCR dominance filter
+LCS-04,filtered set becomes empty,org.uma.jmetal.algorithm.multiobjective.mypso.ZhangBoMOHPSOQ,applyV35Dscr,2836,keep candidates.get(0),YES,deterministic fallback
+LCS-05,directional teacher pool disabled or non-boundary subswarm,org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoQgController,pool,331-333,pool == candidates,YES,A4 config directionalTeacherPool=false so pool is the untouched candidate list
+LCS-06,directional teacher pool enabled and boundary subswarm and poolSize < size,org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoQgController,pool,335-346,top-k by the subswarm objective with fingerprint tie-break,YES,inactive under A4 config but must not be altered
+LCS-07,DSCR replacement fingerprint missing from snapshot,org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoQgController,sanitizeOne,363-366,throw IllegalStateException,YES,DSCR integrity
+LCS-08,selected Qg teacher strictly dominated while DSCR enabled,org.uma.jmetal.algorithm.multiobjective.mypso.ZhangBoMOHPSOQ,selectQgLeader,2886,throw IllegalStateException,YES,DSCR integrity
+LCS-09,Qp action candidate duplicates an earlier action's fingerprint,org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoQpCandidateSelector,build,52-57,mask=false for that action,YES,action legality mask; must not be modified
+LCS-10,Qp KEEP missing,org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoQpCandidateSelector,build,59-61,throw IllegalStateException,YES,KEEP always valid
+LCS-11,calibration must not add or remove any legal candidate,PREREGISTRATION RULE,n/a,n/a,forbidden,YES,section 4 of the task: no new candidates, no deletion of legal candidates
+LCS-12,calibration must not change the action legality mask,PREREGISTRATION RULE,n/a,n/a,forbidden,YES,section 6.2
+LCS-13,calibration must not read future or unevaluated solutions,PREREGISTRATION RULE,n/a,n/a,forbidden,YES,section 6.1; also structurally guaranteed by LCS-02
+LCS-14,exposure penalty must never be written back to Q table or reward,PREREGISTRATION RULE,n/a,n/a,forbidden,YES,section 6.2

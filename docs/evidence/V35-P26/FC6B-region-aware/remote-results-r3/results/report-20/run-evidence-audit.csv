@@ -1,0 +1,7 @@
+phase,seed,directory,manifestSha256
+REGION_GLOBAL,20260822,/home/inspur/aicomp/zhangbo-fc6b-region-20260820-r3/results/runs/region_global-20_2_3_1-seed-20260822,0d5d33960df6389a66f586f985d431ec8fb389cc291f43452811ae09f9e44675
+REGION_AWARE,20260822,/home/inspur/aicomp/zhangbo-fc6b-region-20260820-r3/results/runs/region_aware-20_2_3_1-seed-20260822,cddd7019e9e66c2cc096ef93a6437a17ae4c3b5a63d8ef8e0491695c0c9b72db
+REGION_GLOBAL,20260823,/home/inspur/aicomp/zhangbo-fc6b-region-20260820-r3/results/runs/region_global-20_2_3_1-seed-20260823,dac037c3d6f949c1114c07bc3aa79d6934ae979146799afd680696768fc416ba
+REGION_AWARE,20260823,/home/inspur/aicomp/zhangbo-fc6b-region-20260820-r3/results/runs/region_aware-20_2_3_1-seed-20260823,1e02f3b3c3028f9acfce71dea46db42ddb74914d5945fb8c708a3252280bc5fc
+REGION_GLOBAL,20260824,/home/inspur/aicomp/zhangbo-fc6b-region-20260820-r3/results/runs/region_global-20_2_3_1-seed-20260824,f974b5b77fa26868905bce47cd5b1b9f033c26e5ae380043d3d1285b838ddccc
+REGION_AWARE,20260824,/home/inspur/aicomp/zhangbo-fc6b-region-20260820-r3/results/runs/region_aware-20_2_3_1-seed-20260824,07e8abf9baf03a0c1e1ef974672965ea44bcc311e1a80b17b85ac1626c72264c

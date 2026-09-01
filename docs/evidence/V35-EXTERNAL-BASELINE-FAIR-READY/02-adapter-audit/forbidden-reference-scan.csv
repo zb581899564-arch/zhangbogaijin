@@ -1,0 +1,92 @@
+scanTarget,scope,check,hits,verdict
+OfficialJMetal58NSGAII.java,code,V35P25DComparativeEngine,0,PASS
+OfficialJMetal58NSGAII.java,code,ZhangBoBaselineUpdater,0,PASS
+OfficialJMetal58NSGAII.java,code,CFVF,0,PASS
+OfficialJMetal58NSGAII.java,code,DSCR,0,PASS
+OfficialJMetal58NSGAII.java,code,CA-TA/CaTa,0,PASS
+OfficialJMetal58NSGAII.java,code,PDDR,0,PASS
+OfficialJMetal58NSGAII.java,code,directionalTeacherPool,0,PASS
+OfficialJMetal58NSGAII.java,code,inheritedLS,0,PASS
+OfficialJMetal58NSGAII.java,code,O1-O13 gateways,0,PASS
+OfficialJMetal58NSGAII.java,code,dualQ,0,PASS
+OfficialJMetal58NSGAII.java,code,personal archive,0,PASS
+OfficialJMetal58NSGAII.java,code,objective slots 2-5 reads/writes,0,PASS
+OfficialJMetal58NSGAII.java,code,non-NONE shift usage,0,PASS
+OfficialJMetal58SPEA2.java,code,V35P25DComparativeEngine,0,PASS
+OfficialJMetal58SPEA2.java,code,ZhangBoBaselineUpdater,0,PASS
+OfficialJMetal58SPEA2.java,code,CFVF,0,PASS
+OfficialJMetal58SPEA2.java,code,DSCR,0,PASS
+OfficialJMetal58SPEA2.java,code,CA-TA/CaTa,0,PASS
+OfficialJMetal58SPEA2.java,code,PDDR,0,PASS
+OfficialJMetal58SPEA2.java,code,directionalTeacherPool,0,PASS
+OfficialJMetal58SPEA2.java,code,inheritedLS,0,PASS
+OfficialJMetal58SPEA2.java,code,O1-O13 gateways,0,PASS
+OfficialJMetal58SPEA2.java,code,dualQ,0,PASS
+OfficialJMetal58SPEA2.java,code,personal archive,0,PASS
+OfficialJMetal58SPEA2.java,code,objective slots 2-5 reads/writes,0,PASS
+OfficialJMetal58SPEA2.java,code,non-NONE shift usage,0,PASS
+V35P25EOfficialJMetalEngine.java,code,V35P25DComparativeEngine,0,PASS
+V35P25EOfficialJMetalEngine.java,code,ZhangBoBaselineUpdater,0,PASS
+V35P25EOfficialJMetalEngine.java,code,CFVF,0,PASS
+V35P25EOfficialJMetalEngine.java,code,DSCR,0,PASS
+V35P25EOfficialJMetalEngine.java,code,CA-TA/CaTa,0,PASS
+V35P25EOfficialJMetalEngine.java,code,PDDR,0,PASS
+V35P25EOfficialJMetalEngine.java,code,directionalTeacherPool,0,PASS
+V35P25EOfficialJMetalEngine.java,code,inheritedLS,0,PASS
+V35P25EOfficialJMetalEngine.java,code,O1-O13 gateways,0,PASS
+V35P25EOfficialJMetalEngine.java,code,dualQ,0,PASS
+V35P25EOfficialJMetalEngine.java,code,personal archive,0,PASS
+V35P25EOfficialJMetalEngine.java,code,objective slots 2-5 reads/writes,0,PASS
+V35P25EOfficialJMetalEngine.java,code,non-NONE shift usage,0,PASS
+V35FourVectorVariation.java,code,V35P25DComparativeEngine,0,PASS
+V35FourVectorVariation.java,code,ZhangBoBaselineUpdater,0,PASS
+V35FourVectorVariation.java,code,CFVF,0,PASS
+V35FourVectorVariation.java,code,DSCR,0,PASS
+V35FourVectorVariation.java,code,CA-TA/CaTa,0,PASS
+V35FourVectorVariation.java,code,PDDR,0,PASS
+V35FourVectorVariation.java,code,directionalTeacherPool,0,PASS
+V35FourVectorVariation.java,code,inheritedLS,0,PASS
+V35FourVectorVariation.java,code,O1-O13 gateways,0,PASS
+V35FourVectorVariation.java,code,dualQ,0,PASS
+V35FourVectorVariation.java,code,personal archive,0,PASS
+V35FourVectorVariation.java,code,objective slots 2-5 reads/writes,0,PASS
+V35FourVectorVariation.java,code,non-NONE shift usage,0,PASS
+V35ComparisonProblemAdapter.java,code,V35P25DComparativeEngine,0,PASS
+V35ComparisonProblemAdapter.java,code,ZhangBoBaselineUpdater,0,PASS
+V35ComparisonProblemAdapter.java,code,CFVF,0,PASS
+V35ComparisonProblemAdapter.java,code,DSCR,0,PASS
+V35ComparisonProblemAdapter.java,code,CA-TA/CaTa,0,PASS
+V35ComparisonProblemAdapter.java,code,PDDR,0,PASS
+V35ComparisonProblemAdapter.java,code,directionalTeacherPool,0,PASS
+V35ComparisonProblemAdapter.java,code,inheritedLS,0,PASS
+V35ComparisonProblemAdapter.java,code,O1-O13 gateways,0,PASS
+V35ComparisonProblemAdapter.java,code,dualQ,0,PASS
+V35ComparisonProblemAdapter.java,code,personal archive,0,PASS
+V35ComparisonProblemAdapter.java,code,objective slots 2-5 reads/writes,0,PASS
+V35ComparisonProblemAdapter.java,code,non-NONE shift usage,0,PASS
+V35ComparisonSolution.java,code,V35P25DComparativeEngine,0,PASS
+V35ComparisonSolution.java,code,ZhangBoBaselineUpdater,0,PASS
+V35ComparisonSolution.java,code,CFVF,0,PASS
+V35ComparisonSolution.java,code,DSCR,0,PASS
+V35ComparisonSolution.java,code,CA-TA/CaTa,0,PASS
+V35ComparisonSolution.java,code,PDDR,0,PASS
+V35ComparisonSolution.java,code,directionalTeacherPool,0,PASS
+V35ComparisonSolution.java,code,inheritedLS,0,PASS
+V35ComparisonSolution.java,code,O1-O13 gateways,0,PASS
+V35ComparisonSolution.java,code,dualQ,0,PASS
+V35ComparisonSolution.java,code,personal archive,0,PASS
+V35ComparisonSolution.java,code,objective slots 2-5 reads/writes,0,PASS
+V35ComparisonSolution.java,code,non-NONE shift usage,0,PASS
+ZhangBoV35ExternalFairBaselineRunner.java,code,V35P25DComparativeEngine,0,PASS
+ZhangBoV35ExternalFairBaselineRunner.java,code,ZhangBoBaselineUpdater,0,PASS
+ZhangBoV35ExternalFairBaselineRunner.java,code,CFVF,0,PASS
+ZhangBoV35ExternalFairBaselineRunner.java,code,DSCR,0,PASS
+ZhangBoV35ExternalFairBaselineRunner.java,code,CA-TA/CaTa,0,PASS
+ZhangBoV35ExternalFairBaselineRunner.java,code,PDDR,0,PASS
+ZhangBoV35ExternalFairBaselineRunner.java,code,directionalTeacherPool,0,PASS
+ZhangBoV35ExternalFairBaselineRunner.java,code,inheritedLS,0,PASS
+ZhangBoV35ExternalFairBaselineRunner.java,code,O1-O13 gateways,0,PASS
+ZhangBoV35ExternalFairBaselineRunner.java,code,dualQ,0,PASS
+ZhangBoV35ExternalFairBaselineRunner.java,code,personal archive,0,PASS
+ZhangBoV35ExternalFairBaselineRunner.java,code,objective slots 2-5 reads/writes,0,PASS
+ZhangBoV35ExternalFairBaselineRunner.java,code,non-NONE shift usage,0,PASS

@@ -1,0 +1,4 @@
+hypothesis,status,evidence,causalClaimAllowed
+H1a_ND_OVERFLOW,NOT_CONFIRMED_AT_100K,No PDDR round had Nnd>100; maximum Nnd=76.,false
+H1b_REPRESENTATIVE_SURVIVAL_UTILIZATION,LOCAL_FAILURE_EVENTS_OBSERVED_TRANSFER_UNRESOLVED,"6 unique directional representatives were rejected; next-cycle and teacher-use losses are non-zero, but no positive-case 100k contrast or checkpoint HV/IGD lifecycle is available.",false
+FC5_TRANSFER_OVERALL,INCONCLUSIVE_AFTER_DENOMINATOR_CORRECTION,H1a is not confirmed; H1b is observable but cannot be tied temporally to HV/IGD degradation with current artifacts.,false

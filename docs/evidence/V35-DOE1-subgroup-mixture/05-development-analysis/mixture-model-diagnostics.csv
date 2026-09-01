@@ -1,0 +1,2 @@
+rank,conditionNumber,adjustedR2,predictedR2,lotoRMSE,adequate,modelDecision,fallbackReason
+10,275.7587094292299,0.10450190785985569,-0.041356609831044944,0.04050613308114172,false,OBSERVED_MEDIAN_FALLBACK_REQUIRED,"out-of-sample predictive ability failed: predictedR2=-0.041356609831044944"

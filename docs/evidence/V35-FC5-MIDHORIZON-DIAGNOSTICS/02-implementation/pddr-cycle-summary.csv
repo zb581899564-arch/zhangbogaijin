@@ -1,0 +1,2 @@
+instance,seed,arm,cycle,FE,poolSize,uniqueObjectiveCount,strictNdCount,cutoffScore,scoreAtRank99,scoreAtRank100,scoreAtRank101,E_C_rankMargin,E_E_rankMargin
+100_5_3_1,20260901,A4,1,1023,200,198,45,8.2,8.1,8.2,8.3,-5,-12

@@ -1,0 +1,11 @@
+checkpointTargetFE,checkpointObservedFE,overshootFE,evaluationCounterFE,frontType,frontSize
+50000,50000,0,50044,checkpoint-decision-front,188
+50000,50000,0,50044,checkpoint-observed-full-front,237
+100000,100000,0,100000,checkpoint-decision-front,181
+100000,100000,0,100000,checkpoint-observed-full-front,213
+150000,150000,0,150092,checkpoint-decision-front,302
+150000,150000,0,150092,checkpoint-observed-full-front,472
+200000,200000,0,200063,checkpoint-decision-front,405
+200000,200000,0,200063,checkpoint-observed-full-front,642
+250000,250000,0,250000,terminal-decision-front,444
+250000,250000,0,250000,terminal-observed-full-front,683

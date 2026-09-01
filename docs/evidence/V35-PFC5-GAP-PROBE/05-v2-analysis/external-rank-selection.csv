@@ -1,0 +1,4 @@
+arm,meanRankHV,meanRankIGD,score
+SPEA2-F,3.0,1.5,2.25
+A0(HMOPSO-QGS-F),1.5,3.5,2.5
+NSGA-II-F,4.0,1.5,2.75

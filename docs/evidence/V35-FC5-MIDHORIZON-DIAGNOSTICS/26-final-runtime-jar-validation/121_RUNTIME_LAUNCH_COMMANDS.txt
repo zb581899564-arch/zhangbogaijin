@@ -1,0 +1,8 @@
+workingDirectory=E:\学习\李明哲-毕业材料\张博改进\java-jmetal58
+runtimeJar=E:\学习\李明哲-毕业材料\张博改进\java-jmetal58\jmetal-algorithm\target\jmetal-algorithm-5.8-jar-with-dependencies.jar
+runtimeJarSha256=121FBB4939258BDC94C297D5F6CE9BE0B0BEE0271A6E71B89BAE8E1486394155
+formalAlgorithmJarSha256=8DAD8F40266FEEAA4CDB9B47DBE4E342D9064847DF32C7F2933149B9B6BAD8B9
+diagnosticBaseJarSha256=723D24ED3021A01FACDA0231E3B142238E740FB18D025A4341748F2AF8D22E2F
+onCommand=java -cp jmetal-algorithm\target\jmetal-algorithm-5.8-jar-with-dependencies.jar org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35MidHorizonDiagnosticDriver A4 100_5_3_1.txt 20260901 50000 ON A4-50k-ON-s20260901-121FBB49 121FBB4939258BDC94C297D5F6CE9BE0B0BEE0271A6E71B89BAE8E1486394155 E:\学习\李明哲-毕业材料\张博改进\docs\evidence\V35-FC5-MIDHORIZON-DIAGNOSTICS\26-final-runtime-jar-validation\A4-50k-ON-s20260901-121FBB49
+offCommand=java -cp jmetal-algorithm\target\jmetal-algorithm-5.8-jar-with-dependencies.jar org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35MidHorizonDiagnosticDriver A4 100_5_3_1.txt 20260901 50000 OFF A4-50k-OFF-s20260901-121FBB49 121FBB4939258BDC94C297D5F6CE9BE0B0BEE0271A6E71B89BAE8E1486394155 E:\学习\李明哲-毕业材料\张博改进\docs\evidence\V35-FC5-MIDHORIZON-DIAGNOSTICS\26-final-runtime-jar-validation\A4-50k-OFF-s20260901-121FBB49
+pairDesign=two independent JVM invocations; no 2k/20k/A2/250k/formal-matrix run

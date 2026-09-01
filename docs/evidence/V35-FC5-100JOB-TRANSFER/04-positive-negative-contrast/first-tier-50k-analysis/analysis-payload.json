@@ -1,0 +1,2865 @@
+{
+ "runs": 24,
+ "allAcceptancePassed": true,
+ "pairHashAgreementPassed": true,
+ "runSummary": [
+  [
+   "100_2_4_1",
+   "20260901",
+   "A2_CFVF",
+   2,
+   "276.000000",
+   "232.000000",
+   "31.000000",
+   "32.000000",
+   "0.310000",
+   "0.320000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_2_4_1",
+   "20260901",
+   "A4_BUDGET_AWARE_CATA",
+   6,
+   "249.500000",
+   "206.500000",
+   "23.000000",
+   "31.000000",
+   "0.230000",
+   "0.310000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_2_4_1",
+   "20260902",
+   "A2_CFVF",
+   2,
+   "277.000000",
+   "234.500000",
+   "35.500000",
+   "37.000000",
+   "0.355000",
+   "0.370000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_2_4_1",
+   "20260902",
+   "A4_BUDGET_AWARE_CATA",
+   6,
+   "280.500000",
+   "240.000000",
+   "47.500000",
+   "59.000000",
+   "0.475000",
+   "0.590000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_2_4_1",
+   "20260903",
+   "A2_CFVF",
+   2,
+   "274.500000",
+   "233.000000",
+   "50.500000",
+   "54.000000",
+   "0.505000",
+   "0.540000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_2_4_1",
+   "20260903",
+   "A4_BUDGET_AWARE_CATA",
+   6,
+   "273.000000",
+   "227.000000",
+   "24.000000",
+   "56.000000",
+   "0.240000",
+   "0.560000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_2_5_1",
+   "20260911",
+   "A0_BASELINE",
+   3,
+   "300.000000",
+   "244.000000",
+   "38.000000",
+   "43.000000",
+   "0.380000",
+   "0.430000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_2_5_1",
+   "20260911",
+   "A2_CFVF",
+   2,
+   "279.000000",
+   "234.500000",
+   "50.500000",
+   "54.000000",
+   "0.505000",
+   "0.540000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_2_5_1",
+   "20260912",
+   "A0_BASELINE",
+   3,
+   "300.000000",
+   "249.000000",
+   "26.000000",
+   "32.000000",
+   "0.260000",
+   "0.320000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_2_5_1",
+   "20260912",
+   "A2_CFVF",
+   2,
+   "281.500000",
+   "240.000000",
+   "37.500000",
+   "41.000000",
+   "0.375000",
+   "0.410000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_2_5_1",
+   "20260913",
+   "A0_BASELINE",
+   2,
+   "299.000000",
+   "255.500000",
+   "32.000000",
+   "37.000000",
+   "0.320000",
+   "0.370000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_2_5_1",
+   "20260913",
+   "A2_CFVF",
+   2,
+   "278.500000",
+   "237.500000",
+   "34.500000",
+   "35.000000",
+   "0.345000",
+   "0.350000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_5_3_1",
+   "20260901",
+   "A2_CFVF",
+   2,
+   "273.500000",
+   "228.500000",
+   "40.500000",
+   "41.000000",
+   "0.405000",
+   "0.410000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_5_3_1",
+   "20260901",
+   "A4_BUDGET_AWARE_CATA",
+   6,
+   "258.500000",
+   "210.500000",
+   "49.500000",
+   "77.000000",
+   "0.495000",
+   "0.770000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_5_3_1",
+   "20260902",
+   "A2_CFVF",
+   2,
+   "273.500000",
+   "230.500000",
+   "58.500000",
+   "59.000000",
+   "0.585000",
+   "0.590000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_5_3_1",
+   "20260902",
+   "A4_BUDGET_AWARE_CATA",
+   6,
+   "269.000000",
+   "218.500000",
+   "38.500000",
+   "52.000000",
+   "0.385000",
+   "0.520000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_5_3_1",
+   "20260903",
+   "A2_CFVF",
+   2,
+   "273.500000",
+   "230.500000",
+   "49.500000",
+   "50.000000",
+   "0.495000",
+   "0.500000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_5_3_1",
+   "20260903",
+   "A4_BUDGET_AWARE_CATA",
+   6,
+   "272.500000",
+   "228.000000",
+   "52.500000",
+   "61.000000",
+   "0.525000",
+   "0.610000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_8_3_1",
+   "20260911",
+   "A0_BASELINE",
+   2,
+   "276.500000",
+   "236.000000",
+   "38.500000",
+   "42.000000",
+   "0.385000",
+   "0.420000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_8_3_1",
+   "20260911",
+   "A2_CFVF",
+   2,
+   "274.500000",
+   "236.000000",
+   "56.000000",
+   "59.000000",
+   "0.560000",
+   "0.590000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_8_3_1",
+   "20260912",
+   "A0_BASELINE",
+   2,
+   "278.000000",
+   "241.500000",
+   "31.000000",
+   "35.000000",
+   "0.310000",
+   "0.350000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_8_3_1",
+   "20260912",
+   "A2_CFVF",
+   2,
+   "275.000000",
+   "232.000000",
+   "37.000000",
+   "38.000000",
+   "0.370000",
+   "0.380000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_8_3_1",
+   "20260913",
+   "A0_BASELINE",
+   2,
+   "277.000000",
+   "236.000000",
+   "47.000000",
+   "53.000000",
+   "0.470000",
+   "0.530000",
+   0,
+   "0.0000"
+  ],
+  [
+   "100_8_3_1",
+   "20260913",
+   "A2_CFVF",
+   2,
+   "276.000000",
+   "233.500000",
+   "45.000000",
+   "51.000000",
+   "0.450000",
+   "0.510000",
+   0,
+   "0.0000"
+  ]
+ ],
+ "runOverflow": {
+  "100_2_4_1|20260901|A2_CFVF": {
+   "rounds": [
+    [
+     "100_2_4_1",
+     "20260901",
+     "A2_CFVF",
+     "1",
+     "31503",
+     "300",
+     "248",
+     "32",
+     "0.32"
+    ],
+    [
+     "100_2_4_1",
+     "20260901",
+     "A2_CFVF",
+     "2",
+     "50000",
+     "252",
+     "216",
+     "30",
+     "0.3"
+    ]
+   ],
+   "medianNnd": 31.0,
+   "maxNnd": 32.0,
+   "medianRoverflow": 0.31,
+   "maxRoverflow": 0.32,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_2_4_1|20260901|A4_BUDGET_AWARE_CATA": {
+   "rounds": [
+    [
+     "100_2_4_1",
+     "20260901",
+     "A4_BUDGET_AWARE_CATA",
+     "1",
+     "6803",
+     "255",
+     "203",
+     "8",
+     "0.08"
+    ],
+    [
+     "100_2_4_1",
+     "20260901",
+     "A4_BUDGET_AWARE_CATA",
+     "2",
+     "13673",
+     "241",
+     "188",
+     "22",
+     "0.22"
+    ],
+    [
+     "100_2_4_1",
+     "20260901",
+     "A4_BUDGET_AWARE_CATA",
+     "3",
+     "20875",
+     "245",
+     "210",
+     "28",
+     "0.28"
+    ],
+    [
+     "100_2_4_1",
+     "20260901",
+     "A4_BUDGET_AWARE_CATA",
+     "4",
+     "28652",
+     "247",
+     "200",
+     "31",
+     "0.31"
+    ],
+    [
+     "100_2_4_1",
+     "20260901",
+     "A4_BUDGET_AWARE_CATA",
+     "5",
+     "37442",
+     "252",
+     "215",
+     "16",
+     "0.16"
+    ],
+    [
+     "100_2_4_1",
+     "20260901",
+     "A4_BUDGET_AWARE_CATA",
+     "6",
+     "48269",
+     "257",
+     "216",
+     "24",
+     "0.24"
+    ]
+   ],
+   "medianNnd": 23.0,
+   "maxNnd": 31.0,
+   "medianRoverflow": 0.22999999999999998,
+   "maxRoverflow": 0.31,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_2_4_1|20260902|A2_CFVF": {
+   "rounds": [
+    [
+     "100_2_4_1",
+     "20260902",
+     "A2_CFVF",
+     "1",
+     "30774",
+     "300",
+     "245",
+     "34",
+     "0.34"
+    ],
+    [
+     "100_2_4_1",
+     "20260902",
+     "A2_CFVF",
+     "2",
+     "50000",
+     "254",
+     "224",
+     "37",
+     "0.37"
+    ]
+   ],
+   "medianNnd": 35.5,
+   "maxNnd": 37.0,
+   "medianRoverflow": 0.355,
+   "maxRoverflow": 0.37,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_2_4_1|20260902|A4_BUDGET_AWARE_CATA": {
+   "rounds": [
+    [
+     "100_2_4_1",
+     "20260902",
+     "A4_BUDGET_AWARE_CATA",
+     "1",
+     "6803",
+     "268",
+     "213",
+     "12",
+     "0.12"
+    ],
+    [
+     "100_2_4_1",
+     "20260902",
+     "A4_BUDGET_AWARE_CATA",
+     "2",
+     "13673",
+     "280",
+     "237",
+     "24",
+     "0.24"
+    ],
+    [
+     "100_2_4_1",
+     "20260902",
+     "A4_BUDGET_AWARE_CATA",
+     "3",
+     "20875",
+     "275",
+     "230",
+     "41",
+     "0.41"
+    ],
+    [
+     "100_2_4_1",
+     "20260902",
+     "A4_BUDGET_AWARE_CATA",
+     "4",
+     "28652",
+     "281",
+     "243",
+     "56",
+     "0.56"
+    ],
+    [
+     "100_2_4_1",
+     "20260902",
+     "A4_BUDGET_AWARE_CATA",
+     "5",
+     "37442",
+     "289",
+     "255",
+     "54",
+     "0.54"
+    ],
+    [
+     "100_2_4_1",
+     "20260902",
+     "A4_BUDGET_AWARE_CATA",
+     "6",
+     "48269",
+     "289",
+     "257",
+     "59",
+     "0.59"
+    ]
+   ],
+   "medianNnd": 47.5,
+   "maxNnd": 59.0,
+   "medianRoverflow": 0.475,
+   "maxRoverflow": 0.59,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_2_4_1|20260903|A2_CFVF": {
+   "rounds": [
+    [
+     "100_2_4_1",
+     "20260903",
+     "A2_CFVF",
+     "1",
+     "32056",
+     "300",
+     "245",
+     "54",
+     "0.54"
+    ],
+    [
+     "100_2_4_1",
+     "20260903",
+     "A2_CFVF",
+     "2",
+     "50000",
+     "249",
+     "221",
+     "47",
+     "0.47"
+    ]
+   ],
+   "medianNnd": 50.5,
+   "maxNnd": 54.0,
+   "medianRoverflow": 0.505,
+   "maxRoverflow": 0.54,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_2_4_1|20260903|A4_BUDGET_AWARE_CATA": {
+   "rounds": [
+    [
+     "100_2_4_1",
+     "20260903",
+     "A4_BUDGET_AWARE_CATA",
+     "1",
+     "6803",
+     "271",
+     "216",
+     "13",
+     "0.13"
+    ],
+    [
+     "100_2_4_1",
+     "20260903",
+     "A4_BUDGET_AWARE_CATA",
+     "2",
+     "13673",
+     "286",
+     "235",
+     "15",
+     "0.15"
+    ],
+    [
+     "100_2_4_1",
+     "20260903",
+     "A4_BUDGET_AWARE_CATA",
+     "3",
+     "20875",
+     "275",
+     "223",
+     "33",
+     "0.33"
+    ],
+    [
+     "100_2_4_1",
+     "20260903",
+     "A4_BUDGET_AWARE_CATA",
+     "4",
+     "28652",
+     "268",
+     "231",
+     "12",
+     "0.12"
+    ],
+    [
+     "100_2_4_1",
+     "20260903",
+     "A4_BUDGET_AWARE_CATA",
+     "5",
+     "37442",
+     "260",
+     "214",
+     "35",
+     "0.35"
+    ],
+    [
+     "100_2_4_1",
+     "20260903",
+     "A4_BUDGET_AWARE_CATA",
+     "6",
+     "48269",
+     "281",
+     "240",
+     "56",
+     "0.56"
+    ]
+   ],
+   "medianNnd": 24.0,
+   "maxNnd": 56.0,
+   "medianRoverflow": 0.24,
+   "maxRoverflow": 0.56,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_2_5_1|20260911|A0_BASELINE": {
+   "rounds": [
+    [
+     "100_2_5_1",
+     "20260911",
+     "A0_BASELINE",
+     "1",
+     "18459",
+     "300",
+     "244",
+     "28",
+     "0.28"
+    ],
+    [
+     "100_2_5_1",
+     "20260911",
+     "A0_BASELINE",
+     "2",
+     "36736",
+     "300",
+     "271",
+     "38",
+     "0.38"
+    ],
+    [
+     "100_2_5_1",
+     "20260911",
+     "A0_BASELINE",
+     "3",
+     "50000",
+     "255",
+     "212",
+     "43",
+     "0.43"
+    ]
+   ],
+   "medianNnd": 38.0,
+   "maxNnd": 43.0,
+   "medianRoverflow": 0.38,
+   "maxRoverflow": 0.43,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_2_5_1|20260911|A2_CFVF": {
+   "rounds": [
+    [
+     "100_2_5_1",
+     "20260911",
+     "A2_CFVF",
+     "1",
+     "30487",
+     "300",
+     "244",
+     "47",
+     "0.47"
+    ],
+    [
+     "100_2_5_1",
+     "20260911",
+     "A2_CFVF",
+     "2",
+     "50000",
+     "258",
+     "225",
+     "54",
+     "0.54"
+    ]
+   ],
+   "medianNnd": 50.5,
+   "maxNnd": 54.0,
+   "medianRoverflow": 0.505,
+   "maxRoverflow": 0.54,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_2_5_1|20260912|A0_BASELINE": {
+   "rounds": [
+    [
+     "100_2_5_1",
+     "20260912",
+     "A0_BASELINE",
+     "1",
+     "18731",
+     "300",
+     "249",
+     "26",
+     "0.26"
+    ],
+    [
+     "100_2_5_1",
+     "20260912",
+     "A0_BASELINE",
+     "2",
+     "38639",
+     "300",
+     "269",
+     "32",
+     "0.32"
+    ],
+    [
+     "100_2_5_1",
+     "20260912",
+     "A0_BASELINE",
+     "3",
+     "50000",
+     "235",
+     "204",
+     "19",
+     "0.19"
+    ]
+   ],
+   "medianNnd": 26.0,
+   "maxNnd": 32.0,
+   "medianRoverflow": 0.26,
+   "maxRoverflow": 0.32,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_2_5_1|20260912|A2_CFVF": {
+   "rounds": [
+    [
+     "100_2_5_1",
+     "20260912",
+     "A2_CFVF",
+     "1",
+     "30499",
+     "300",
+     "249",
+     "34",
+     "0.34"
+    ],
+    [
+     "100_2_5_1",
+     "20260912",
+     "A2_CFVF",
+     "2",
+     "50000",
+     "263",
+     "231",
+     "41",
+     "0.41"
+    ]
+   ],
+   "medianNnd": 37.5,
+   "maxNnd": 41.0,
+   "medianRoverflow": 0.375,
+   "maxRoverflow": 0.41,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_2_5_1|20260913|A0_BASELINE": {
+   "rounds": [
+    [
+     "100_2_5_1",
+     "20260913",
+     "A0_BASELINE",
+     "1",
+     "23689",
+     "300",
+     "245",
+     "27",
+     "0.27"
+    ],
+    [
+     "100_2_5_1",
+     "20260913",
+     "A0_BASELINE",
+     "2",
+     "50000",
+     "298",
+     "266",
+     "37",
+     "0.37"
+    ]
+   ],
+   "medianNnd": 32.0,
+   "maxNnd": 37.0,
+   "medianRoverflow": 0.32,
+   "maxRoverflow": 0.37,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_2_5_1|20260913|A2_CFVF": {
+   "rounds": [
+    [
+     "100_2_5_1",
+     "20260913",
+     "A2_CFVF",
+     "1",
+     "30445",
+     "300",
+     "245",
+     "35",
+     "0.35"
+    ],
+    [
+     "100_2_5_1",
+     "20260913",
+     "A2_CFVF",
+     "2",
+     "50000",
+     "257",
+     "230",
+     "34",
+     "0.34"
+    ]
+   ],
+   "medianNnd": 34.5,
+   "maxNnd": 35.0,
+   "medianRoverflow": 0.345,
+   "maxRoverflow": 0.35,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_5_3_1|20260901|A2_CFVF": {
+   "rounds": [
+    [
+     "100_5_3_1",
+     "20260901",
+     "A2_CFVF",
+     "1",
+     "32295",
+     "300",
+     "244",
+     "40",
+     "0.4"
+    ],
+    [
+     "100_5_3_1",
+     "20260901",
+     "A2_CFVF",
+     "2",
+     "50000",
+     "247",
+     "213",
+     "41",
+     "0.41"
+    ]
+   ],
+   "medianNnd": 40.5,
+   "maxNnd": 41.0,
+   "medianRoverflow": 0.405,
+   "maxRoverflow": 0.41,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_5_3_1|20260901|A4_BUDGET_AWARE_CATA": {
+   "rounds": [
+    [
+     "100_5_3_1",
+     "20260901",
+     "A4_BUDGET_AWARE_CATA",
+     "1",
+     "6803",
+     "260",
+     "204",
+     "10",
+     "0.1"
+    ],
+    [
+     "100_5_3_1",
+     "20260901",
+     "A4_BUDGET_AWARE_CATA",
+     "2",
+     "13673",
+     "259",
+     "206",
+     "30",
+     "0.3"
+    ],
+    [
+     "100_5_3_1",
+     "20260901",
+     "A4_BUDGET_AWARE_CATA",
+     "3",
+     "20875",
+     "248",
+     "203",
+     "47",
+     "0.47"
+    ],
+    [
+     "100_5_3_1",
+     "20260901",
+     "A4_BUDGET_AWARE_CATA",
+     "4",
+     "28652",
+     "256",
+     "216",
+     "52",
+     "0.52"
+    ],
+    [
+     "100_5_3_1",
+     "20260901",
+     "A4_BUDGET_AWARE_CATA",
+     "5",
+     "37442",
+     "258",
+     "215",
+     "69",
+     "0.69"
+    ],
+    [
+     "100_5_3_1",
+     "20260901",
+     "A4_BUDGET_AWARE_CATA",
+     "6",
+     "48269",
+     "272",
+     "236",
+     "77",
+     "0.77"
+    ]
+   ],
+   "medianNnd": 49.5,
+   "maxNnd": 77.0,
+   "medianRoverflow": 0.495,
+   "maxRoverflow": 0.77,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_5_3_1|20260902|A2_CFVF": {
+   "rounds": [
+    [
+     "100_5_3_1",
+     "20260902",
+     "A2_CFVF",
+     "1",
+     "32276",
+     "300",
+     "244",
+     "59",
+     "0.59"
+    ],
+    [
+     "100_5_3_1",
+     "20260902",
+     "A2_CFVF",
+     "2",
+     "50000",
+     "247",
+     "217",
+     "58",
+     "0.58"
+    ]
+   ],
+   "medianNnd": 58.5,
+   "maxNnd": 59.0,
+   "medianRoverflow": 0.585,
+   "maxRoverflow": 0.59,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_5_3_1|20260902|A4_BUDGET_AWARE_CATA": {
+   "rounds": [
+    [
+     "100_5_3_1",
+     "20260902",
+     "A4_BUDGET_AWARE_CATA",
+     "1",
+     "6803",
+     "270",
+     "214",
+     "14",
+     "0.14"
+    ],
+    [
+     "100_5_3_1",
+     "20260902",
+     "A4_BUDGET_AWARE_CATA",
+     "2",
+     "13673",
+     "268",
+     "218",
+     "27",
+     "0.27"
+    ],
+    [
+     "100_5_3_1",
+     "20260902",
+     "A4_BUDGET_AWARE_CATA",
+     "3",
+     "20875",
+     "272",
+     "234",
+     "34",
+     "0.34"
+    ],
+    [
+     "100_5_3_1",
+     "20260902",
+     "A4_BUDGET_AWARE_CATA",
+     "4",
+     "28652",
+     "256",
+     "217",
+     "43",
+     "0.43"
+    ],
+    [
+     "100_5_3_1",
+     "20260902",
+     "A4_BUDGET_AWARE_CATA",
+     "5",
+     "37442",
+     "260",
+     "219",
+     "43",
+     "0.43"
+    ],
+    [
+     "100_5_3_1",
+     "20260902",
+     "A4_BUDGET_AWARE_CATA",
+     "6",
+     "48269",
+     "281",
+     "239",
+     "52",
+     "0.52"
+    ]
+   ],
+   "medianNnd": 38.5,
+   "maxNnd": 52.0,
+   "medianRoverflow": 0.385,
+   "maxRoverflow": 0.52,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_5_3_1|20260903|A2_CFVF": {
+   "rounds": [
+    [
+     "100_5_3_1",
+     "20260903",
+     "A2_CFVF",
+     "1",
+     "32295",
+     "300",
+     "242",
+     "49",
+     "0.49"
+    ],
+    [
+     "100_5_3_1",
+     "20260903",
+     "A2_CFVF",
+     "2",
+     "50000",
+     "247",
+     "219",
+     "50",
+     "0.5"
+    ]
+   ],
+   "medianNnd": 49.5,
+   "maxNnd": 50.0,
+   "medianRoverflow": 0.495,
+   "maxRoverflow": 0.5,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_5_3_1|20260903|A4_BUDGET_AWARE_CATA": {
+   "rounds": [
+    [
+     "100_5_3_1",
+     "20260903",
+     "A4_BUDGET_AWARE_CATA",
+     "1",
+     "6803",
+     "257",
+     "199",
+     "15",
+     "0.15"
+    ],
+    [
+     "100_5_3_1",
+     "20260903",
+     "A4_BUDGET_AWARE_CATA",
+     "2",
+     "13673",
+     "272",
+     "226",
+     "33",
+     "0.33"
+    ],
+    [
+     "100_5_3_1",
+     "20260903",
+     "A4_BUDGET_AWARE_CATA",
+     "3",
+     "20875",
+     "273",
+     "233",
+     "54",
+     "0.54"
+    ],
+    [
+     "100_5_3_1",
+     "20260903",
+     "A4_BUDGET_AWARE_CATA",
+     "4",
+     "28652",
+     "260",
+     "220",
+     "51",
+     "0.51"
+    ],
+    [
+     "100_5_3_1",
+     "20260903",
+     "A4_BUDGET_AWARE_CATA",
+     "5",
+     "37442",
+     "280",
+     "237",
+     "59",
+     "0.59"
+    ],
+    [
+     "100_5_3_1",
+     "20260903",
+     "A4_BUDGET_AWARE_CATA",
+     "6",
+     "48269",
+     "273",
+     "230",
+     "61",
+     "0.61"
+    ]
+   ],
+   "medianNnd": 52.5,
+   "maxNnd": 61.0,
+   "medianRoverflow": 0.525,
+   "maxRoverflow": 0.61,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_8_3_1|20260911|A0_BASELINE": {
+   "rounds": [
+    [
+     "100_8_3_1",
+     "20260911",
+     "A0_BASELINE",
+     "1",
+     "31363",
+     "300",
+     "247",
+     "42",
+     "0.42"
+    ],
+    [
+     "100_8_3_1",
+     "20260911",
+     "A0_BASELINE",
+     "2",
+     "50000",
+     "253",
+     "225",
+     "35",
+     "0.35"
+    ]
+   ],
+   "medianNnd": 38.5,
+   "maxNnd": 42.0,
+   "medianRoverflow": 0.385,
+   "maxRoverflow": 0.42,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_8_3_1|20260911|A2_CFVF": {
+   "rounds": [
+    [
+     "100_8_3_1",
+     "20260911",
+     "A2_CFVF",
+     "1",
+     "31896",
+     "300",
+     "247",
+     "53",
+     "0.53"
+    ],
+    [
+     "100_8_3_1",
+     "20260911",
+     "A2_CFVF",
+     "2",
+     "50000",
+     "249",
+     "225",
+     "59",
+     "0.59"
+    ]
+   ],
+   "medianNnd": 56.0,
+   "maxNnd": 59.0,
+   "medianRoverflow": 0.56,
+   "maxRoverflow": 0.59,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_8_3_1|20260912|A0_BASELINE": {
+   "rounds": [
+    [
+     "100_8_3_1",
+     "20260912",
+     "A0_BASELINE",
+     "1",
+     "31680",
+     "300",
+     "248",
+     "27",
+     "0.27"
+    ],
+    [
+     "100_8_3_1",
+     "20260912",
+     "A0_BASELINE",
+     "2",
+     "50000",
+     "256",
+     "235",
+     "35",
+     "0.35"
+    ]
+   ],
+   "medianNnd": 31.0,
+   "maxNnd": 35.0,
+   "medianRoverflow": 0.31,
+   "maxRoverflow": 0.35,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_8_3_1|20260912|A2_CFVF": {
+   "rounds": [
+    [
+     "100_8_3_1",
+     "20260912",
+     "A2_CFVF",
+     "1",
+     "31901",
+     "300",
+     "248",
+     "38",
+     "0.38"
+    ],
+    [
+     "100_8_3_1",
+     "20260912",
+     "A2_CFVF",
+     "2",
+     "50000",
+     "250",
+     "216",
+     "36",
+     "0.36"
+    ]
+   ],
+   "medianNnd": 37.0,
+   "maxNnd": 38.0,
+   "medianRoverflow": 0.37,
+   "maxRoverflow": 0.38,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_8_3_1|20260913|A0_BASELINE": {
+   "rounds": [
+    [
+     "100_8_3_1",
+     "20260913",
+     "A0_BASELINE",
+     "1",
+     "30933",
+     "300",
+     "243",
+     "53",
+     "0.53"
+    ],
+    [
+     "100_8_3_1",
+     "20260913",
+     "A0_BASELINE",
+     "2",
+     "50000",
+     "254",
+     "229",
+     "41",
+     "0.41"
+    ]
+   ],
+   "medianNnd": 47.0,
+   "maxNnd": 53.0,
+   "medianRoverflow": 0.47,
+   "maxRoverflow": 0.53,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  },
+  "100_8_3_1|20260913|A2_CFVF": {
+   "rounds": [
+    [
+     "100_8_3_1",
+     "20260913",
+     "A2_CFVF",
+     "1",
+     "31287",
+     "300",
+     "243",
+     "39",
+     "0.39"
+    ],
+    [
+     "100_8_3_1",
+     "20260913",
+     "A2_CFVF",
+     "2",
+     "50000",
+     "252",
+     "224",
+     "51",
+     "0.51"
+    ]
+   ],
+   "medianNnd": 45.0,
+   "maxNnd": 51.0,
+   "medianRoverflow": 0.45,
+   "maxRoverflow": 0.51,
+   "nndGt100Rounds": 0,
+   "nndGt100Frac": 0.0
+  }
+ },
+ "dirSummary": {
+  "100_2_4_1|20260901|A2_CFVF|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_2_4_1|20260901|A2_CFVF|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_4_1|20260901|A2_CFVF|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_2_4_1|20260901|A2_CFVF|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_2_4_1|20260901|A4_BUDGET_AWARE_CATA|E_C": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 4,
+   "improvedCount": 1
+  },
+  "100_2_4_1|20260901|A4_BUDGET_AWARE_CATA|E_E": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 5
+  },
+  "100_2_4_1|20260901|A4_BUDGET_AWARE_CATA|E_W": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 3
+  },
+  "100_2_4_1|20260901|A4_BUDGET_AWARE_CATA|E_B": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 3
+  },
+  "100_2_4_1|20260902|A2_CFVF|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_2_4_1|20260902|A2_CFVF|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_2_4_1|20260902|A2_CFVF|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_4_1|20260902|A2_CFVF|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_4_1|20260902|A4_BUDGET_AWARE_CATA|E_C": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 4
+  },
+  "100_2_4_1|20260902|A4_BUDGET_AWARE_CATA|E_E": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 4,
+   "improvedCount": 3
+  },
+  "100_2_4_1|20260902|A4_BUDGET_AWARE_CATA|E_W": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 4,
+   "improvedCount": 3
+  },
+  "100_2_4_1|20260902|A4_BUDGET_AWARE_CATA|E_B": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 3,
+   "improvedCount": 2
+  },
+  "100_2_4_1|20260903|A2_CFVF|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_4_1|20260903|A2_CFVF|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_2_4_1|20260903|A2_CFVF|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_4_1|20260903|A2_CFVF|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_4_1|20260903|A4_BUDGET_AWARE_CATA|E_C": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 3
+  },
+  "100_2_4_1|20260903|A4_BUDGET_AWARE_CATA|E_E": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 4
+  },
+  "100_2_4_1|20260903|A4_BUDGET_AWARE_CATA|E_W": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 5
+  },
+  "100_2_4_1|20260903|A4_BUDGET_AWARE_CATA|E_B": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 3
+  },
+  "100_2_5_1|20260911|A0_BASELINE|E_C": {
+   "n": 3,
+   "selected": 3,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260911|A0_BASELINE|E_E": {
+   "n": 3,
+   "selected": 3,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260911|A0_BASELINE|E_W": {
+   "n": 3,
+   "selected": 3,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260911|A0_BASELINE|E_B": {
+   "n": 3,
+   "selected": 3,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260911|A2_CFVF|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260911|A2_CFVF|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_2_5_1|20260911|A2_CFVF|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260911|A2_CFVF|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260912|A0_BASELINE|E_C": {
+   "n": 3,
+   "selected": 3,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260912|A0_BASELINE|E_E": {
+   "n": 3,
+   "selected": 3,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260912|A0_BASELINE|E_W": {
+   "n": 3,
+   "selected": 3,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260912|A0_BASELINE|E_B": {
+   "n": 3,
+   "selected": 3,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260912|A2_CFVF|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_2_5_1|20260912|A2_CFVF|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260912|A2_CFVF|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_2_5_1|20260912|A2_CFVF|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260913|A0_BASELINE|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260913|A0_BASELINE|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260913|A0_BASELINE|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260913|A0_BASELINE|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260913|A2_CFVF|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_2_5_1|20260913|A2_CFVF|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_2_5_1|20260913|A2_CFVF|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_2_5_1|20260913|A2_CFVF|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_5_3_1|20260901|A2_CFVF|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_5_3_1|20260901|A2_CFVF|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_5_3_1|20260901|A2_CFVF|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_5_3_1|20260901|A2_CFVF|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_5_3_1|20260901|A4_BUDGET_AWARE_CATA|E_C": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 5
+  },
+  "100_5_3_1|20260901|A4_BUDGET_AWARE_CATA|E_E": {
+   "n": 6,
+   "selected": 5,
+   "selectionRate": 0.8333333333333334,
+   "poolNextRate": 0.8333333333333334,
+   "teacherCount": 5,
+   "improvedCount": 5
+  },
+  "100_5_3_1|20260901|A4_BUDGET_AWARE_CATA|E_W": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 4
+  },
+  "100_5_3_1|20260901|A4_BUDGET_AWARE_CATA|E_B": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 3,
+   "improvedCount": 2
+  },
+  "100_5_3_1|20260902|A2_CFVF|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_5_3_1|20260902|A2_CFVF|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_5_3_1|20260902|A2_CFVF|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_5_3_1|20260902|A2_CFVF|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 0
+  },
+  "100_5_3_1|20260902|A4_BUDGET_AWARE_CATA|E_C": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 5
+  },
+  "100_5_3_1|20260902|A4_BUDGET_AWARE_CATA|E_E": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 4
+  },
+  "100_5_3_1|20260902|A4_BUDGET_AWARE_CATA|E_W": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 4,
+   "improvedCount": 3
+  },
+  "100_5_3_1|20260902|A4_BUDGET_AWARE_CATA|E_B": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 4,
+   "improvedCount": 1
+  },
+  "100_5_3_1|20260903|A2_CFVF|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_5_3_1|20260903|A2_CFVF|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_5_3_1|20260903|A2_CFVF|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_5_3_1|20260903|A2_CFVF|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_5_3_1|20260903|A4_BUDGET_AWARE_CATA|E_C": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 4
+  },
+  "100_5_3_1|20260903|A4_BUDGET_AWARE_CATA|E_E": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 5
+  },
+  "100_5_3_1|20260903|A4_BUDGET_AWARE_CATA|E_W": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 5,
+   "improvedCount": 5
+  },
+  "100_5_3_1|20260903|A4_BUDGET_AWARE_CATA|E_B": {
+   "n": 6,
+   "selected": 6,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 2,
+   "improvedCount": 1
+  },
+  "100_8_3_1|20260911|A0_BASELINE|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260911|A0_BASELINE|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260911|A0_BASELINE|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260911|A0_BASELINE|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260911|A2_CFVF|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260911|A2_CFVF|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_8_3_1|20260911|A2_CFVF|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260911|A2_CFVF|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260912|A0_BASELINE|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260912|A0_BASELINE|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260912|A0_BASELINE|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260912|A0_BASELINE|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260912|A2_CFVF|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260912|A2_CFVF|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260912|A2_CFVF|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260912|A2_CFVF|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260913|A0_BASELINE|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260913|A0_BASELINE|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260913|A0_BASELINE|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260913|A0_BASELINE|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260913|A2_CFVF|E_C": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260913|A2_CFVF|E_E": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 1,
+   "improvedCount": 1
+  },
+  "100_8_3_1|20260913|A2_CFVF|E_W": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  },
+  "100_8_3_1|20260913|A2_CFVF|E_B": {
+   "n": 2,
+   "selected": 2,
+   "selectionRate": 1.0,
+   "poolNextRate": 1.0,
+   "teacherCount": 0,
+   "improvedCount": 0
+  }
+ },
+ "gapSummary": {
+  "100_2_4_1|20260901|A2_CFVF": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_2_4_1|20260901|A4_BUDGET_AWARE_CATA": {
+   "snapshots": 6,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_2_4_1|20260902|A2_CFVF": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_2_4_1|20260902|A4_BUDGET_AWARE_CATA": {
+   "snapshots": 6,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_2_4_1|20260903|A2_CFVF": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_2_4_1|20260903|A4_BUDGET_AWARE_CATA": {
+   "snapshots": 6,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_2_5_1|20260911|A0_BASELINE": {
+   "snapshots": 3,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_2_5_1|20260911|A2_CFVF": {
+   "snapshots": 2,
+   "maxCmaxGap": 3.9442140092262434,
+   "lastCmaxGap": 0.0
+  },
+  "100_2_5_1|20260912|A0_BASELINE": {
+   "snapshots": 3,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_2_5_1|20260912|A2_CFVF": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_2_5_1|20260913|A0_BASELINE": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_2_5_1|20260913|A2_CFVF": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_5_3_1|20260901|A2_CFVF": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_5_3_1|20260901|A4_BUDGET_AWARE_CATA": {
+   "snapshots": 6,
+   "maxCmaxGap": 0.9410712591624133,
+   "lastCmaxGap": 0.9410712591624133
+  },
+  "100_5_3_1|20260902|A2_CFVF": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_5_3_1|20260902|A4_BUDGET_AWARE_CATA": {
+   "snapshots": 6,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_5_3_1|20260903|A2_CFVF": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_5_3_1|20260903|A4_BUDGET_AWARE_CATA": {
+   "snapshots": 6,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_8_3_1|20260911|A0_BASELINE": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_8_3_1|20260911|A2_CFVF": {
+   "snapshots": 2,
+   "maxCmaxGap": 4.2052737738567885,
+   "lastCmaxGap": 4.2052737738567885
+  },
+  "100_8_3_1|20260912|A0_BASELINE": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_8_3_1|20260912|A2_CFVF": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_8_3_1|20260913|A0_BASELINE": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  },
+  "100_8_3_1|20260913|A2_CFVF": {
+   "snapshots": 2,
+   "maxCmaxGap": 0.0,
+   "lastCmaxGap": 0.0
+  }
+ },
+ "contrast": [
+  [
+   "A0_vs_A2",
+   "medianRoverflow",
+   "100_2_5_1",
+   "100_8_3_1",
+   "arm=A2_CFVF",
+   "0.375000",
+   "0.450000",
+   "0.075000"
+  ],
+  [
+   "A0_vs_A2",
+   "maxRoverflow",
+   "100_2_5_1",
+   "100_8_3_1",
+   "arm=A2_CFVF",
+   "0.410000",
+   "0.510000",
+   "0.100000"
+  ],
+  [
+   "A0_vs_A2",
+   "nndGt100Frac",
+   "100_2_5_1",
+   "100_8_3_1",
+   "arm=A2_CFVF",
+   "0.000000",
+   "0.000000",
+   "0.000000"
+  ],
+  [
+   "A0_vs_A2",
+   "poolNextRate_E_C",
+   "100_2_5_1",
+   "100_8_3_1",
+   "arm=A2_CFVF",
+   "1.0000",
+   "1.0000",
+   "0.0000"
+  ],
+  [
+   "A0_vs_A2",
+   "poolNextRate_E_E",
+   "100_2_5_1",
+   "100_8_3_1",
+   "arm=A2_CFVF",
+   "1.0000",
+   "1.0000",
+   "0.0000"
+  ],
+  [
+   "A0_vs_A2",
+   "poolNextRate_E_W",
+   "100_2_5_1",
+   "100_8_3_1",
+   "arm=A2_CFVF",
+   "1.0000",
+   "1.0000",
+   "0.0000"
+  ],
+  [
+   "A0_vs_A2",
+   "poolNextRate_E_B",
+   "100_2_5_1",
+   "100_8_3_1",
+   "arm=A2_CFVF",
+   "1.0000",
+   "1.0000",
+   "0.0000"
+  ],
+  [
+   "A0_vs_A2",
+   "seed_detail_medianRoverflow",
+   "100_2_5_1",
+   "100_8_3_1",
+   "seed=20260911,arm=A2_CFVF",
+   "0.505000",
+   "0.560000",
+   "0.055000"
+  ],
+  [
+   "A0_vs_A2",
+   "seed_detail_maxNnd",
+   "100_2_5_1",
+   "100_8_3_1",
+   "seed=20260911,arm=A2_CFVF",
+   "54.0",
+   "59.0",
+   ""
+  ],
+  [
+   "A0_vs_A2",
+   "seed_detail_medianRoverflow",
+   "100_2_5_1",
+   "100_8_3_1",
+   "seed=20260912,arm=A2_CFVF",
+   "0.375000",
+   "0.370000",
+   "-0.005000"
+  ],
+  [
+   "A0_vs_A2",
+   "seed_detail_maxNnd",
+   "100_2_5_1",
+   "100_8_3_1",
+   "seed=20260912,arm=A2_CFVF",
+   "41.0",
+   "38.0",
+   ""
+  ],
+  [
+   "A0_vs_A2",
+   "seed_detail_medianRoverflow",
+   "100_2_5_1",
+   "100_8_3_1",
+   "seed=20260913,arm=A2_CFVF",
+   "0.345000",
+   "0.450000",
+   "0.105000"
+  ],
+  [
+   "A0_vs_A2",
+   "seed_detail_maxNnd",
+   "100_2_5_1",
+   "100_8_3_1",
+   "seed=20260913,arm=A2_CFVF",
+   "35.0",
+   "51.0",
+   ""
+  ],
+  [
+   "A2_vs_A4",
+   "medianRoverflow",
+   "100_2_4_1",
+   "100_5_3_1",
+   "arm=A4_BUDGET_AWARE_CATA",
+   "0.240000",
+   "0.495000",
+   "0.255000"
+  ],
+  [
+   "A2_vs_A4",
+   "maxRoverflow",
+   "100_2_4_1",
+   "100_5_3_1",
+   "arm=A4_BUDGET_AWARE_CATA",
+   "0.560000",
+   "0.610000",
+   "0.050000"
+  ],
+  [
+   "A2_vs_A4",
+   "nndGt100Frac",
+   "100_2_4_1",
+   "100_5_3_1",
+   "arm=A4_BUDGET_AWARE_CATA",
+   "0.000000",
+   "0.000000",
+   "0.000000"
+  ],
+  [
+   "A2_vs_A4",
+   "poolNextRate_E_C",
+   "100_2_4_1",
+   "100_5_3_1",
+   "arm=A4_BUDGET_AWARE_CATA",
+   "1.0000",
+   "1.0000",
+   "0.0000"
+  ],
+  [
+   "A2_vs_A4",
+   "poolNextRate_E_E",
+   "100_2_4_1",
+   "100_5_3_1",
+   "arm=A4_BUDGET_AWARE_CATA",
+   "1.0000",
+   "1.0000",
+   "0.0000"
+  ],
+  [
+   "A2_vs_A4",
+   "poolNextRate_E_W",
+   "100_2_4_1",
+   "100_5_3_1",
+   "arm=A4_BUDGET_AWARE_CATA",
+   "1.0000",
+   "1.0000",
+   "0.0000"
+  ],
+  [
+   "A2_vs_A4",
+   "poolNextRate_E_B",
+   "100_2_4_1",
+   "100_5_3_1",
+   "arm=A4_BUDGET_AWARE_CATA",
+   "1.0000",
+   "1.0000",
+   "0.0000"
+  ],
+  [
+   "A2_vs_A4",
+   "seed_detail_medianRoverflow",
+   "100_2_4_1",
+   "100_5_3_1",
+   "seed=20260901,arm=A4_BUDGET_AWARE_CATA",
+   "0.230000",
+   "0.495000",
+   "0.265000"
+  ],
+  [
+   "A2_vs_A4",
+   "seed_detail_maxNnd",
+   "100_2_4_1",
+   "100_5_3_1",
+   "seed=20260901,arm=A4_BUDGET_AWARE_CATA",
+   "31.0",
+   "77.0",
+   ""
+  ],
+  [
+   "A2_vs_A4",
+   "seed_detail_medianRoverflow",
+   "100_2_4_1",
+   "100_5_3_1",
+   "seed=20260902,arm=A4_BUDGET_AWARE_CATA",
+   "0.475000",
+   "0.385000",
+   "-0.090000"
+  ],
+  [
+   "A2_vs_A4",
+   "seed_detail_maxNnd",
+   "100_2_4_1",
+   "100_5_3_1",
+   "seed=20260902,arm=A4_BUDGET_AWARE_CATA",
+   "59.0",
+   "52.0",
+   ""
+  ],
+  [
+   "A2_vs_A4",
+   "seed_detail_medianRoverflow",
+   "100_2_4_1",
+   "100_5_3_1",
+   "seed=20260903,arm=A4_BUDGET_AWARE_CATA",
+   "0.240000",
+   "0.525000",
+   "0.285000"
+  ],
+  [
+   "A2_vs_A4",
+   "seed_detail_maxNnd",
+   "100_2_4_1",
+   "100_5_3_1",
+   "seed=20260903,arm=A4_BUDGET_AWARE_CATA",
+   "56.0",
+   "61.0",
+   ""
+  ]
+ ],
+ "verdicts": [
+  [
+   "criterion2",
+   "negative median Roverflow >= positive + 0.25",
+   "FAIL",
+   "0.3750",
+   "0.4500",
+   "0.0750",
+   "A0_vs_A2",
+   "A0_vs_A2 pos=0.3750 neg=0.4500 delta=0.0750 (False); A2_vs_A4 pos=0.2400 neg=0.4950 delta=0.2550 (True); A2_vs_A4 sub-block passes at the 0.25 boundary (delta=0.255) while A0_vs_A2 does not (delta=0.075), so the joint H1 gate does not hold -> FAIL"
+  ],
+  [
+   "criterion2",
+   "negative median Roverflow >= positive + 0.25",
+   "FAIL",
+   "0.2400",
+   "0.4950",
+   "0.2550",
+   "A2_vs_A4",
+   "A0_vs_A2 pos=0.3750 neg=0.4500 delta=0.0750 (False); A2_vs_A4 pos=0.2400 neg=0.4950 delta=0.2550 (True); A2_vs_A4 sub-block passes at the 0.25 boundary (delta=0.255) while A0_vs_A2 does not (delta=0.075), so the joint H1 gate does not hold -> FAIL"
+  ],
+  [
+   "criterion3",
+   "one direction pool->next retention >=20pp lower",
+   "FAIL",
+   "1.0000",
+   "1.0000",
+   "0.0000",
+   "A0_vs_A2 E_C",
+   "A0_vs_A2 E_C pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_E pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_W pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_B pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_C pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_E pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_W pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_B pos=1.0000 neg=1.0000 delta=0.0000; single non-retained representative: 100_5_3_1/20260901/A4_BUDGET_AWARE_CATA/E_E pool->next=5/6=0.8333, but sweep/seed-median deltas are 0.00 across directions, so no >=20pp systematic gap -> FAIL"
+  ],
+  [
+   "criterion3",
+   "one direction pool->next retention >=20pp lower",
+   "FAIL",
+   "1.0000",
+   "1.0000",
+   "0.0000",
+   "A0_vs_A2 E_E",
+   "A0_vs_A2 E_C pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_E pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_W pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_B pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_C pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_E pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_W pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_B pos=1.0000 neg=1.0000 delta=0.0000; single non-retained representative: 100_5_3_1/20260901/A4_BUDGET_AWARE_CATA/E_E pool->next=5/6=0.8333, but sweep/seed-median deltas are 0.00 across directions, so no >=20pp systematic gap -> FAIL"
+  ],
+  [
+   "criterion3",
+   "one direction pool->next retention >=20pp lower",
+   "FAIL",
+   "1.0000",
+   "1.0000",
+   "0.0000",
+   "A0_vs_A2 E_W",
+   "A0_vs_A2 E_C pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_E pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_W pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_B pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_C pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_E pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_W pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_B pos=1.0000 neg=1.0000 delta=0.0000; single non-retained representative: 100_5_3_1/20260901/A4_BUDGET_AWARE_CATA/E_E pool->next=5/6=0.8333, but sweep/seed-median deltas are 0.00 across directions, so no >=20pp systematic gap -> FAIL"
+  ],
+  [
+   "criterion3",
+   "one direction pool->next retention >=20pp lower",
+   "FAIL",
+   "1.0000",
+   "1.0000",
+   "0.0000",
+   "A0_vs_A2 E_B",
+   "A0_vs_A2 E_C pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_E pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_W pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_B pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_C pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_E pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_W pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_B pos=1.0000 neg=1.0000 delta=0.0000; single non-retained representative: 100_5_3_1/20260901/A4_BUDGET_AWARE_CATA/E_E pool->next=5/6=0.8333, but sweep/seed-median deltas are 0.00 across directions, so no >=20pp systematic gap -> FAIL"
+  ],
+  [
+   "criterion3",
+   "one direction pool->next retention >=20pp lower",
+   "FAIL",
+   "1.0000",
+   "1.0000",
+   "0.0000",
+   "A2_vs_A4 E_C",
+   "A0_vs_A2 E_C pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_E pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_W pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_B pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_C pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_E pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_W pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_B pos=1.0000 neg=1.0000 delta=0.0000; single non-retained representative: 100_5_3_1/20260901/A4_BUDGET_AWARE_CATA/E_E pool->next=5/6=0.8333, but sweep/seed-median deltas are 0.00 across directions, so no >=20pp systematic gap -> FAIL"
+  ],
+  [
+   "criterion3",
+   "one direction pool->next retention >=20pp lower",
+   "FAIL",
+   "1.0000",
+   "1.0000",
+   "0.0000",
+   "A2_vs_A4 E_E",
+   "A0_vs_A2 E_C pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_E pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_W pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_B pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_C pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_E pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_W pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_B pos=1.0000 neg=1.0000 delta=0.0000; single non-retained representative: 100_5_3_1/20260901/A4_BUDGET_AWARE_CATA/E_E pool->next=5/6=0.8333, but sweep/seed-median deltas are 0.00 across directions, so no >=20pp systematic gap -> FAIL"
+  ],
+  [
+   "criterion3",
+   "one direction pool->next retention >=20pp lower",
+   "FAIL",
+   "1.0000",
+   "1.0000",
+   "0.0000",
+   "A2_vs_A4 E_W",
+   "A0_vs_A2 E_C pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_E pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_W pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_B pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_C pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_E pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_W pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_B pos=1.0000 neg=1.0000 delta=0.0000; single non-retained representative: 100_5_3_1/20260901/A4_BUDGET_AWARE_CATA/E_E pool->next=5/6=0.8333, but sweep/seed-median deltas are 0.00 across directions, so no >=20pp systematic gap -> FAIL"
+  ],
+  [
+   "criterion3",
+   "one direction pool->next retention >=20pp lower",
+   "FAIL",
+   "1.0000",
+   "1.0000",
+   "0.0000",
+   "A2_vs_A4 E_B",
+   "A0_vs_A2 E_C pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_E pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_W pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_B pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_C pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_E pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_W pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_B pos=1.0000 neg=1.0000 delta=0.0000; single non-retained representative: 100_5_3_1/20260901/A4_BUDGET_AWARE_CATA/E_E pool->next=5/6=0.8333, but sweep/seed-median deltas are 0.00 across directions, so no >=20pp systematic gap -> FAIL"
+  ],
+  [
+   "criterion1",
+   ">=2/3 seeds two consecutive 50k windows Nnd>100",
+   "NOT_OBSERVABLE_AT_50K",
+   "",
+   "",
+   "",
+   "",
+   "each 50k run contains exactly one 50k window (windowed-merge-overflow has 1 row/run); the preregistered 'two consecutive 50k windows' cannot be observed at 50k"
+  ],
+  [
+   "criterion4",
+   "archive-working gap expands with representative loss, precedes degradation",
+   "NOT_OBSERVABLE_AT_50K",
+   "",
+   "",
+   "",
+   "",
+   "per-run archive-working snapshots equal real PDDR rounds (2-6 across arms: A0/A2 = 2-3, A4 = 6); with a single 50k window the preregistered consecutive-window 'gap expands with representative loss and precedes separation' cannot be established from within-run snapshots alone"
+  ]
+ ],
+ "notes": {
+  "c1": "each 50k run contains exactly one 50k window (windowed-merge-overflow has 1 row/run); the preregistered 'two consecutive 50k windows' cannot be observed at 50k",
+  "c2": "A0_vs_A2 pos=0.3750 neg=0.4500 delta=0.0750 (False); A2_vs_A4 pos=0.2400 neg=0.4950 delta=0.2550 (True); A2_vs_A4 sub-block passes at the 0.25 boundary (delta=0.255) while A0_vs_A2 does not (delta=0.075), so the joint H1 gate does not hold -> FAIL",
+  "c3": "A0_vs_A2 E_C pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_E pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_W pos=1.0000 neg=1.0000 delta=0.0000; A0_vs_A2 E_B pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_C pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_E pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_W pos=1.0000 neg=1.0000 delta=0.0000; A2_vs_A4 E_B pos=1.0000 neg=1.0000 delta=0.0000; single non-retained representative: 100_5_3_1/20260901/A4_BUDGET_AWARE_CATA/E_E pool->next=5/6=0.8333, but sweep/seed-median deltas are 0.00 across directions, so no >=20pp systematic gap -> FAIL",
+  "c4": "per-run archive-working snapshots equal real PDDR rounds (2-6 across arms: A0/A2 = 2-3, A4 = 6); with a single 50k window the preregistered consecutive-window 'gap expands with representative loss and precedes separation' cannot be established from within-run snapshots alone"
+ },
+ "recommended": [
+  [
+   "A2_vs_A4",
+   "100_5_3_1",
+   "20260901,20260902,20260903",
+   "A2_CFVF,A4_BUDGET_AWARE_CATA",
+   "6 (2 arms x 3 seeds)",
+   "criterion 1 needs two consecutive 50k windows; a single 50k run has only one window (A0/A2: 2-3 PDDR rounds, A4: 6 rounds) and criterion 4 has only as many gap snapshots as PDDR rounds (2-6), so neither can be decided at 50k",
+   "100k adds window 2 (criterion 1 observable) and doubles the archive-working-gap timeline; it does not rely on the absent overflow signal (max Nnd at 50k = 77 < 100)",
+   "criterion3_not_supported (single 0.8333 outlier, no >=20pp gap)"
+  ]
+ ],
+ "performanceSeparation": [
+  [
+   "A0_vs_A2",
+   "100_2_5_1",
+   "POSITIVE",
+   "20260911",
+   "A0_BASELINE",
+   "A2_CFVF",
+   "610.5654",
+   "583.1957",
+   "-0.0448",
+   "1000",
+   "-0.0763"
+  ],
+  [
+   "A0_vs_A2",
+   "100_2_5_1",
+   "POSITIVE",
+   "20260912",
+   "A0_BASELINE",
+   "A2_CFVF",
+   "577.9125",
+   "574.0988",
+   "-0.0066",
+   "1000",
+   "-0.1719"
+  ],
+  [
+   "A0_vs_A2",
+   "100_2_5_1",
+   "POSITIVE",
+   "20260913",
+   "A0_BASELINE",
+   "A2_CFVF",
+   "640.7478",
+   "572.8028",
+   "-0.1060",
+   "1000",
+   "-0.1318"
+  ],
+  [
+   "A0_vs_A2",
+   "100_8_3_1",
+   "NEGATIVE",
+   "20260911",
+   "A0_BASELINE",
+   "A2_CFVF",
+   "1414.9280",
+   "1412.0292",
+   "-0.0020",
+   "1000",
+   "-0.0935"
+  ],
+  [
+   "A0_vs_A2",
+   "100_8_3_1",
+   "NEGATIVE",
+   "20260912",
+   "A0_BASELINE",
+   "A2_CFVF",
+   "1442.8810",
+   "1398.7733",
+   "-0.0306",
+   "1000",
+   "-0.0837"
+  ],
+  [
+   "A0_vs_A2",
+   "100_8_3_1",
+   "NEGATIVE",
+   "20260913",
+   "A0_BASELINE",
+   "A2_CFVF",
+   "1427.1408",
+   "1400.5261",
+   "-0.0186",
+   "1000",
+   "-0.0359"
+  ],
+  [
+   "A2_vs_A4",
+   "100_2_4_1",
+   "POSITIVE",
+   "20260901",
+   "A2_CFVF",
+   "A4_BUDGET_AWARE_CATA",
+   "620.1837",
+   "603.6306",
+   "-0.0267",
+   "9000",
+   "-0.0231"
+  ],
+  [
+   "A2_vs_A4",
+   "100_2_4_1",
+   "POSITIVE",
+   "20260902",
+   "A2_CFVF",
+   "A4_BUDGET_AWARE_CATA",
+   "621.8800",
+   "597.0178",
+   "-0.0400",
+   "3000",
+   "-0.0227"
+  ],
+  [
+   "A2_vs_A4",
+   "100_2_4_1",
+   "POSITIVE",
+   "20260903",
+   "A2_CFVF",
+   "A4_BUDGET_AWARE_CATA",
+   "600.5778",
+   "609.8588",
+   "0.0155",
+   "1000",
+   "0.0559"
+  ],
+  [
+   "A2_vs_A4",
+   "100_5_3_1",
+   "NEGATIVE",
+   "20260901",
+   "A2_CFVF",
+   "A4_BUDGET_AWARE_CATA",
+   "802.7421",
+   "770.6187",
+   "-0.0400",
+   "7000",
+   "-0.0544"
+  ],
+  [
+   "A2_vs_A4",
+   "100_5_3_1",
+   "NEGATIVE",
+   "20260902",
+   "A2_CFVF",
+   "A4_BUDGET_AWARE_CATA",
+   "785.6733",
+   "777.9559",
+   "-0.0098",
+   "14000",
+   "-0.0517"
+  ],
+  [
+   "A2_vs_A4",
+   "100_5_3_1",
+   "NEGATIVE",
+   "20260903",
+   "A2_CFVF",
+   "A4_BUDGET_AWARE_CATA",
+   "791.8844",
+   "764.5310",
+   "-0.0345",
+   "17000",
+   "-0.0210"
+  ]
+ ],
+ "totals": {
+  "rounds": 74,
+  "representativeRecords": 296,
+  "gapSnapshots": 74,
+  "nonZeroCmaxGap": 3,
+  "nonRetainedRepresentatives": [
+   [
+    "100_5_3_1",
+    "20260901",
+    "A4_BUDGET_AWARE_CATA",
+    "E_E"
+   ]
+  ]
+ }
+}

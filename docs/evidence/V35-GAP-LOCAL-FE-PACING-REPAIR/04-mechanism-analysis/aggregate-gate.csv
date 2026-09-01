@@ -1,0 +1,24 @@
+instance,profile,gate,verdict,detail
+50_2_3_1,C0,scheduleValidation,PASS,"predicted(kind=PHASE_CONSISTENT_TAIL_STOP,cycles=2,total=5158) exported(kind=PHASE_CONSISTENT_TAIL_STOP,cycles=2,total=5158)"
+50_2_3_1,C1,scheduleValidation,PASS,"predicted(kind=EXACT_MAX_FE,cycles=3,total=4900) exported(kind=EXACT_MAX_FE,cycles=3,total=4900)"
+50_2_3_1,C2,scheduleValidation,PASS,"predicted(kind=EXACT_MAX_FE,cycles=3,total=4900) exported(kind=EXACT_MAX_FE,cycles=3,total=4900)"
+50_2_3_1,C3,scheduleValidation,PASS,"predicted(kind=EXACT_MAX_FE,cycles=3,total=4900) exported(kind=EXACT_MAX_FE,cycles=3,total=4900)"
+50_2_3_1,-,G1_structural_betaMax_strict,PASS,betaMax 0.65>0.55>0.45>0.35
+50_2_3_1,-,G2_allocation_cumulative_strict,FAIL,"cumulative [5158, 4900, 4900, 4900]"
+50_2_3_1,-,G2_allocation_perWindowMatched_strict,PASS,"2 common windows: [[1906, 1844, 1784, 1724], [3252, 2775, 2359, 1992]]"
+50_2_3_1,-,G2_allocation_perUAligned_strict,PASS,u-grid allocations ordered
+50_2_3_1,-,G3_consumption_localFeShare,FAIL,"shares [0.3381, 0.245, 0.245, 0.245] adjacent-drops(pp) [9.31, 0.0, 0.0]"
+50_2_3_1,-,G3_consumption_totalLocalFE_strict,FAIL,"totals [5158, 4900, 4900, 4900]"
+50_2_3_1,-,G4_behaviour_reflow_nonDecreasing,PASS,"outerCycles [2, 3, 3, 3] cfvfOffspring [10000, 15000, 15000, 15000]"
+100_5_3_1,C0,scheduleValidation,PASS,"predicted(kind=PHASE_CONSISTENT_TAIL_STOP,cycles=2,total=5158) exported(kind=PHASE_CONSISTENT_TAIL_STOP,cycles=2,total=5158)"
+100_5_3_1,C1,scheduleValidation,PASS,"predicted(kind=EXACT_MAX_FE,cycles=3,total=4900) exported(kind=EXACT_MAX_FE,cycles=3,total=4900)"
+100_5_3_1,C2,scheduleValidation,PASS,"predicted(kind=EXACT_MAX_FE,cycles=3,total=4900) exported(kind=EXACT_MAX_FE,cycles=3,total=4900)"
+100_5_3_1,C3,scheduleValidation,PASS,"predicted(kind=EXACT_MAX_FE,cycles=3,total=4900) exported(kind=EXACT_MAX_FE,cycles=3,total=4900)"
+100_5_3_1,-,G1_structural_betaMax_strict,PASS,betaMax 0.65>0.55>0.45>0.35
+100_5_3_1,-,G2_allocation_cumulative_strict,FAIL,"cumulative [5158, 4900, 4900, 4900]"
+100_5_3_1,-,G2_allocation_perWindowMatched_strict,PASS,"2 common windows: [[1906, 1844, 1784, 1724], [3252, 2775, 2359, 1992]]"
+100_5_3_1,-,G2_allocation_perUAligned_strict,PASS,u-grid allocations ordered
+100_5_3_1,-,G3_consumption_localFeShare,FAIL,"shares [0.3381, 0.245, 0.245, 0.245] adjacent-drops(pp) [9.31, 0.0, 0.0]"
+100_5_3_1,-,G3_consumption_totalLocalFE_strict,FAIL,"totals [5158, 4900, 4900, 4900]"
+100_5_3_1,-,G4_behaviour_reflow_nonDecreasing,PASS,"outerCycles [2, 3, 3, 3] cfvfOffspring [10000, 15000, 15000, 15000]"
+ALL,-,AGGREGATE_DOSE_GATE,NOT_RESOLVED,"components: {'50_2_3_1': {'G1': True, 'G2': False, 'G2_perWindow': True, 'G2_perU': True, 'G3': False, 'G3_total': False, 'G4': True, 'validation': True}, '100_5_3_1': {'G1': True, 'G2': False, 'G2_perWindow': True, 'G2_perU': True, 'G3': False, 'G3_total': False, 'G4': True, 'validation': True}}"

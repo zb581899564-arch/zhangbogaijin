@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "V35 Qp pure-observation event",
+  "type": "object",
+  "required": ["event", "group", "type"],
+  "properties": {
+    "event": {"type": "string"},
+    "group": {"type": "string"},
+    "type": {
+      "enum": ["select", "reward", "observeFrozen", "update", "softUpdate", "lineage", "random"]
+    },
+    "lineage": {"type": "string"},
+    "state": {"type": "string"},
+    "nextState": {"type": "string"},
+    "mask": {"type": "string"},
+    "nextMask": {"type": "string"},
+    "action": {"type": "string"},
+    "pbest": {"type": "string"},
+    "requested": {"type": "string"},
+    "resolved": {"type": "string"},
+    "dom": {"type": "string"},
+    "direction": {"type": "string"},
+    "archive": {"type": "string"},
+    "risk": {"type": "string"},
+    "total": {"type": "string"},
+    "archiveSurvived": {"type": "string"}
+  },
+  "additionalProperties": true
+}

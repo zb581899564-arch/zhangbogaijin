@@ -1,0 +1,7 @@
+criterion,observed,threshold,status,note
+normalized_0.1pct_near_duplicate_median,0.002583979328165375,> 0.20,NO_TRIGGER,60 complete decision-fronts; exact dedup before nearest-neighbor rate
+archive_teacher_scan_time_share,UNAVAILABLE,> 0.25,NOT_EVALUATED,source archive has no V35 archive audit ledger
+teacher_directional_regret,UNAVAILABLE,median > 0.05 or P95 > 0.20,NOT_EVALUATED,no teacher-view run in this archive
+k25_k50_a4_a0_hv_igd_reversal,0,> 0 reversals,NO_TRIGGER,K25/K50 use independent PFrefs; K30 excluded from metrics
+leaveout_a4_a0_major_reversal,0,> 0 comparable reversals,NO_TRIGGER,leave-one-run/arm-out changes PFref only; all 60 original approximations remain comparable
+pddr_cmax_loss,UNAVAILABLE,median >= 0.02 with lost strict-ND point,NOT_EVALUATED,PDDR lifecycle is intentionally outside this archive audit

@@ -1,0 +1,31 @@
+component,property,value,evidenceLocation
+V35ComparisonProblemAdapter,exposesExactlyThreeObjectives,true (THREE_OBJECTIVE view: getNumberOfObjectives()=3),V35ComparisonProblemAdapter.java L73-76
+V35ComparisonProblemAdapter,delegatesToSingleCanonicalProblem,true (private final ZhangBoCanonicalProductionProblem delegate; single evaluate call),L22;L101
+V35ComparisonProblemAdapter,forcesFM3,true (constructor throws unless ProductionDecodeMode.FM3),L55-57
+V35ComparisonProblemAdapter,forcesShiftModeNONE,true (constructor throws unless ZhangBoShiftMode.NONE),L58-61
+V35ComparisonProblemAdapter,explicitInitialPopulationInjection,true (frozen queue; createSolution() pops deep copies),L66-69;L83-89
+V35ComparisonProblemAdapter,duplicateEvaluationPolicy,reject-with-exception via V35ExactEvaluationBudget (same object + unchanged genotype),V35ExactEvaluationBudget.java L20-30
+V35ComparisonProblemAdapter,maxOneFullEvaluationPerCandidate,true (every evaluate() = exactly one delegate.evaluate),L99-102
+V35ComparisonProblemAdapter,deepCopiesFourVectors,true (constructor copies each frozen solution; V35ComparisonSolution wraps copy),L66-69;V35ComparisonSolution.java L19-23
+V35ComparisonProblemAdapter,machineWorkerJobIdentityMapping,true (four vectors position-aligned with JS; per-job accessors; operators never reorder MA/WA independently),DhhfspFourVectorSolution.java L19-20;L119-137
+V35ComparisonProblemAdapter,representationRepairScope,representation-legality only (runs solely in AUTHOR_SEVEN_SLOT view; inert in THREE_OBJECTIVE; no objective/oracle access),L176-210
+V35ComparisonProblemAdapter,introducesZhangBoSearchMechanisms,false (no CFVF/PDDR/CA-TA/Qg/Qp/DSCR references),whole file
+V35ComparisonSolution,fourVectorCarrier,true (wraps DhhfspFourVectorSolution; JS via variables; FA/MA/WA via vector accessors),V35ComparisonSolution.java L15-63
+V35ComparisonSolution,deepCopyOnEvaluateAndCopyWay,true (delegate.copy(); objectives clone; attributes deep-copied),L19-23;DhhfspFourVectorSolution.java L69-77;L312-387
+V35ExactEvaluationBudget,feIsSuccessfulDecoderCalls,true (afterSuccessfulEvaluation() only after delegate.evaluate returns),L35
+V35ExactEvaluationBudget,preBatchBudgetStop,n/a (official cores use engine-level exact closure + pre-evaluation throw),L21-24
+V35FourVectorVariation.Crossover,jsOperator,PMX (random two cut points; middle copy; replacement chain),V35FourVectorVariation.java L65-90
+V35FourVectorVariation.Crossover,faMaWaOperators,one-point legal crossover per vector,L92-98
+V35FourVectorVariation.Crossover,repairScope,pure representation legality (FA out-of-range->0; MA per-factory range->0; WA ineligible->first eligible); no objective access,L100-115
+V35FourVectorVariation.Mutation,jsOperator,swap,L140-147
+V35FourVectorVariation.Mutation,faOperator,legal factory resample (different from current) with MA reset + WA first-eligible,L148-156
+V35FourVectorVariation.Mutation,maOperator,legal machine resample within current factory,L157-163
+V35FourVectorVariation.Mutation,waOperator,legal worker resample within current factory eligible set,L164-171
+V35FourVectorVariation,probabilitySource,engine-injected constants (canonicalParameters(); P25E frozen parameter set); recorded into configuration.txt,V35P25EOfficialJMetalEngine.java L94-100
+V35FourVectorVariation,randomSource,per-domain JavaRandomGenerator (crossover=domain1; mutation=domain2); no global draws,L36-37
+V35FourVectorVariation,objectiveOrientedLogicAbsent,true (class comment + import audit; no CFVF/CA-TA/fatigue/local-search),L13;L1-11
+V35P25EOfficialJMetalEngine,threeObjectiveViewEnforced,true (NEW in this work package: run() throws unless ObjectiveView.THREE_OBJECTIVE),engine L38-42
+V35P25EOfficialJMetalEngine,exactBudgetClosureAssertion,true (canonical successful evaluations must equal maxEvaluations else IllegalStateException),L131-136
+V35P25EOfficialJMetalEngine,operatorInjectionOverload,true (NEW: null-safe crossover/mutation/selection overrides for runner-side counting wrappers; search semantics unchanged),L26-131
+V35P25EOfficialJMetalEngine,globalRandomConsumptionPoints,JMetalRandom.getInstance().setSeed(seed) once; consumed only by upstream tournament candidate draw (SolutionListUtils.selectNRandomDifferentSolutions),L37;jmetal-core SolutionListUtils L199
+V35P25EOfficialJMetalEngine,p25dEngineReferenced,false,static scan 0 hits

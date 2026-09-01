@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.PddrSelectionMode;
+import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoQpConfiguration;
 import org.uma.jmetal.problem.multiobjective.dfsp.decoder.ProductionDecodeMode;
 import org.uma.jmetal.problem.multiobjective.dfsp.fatigue.shift.ZhangBoShiftConfiguration;
 import org.uma.jmetal.problem.multiobjective.dfsp.fatigue.shift.ZhangBoShiftMode;
@@ -19,7 +21,7 @@ public final class V35ProductionConfiguration implements Serializable {
   private static final long serialVersionUID = 1L;
   public static final String VERSION = "v3.5-mainline-2";
   public static final String ALGORITHM_SEMANTICS_VERSION =
-      "v35-pressure-confidence-diagnosis-v1";
+      "v35-fc6-pddr-order-region-v1";
 
   private final long seed;
   private final int populationSize;
@@ -38,6 +40,14 @@ public final class V35ProductionConfiguration implements Serializable {
   private final org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoDualQCoordinationConfiguration dualQCoordination;
   private final V35LocalFeBudgetConfiguration localFeBudget;
   private final V35CaTaLiteConfiguration caTaLiteConfiguration;
+  private final PddrSelectionMode pddrSelectionMode;
+  private final V35LocalSearchOrder localSearchOrder;
+  private final V35SubSwarmMixture subSwarmMixture;
+  private final ZhangBoQpConfiguration qpConfiguration;
+  /** Null preserves the frozen historical inference from {@code qp}. */
+  private final V35PersonalLeaderMode personalLeaderMode;
+  /** Diagnostic-only override; the production default remains phase-scheduled learning. */
+  private final V35QpSettlementPolicy qpSettlementPolicy;
 
   private V35ProductionConfiguration(Builder b) {
     if (b.decoderMode == null || b.familyMode == null || b.setupMode == null) {
@@ -63,6 +73,28 @@ public final class V35ProductionConfiguration implements Serializable {
     if (b.qp && (!b.qg || !b.cfvf)) {
       throw new IllegalArgumentException("Q-pbest requires Q-gbest and CFVF");
     }
+    if (b.qpConfiguration != null && (!b.qp || !b.qpConfiguration.isEnabled())) {
+      throw new IllegalArgumentException("Qp reward override requires enabled Q-pbest");
+    }
+    if (b.personalLeaderMode == V35PersonalLeaderMode.ARCHIVE_DIRECTIONAL && b.qp) {
+      throw new IllegalArgumentException("directional archive control must not enable Q-pbest");
+    }
+    if (b.personalLeaderMode == V35PersonalLeaderMode.QP_FOUR_ACTIONS && !b.qp) {
+      throw new IllegalArgumentException("four-action personal leadership requires Q-pbest");
+    }
+    if (b.personalLeaderMode == V35PersonalLeaderMode.AUTHOR_HISTORY && b.qp) {
+      throw new IllegalArgumentException("Q-pbest cannot use author-history personal leadership");
+    }
+    if (b.qpSettlementPolicy == null) {
+      throw new IllegalArgumentException("qpSettlementPolicy");
+    }
+    if (b.qpSettlementPolicy == V35QpSettlementPolicy.OBSERVE_ONLY_ALL_CYCLES
+        && (!b.qp || b.personalLeaderMode != V35PersonalLeaderMode.QP_FOUR_ACTIONS
+        || b.dualQCoordination == null || b.dualQCoordination.isBlockFrozen()
+        || b.caTaLite || b.directionalTeacherPool)) {
+      throw new IllegalArgumentException(
+          "observe-only Qp settlement is restricted to the synchronous diagnostic arm");
+    }
     if (b.caTaLite && (!b.qp || !b.qg || !b.cfvf)) {
       throw new IllegalArgumentException("CA-TA-Lite requires the full dual-Q backbone");
     }
@@ -72,6 +104,9 @@ public final class V35ProductionConfiguration implements Serializable {
     if (b.teacherPoolSize < 1 || (b.directionalTeacherPool && b.teacherPoolSize < 2)) {
       throw new IllegalArgumentException(
           "teacher pool size must be >= 1, and >= 2 when the directional pool is enabled");
+    }
+    if (b.subSwarmMixture != null && b.populationSize != b.subSwarmMixture.getTotal()) {
+      throw new IllegalArgumentException("subswarm mixture total must equal population size");
     }
     seed = b.seed;
     populationSize = b.populationSize;
@@ -90,6 +125,12 @@ public final class V35ProductionConfiguration implements Serializable {
     dualQCoordination = b.dualQCoordination;
     localFeBudget = b.localFeBudget;
     caTaLiteConfiguration = b.caTaLiteConfiguration;
+    pddrSelectionMode = b.pddrSelectionMode;
+    localSearchOrder = b.localSearchOrder;
+    subSwarmMixture = b.subSwarmMixture;
+    qpConfiguration = b.qpConfiguration;
+    personalLeaderMode = b.personalLeaderMode;
+    qpSettlementPolicy = b.qpSettlementPolicy;
   }
 
   public static Builder builder() { return new Builder(); }
@@ -137,6 +178,32 @@ public final class V35ProductionConfiguration implements Serializable {
   public V35CaTaLiteConfiguration getCaTaLiteConfiguration() {
     return caTaLiteConfiguration;
   }
+  /** FC-6 boundary. The historical BP mode remains the compatibility default. */
+  public PddrSelectionMode getPddrSelectionMode() { return pddrSelectionMode; }
+  /** FC-6A.4 boundary. The archived CA-TA-first order remains the default. */
+  public V35LocalSearchOrder getLocalSearchOrder() { return localSearchOrder; }
+  /** Explicit DOE-1 capacity, or null for backward-compatible configurations. */
+  public V35SubSwarmMixture getSubSwarmMixture() { return subSwarmMixture; }
+  public V35SubSwarmMixture getSubSwarmMixtureOrDefault() {
+    return subSwarmMixture == null ? V35SubSwarmMixture.BASELINE : subSwarmMixture;
+  }
+  /** Optional diagnostic override; null preserves the frozen legacy Qp configuration. */
+  public ZhangBoQpConfiguration getQpConfiguration() { return qpConfiguration; }
+  /**
+   * Effective personal-leader policy.  The null default deliberately retains
+   * the existing A0-A4 inference so their canonical text and behaviour do not
+   * drift; diagnostic arms opt in explicitly.
+   */
+  public V35PersonalLeaderMode getPersonalLeaderMode() {
+    return personalLeaderMode == null
+        ? (qp ? V35PersonalLeaderMode.QP_FOUR_ACTIONS : V35PersonalLeaderMode.AUTHOR_HISTORY)
+        : personalLeaderMode;
+  }
+  public boolean isLineageArchiveEnabled() {
+    return getPersonalLeaderMode() != V35PersonalLeaderMode.AUTHOR_HISTORY;
+  }
+  /** Defaults to the frozen production settlement contract. */
+  public V35QpSettlementPolicy getQpSettlementPolicy() { return qpSettlementPolicy; }
   public ZhangBoShiftMode getShiftMode() { return ZhangBoShiftMode.NONE; }
   public ZhangBoShiftConfiguration getShiftConfiguration() {
     return ZhangBoShiftConfiguration.none();
@@ -175,6 +242,25 @@ public final class V35ProductionConfiguration implements Serializable {
           .append("caTaLite.testFeShareCap=").append(caTaLiteConfiguration.getTestFeShareCap())
           .append('\n');
     }
+    if (pddrSelectionMode != PddrSelectionMode.BP_RESERVED_LEGACY) {
+      text.append("pddrSelectionMode=").append(pddrSelectionMode).append('\n');
+    }
+    if (localSearchOrder != V35LocalSearchOrder.CATA_THEN_INHERITED) {
+      text.append("localSearchOrder=").append(localSearchOrder).append('\n');
+    }
+    if (subSwarmMixture != null) {
+      text.append("subSwarmMixtureVersion=doe1-mixture-v1\n")
+          .append(subSwarmMixture.canonicalText());
+    }
+    if (qpConfiguration != null) {
+      text.append(qpConfiguration.toCanonicalText());
+    }
+    if (personalLeaderMode != null) {
+      text.append("personalLeaderMode=").append(personalLeaderMode).append('\n');
+    }
+    if (qpSettlementPolicy != V35QpSettlementPolicy.STANDARD_BY_DUAL_Q) {
+      text.append("qpSettlementPolicy=").append(qpSettlementPolicy).append('\n');
+    }
     return text.toString();
   }
 
@@ -209,6 +295,13 @@ public final class V35ProductionConfiguration implements Serializable {
     private org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoDualQCoordinationConfiguration dualQCoordination;
     private V35LocalFeBudgetConfiguration localFeBudget;
     private V35CaTaLiteConfiguration caTaLiteConfiguration;
+    private PddrSelectionMode pddrSelectionMode = PddrSelectionMode.BP_RESERVED_LEGACY;
+    private V35LocalSearchOrder localSearchOrder = V35LocalSearchOrder.CATA_THEN_INHERITED;
+    private V35SubSwarmMixture subSwarmMixture;
+    private ZhangBoQpConfiguration qpConfiguration;
+    private V35PersonalLeaderMode personalLeaderMode;
+    private V35QpSettlementPolicy qpSettlementPolicy =
+        V35QpSettlementPolicy.STANDARD_BY_DUAL_Q;
 
     public Builder seed(long value) { seed = value; return this; }
     public Builder populationSize(int value) { populationSize = value; return this; }
@@ -242,6 +335,37 @@ public final class V35ProductionConfiguration implements Serializable {
     /** V35-FC-3: {@code null} (default) keeps the archived standard CA-TA-Lite. */
     public Builder caTaLiteConfiguration(V35CaTaLiteConfiguration value) {
       caTaLiteConfiguration = value;
+      return this;
+    }
+    public Builder pddrSelectionMode(PddrSelectionMode value) {
+      if (value == null) throw new IllegalArgumentException("pddrSelectionMode");
+      pddrSelectionMode = value;
+      return this;
+    }
+    public Builder localSearchOrder(V35LocalSearchOrder value) {
+      if (value == null) throw new IllegalArgumentException("localSearchOrder");
+      localSearchOrder = value;
+      return this;
+    }
+    public Builder subSwarmMixture(V35SubSwarmMixture value) {
+      subSwarmMixture = value;
+      return this;
+    }
+    public Builder qpConfiguration(ZhangBoQpConfiguration value) {
+      if (value == null) throw new IllegalArgumentException("qpConfiguration");
+      qpConfiguration = value;
+      return this;
+    }
+    /** Explicit diagnostic override; omitted in all frozen production profiles. */
+    public Builder personalLeaderMode(V35PersonalLeaderMode value) {
+      if (value == null) throw new IllegalArgumentException("personalLeaderMode");
+      personalLeaderMode = value;
+      return this;
+    }
+    /** Diagnostic-only; formal A0--A4 profiles retain the default policy. */
+    public Builder qpSettlementPolicy(V35QpSettlementPolicy value) {
+      if (value == null) throw new IllegalArgumentException("qpSettlementPolicy");
+      qpSettlementPolicy = value;
       return this;
     }
     public V35ProductionConfiguration build() { return new V35ProductionConfiguration(this); }

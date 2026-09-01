@@ -1,0 +1,11 @@
+scenario,attempt,outcome,expect,verdict
+wrong-jar,1,FAIL_CLOSED_PRE (GATE_JAR_SHA_MISMATCH),fail-closed,PASS
+wrong-snapshot,1,FAIL_CLOSED_PRE (GATE_SNAPSHOT_SHA_MISMATCH),fail-closed,PASS
+wrong-instance,1,FAIL_CLOSED_PRE (GATE_INSTANCE_SHA_MISMATCH),fail-closed,PASS
+duplicate-runkey,1,FAIL_CLOSED_PRE (GATE_DUPLICATE_RUNKEY),fail-closed,PASS
+existing-final-dir,1,FAIL_CLOSED_PRE (GATE_FINAL_DIR_EXISTS),fail-closed,PASS
+illegal-algorithm,1,FAIL_CLOSED_PRE (GATE_ILLEGAL_ALGORITHM),fail-closed,PASS
+process-interrupt,"1 (kill-ineffective, superseded)",HARNESS_DEFECT: launcher kill hit the Oracle javapath launcher process; the real JVM orphan ran to completion; artifact .selftest/fi-interrupt contained a COMPLETED run while the scenario recorded INTERRUPTED,fail-closed,FAIL_SUPERSEDED
+process-interrupt,2 (tree-kill taskkill /F /T),"FAIL_CLOSED_INTERRUPTED: tree-killed at 1.5s; final_exists=false; partial .partial-FI-interrupt-2 contains only initial-population.sha256 (no manifest, no status)",fail-closed,PASS
+missing-front,1,FAIL_CLOSED_VERIFY (required file absent),fail-closed,PASS
+tampered-manifest,1,FAIL_CLOSED_VERIFY (manifest hash mismatch rejected),fail-closed,PASS

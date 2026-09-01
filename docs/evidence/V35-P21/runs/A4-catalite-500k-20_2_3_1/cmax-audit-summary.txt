@@ -5,13 +5,13 @@ recordCount=25
 enteredCandidateSet=25
 pddrRetained=3
 personalArchive=3
-globalArchive=14
+globalArchive=17
 nextRoundSurvived=1
 resolvedPendingByFinish=22
-bestCmaxGlobal=190.625900791554
-bestTECGlobal=8484.151493117375
-bestTWCGlobal=12414.464644315716
-bestCmaxGenerated=190.625900791554
-bestTECGenerated=8484.151493117375
-bestTWCGenerated=12414.464644315716
-recordSources={INITIAL/INITIAL=4, CFVF/CFVF=7, FIXED_VNS/O1_O9=14}
+bestCmaxGlobal=177.642150540686
+bestTECGlobal=8410.712249624892
+bestTWCGlobal=12542.793865787215
+bestCmaxGenerated=177.642150540686
+bestTECGenerated=8410.712249624892
+bestTWCGenerated=12542.793865787215
+recordSources={INITIAL/INITIAL=4, CFVF/CFVF=10, INTER_FACTORY/INTER_FACTORY_INSERTION=1, FIXED_VNS/O1_O9=10}

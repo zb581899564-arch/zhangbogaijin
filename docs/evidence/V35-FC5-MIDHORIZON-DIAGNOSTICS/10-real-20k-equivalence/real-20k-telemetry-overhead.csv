@@ -1,0 +1,5 @@
+﻿arm,instance,seed,maxFEs,offWallMillis,onWallMillis,overheadPct,overheadGatePct,gatePassed
+A2,100_2_4_1.txt,20260901,20000,5270,5425,2.94,15.0,YES
+A4,100_2_4_1.txt,20260901,20000,10577,10100,-4.51,15.0,YES
+A2,100_5_3_1.txt,20260901,20000,8192,8377,2.26,15.0,YES
+A4,100_5_3_1.txt,20260901,20000,14095,15166,7.6,15.0,YES

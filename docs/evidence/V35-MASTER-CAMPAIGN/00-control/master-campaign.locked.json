@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "campaignId": "V35-MASTER-A0-A4-FORMAL",
+  "launchState": "BLOCKED_PENDING_GATE_ACCEPTANCE",
+  "reason": "This is intentionally not a scheduler input. It becomes a rendered formal manifest only after every gate evidence hash is ACCEPTED.",
+  "requiredGateStatus": {
+    "FINAL_SOURCE_FREEZE": "ACCEPTED",
+    "FORMAL_MANIFEST_FREEZE": "ACCEPTED",
+    "A0_A4_PRODUCTION_PREFLIGHT": "ACCEPTED",
+    "FORMAL_MAX_PARALLEL": "ACCEPTED",
+    "A0_A4_FINAL_SEMANTICS": "ACCEPTED"
+  },
+  "masterRoster": ["A0", "A1", "A2", "A3", "A4"],
+  "expectedPhysicalRunCount": 4500,
+  "runKeyFormat": "Arm__Instance__Seed__MaxFEs__JarSHA256__ConfigSHA256",
+  "frozenBoundaryHash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "maxParallel": 1,
+  "runs": []
+}

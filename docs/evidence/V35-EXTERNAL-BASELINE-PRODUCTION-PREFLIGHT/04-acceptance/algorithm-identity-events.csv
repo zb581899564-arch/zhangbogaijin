@@ -1,0 +1,7 @@
+runId,algorithm,crossoverCalls,mutationCalls,tournamentCalls,generationsOrIterations,binaryTournament,crossover,mutation,nondominatedRanking,crowdingDistance,rankingAndCrowdingReplacement,strengthRawFitness,density,archive,environmentalSelectionTruncation
+PRE20-NSGAIIF-20_2_3_1,NSGA-II-F,9950,19900,19900,200,true,true,true,true,true,true,false,false,false,false
+PRE20-NSGAIIF-50_2_3_1,NSGA-II-F,9950,19900,19900,200,true,true,true,true,true,true,false,false,false,false
+PRE20-NSGAIIF-100_2_4_1,NSGA-II-F,9950,19900,19900,200,true,true,true,true,true,true,false,false,false,false
+PRE20-SPEA2F-20_2_3_1,SPEA2-F,19900,19900,39800,200,true,true,true,false,false,false,true,true,true,true
+PRE20-SPEA2F-50_2_3_1,SPEA2-F,19900,19900,39800,200,true,true,true,false,false,false,true,true,true,true
+PRE20-SPEA2F-100_2_4_1,SPEA2-F,19900,19900,39800,200,true,true,true,false,false,false,true,true,true,true

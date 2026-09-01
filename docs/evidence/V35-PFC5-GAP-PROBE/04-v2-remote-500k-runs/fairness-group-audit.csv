@@ -1,0 +1,5 @@
+instance,seed,arms,sameSnapshot,sameInitialPopulationHashV35,sameInitialPopulationHashP8,actualFESpan,spanBelow5000,fourArmsComplete,groupValid
+50_2_3_1,20260827,A4;A0;SPEA2F;NSGA2F,true,true,true,2267,true,true,true
+50_2_3_1,20260906,A4;A0;SPEA2F;NSGA2F,true,true,true,0,true,true,true
+100_5_3_1,20260827,A4;A0;SPEA2F;NSGA2F,true,true,true,0,true,true,true
+100_5_3_1,20260906,A4;A0;SPEA2F;NSGA2F,true,true,true,0,true,true,true

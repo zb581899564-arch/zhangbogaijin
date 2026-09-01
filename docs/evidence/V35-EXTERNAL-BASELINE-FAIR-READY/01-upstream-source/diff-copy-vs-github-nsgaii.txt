@@ -1,0 +1,180 @@
+--- /tmp/jmetal58-github/algorithm/NSGAII.java	2026-08-30 11:31:55.301447500 +0800
++++ E:/学习/李明哲-毕业材料/张博改进/java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/p25e/official/OfficialJMetal58NSGAII.java	2026-08-15 19:38:55.877000000 +0800
+@@ -1,5 +1,4 @@
+-package org.uma.jmetal.algorithm.multiobjective.nsgaii;
+-
++package org.uma.jmetal.algorithm.multiobjective.mypso.v35.p25e.official;
+ import org.uma.jmetal.algorithm.impl.AbstractGeneticAlgorithm;
+ import org.uma.jmetal.operator.CrossoverOperator;
+ import org.uma.jmetal.operator.MutationOperator;
+@@ -10,149 +9,93 @@
+ import org.uma.jmetal.util.SolutionListUtils;
+ import org.uma.jmetal.util.comparator.DominanceComparator;
+ import org.uma.jmetal.util.evaluator.SolutionListEvaluator;
+-
+ import java.util.ArrayList;
+ import java.util.Comparator;
+ import java.util.List;
+ 
+-/**
+- * @author Antonio J. Nebro <antonio@lcc.uma.es>
+- */
++/** Official jMetal 5.8 NSGA-II; only package and class/constructor names are isolated. */
+ @SuppressWarnings("serial")
+-public class NSGAII<S extends Solution<?>> extends AbstractGeneticAlgorithm<S, List<S>> {
++public class OfficialJMetal58NSGAII<S extends Solution<?>>
++    extends AbstractGeneticAlgorithm<S, List<S>> {
+   protected final int maxEvaluations;
+-
+   protected final SolutionListEvaluator<S> evaluator;
+-
+   protected int evaluations;
+   protected Comparator<S> dominanceComparator ;
+-
+   protected int matingPoolSize;
+   protected int offspringPopulationSize ;
+ 
+-  /**
+-   * Constructor
+-   */
+-  public NSGAII(Problem<S> problem, int maxEvaluations, int populationSize,
+-                int matingPoolSize, int offspringPopulationSize,
++  public OfficialJMetal58NSGAII(Problem<S> problem, int maxEvaluations, int populationSize,
++      int matingPoolSize, int offspringPopulationSize,
+       CrossoverOperator<S> crossoverOperator, MutationOperator<S> mutationOperator,
+       SelectionOperator<List<S>, S> selectionOperator, SolutionListEvaluator<S> evaluator) {
+     this(problem, maxEvaluations, populationSize, matingPoolSize, offspringPopulationSize,
+-            crossoverOperator, mutationOperator, selectionOperator, new DominanceComparator<S>(), evaluator);
++        crossoverOperator, mutationOperator, selectionOperator,
++        new DominanceComparator<S>(), evaluator);
+   }
+-  /**
+-   * Constructor
+-   */
+-  public NSGAII(Problem<S> problem, int maxEvaluations, int populationSize,
+-                int matingPoolSize, int offspringPopulationSize,
+-                CrossoverOperator<S> crossoverOperator, MutationOperator<S> mutationOperator,
++
++  public OfficialJMetal58NSGAII(Problem<S> problem, int maxEvaluations, int populationSize,
++      int matingPoolSize, int offspringPopulationSize,
++      CrossoverOperator<S> crossoverOperator, MutationOperator<S> mutationOperator,
+       SelectionOperator<List<S>, S> selectionOperator, Comparator<S> dominanceComparator,
+-                SolutionListEvaluator<S> evaluator) {
++      SolutionListEvaluator<S> evaluator) {
+     super(problem);
+     this.maxEvaluations = maxEvaluations;
+     setMaxPopulationSize(populationSize); ;
+-
+     this.crossoverOperator = crossoverOperator;
+     this.mutationOperator = mutationOperator;
+     this.selectionOperator = selectionOperator;
+-
+     this.evaluator = evaluator;
+     this.dominanceComparator = dominanceComparator ;
+-
+     this.matingPoolSize = matingPoolSize ;
+     this.offspringPopulationSize = offspringPopulationSize ;
+   }
+ 
+-  @Override protected void initProgress() {
+-    evaluations = getMaxPopulationSize();
+-  }
+-
+-  @Override protected void updateProgress() {
+-    evaluations += offspringPopulationSize ;
+-  }
+-
+-  @Override protected boolean isStoppingConditionReached() {
+-    return evaluations >= maxEvaluations;
+-  }
+-
++  @Override protected void initProgress() { evaluations = getMaxPopulationSize(); }
++  @Override protected void updateProgress() { evaluations += offspringPopulationSize ; }
++  @Override protected boolean isStoppingConditionReached() { return evaluations >= maxEvaluations; }
+   @Override protected List<S> evaluatePopulation(List<S> population) {
+     population = evaluator.evaluate(population, getProblem());
+-
+     return population;
+   }
+-
+-  /**
+-   * This method iteratively applies a {@link SelectionOperator} to the population to fill the mating pool population.
+-   *
+-   * @param population
+-   * @return The mating pool population
+-   */
+-  @Override
+-  protected List<S> selection(List<S> population) {
++  @Override protected List<S> selection(List<S> population) {
+     List<S> matingPopulation = new ArrayList<>(population.size());
+     for (int i = 0; i < matingPoolSize; i++) {
+       S solution = selectionOperator.execute(population);
+       matingPopulation.add(solution);
+     }
+-
+     return matingPopulation;
+   }
+-
+-  /**
+-   * This methods iteratively applies a {@link CrossoverOperator} a  {@link MutationOperator} to the population to
+-   * create the offspring population. The population size must be divisible by the number of parents required
+-   * by the {@link CrossoverOperator}; this way, the needed parents are taken sequentially from the population.
+-   *
+-   * The number of solutions returned by the {@link CrossoverOperator} must be equal to the offspringPopulationSize
+-   * state variable
+-   *
+-   * @param matingPool
+-   * @return The new created offspring population
+-   */
+-  @Override
+-  protected List<S> reproduction(List<S> matingPool) {
++  @Override protected List<S> reproduction(List<S> matingPool) {
+     int numberOfParents = crossoverOperator.getNumberOfRequiredParents() ;
+-
+     checkNumberOfParents(matingPool, numberOfParents);
+-
+     List<S> offspringPopulation = new ArrayList<>(offspringPopulationSize);
+     for (int i = 0; i < matingPool.size(); i += numberOfParents) {
+       List<S> parents = new ArrayList<>(numberOfParents);
+       for (int j = 0; j < numberOfParents; j++) {
+         parents.add(population.get(i+j));
+       }
+-
+       List<S> offspring = crossoverOperator.execute(parents);
+-
+       for(S s: offspring){
+         mutationOperator.execute(s);
+         offspringPopulation.add(s);
+-        if (offspringPopulation.size() >= offspringPopulationSize)
+-          break;
++        if (offspringPopulation.size() >= offspringPopulationSize) break;
+       }
+     }
+     return offspringPopulation;
+   }
+-
+   @Override protected List<S> replacement(List<S> population, List<S> offspringPopulation) {
+     List<S> jointPopulation = new ArrayList<>();
+     jointPopulation.addAll(population);
+     jointPopulation.addAll(offspringPopulation);
+-
+     RankingAndCrowdingSelection<S> rankingAndCrowdingSelection ;
+-    rankingAndCrowdingSelection = new RankingAndCrowdingSelection<S>(getMaxPopulationSize(), dominanceComparator) ;
+-
++    rankingAndCrowdingSelection = new RankingAndCrowdingSelection<S>(
++        getMaxPopulationSize(), dominanceComparator) ;
+     return rankingAndCrowdingSelection.execute(jointPopulation) ;
+   }
+-
+   @Override public List<S> getResult() {
+     return SolutionListUtils.getNondominatedSolutions(getPopulation());
+   }
+-
+-  @Override public String getName() {
+-    return "NSGAII" ;
+-  }
+-
++  @Override public String getName() { return "NSGAII" ; }
+   @Override public String getDescription() {
+     return "Nondominated Sorting Genetic Algorithm version II" ;
+   }

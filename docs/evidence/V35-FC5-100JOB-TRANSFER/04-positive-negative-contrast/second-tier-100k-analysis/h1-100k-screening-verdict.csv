@@ -1,0 +1,16 @@
+scope,verdict,nseeds,reason,nseedsExpected
+overall,FC5_TRANSFER_100K_INCONCLUSIVE,3,情形 C：既未同时满足情形 A 五条件，也未满足情形 B 全条件。包括：90<=Nnd<=100 / 仅1/3 seed 超100 / Nnd增加但代表仍被保留利用。注意：Nnd 增加但代表仍被保留、教师仍正常利用时，说明候选多本身不是根因，禁止据此修改 PDDR。,3
+condition,A_c1_ge2of3_nnd_gt100,3,False,3
+condition,A_c2_rov_rise,3,True,3
+condition,A_c3_retention_drop_20pp,3,False,3
+condition,A_c4_gap_widen_after_loss,3,True,3
+condition,A_c5_teacher_drop,3,True,3
+condition,A_all,3,False,3
+condition,B_all_max_nnd_lt90,3,True,3
+condition,B_all_retention_ge95,3,True,3
+condition,B_all_cmax_gap_approx0,3,False,3
+condition,B_all_teacher_link_intact,3,True,3
+condition,B_all,3,False,3
+seed_20260901,,3,"{""seed"": ""20260901"", ""maxNnd"": 73, ""maxNndW2"": 73, ""rovW1"": 0.56, ""rovW2"": 0.72, ""c1_nnd_gt100"": false, ""c2_rov_rise"": true, ""retentionDropPP"": 0.0, ""c3_retention_drop"": false, ""c4_gap_widen_after_loss"": true, ""c5_teacher_drop"": true, ""overflow_increases_but_retained_used"": true, ""maxCmaxGap"": 5.93612298365224, ""firstLossFE"": 13491}",3
+seed_20260902,,3,"{""seed"": ""20260902"", ""maxNnd"": 76, ""maxNndW2"": 76, ""rovW1"": 0.37, ""rovW2"": 0.67, ""c1_nnd_gt100"": false, ""c2_rov_rise"": true, ""retentionDropPP"": 0.0, ""c3_retention_drop"": false, ""c4_gap_widen_after_loss"": true, ""c5_teacher_drop"": true, ""overflow_increases_but_retained_used"": true, ""maxCmaxGap"": 3.650358667049886, ""firstLossFE"": 13491}",3
+seed_20260903,,3,"{""seed"": ""20260903"", ""maxNnd"": 73, ""maxNndW2"": 73, ""rovW1"": 0.47, ""rovW2"": 0.71, ""c1_nnd_gt100"": false, ""c2_rov_rise"": true, ""retentionDropPP"": 0.0, ""c3_retention_drop"": false, ""c4_gap_widen_after_loss"": true, ""c5_teacher_drop"": false, ""overflow_increases_but_retained_used"": true, ""maxCmaxGap"": 5.570080503054214, ""firstLossFE"": 13491}",3

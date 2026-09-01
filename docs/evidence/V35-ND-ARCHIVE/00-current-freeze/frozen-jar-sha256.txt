@@ -1,0 +1,5 @@
+artifact=E:\学习\李明哲-毕业材料\_isolated-v35-final-doe1-freeze-20260823\java-jmetal58\jmetal-exec\target\jmetal-exec-5.8-jar-with-dependencies.jar
+bytes=48269638
+sha256=8DAD8F40266FEEAA4CDB9B47DBE4E342D9064847DF32C7F2933149B9B6BAD8B9
+verifiedAt=2026-08-24
+archiveWorkPackageRebuiltFrozenJar=false

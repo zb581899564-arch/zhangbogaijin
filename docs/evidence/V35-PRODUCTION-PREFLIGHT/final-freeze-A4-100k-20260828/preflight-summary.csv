@@ -1,0 +1,2 @@
+arm,status,requestedFE,actualFE,decoderCalls,illegal,duplicate,qgSelections,pddrEvents,teacherUses,cfvfOffspring,qpActions,archiveInsertions,dualQP,dualQG,caTaLiteTest,caTaLiteApply,formalLocalFE,cfvfRepairs,directionalPoolRequests,wallNanos,failures
+A4,FAIL,100000,96025,96025,0,0,2400,12,2400,60000,51700,1200,260,257,2413,667,32845,0,0,27705723000,"actualFE=96025 requestedFE=100000"

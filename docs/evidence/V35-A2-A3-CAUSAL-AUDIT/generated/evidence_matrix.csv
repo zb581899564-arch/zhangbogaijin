@@ -1,0 +1,10 @@
+artifact,present_runs,expected_runs,coverage,status,interpretation
+status.properties,24,24,1.0,AVAILABLE,available for paired audit
+profile.txt,24,24,1.0,AVAILABLE,available for paired audit
+provenance.properties,24,24,1.0,AVAILABLE,available for paired audit
+budget-termination.properties,24,24,1.0,AVAILABLE,available for paired audit
+large-events.zip,24,24,1.0,AVAILABLE,available for paired audit
+cmax-audit-records.csv in large-events.zip,24,24,1.0,AVAILABLE,available for paired audit
+Qp raw event log in large-events.zip,0,24,0.0,MISSING,not exported; hashes/counts cannot replace event payloads
+Q table raw dump in large-events.zip,0,24,0.0,MISSING,not exported; hashes/counts cannot replace event payloads
+personal archive update log in large-events.zip,0,24,0.0,MISSING,not exported; hashes/counts cannot replace event payloads

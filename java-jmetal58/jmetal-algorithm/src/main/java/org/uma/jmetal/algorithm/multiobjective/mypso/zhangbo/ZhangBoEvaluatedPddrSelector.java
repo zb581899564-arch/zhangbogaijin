@@ -17,7 +17,12 @@ public final class ZhangBoEvaluatedPddrSelector {
     GLOBAL_OFFSPRING,
     PARENT,
     INTER_FACTORY_LOCAL,
-    INTRA_FACTORY_VNS
+    INTRA_FACTORY_VNS,
+    CATA_TEST,
+    CATA_APPLY,
+    CRITICAL_SWAP,
+    CRITICAL_INSERT,
+    O1_O9
   }
 
   public static final class Candidate {
@@ -28,12 +33,22 @@ public final class ZhangBoEvaluatedPddrSelector {
     private final long evaluationOrdinal;
     private final int originalOrder;
     private final double pddrScore;
+    private final ZhangBoSubSwarm assignedRegionRole;
 
     private Candidate(
         PermutationSolution<Integer> solution,
         List<PermutationSolution<Integer>> authorHistory,
         Source source, int sourceSlot, long evaluationOrdinal,
         int originalOrder, double pddrScore) {
+      this(solution, authorHistory, source, sourceSlot, evaluationOrdinal,
+          originalOrder, pddrScore, null);
+    }
+
+    private Candidate(
+        PermutationSolution<Integer> solution,
+        List<PermutationSolution<Integer>> authorHistory,
+        Source source, int sourceSlot, long evaluationOrdinal,
+        int originalOrder, double pddrScore, ZhangBoSubSwarm assignedRegionRole) {
       this.solution = ZhangBoSolutionSupport.deepCopy(solution);
       this.authorHistory = Collections.unmodifiableList(
           ZhangBoSolutionSupport.deepCopySolutions(authorHistory));
@@ -42,6 +57,7 @@ public final class ZhangBoEvaluatedPddrSelector {
       this.evaluationOrdinal = evaluationOrdinal;
       this.originalOrder = originalOrder;
       this.pddrScore = pddrScore;
+      this.assignedRegionRole = assignedRegionRole;
     }
 
     public static Candidate ofEvaluated(
@@ -65,6 +81,14 @@ public final class ZhangBoEvaluatedPddrSelector {
     public long getEvaluationOrdinal() { return evaluationOrdinal; }
     public int getOriginalOrder() { return originalOrder; }
     public double getPddrScore() { return pddrScore; }
+    /** Assigned only by REGION_AWARE; null means global/legacy regrouping. */
+    public ZhangBoSubSwarm getAssignedRegionRole() { return assignedRegionRole; }
+
+    private Candidate withAssignedRegionRole(ZhangBoSubSwarm role) {
+      if (role == null) throw new IllegalArgumentException("role");
+      return new Candidate(solution, authorHistory, source, sourceSlot,
+          evaluationOrdinal, originalOrder, pddrScore, role);
+    }
   }
 
   /** Explicit provenance used when global and local evaluated offspring are merged. */
@@ -130,7 +154,18 @@ public final class ZhangBoEvaluatedPddrSelector {
       List<PermutationSolution<Integer>> evaluatedParents,
       List<? extends List<PermutationSolution<Integer>>> parentHistories,
       int targetSize) {
+    return select(evaluatedOffspring, evaluatedParents, parentHistories, targetSize,
+        PddrSelectionMode.BP_RESERVED_LEGACY);
+  }
+
+  /** Explicit FC-6 selector; legacy callers retain the BP branch above. */
+  public List<Candidate> select(
+      List<CandidateInput> evaluatedOffspring,
+      List<PermutationSolution<Integer>> evaluatedParents,
+      List<? extends List<PermutationSolution<Integer>>> parentHistories,
+      int targetSize, PddrSelectionMode selectionMode) {
     if (evaluatedOffspring == null) throw new IllegalArgumentException("evaluatedOffspring");
+    if (selectionMode == null) throw new IllegalArgumentException("selectionMode");
     requireAligned(evaluatedParents, parentHistories, "parent");
     if (targetSize < 1 || targetSize > evaluatedOffspring.size() + evaluatedParents.size()) {
       throw new IllegalArgumentException("Invalid PDDR targetSize=" + targetSize);
@@ -158,6 +193,13 @@ public final class ZhangBoEvaluatedPddrSelector {
     Collections.sort(ranked, Comparator
         .comparingDouble(Candidate::getPddrScore)
         .thenComparingInt(Candidate::getOriginalOrder));
+
+    if (selectionMode == PddrSelectionMode.GLOBAL_ORIGINAL) {
+      return new ArrayList<>(ranked.subList(0, targetSize));
+    }
+    if (selectionMode == PddrSelectionMode.REGION_AWARE) {
+      return selectRegionAware(ranked, targetSize);
+    }
 
     // FC-6 BP-PDDR：先把 q==0 三向极值（minCmax/minTEC/minTWC，去重，<=3）放入结果，
     // 其余位置仍按原始 (score, originalOrder) 序填充。不修改 authorScores 公式。
@@ -188,6 +230,87 @@ public final class ZhangBoEvaluatedPddrSelector {
       outcome.add(candidate);
     }
     return outcome;
+  }
+
+  /**
+   * FC-6B pre-registered region allocation. Only q==0 candidates compete for
+   * a role first; an unfilled role is then backfilled from the unchanged global
+   * PDDR ranking. The output remains in physical slot order 1,2,3,4.
+   */
+  private static List<Candidate> selectRegionAware(List<Candidate> ranked, int targetSize) {
+    final int required = 15 + 55 + 15 + 15;
+    if (targetSize != required) {
+      throw new IllegalArgumentException("REGION_AWARE requires physical capacity 100, got "
+          + targetSize);
+    }
+    List<Candidate> remaining = new ArrayList<>(ranked);
+    List<Candidate> outcome = new ArrayList<>(targetSize);
+    fillRegion(outcome, remaining, ZhangBoSubSwarm.G1_CMAX, 15);
+    fillRegion(outcome, remaining, ZhangBoSubSwarm.G4_BALANCED, 55);
+    fillRegion(outcome, remaining, ZhangBoSubSwarm.G2_TEC, 15);
+    fillRegion(outcome, remaining, ZhangBoSubSwarm.G3_TWC, 15);
+    if (outcome.size() != targetSize) {
+      throw new IllegalStateException("REGION_AWARE selection did not close capacity");
+    }
+    return outcome;
+  }
+
+  private static void fillRegion(List<Candidate> outcome, List<Candidate> remaining,
+      ZhangBoSubSwarm role, int capacity) {
+    List<Candidate> qZero = new ArrayList<>();
+    for (Candidate candidate : remaining) {
+      if (candidate.getPddrScore() <= 1.0) qZero.add(candidate);
+    }
+    Collections.sort(qZero, regionComparator(role));
+    int count = 0;
+    for (Candidate candidate : qZero) {
+      if (count == capacity) break;
+      if (remaining.remove(candidate)) {
+        outcome.add(candidate.withAssignedRegionRole(role));
+        count++;
+      }
+    }
+    // Only unfilled capacity flows back to the original PDDR global ordering.
+    while (count < capacity && !remaining.isEmpty()) {
+      outcome.add(remaining.remove(0).withAssignedRegionRole(role));
+      count++;
+    }
+    if (count != capacity) throw new IllegalStateException("Insufficient candidates for " + role);
+  }
+
+  private static Comparator<Candidate> regionComparator(final ZhangBoSubSwarm role) {
+    return new Comparator<Candidate>() {
+      @Override public int compare(Candidate left, Candidate right) {
+        int compare;
+        switch (role) {
+          case G1_CMAX:
+            compare = compareObjectives(left.solution, right.solution, new int[]{0, 1, 6});
+            break;
+          case G2_TEC:
+            compare = compareObjectives(left.solution, right.solution, new int[]{1, 0, 6});
+            break;
+          case G3_TWC:
+            compare = compareObjectives(left.solution, right.solution, new int[]{6, 0, 1});
+            break;
+          case G4_BALANCED:
+            compare = Double.compare(left.getPddrScore(), right.getPddrScore());
+            break;
+          default:
+            throw new IllegalStateException("Unhandled role=" + role);
+        }
+        return compare != 0 ? compare
+            : Integer.compare(left.getOriginalOrder(), right.getOriginalOrder());
+      }
+    };
+  }
+
+  private static int compareObjectives(PermutationSolution<Integer> left,
+      PermutationSolution<Integer> right, int[] objectives) {
+    for (int objective : objectives) {
+      int compare = Double.compare(left.getObjective(objective), right.getObjective(objective));
+      if (compare != 0) return compare;
+    }
+    return 0;
   }
 
   static double[] authorScores(List<RawCandidate> values) {

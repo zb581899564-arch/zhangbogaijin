@@ -1,0 +1,2 @@
+arm,status,requestedFE,actualFE,decoderCalls,illegal,duplicate,qgSelections,pddrEvents,teacherUses,cfvfOffspring,qpActions,archiveInsertions,dualQP,dualQG,caTaLiteTest,caTaLiteApply,formalLocalFE,cfvfRepairs,directionalPoolRequests,remainingFE,qPhaseFE,utilizationRate,terminationKind,wallNanos,failures
+A2,PASS,50000,50000,50000,0,0,400,2,400,10000,0,0,0,0,0,0,39900,0,0,0,5000,1.000000000000,EXACT_MAX_FE,3333470600,NONE

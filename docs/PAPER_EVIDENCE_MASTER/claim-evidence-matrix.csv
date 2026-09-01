@@ -1,0 +1,14 @@
+claimId,claim,status,paperUseClass,evidence,allowedWording,forbiddenWording
+C01,Four-vector identity mapping is validated,VALID,MAIN_METHOD_EVIDENCE,docs/evidence/P2;paper_evidence/I0-v35,Engineering validation passed,Author legacy decoder was correct
+C02,FM3 fatigue formulas are implemented and numerically validated,VALID,MAIN_METHOD_EVIDENCE,docs/evidence/P5;paper_evidence/I0-v35,Validated for the standardized engineering scenario,Real physiological parameters were proven
+C03,Current formal comparisons share FM3 and Shift NONE,VALID,REPRODUCIBILITY_ONLY,docs/evidence/V35-FINAL-FREEZE,Fair problem semantics are frozen,All external papers used identical decoders
+C04,DSCR CFVF Qp Qg and CA-TA-Lite are connected,VALID,MAIN_METHOD_EVIDENCE,docs/evidence/V35-P19,Mechanisms are implemented and triggered,Every mechanism improves performance
+C05,DOE1 retained 20/40/20/20,VALID,PAPER_PARAMETER_SELECTION,docs/evidence/V35-DOE1-subgroup-mixture,No candidate passed the preregistered replacement gate,20/40/20/20 is globally optimal
+C06,A4 has a positive Stage2 pilot signal,VALID_WITH_LIMIT,PILOT_DIAGNOSTIC,docs/evidence/V35-STAGE2-PILOT-A0-A4-20260823,Positive signal on one 100-job instance,A4 is statistically superior on 45 instances
+C07,A2 to A3 regressed in the Stage2 pilot,VALID_WITH_LIMIT,PILOT_DIAGNOSTIC,docs/evidence/V35-STAGE2-PILOT-A0-A4-20260823,Qp archive block requires review,Qp is universally harmful
+C08,PDDR loses some generated Cmax records,VALID_WITH_LIMIT,PILOT_DIAGNOSTIC,docs/evidence/V35-STAGE2-PILOT-A0-A4-20260823,Lifecycle audit is required,PDDR is confirmed buggy
+C09,P25D ranking is invalid for paper comparison,VALID,LEGACY_EXCLUDED,docs/evidence/V35-P25D-all-algorithms-50k-pilot,Comparator rewrite was excluded,A4 was proven seventh of eight
+C10,Formal statistical superiority is established,NOT_AVAILABLE,FORMAL_STATISTICAL_RESULT_PENDING,,Formal results are pending,V35 is significantly best
+C11,The current unbounded decision archive remains the formal archive semantics,VALID,MAIN_METHOD_EVIDENCE,docs/evidence/V35-ND-ARCHIVE;docs/V35_ND_ARCHIVE_PROTOCOL.md,Archive cardinality has been audited and dormant alternatives are isolated,Bounded archives improve the algorithm
+C12,K30 is a deterministic presentation subset and K25/K50 are sensitivity-only,VALID,MAIN_METHOD_EVIDENCE,docs/evidence/V35-ND-ARCHIVE;docs/V35_ND_ARCHIVE_PROTOCOL.md,Representative sets are excluded from search PFref and main metrics,K30 is the scientific Pareto front
+C13,ND1 to ND4 improve search quality,NOT_AVAILABLE,FORMAL_STATISTICAL_RESULT_PENDING,docs/evidence/V35-ND-ARCHIVE,Dormant candidate implementations await separately approved gates,Archive candidates are validated improvements

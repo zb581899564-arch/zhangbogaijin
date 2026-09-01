@@ -1,0 +1,9 @@
+# V35-PFC5-F2 deployability audit evidence ledger; zero-FE; reverse-verify individually; manifestExcludesSelf=true
+# revised 2026-08-30 per V35-PFC5-CAL-P0 section 2 (wording correction only; no verdict or evidence value changed)
+path	bytes	sha256
+00-field-coverage/field-coverage-matrix.csv	2695	2b346b61760800f2c82011e0bc0adda022cec52af7f29840106f60c2c6c455ef
+00-field-coverage/telemetry-schema-inventory.csv	641	523b22e8b09c875de7c43f69bbfc3d8a2f62a526910c6f1719d8b88e5641e4f6
+01-decision/F2_DEPLOYABILITY_AUDIT.md	9616	283e8e8bc4ae73b2c1cdb1fc6c9e6f73382bc5a0166ef8f904b127048acd304b
+01-decision/F2_DEPLOYABILITY_DECISION.properties	2613	17c5586b7bec964a946524ff50752b48cbc64dbc68e164fc1985e866494a1281
+01-decision/PFC5-CAL_ROUTE_PROPOSAL.md	5447	52cd24f12c2038f6d0217a8188dc9b2ae07ecc61a3e9eb601885cad4898d54fc
+01-decision/WORDING_REVISION_RECORD.md	3162	debc86f14b2829e234dfb4928417fff0b7ace660f06c83f93abeefed74cf0f45

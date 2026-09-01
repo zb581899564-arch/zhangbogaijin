@@ -1,0 +1,6 @@
+frontKind,referenceEligible,mainMetricEligible,presentationEligible
+DECISION_FRONT,true,true,false
+OBSERVED_FULL_FRONT,false,false,false
+REPRESENTATIVE_FRONT_K30,false,false,true
+SENSITIVITY_FRONT_K25,false,false,false
+SENSITIVITY_FRONT_K50,false,false,false

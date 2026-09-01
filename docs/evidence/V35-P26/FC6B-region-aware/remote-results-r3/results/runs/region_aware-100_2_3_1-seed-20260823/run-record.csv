@@ -1,0 +1,2 @@
+runId,phase,instance,seed,status,FE,frontSize,initialPopulationHash,algorithmRunNanos
+region_aware-100_2_3_1-seed-20260823,REGION_AWARE,100_2_3_1,20260823,COMPLETED,500000,104,4715a7cb10804878123440f67db1e61581b342cc089dc1d907e1f669bd695469,381047133177

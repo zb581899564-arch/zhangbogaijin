@@ -1,0 +1,32 @@
+{
+  "instance": "100_5_3_1",
+  "comparison": "A2_vs_A4",
+  "budget": 500000,
+  "seeds": [
+    "20260901",
+    "20260902",
+    "20260903",
+    "20260904",
+    "20260905"
+  ],
+  "failureClassBySeed": {
+    "20260901": "IN_CLASS",
+    "20260902": "NOT_IN_CLASS",
+    "20260903": "NOT_IN_CLASS",
+    "20260904": "IN_CLASS",
+    "20260905": "IN_CLASS"
+  },
+  "inClassSeeds": [
+    "20260901",
+    "20260904",
+    "20260905"
+  ],
+  "selectedHistoricalFailureSeed": "20260901",
+  "selectionRule": "min seed ID among IN_CLASS (deltaHV<-0.05 AND deltaIGD<-0.20 vs paired A2, 500k final fronts)",
+  "frontShaLedgerMatches": true,
+  "allRunsAcceptedFE500000": true,
+  "checkpointFrontAvailable": false,
+  "generatedAtUtc": "2026-08-29T10:39:08Z",
+  "consumedFE": 0,
+  "changedAlgorithm": false
+}

@@ -1,0 +1,212 @@
+{
+  "contractId": "V35-SOURCE-ATTRIBUTION-500K-PHASEA0-SOURCE-THRESHOLDS-V1",
+  "frozenDate": "2026-08-31",
+  "frozenAtPhaseAFE": 0,
+  "authority": {
+    "plan": "docs/V35_SOURCE_ATTRIBUTION_500K_PHASE_A_PLAN.md",
+    "section": "3.7",
+    "owner": "Agent B (threshold & metric contract)",
+    "scope": "窗口来源贡献指标合同 + matched-window 历史可比性判定 + 阈值冻结"
+  },
+  "amendmentPolicy": "THRESHOLDS_FROZEN_BEFORE_RUN — 首个评估候选产生后禁止修改本文件任何字段；运行后禁止改阈值（plan §3.7）。",
+  "objectiveOrientation": {
+    "objectives": ["Cmax", "TEC", "TWC"],
+    "sense": "minimize all three",
+    "objectiveSpace": "raw（评估器输出的原始目标值；指标先在 raw 空间做去重与严格 ND，再归一化）"
+  },
+  "firstLevelSources": ["GLOBAL_CFVF", "CATA", "INHERITED_LS", "PARENT_CARRYOVER"],
+  "sourceLabelForAttribution": "归属与门控一律使用一级来源（plan §3.3 四类）；ledger 原始评估侧标签（GLOBAL_CFVF/CATA_TEST/CATA_APPLY/INTER_FACTORY_LS/INTRA_FACTORY_VNS/INITIAL_POPULATION/FINAL_EVALUATE 等）按 00-preregistration/source-taxonomy.csv 的映射折叠为一级来源后再归属；原始标签保留用于二级报告，不得改变一级裁决",
+  "crossFileDependency": "窗口切分依赖 observer schema 提供逐候选 nominalFE 与 B_0（初始种群后、窗口 1 前）decision-front snapshot——见 feAlignment.schemaRequirement 与 agent-b-method.md §6",
+  "windowDefinition": {
+    "grid": "nominal FE 等分：window t 覆盖 nominalFE ∈ ((t-1)*25000, t*25000]，t = 1..20（500k）",
+    "boundarySnapshots": "B_t = nominal FE = t*25000 处的 phase-consistent snapshot（plan §5），记录 nominal 与 actualFE；B_t 的 decision front 用于窗口 t+1 的 Fpast",
+    "baselineSnapshot": "B_0 = 初始种群评估完成、任何窗口内生成开始之前的 phase-consistent snapshot（含初始种群 decision front）。B_0 是窗口 1 的 Fpast 来源；observer schema 必须提供 B_0",
+    "nominalVsActual": "窗口切分只使用 nominal FE（预算计数器，与 25k checkpoint 同一计数）；actualFE 逐行记录仅用于审计与 tie-break。不得用 actualFE 切窗（PHASE_CONSISTENT_BUDGET_TERMINATION 下 nominal≠actual，例如历史 100k 运行 nominal 100000 ↔ actual 96025）"
+  },
+  "sets": {
+    "Fpast_t": {
+      "definition": "窗口 t 的既往前沿 = B_{t-1} snapshot 记录的 decision front（objective-triple 级严格 ND，见 ndDefinition）",
+      "frozenChoice": "DECISION_FRONT_AT_PREVIOUS_BOUNDARY_SNAPSHOT",
+      "rejectedAlternative": "observed-full-front（passive archive）——理由：G1/G3 出口与 t_div 全部定义在 decision-front 指标上，单一前沿对象避免口径混用；observed front 会把已被选择淘汰、算法不再携带的候选计入覆盖，混淆『来源生成贡献』与『选择保留』。observed 变体可作为次要诊断输出，但不得用于门控，运行后不得切换。",
+      "window1Case": "t=1 时 Fpast = B_0 的初始种群 decision front；若 B_0 缺失（observer schema 违约），window 1 记 missingBaseline=true，输出 N/A，按 nonQualifyingWindow 处理（预冻结的确定性规则）"
+    },
+    "Wt": {
+      "definition": "窗口 t 内完成评估的全部新生成候选的目标三元组集合（去重后），按评估完成时的 nominalFE 归属窗口；包含随后被 PDDR/选择淘汰的候选",
+      "exclusions": "PARENT_CARRYOVER 个体 N_eval=0（plan §6），不产生评估事件，不进入 Wt，不参与 WHVG/ExclusiveND（仅出现在 lifecycle 报告）"
+    },
+    "WtMinusS": {
+      "definition": "Wt 中剔除『归属来源 = s』的三元组后的集合（保留其他来源的三元组，含与 Fpast 重复的三元组——重复三元组对 HV 无影响，保持集合语义一致）"
+    }
+  },
+  "attributionRule": {
+    "unit": "objective triple（目标三元组），非 fingerprint。同一三元组可由多个候选指纹/多次评估达成（02-front-coverage §5.1 已登记的固有现象），指纹级计数会高估新覆盖，故合同采用三元组级归属",
+    "rule": "FIRST_ADMISSION_WITHIN_WINDOW：窗口 t 内，三元组 p 的归属来源 = 在窗口 t 内评估出 p 的事件中排序键最小的事件的 source",
+    "tieBreakChain": ["nominalFE asc", "actualFE asc", "candidateId asc (字典序)", "source asc (字典序)"],
+    "scopeNote": "归属是窗口内局部的（跨窗重复评估的三元组在每个窗口按该窗口内首次评估归属），保证窗口指标可从登记输入独立重算、不依赖全局状态",
+    "tupleGrouping": "窗口内三元组先按字典序排序、再按相邻 1e-12 等于规则折叠为一个规范代表（与 fc6.unique/nondominated 同口径）；组内全部事件参与 tie-break"
+  },
+  "ndDefinition": {
+    "pipeline": "corrected（scripts/fc6_metrics.py）：raw 精确去重 → raw 严格 ND → 归一化（不 clamp）",
+    "dedup": "两三元组在全部三坐标 |Δ| ≤ 1e-12 视为相等（fc6.equal）；去重为集合级（排序后相邻折叠）",
+    "dominates": "fc6.dominates 语义：a 支配 b 当且仅当 ∀i: a_i ≤ b_i + 1e-12 且 ∃i: a_i + 1e-12 < b_i（epsilon-strict，EPS=1e-12）",
+    "strictND": "ND(S) = S 中不被 S 内任何其他点支配的点集；实现 = fc6.nondominated（返回排序、去重的规范集）",
+    "space": "ND 一律在 raw 空间计算；逐目标正仿射变换不改变支配关系（除 1e-12 epsilon 边界，与 02-front-coverage §3 登记一致）"
+  },
+  "hvDefinition": {
+    "implementation": "fc6.hypervolume（scripts/fc6_metrics.py）——扫描线 HV，rx=ry=rz=1.1；盒外坐标在扫描前收敛到盒边界，属于 HV 定义的一部分（非改变拓扑的 clamp）。禁止重建实现（plan §3.6），重算脚本直接 import fc6_metrics",
+    "semantics": "最小化语义：HV = 前沿在参考盒 [0,1.1]^3 内向参考角 (1.1,1.1,1.1) 方向的支配体积；前沿越好（目标越小）HV 越大（例：单点 (1,1,1) → HV=0.001，(0,0,0) → HV=1.331）",
+    "normalization": {
+      "anchor": "PER_WINDOW_FULL_UNION：窗口 t 的锚 = ND(Fpast_t ∪ Wt)（全集，含全部来源）的 raw ideal/nadir；z_ij = (x_ij - ideal_i) / max(nadir_i - ideal_i, 1e-12)，不 clamp（fc6.normalize clamp=False）",
+      "coherence": "WHVG_s(t) 差式两项使用同一锚归一化——锚由含来源 s 的全集定义，剔除 s 不移动归一化，差值在同一空间精确",
+      "rationale": "任务给定候选口径『每窗口以ND(全集)的ideal/nadir归一』；跨窗口的 HV 绝对值不直接比较（share 为窗口内相对量），跨窗口轨迹比较由 performance-divergence-thresholds.json 的 run 级参考合同承担",
+      "hvReferencePoint": [1.1, 1.1, 1.1],
+      "noClamp": "归一化不 clamp，HV 可 >1（与 02-front-coverage §3 登记口径一致）"
+    }
+  },
+  "metrics": {
+    "WHVG_s": {
+      "formula": "WHVG_s(t) = HV(ND(Fpast_t ∪ Wt)) - HV(ND(Fpast_t ∪ Wt^-s))",
+      "unit": "归一化 HV 体积（参考盒 (1.1,1.1,1.1)）",
+      "emptyRule": "任一并集为空 → 该项 HV = 0（fc6.hypervolume 空集返回 0.0）"
+    },
+    "WHVGShare_s": {
+      "formula": "WHVGShare_s(t) = 100 * WHVG_s(t) / max(HV(ND(Fpast_t ∪ Wt)), 1e-12)",
+      "epsilon": 1e-12,
+      "epsilonProvenance": "与 fc6_metrics.EPS 一致",
+      "unit": "percentage（0–100 数值的百分数）"
+    },
+    "NexclusiveND_s": {
+      "formula": "NexclND_s(t) = |{ p : p ∈ Wt(按三元组归属)，p 归属 s，p ∉ Fpast_t（对 Fpast 无 1e-12 相等点，即『新点』），p ∈ ND(Fpast_t ∪ Wt) }|",
+      "frozenReading": "ATTRIBUTION_PARTITION_ON_STRICT_ND（口径 (a)）：『exclusive』= 在严格 ND 新点归因划分中独占归属该来源；分子分母构成对窗口新 ND 点的划分，各来源 share 之和 = 100%",
+      "rejectedReading": "任务文本字面口径『不被既往前沿+其他来源新点支配』（口径 (b)，允许被本来源自身新点支配的点计入）——拒绝理由：(b) 与分母 NND_all（全来源口径下退化为 ND 成员测试）不构成划分，share 可加和 >100%；某来源大量生成内部被支配点时会虚增其 share，反向掩盖 G1 要检测的贡献缺失，对门控非保守。(a) 下内部被支配点贡献为零非冗余覆盖，计 0 是正确语义。",
+      "newPointSemantics": "『新』是窗口局部语义：p ∉ Fpast_t 即为新（不要求全 run 首次达成）。理由：与 WHVG 的 (Fpast, Wt) 二元结构一致、无跨窗状态、行序无关重算。早窗评估过但未进入 decision front 的三元组在当窗相对 Fpast 仍是新非冗余覆盖"
+    },
+    "NND_all": {
+      "formula": "NNDall(t) = |{ p : p ∈ Wt，p ∉ Fpast_t，p ∈ ND(Fpast_t ∪ Wt) }|（全来源、同口径）"
+    },
+    "ExclusiveNDShare_s": {
+      "formula": "ExclusiveNDShare_s(t) = 100 * NexclND_s(t) / max(NNDall(t), 1)",
+      "unit": "percentage（0–100 数值的百分数）"
+    }
+  },
+  "deficitAndGate": {
+    "pairing": "hard = 100_5_3_1/20260901/A4/500k/observer ON；normal = NORMAL Control Resolver（plan §3.1）冻结选出的同 seed/A4/500k/observer ON 实例；按窗口序号 t 一一配对",
+    "signConvention": "deficit_X(t) = normal_X(t) - hard_X(t)，X ∈ {WHVGShare, ExclusiveNDShare}；deficit > 0 ⇔ hard 更差（来源贡献缺失更大）。此符号冻结消解 plan §3.7 原文『hard-normal deficit』的表述歧义",
+    "thresholdUnits": "阈值 2.0 / 10.0 为 percentage points（百分点）：两个百分数之差（如 30% vs 27.9% = 2.1pp 达标），不是相对百分比",
+    "gateExpression": "对来源 s：qualify_WHVG(t) := deficit_WHVGShare(t) >= 2.0；qualify_ExND(t) := deficit_ExclusiveNDShare(t) >= 10.0；阈值部分成立条件 = 存在指标 m ∈ {WHVGShare, ExclusiveNDShare} 与窗口 t 使 qualify_m(t) 且 qualify_m(t+1)（同一指标连续两窗，不允许两窗各用不同指标拼凑）；首次满足的 t 记为 firstPersistentWindow_s",
+    "thresholdComparisonEpsilon": 1e-9,
+    "thresholdComparisonNote": "deficit 与阈值的比较采用 deficit >= threshold - 1e-9，仅吸收浮点 1-ulp 误差（例如数学上恰为 10.0pp 的差值在 IEEE754 下可能算得 9.999999999999998）；不改变阈值本身",
+    "consecutiveRuleRationale": "取比『(A OR B) AND 连续』更严格的『同一指标连续两窗』读法并预冻结，避免运行后择优解释",
+    "crossMetricNote": "G1/G3 的其余条件（不晚于 t_div、不能被 Merge→PDDR/working survival 异常解释、CA-TA 仍消耗实质 local FE 等）属生命周期证据裁决，不在本阈值文件范围",
+    "windowToCheckpointMapping": "window t 与 t_div checkpoint t 同一 25k nominal 网格：G1/G3 的『首次持续异常不晚于 t_div』判为 firstPersistentWindow_s <= checkpointIndex(t_div)"
+  },
+  "feAlignment": {
+    "windowCut": "nominal 25k（((t-1)*25000, t*25000]）",
+    "rowRecording": "ledger 行逐评估事件记录，同时携带 nominalFE 与 actualFE（observer schema 预注册要求）；行序不作为任何语义输入",
+    "crossWindowRule": "生成批次/PDDR cycle 跨越 nominal 25k 边界时，候选按各自评估完成时的 nominalFE 逐个归属窗口，不按 cycle 归属",
+    "snapshotAlignment": "Fpast 一律取边界 snapshot 的记录态（B_{t-1} decision front），不用候选流重放重建",
+    "schemaRequirement": "若 observer 仅记录 actualFE 而无 nominalFE，窗口指标按本合同不可计算——属 §4 observer schema 门失败路径（应在 20k OFF/ON 阶段暴露），禁止以 actualFE 近似替代或事后切换口径"
+  },
+  "emptyAndDegenerateHandling": [
+    "Wt 为空（窗口无评估事件）→ WHVG_s=0、两 share=0、NexclND=0，行记 emptyWindow=true",
+    "Wt^-s 为空 → ND(Fpast∪Wt^-s)=ND(Fpast)，公式照算",
+    "ND(Fpast∪Wt) 为空 → HV=0、WHVGShare 按 epsilon 分母记 0",
+    "锚（全集 ND）某目标 raw range < 1e-12 → 归一化分母取 max(range, 1e-12)（fc6.normalize 既有约定），行记 degenerateNormalization=true；该窗口仍按同一公式计算并照常计入连续计数（预冻结，不得事后剔除），且必须在最终报告中列为 pipeline anomaly",
+    "Fpast 为空（B_{t-1} front 空）→ 并集语义自然退化为 ND(Wt)，无需特判",
+    "share 分母 max(HV_all, 1e-12) 中 HV_all=0（全集无点落入参考盒）→ share=0 并列 anomaly；正常轨迹不应出现"
+  ],
+  "igdImplementation": {
+    "definition": "fc6 corrected：IGD(A,R) = (1/|R|) * Σ_{r∈R} min_{a∈A} ||r-a||_2（归一化空间欧氏距离，fc6.igd）",
+    "approximationSet": "归一化后的 decision front 严格 ND 点（fc6.nondominated + fc6.normalize(clamp=False)）",
+    "referenceSet": "Reference Contract（plan §3.6）提供的实例级 PFref，禁止重建；r_raw = fc6.nondominated(unique(PFref))，r = 用 r_raw 自身 ideal/nadir 归一化（不 clamp）；全部 checkpoint 共用同一参考集（02-front-coverage §3 登记的统一参考选择）",
+    "usageScope": "IGD 仅用于 performance-divergence-thresholds.json 的 t_div 轨迹；窗口来源指标不使用 IGD"
+  },
+  "comparabilityJudgment": {
+    "question": "是否存在『完全可比』历史 source telemetry 可计算 matched-window normal fluctuation P95",
+    "criteria": {
+      "C1_sameInstance": "与 Phase A 配对实例相同（hard=100_5_3_1；normal=resolver 选定实例，须 jobScale=100）",
+      "C2_sameArm": "同 arm（A4 语义；C0 等价性主张不自动接受，须冻结 jar 与语义等价证据）",
+      "C3_sameSeed": "seed=20260901",
+      "C4_sameBudget": "nominal 500k + PHASE_CONSISTENT_BUDGET_TERMINATION",
+      "C5_sameObserverSchema": "逐评估来源标签 + 三目标值 + candidateFingerprint + nominalFE/actualFE 成对字段，且 schema 版本已冻结",
+      "C6_samePipeline": "可按本合同（corrected 管线 + 本文件指标定义）从原始记录重算，仅有汇总产物不足"
+    },
+    "decisionRule": "全部 C1–C6 满足才可用 P95；任一不满足即 expectedMatched=false，启用 fallback。不得为使用 P95 放宽任何一项",
+    "matchedWindowFluctuationAvailable": false,
+    "perMaterialVerdicts": [
+      {
+        "material": "M1 docs/evidence/V35-FC5-MIDHORIZON-250K/01-root-cause-analysis/remote-results/",
+        "verdict": "NOT_COMPARABLE",
+        "evidence": [
+          "C4 FAIL：run-acceptance.csv 全部 12 行 actualFE=250000、contractVersion=V35_MIDHORIZON_D_CONTRACT_V3_1，预算 250k ≠ 500k",
+          "C5 FAIL：原始 telemetry-pddr-full-ledger.csv 仅存在于远端（input-artifact-hashes.tsv 登记其远端 sha/大小），本地 find 全树无任何 *telemetry* 文件；且同 contract 家族的本地样例（M2）证实该 ledger 为 PDDR-pool 子集、objectives 多为 FINGERPRINT_ONLY、来源标签为生成机会标签而非四类一级来源",
+          "C3 部分：seeds={20260901,20260902,20260903}，含 20260901（修正任务简报中『seed 20260902』的单一表述）",
+          "jar 身份本地不可核验（hashes tsv 仅含结果文件）；checkpoint-metrics.csv 仅有 25k 粒度 decisionArchiveFront 的 HV/IGD 汇总，无逐评估来源账本",
+          "C6 FAIL：无原始账本，无法按本合同重算窗口指标"
+        ]
+      },
+      {
+        "material": "M2 docs/evidence/V35-FC5-MIDHORIZON-DIAGNOSTICS/18-final-2k-20k-50k-gates/A4-50k-ON-final/telemetry-pddr-full-ledger.csv",
+        "verdict": "NOT_COMPARABLE",
+        "evidence": [
+          "C1 PASS：instance=100_5_3_1（behavior-summary.properties: instance=100_5_3_1.txt；ledger instanceHash=2E88FA97…）",
+          "C2 PASS / C3 PASS：arm=A4，seed=20260901（ledger 1553 行全部一致）",
+          "C4 FAIL：diagnostic-contract.properties maxFEs=50000、actualFE=48269，预算 50k ≠ 500k",
+          "C5 FAIL：该 ledger 是 PDDR-pool 子集（1553 行 ≪ ~48k 评估）；objectives[Cmax|TEC|TWC] 列 1375/1553 行为 FINGERPRINT_ONLY（无三目标值）；source 标签为 {GLOBAL_OFFSPRING:600, PARENT:600, CATA_TEST:148, CATA_APPLY:139, O1_O9:65, CRITICAL_INSERT:1}——生成机会标签，非冻结四类一级来源；无 nominalFE 字段",
+          "C6 FAIL：无逐评估三目标+来源账本，窗口指标不可重算",
+          "jar：sourceJarSha256=723D24ED3021A01F…（与冻结正式 jar 8dad8f40… 及 V3 GAPLSRC 实验 jar bbb9ccd6… 均不同；任一历史 jar 都不可能等于 Phase A observer jar）"
+        ]
+      },
+      {
+        "material": "M3 docs/evidence/V35-GAP-SOURCE-CONTRIBUTION-DIAGNOSTICS-V1/04-remote-100k/sync/",
+        "verdict": "NOT_COMPARABLE",
+        "evidence": [
+          "C1 部分：含 100_5_3_1 ✓，但 normal 侧实例为 50_2_3_1（50-job，非 100-job NORMAL）",
+          "C2 FAIL：arm=C0（当前 A4 语义）但运行于 GAPLSRC 诊断实验 jar（experimentalJarSha256=bbb9ccd66ead960f1a8e687d91cd41add504ecd141f09d5c860304d927754f2e；formalJarSha256=8dad8f40…），非冻结 A4 observer 运行",
+          "C3 FAIL：seeds={20260919,20260920,20260921} ≠ 20260901",
+          "C4 FAIL：budget-termination.properties requestedMaxFE=100000、actualFE=96025（nominal↔actual 偏离 3975，正是本合同要求按 nominal 切窗的实证）",
+          "C5 部分：source-ledger.csv 逐评估（96025 行）含 source+三目标+candidateFingerprint ✓，但仅 observedFE 无 nominalFE，且 schema（字段集、来源枚举 INITIAL_POPULATION/GLOBAL_CFVF/INTRA_FACTORY_VNS/INTER_FACTORY_LS/CATA_TEST/CATA_APPLY）与 Phase A 冻结 observer schema 不同，需 ROLLUP 映射",
+          "C6 部分：可在其自身口径重算，但不满足『同管线同 schema』"
+        ]
+      }
+    ],
+    "conclusion": "expectedMatched=false；三份材料均至少违反 C4（预算）与 C5/C6（schema/管线）中多项，任何一份都不得用于推导 matched-window fluctuation P95，不得放宽标准",
+    "p95": null,
+    "p95Note": "未计算。若未来出现真正全可比材料，须先以本文件 criteria 逐项判定并重新预注册，不得在本 Phase A 运行后补算替换阈值"
+  },
+  "thresholds": {
+    "mode": "FALLBACK",
+    "fallbackReason": "comparabilityJudgment.matchedWindowFluctuationAvailable=false（plan §3.7 fallback 分支）",
+    "whvgShareDeficitPp": 2.0,
+    "exclusiveNdShareDeficitPp": 10.0,
+    "consecutiveWindows": 2,
+    "expression": "(deficit_WHVGShare >= 2.0pp OR deficit_ExclusiveNDShare >= 10.0pp)，同一指标连续 >= 2 个 25k 窗口（详见 deficitAndGate.gateExpression）",
+    "p95Combination": "未适用（无 P95）。若适用应为 max(fallback, P95)"
+  },
+  "recompute": {
+    "script": "docs/evidence/V35-SOURCE-ATTRIBUTION-500K/00-preregistration/threshold_recompute.py",
+    "interpreter": "Python 3（仅标准库）+ 直接 import scripts/fc6_metrics.py（HV/IGD/ND 原语不得重建）",
+    "modes": {
+      "--audit": "从下列登记输入重算可比性判定与 500k 轨迹充足性，并与本文件冻结值比对（只读，不写任何既有文件）",
+      "--selftest": "参考实现的行序无关性（随机打乱 5 次）与 HV/去重健全性自检",
+      "--windows": "运行后窗口指标参考实现（Phase A ledger + 边界 snapshot front + B_0 输入），严格按本合同口径"
+    },
+    "determinism": "全部比较基于排序后的键与集合运算，不依赖 CSV 行序；tie-break 链见 attributionRule.tieBreakChain",
+    "registeredInputs": [
+      "docs/V35_SOURCE_ATTRIBUTION_500K_PHASE_A_PLAN.md",
+      "docs/evidence/V35-GAP-PARETO-COVERAGE-LEVERAGE-AUDIT/02-front-coverage/README.md",
+      "docs/evidence/V35-GAP-PARETO-COVERAGE-LEVERAGE-AUDIT/02-front-coverage/analyze_front_coverage.py",
+      "docs/evidence/V35-GAP-SOURCE-CONTRIBUTION-DIAGNOSTICS-V1/05-analysis/analyze_source_diagnostics.py",
+      "scripts/fc6_metrics.py",
+      "docs/evidence/V35-FC5-MIDHORIZON-250K/01-root-cause-analysis/remote-results/run-acceptance.csv",
+      "docs/evidence/V35-FC5-MIDHORIZON-250K/01-root-cause-analysis/remote-results/input-artifact-hashes.tsv",
+      "docs/evidence/V35-FC5-MIDHORIZON-250K/01-root-cause-analysis/remote-results/checkpoint-metrics.csv",
+      "docs/evidence/V35-FC5-MIDHORIZON-DIAGNOSTICS/18-final-2k-20k-50k-gates/A4-50k-ON-final/telemetry-pddr-full-ledger.csv",
+      "docs/evidence/V35-FC5-MIDHORIZON-DIAGNOSTICS/18-final-2k-20k-50k-gates/A4-50k-ON-final/diagnostic-contract.properties",
+      "docs/evidence/V35-FC5-MIDHORIZON-DIAGNOSTICS/18-final-2k-20k-50k-gates/A4-50k-ON-final/behavior-summary.properties",
+      "docs/evidence/V35-GAP-SOURCE-CONTRIBUTION-DIAGNOSTICS-V1/04-remote-100k/sync/seed-20260919/results/run-GAPLSRC-C0-100_5_3_1-20260919/budget-termination.properties",
+      "docs/evidence/V35-GAP-SOURCE-CONTRIBUTION-DIAGNOSTICS-V1/04-remote-100k/sync/seed-20260919/results/run-GAPLSRC-C0-100_5_3_1-20260919/source-ledger.csv",
+      "docs/evidence/V35-PFC5-PHASE0/fetched-remote/100_5_3_1/seed-20260901/A4/budget-termination.properties"
+    ]
+  }
+}

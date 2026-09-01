@@ -1,0 +1,17 @@
+{
+  "fairReadyNow": [
+    "HMOPSO_QGS_F"
+  ],
+  "pendingGate": [
+    "NSGA_II_F",
+    "SPEA2_F"
+  ],
+  "notReady": [
+    "HMOPSO_QLS_F",
+    "MOEAD (inherited chapter-3 code)",
+    "QMOEA"
+  ],
+  "generatedAtUtc": "2026-08-29T10:57:33Z",
+  "consumedFE": 0,
+  "changedAlgorithm": false
+}

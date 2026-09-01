@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "V35 Master A0-A4 formal campaign manifest",
+  "description": "Schema only. A rendered manifest is launchable only after all Stage2 hard-gate hashes are accepted.",
+  "type": "object",
+  "required": [
+    "schemaVersion", "campaignId", "frozenBoundaryHash", "freezeEvidence",
+    "maxParallel", "gateEvidence", "runRegistryPath", "runs"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "campaignId": { "const": "V35-MASTER-A0-A4-FORMAL" },
+    "frozenBoundaryHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "freezeEvidence": { "type": "string", "minLength": 1 },
+    "maxParallel": { "type": "integer", "minimum": 1 },
+    "gateEvidence": {
+      "type": "object",
+      "required": [
+        "FINAL_SOURCE_FREEZE", "FORMAL_MANIFEST_FREEZE",
+        "A0_A4_PRODUCTION_PREFLIGHT", "FORMAL_MAX_PARALLEL",
+        "A0_A4_FINAL_SEMANTICS"
+      ],
+      "additionalProperties": { "type": "object" }
+    },
+    "runRegistryPath": { "type": "string", "minLength": 1 },
+    "runs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/run" }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "run": {
+      "type": "object",
+      "required": [
+        "runKey", "arm", "instance", "seed", "budget", "jarSha256",
+        "configSha256", "snapshotPath", "snapshotSha256",
+        "initialPopulationHashV35", "initialPopulationHashP8", "safetyClass",
+        "maxAttempts", "command"
+      ],
+      "properties": {
+        "runKey": { "type": "string", "pattern": "^(A0|A1|A2|A3|A4)__.+__[0-9]+__500000__[a-f0-9]{64}__[a-f0-9]{64}$" },
+        "arm": { "enum": ["A0", "A1", "A2", "A3", "A4"] },
+        "instance": { "type": "string", "pattern": "^[0-9]+_[0-9]+_[0-9]+_1$" },
+        "seed": { "type": "integer", "minimum": 1 },
+        "budget": { "const": 500000 },
+        "jarSha256": { "$ref": "#/$defs/sha256" },
+        "configSha256": { "$ref": "#/$defs/sha256" },
+        "snapshotPath": { "type": "string", "minLength": 1 },
+        "snapshotSha256": { "$ref": "#/$defs/sha256" },
+        "initialPopulationHashV35": { "$ref": "#/$defs/sha256" },
+        "initialPopulationHashP8": { "$ref": "#/$defs/sha256" },
+        "safetyClass": { "const": "formal" },
+        "maxAttempts": { "type": "integer", "minimum": 1 },
+        "command": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,6 @@
+workingDirectory=E:\学习\李明哲-毕业材料\张博改进\java-jmetal58
+java -version
+mvn -pl jmetal-algorithm -am "-Djacoco.skip=true" "-Dcheckstyle.skip=true" "-Dtest=V35Fc5MidHorizonDiagnosticsV31ContractTest,V35MidHorizonObserverRealTest" "-DfailIfNoTests=false" test
+fatJarSha256=121FBB4939258BDC94C297D5F6CE9BE0B0BEE0271A6E71B89BAE8E1486394155
+fatJarBytes=47776437
+expected=20 tests, 0 failures, 0 errors

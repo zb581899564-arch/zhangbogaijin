@@ -1,0 +1,3 @@
+instance,seed,arm,window,scope,exposuresPerCycle,exposuresPer1000FE,uniqueTeacherCount,Top1Share,Top5Share,ShannonEntropy,NormalizedEntropy,directionImprovementPerExposure
+100_5_3_1,20260901,A4,W1,ALL_QG,205,28.5,45,0.08,0.28,3.2,0.82,0.65
+100_5_3_1,20260901,A4,W1,DIRECTIONAL_REPRESENTATIVE,42,5.8,12,0.35,0.78,1.8,0.52,0.62

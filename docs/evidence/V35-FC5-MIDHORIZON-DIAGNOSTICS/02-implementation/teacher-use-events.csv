@@ -1,0 +1,2 @@
+eventId,generation,FE,requestingRole,teacherKind,teacherSource,cacheType,teacherFingerprint,teacherObjectives,action,state,mask,childFingerprint,childEvaluated,childObjectives,directionImproved,strictDominanceImproved,enteredPddrPool,pddrSelected,enteredArchive
+TCH-1,1,1023,G1_CMAX,QG,previous,PREVIOUS_CACHE,FP_TCH_001,815|114500|308000,keep,3,1111,FP_CHILD_001,true,812|114200|307800,true,false,true,true,false

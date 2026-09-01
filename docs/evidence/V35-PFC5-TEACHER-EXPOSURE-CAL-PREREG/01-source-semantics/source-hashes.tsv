@@ -1,0 +1,15 @@
+﻿relativePath	lines	sha256
+jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/ZhangBoMOHPSOQ.java	9870	233b6d3dc5b4e6dac03a6cd218b7e69263264c626ac4e4e42ccbf473a77a015b
+jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/zhangbo/ZhangBoQgController.java	514	f3fba8d45ed4403fe6d50e65ac3701853404faa249af0f64fcc4126ad435cc5b
+jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/zhangbo/ZhangBoQpController.java	850	d045aba46031e39db0a8f9031705b85b970ab4913e597aef1e56cb4ac147a6bb
+jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/zhangbo/ZhangBoQpCandidateSelector.java	218	14b5d3222f5fd1228781b29cb5ecf87390041e2c1f86aad1adaac42e06e38c4f
+jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/zhangbo/ZhangBoQpAction.java	9	f9aaf0264651e129b8b761ae17b51eaa05dc75c522955ea34a0992aebcdf809a
+jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35SocialKnowledgeSnapshot.java	86	d32ad44664c585b0090827fbc9140d669aecee86a79f2938fece3918205dd246
+jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35DscrSanitizer.java	89	c16a1cb244795b39ded68f9a7ba51645a8c4b3f447544e3fd605cb6436ac051d
+jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35DscrTeacherCache.java	237	cb94e299d937630023fc140a7f963786e71ec37fa811c666211c40454f5cf378
+jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35SocialTeacher.java	25	9644fb9da6381c5617445e20632fc2a380a7ec924f4e3f52788e0813d405fc05
+jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/V35MacroNeighborhood.java	5	3e37fb7de4da307c506e299df8a85a14d749df7d6ab642bf8c4e216d4e11676a
+frozenAlgorithmJar(jmetal-exec-5.8-jar-with-dependencies.jar)	48269638 bytes	8dad8f40266feeaa4cdb9b47dbe4e342d9064847df32c7f2933149b9b6bad8b9
+sourceTreeRoot	_isolated-v35-final-doe1-freeze-20260823/java-jmetal58/	NOT the rebuilt working tree 张博改进/java-jmetal58/
+telemetryUsedForScaleAnalysis	V35-FC5-MIDHORIZON-DIAGNOSTICS/26-final-runtime-jar-validation/A4-50k-ON-s20260901-121FBB49/telemetry-teacher-use-events.csv	26300 rows
+diagnosticRuntimeJar	121fbb4939258bdc94c297d5f6ce9be0b0bee0271a6e71b89bae8e1486394155	produced the telemetry above (instance 100_5_3_1, seed 20260901, arm A4, 50k, ON)

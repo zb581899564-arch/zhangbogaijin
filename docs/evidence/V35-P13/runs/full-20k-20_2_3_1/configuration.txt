@@ -1,5 +1,5 @@
 configurationVersion=v3.5-mainline-2
-algorithmSemanticsVersion=v35-pressure-confidence-diagnosis-v1
+algorithmSemanticsVersion=v35-fc6-pddr-order-region-v1
 seed=20260808
 populationSize=100
 maxEvaluations=20000

@@ -1,0 +1,11 @@
+route,whenRejected,evidencePath,relevanceToCurrentCollapse,exclusionBasis
+BP-PDDR / region-aware PDDR,D-109 (2026-08-29),docs/ROADMAP.md D-109; V35Fc6BpPddrDiagnosticAudit,PDDR retained survivors verified healthy in 250k telemetry,PDDR=GLOBAL_ORIGINAL frozen; not a repair target
+ND-overflow / PDDR capacity,FC5-T 250k (2026-08-27),V35-FC5-MIDHORIZON-250K/01-root-cause-analysis/remote-results/FC5_250K_ROOT_CAUSE_REPORT.md,overflow chain did not reproduce (max Nnd=92; Roverflow delta +0.038),pre-registered hypothesis rejected; not re-proposable
+Teacher identity exposure penalty (lambda on Qg action-2),PFC5-CAL closure (2026-08-30),V35-PFC5-TEACHER-EXPOSURE-CAL-PREREG/07-closure/,would address teacher concentration but knob covers only 1.12% of teacher events,structural no-leverage; closed; not re-wrappable
+Shift / left-right variants,P8.4-P8.6 (2026-08-11),ShiftMode=NONE frozen in all V2 runs,shift activity = 0 in every 500k run,frozen; no observed need
+Pressure strict mask,P25B threshold rejected (2026-08-21),V35-P25B-pressure-diagnosis/,not related to coverage contraction,threshold rejected by preregistered gate
+A2 promotion / A2-derived routes,A2_NOT_PROMOTED (2026-08-25),V35-A2-A4-MULTIINSTANCE-CONFIRMATION/05-decision/,A2 also lags on hard instance per 250k data,promotion gates failed
+Cheap-Test as search change,master plan §4 (2026-08-29),V35_POST_FC5_EXECUTION_MASTER_PLAN.md §4,only relevant as aux Test-cost reduction (coverage 1.6-2.2%),forbidden unless a new user-approved gate explicitly allows; excluded from selected family
+LS order swap (CA-TA -> inherited),frozen semantics,AGENTS.md §21.2/§22,order is part of frozen A4 identity,forbidden
+4500 formal matrix / old master,paused (2026-08-25),V35-STAGE2-MASTER-V2,not a repair route,paused; requires Final Freeze path
+Deletion of CFVF/DualQ/CA-TA,governance constant,AGENTS.md §22.2,mandatory final components,forbidden

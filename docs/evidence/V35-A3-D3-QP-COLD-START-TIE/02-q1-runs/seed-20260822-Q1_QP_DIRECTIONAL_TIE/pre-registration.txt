@@ -1,0 +1,12 @@
+workPackage=V35-A3-D3
+arm=Q1_QP_DIRECTIONAL_TIE
+instance=20_2_3_1
+seed=20260822
+population=100
+maxFEs=50000
+profileSha256=da20e0322b1ca7447b636ce84ee4188dc5a2936c5a0db58a103804d0a51aac92
+commonBoundary=FM3;ShiftMode.NONE;singleFamily;sequenceIndependentSUT;mixture=20/40/20/20;PDDR=GLOBAL_ORIGINAL;LS=CATA_THEN_INHERITED;teacherPool=OFF
+notDoe=true
+notFormalAblation=true
+formalJarModified=false
+causalPairing=Q0_TO_Q1=QP_COLD_START_GREEDY_TIE_ONLY;Q1_TO_D1=DIRECTIONAL_RECOVERY_CHECK

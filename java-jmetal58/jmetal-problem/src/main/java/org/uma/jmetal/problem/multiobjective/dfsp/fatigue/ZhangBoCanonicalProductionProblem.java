@@ -29,6 +29,7 @@ public final class ZhangBoCanonicalProductionProblem
   private final ZhangBoShiftConfiguration shiftConfiguration;
   private final ProductFamilySetupModel setupModel;
   private final ZhangBoDecoderTimingAccumulator decoderTimingAccumulator;
+  private final ZhangBoEvaluationObservation evaluationObservation;
 
   public ZhangBoCanonicalProductionProblem(
       ZhangBoFatigueInstanceData instance,
@@ -110,6 +111,7 @@ public final class ZhangBoCanonicalProductionProblem
     this.shiftConfiguration = shiftConfiguration;
     this.setupModel = setupModel;
     this.decoderTimingAccumulator = new ZhangBoDecoderTimingAccumulator();
+    this.evaluationObservation = new ZhangBoEvaluationObservation();
     this.solutionFactory = new ZhangBoCanonicalSolutionFactory(instance, mode, seed);
   }
 
@@ -130,6 +132,7 @@ public final class ZhangBoCanonicalProductionProblem
           "Canonical production requires the P2 DhhfspFourVectorSolution contract");
     }
     DhhfspFourVectorSolution solution = (DhhfspFourVectorSolution) genericSolution;
+    evaluationObservation.beforeEvaluation(solution);
     if (solution.getNumberOfObjectives() != NUMBER_OF_OBJECTIVES) {
       throw new IllegalArgumentException(
           "Canonical production requires seven objective slots [0..6]");
@@ -139,8 +142,14 @@ public final class ZhangBoCanonicalProductionProblem
           "Solution semanticTag " + solution.getSemanticTag()
               + " does not match explicit mode " + mode.name());
     }
-    ZhangBoFatigueEvaluationResult result = evaluator.evaluate(
-        instance, parameters, solution, evaluatorMode(mode), shiftConfiguration, setupModel);
+    ZhangBoFatigueEvaluationResult result;
+    try {
+      result = evaluator.evaluate(
+          instance, parameters, solution, evaluatorMode(mode), shiftConfiguration, setupModel);
+    } catch (IllegalArgumentException error) {
+      evaluationObservation.recordIllegalSolution();
+      throw error;
+    }
     result = result.withSemanticTag(mode.getSemanticTag());
     double[] objectives = result.getObjectives();
     if (objectives.length != NUMBER_OF_OBJECTIVES) {
@@ -153,6 +162,7 @@ public final class ZhangBoCanonicalProductionProblem
     solution.setAttribute(ProductionDecodeMode.class, mode);
     solution.setAttribute(ZhangBoShiftConfiguration.class, shiftConfiguration);
     decoderTimingAccumulator.record(result.getDecoderTiming());
+    evaluationObservation.afterEvaluation(solution);
     evaluationCounter.recordSuccessfulEvaluation();
     // FC-5.1: pure-observation global best fully-evaluated Cmax (no decision impact).
     V35CmaxBestEver.observe(objectives[0], objectives[1], objectives[6]);
@@ -168,6 +178,9 @@ public final class ZhangBoCanonicalProductionProblem
   public ProductFamilySetupModel getSetupModel() { return setupModel; }
   public ZhangBoDecoderTimingSnapshot getDecoderTimingSnapshot() {
     return decoderTimingAccumulator.snapshot();
+  }
+  public ZhangBoEvaluationObservation getEvaluationObservation() {
+    return evaluationObservation;
   }
 
   private static ZhangBoFatigueEvaluationMode evaluatorMode(ProductionDecodeMode mode) {

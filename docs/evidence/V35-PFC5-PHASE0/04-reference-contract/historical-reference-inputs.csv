@@ -1,0 +1,11 @@
+instance,seed,arm,localPath,sha256,points
+100_5_3_1,20260901,A2,docs/evidence/V35-PFC5-PHASE0/fetched-remote/100_5_3_1/seed-20260901/A2/front.csv,75d8a44a71428274a591a1c6413ddac0cb7e7deb421da419a11b2d3196a204aa,412
+100_5_3_1,20260901,A4,docs/evidence/V35-PFC5-PHASE0/fetched-remote/100_5_3_1/seed-20260901/A4/front.csv,f3755d83a2acb4280ff8dd566025340c8b64edc71050e05bbd6a3ff4b1239bdd,387
+100_5_3_1,20260902,A2,docs/evidence/V35-PFC5-PHASE0/fetched-remote/100_5_3_1/seed-20260902/A2/front.csv,acb9aaaba026e93fd4cd06b0c2cbf81f29dac1a9bfc2a0ccb2e262974c26a936,274
+100_5_3_1,20260902,A4,docs/evidence/V35-PFC5-PHASE0/fetched-remote/100_5_3_1/seed-20260902/A4/front.csv,0ae1eabe238ef68b9d8d608f0e3364c434be548aa47c3da0fd0209738ea97d39,399
+100_5_3_1,20260903,A2,docs/evidence/V35-PFC5-PHASE0/fetched-remote/100_5_3_1/seed-20260903/A2/front.csv,5aff0ca5c40fb478d2ba4fb8f68bd169d697c12f8f317cf22bd0cf91afa15a9b,203
+100_5_3_1,20260903,A4,docs/evidence/V35-PFC5-PHASE0/fetched-remote/100_5_3_1/seed-20260903/A4/front.csv,ecbd64013733be4c0c732e55919580129b51c3cfcd4b76824e5e850a1155edc2,369
+100_5_3_1,20260904,A2,docs/evidence/V35-PFC5-PHASE0/fetched-remote/100_5_3_1/seed-20260904/A2/front.csv,77991db9725e8962808abf9986222ac7563a1e5ca11b69446b8a83adb17eb432,296
+100_5_3_1,20260904,A4,docs/evidence/V35-PFC5-PHASE0/fetched-remote/100_5_3_1/seed-20260904/A4/front.csv,e2e9d0bf3bea7bfe0530ac832d08831892807665d18ba302661831ebbd6d4013,332
+100_5_3_1,20260905,A2,docs/evidence/V35-PFC5-PHASE0/fetched-remote/100_5_3_1/seed-20260905/A2/front.csv,53c8795d9eee7eb42d66e2887954b235604a70abbd2da91ceb921611906aad07,307
+100_5_3_1,20260905,A4,docs/evidence/V35-PFC5-PHASE0/fetched-remote/100_5_3_1/seed-20260905/A4/front.csv,152b22e89cb0fa78df423673007947c8a75aef0f7db09bb0dc30f8c53b85a3f6,383

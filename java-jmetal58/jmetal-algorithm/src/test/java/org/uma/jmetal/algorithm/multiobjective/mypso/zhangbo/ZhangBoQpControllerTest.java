@@ -1,6 +1,8 @@
 package org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo;
 
 import org.junit.Test;
+import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ProductionConfiguration;
+import org.uma.jmetal.problem.multiobjective.dfsp.decoder.ProductionDecodeMode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +35,29 @@ public class ZhangBoQpControllerTest {
     assertEquals(1.0, configuration.getDirectionWeight(), 0.0);
     assertEquals(0.5, configuration.getArchiveWeight(), 0.0);
     assertEquals(0.25, configuration.getFatigueWeight(), 0.0);
+    assertEquals(ZhangBoQpConfiguration.DirectionRewardMode.LEGACY_UNCLIPPED,
+        configuration.getDirectionRewardMode());
+    assertEquals(ZhangBoQpConfiguration.GreedyTiePolicy.FIRST_VALID,
+        configuration.getGreedyTiePolicy());
+    assertFalse(configuration.toCanonicalText().contains("directionRewardMode"));
+  }
+
+  @Test
+  public void v35DiagnosticConfigurationInjectsOnlyTheClippedQpRewardMode() {
+    ZhangBoQpConfiguration clipped = ZhangBoQpConfiguration.v35ClippedDirection();
+    V35ProductionConfiguration configuration = V35ProductionConfiguration.builder()
+        .seed(20260822L).populationSize(100).maxEvaluations(2000)
+        .decoderMode(ProductionDecodeMode.FM3)
+        .dscr(true).cfvf(true).qg(true).qp(true).caTaLite(false)
+        .qpConfiguration(clipped).build();
+
+    ZhangBoGlobalSearchConfiguration global =
+        ZhangBoGlobalSearchConfiguration.forV35(configuration);
+
+    assertEquals(ZhangBoQpConfiguration.DirectionRewardMode.V35_CLIPPED,
+        global.getQpConfiguration().getDirectionRewardMode());
+    assertTrue(configuration.canonicalText()
+        .contains("qp.directionRewardMode=V35_CLIPPED"));
   }
 
   @Test
@@ -131,6 +156,23 @@ public class ZhangBoQpControllerTest {
   }
 
   @Test
+  public void v35DirectionRewardClipsNearZeroDenominatorToDeclaredBounds() {
+    ZhangBoQpController controller = new ZhangBoQpController(
+        ZhangBoQpConfiguration.v35ClippedDirection(),
+        ZhangBoPersonalArchiveConfiguration.standard(),
+        new ZhangBoScriptedRandom(new double[0], new int[0]), 123L);
+    ZhangBoArchiveEntry parent = entry(1, 0.0, 5.0, 5.0, 0.4, 4.0);
+    ZhangBoArchiveEntry child = entry(2, 10.0, 5.0, 5.0, 0.4, 4.0);
+
+    ZhangBoQpController.Reward reward = controller.rewardForTest(parent, child,
+        ZhangBoSubSwarm.G1_CMAX, false, BOUNDS);
+
+    assertEquals(-1.0, reward.getDirection(), 0.0);
+    assertTrue(Double.isFinite(reward.getTotal()));
+    assertEquals(-3.0, reward.getTotal(), 1.0e-12);
+  }
+
+  @Test
   public void batchUpdateIsIndependentOfTransitionTraversalOrder() {
     boolean[] keep = new boolean[]{true, false, false, false};
     List<ZhangBoQpController.Transition> transitions = new ArrayList<>();
@@ -174,6 +216,20 @@ public class ZhangBoQpControllerTest {
     assertEquals(ZhangBoQpAction.COMPLEMENTARY.ordinal(), exploratory.selectActionForTest(
         new double[]{9.0, 8.0, 7.0, 6.0},
         new boolean[]{true, false, true, true}, 0.3, 1L, ZhangBoSubSwarm.G1_CMAX));
+  }
+
+  @Test
+  public void diagnosticDirectionalTiePolicyChangesOnlyARealGreedyTie() {
+    ZhangBoQpController directionalTie = new ZhangBoQpController(
+        ZhangBoQpConfiguration.diagnosticDirectionalGreedyTie(),
+        ZhangBoPersonalArchiveConfiguration.standard(),
+        new ZhangBoScriptedRandom(new double[]{0.9, 0.9}, new int[0]), 123L);
+    assertEquals(ZhangBoQpAction.DIRECTIONAL.ordinal(), directionalTie.selectActionForTest(
+        new double[]{0.0, 0.0, 0.0, 0.0},
+        new boolean[]{true, true, true, true}, 0.3, 1L, ZhangBoSubSwarm.G1_CMAX));
+    assertEquals(ZhangBoQpAction.KEEP.ordinal(), directionalTie.selectActionForTest(
+        new double[]{3.0, 2.0, 2.0, 2.0},
+        new boolean[]{true, true, true, true}, 0.3, 1L, ZhangBoSubSwarm.G1_CMAX));
   }
 
   @Test

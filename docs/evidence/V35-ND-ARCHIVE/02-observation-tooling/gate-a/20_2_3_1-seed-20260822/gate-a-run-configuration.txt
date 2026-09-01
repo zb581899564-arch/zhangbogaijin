@@ -1,0 +1,12 @@
+gateARunnerVersion=v35-nd0-gate-a-v1
+gate=ND0_PURE_OBSERVATION
+archiveMode=UNBOUNDED_FULL
+instance=20_2_3_1
+seed=20260822
+population=100
+maxFEs=20000
+decoderMode=FM3
+shiftMode=NONE
+familyMode=DEGENERATE_SINGLE_FAMILY
+setupMode=SEQUENCE_INDEPENDENT
+initialPopulationHash=165ad2bc3a58953ed2f10674b2162bf18eb9960667e33e7de6133317297e77f2

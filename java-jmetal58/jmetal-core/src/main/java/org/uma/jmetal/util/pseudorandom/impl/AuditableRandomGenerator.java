@@ -30,24 +30,67 @@ public class AuditableRandomGenerator implements PseudoRandomGenerator {
 			this.lower = Objects.requireNonNull(lower, "No lower bound provided");
 			this.upper = Objects.requireNonNull(upper, "No upper bound provided");
 		}
+
+		public Number getLowerBound() {
+			return lower;
+		}
+
+		public Number getUpperBound() {
+			return upper;
+		}
 	}
 
 	private final PseudoRandomGenerator generator;
+	private final String randomStreamId;
+	private long drawOrdinal;
 	private final Set<Consumer<Audit>> listeners = new HashSet<Consumer<Audit>>();
 
 	public AuditableRandomGenerator(PseudoRandomGenerator generator) {
+		this(generator, generator == null ? "UNSPECIFIED" : generator.getName());
+	}
+
+	public AuditableRandomGenerator(PseudoRandomGenerator generator, String randomStreamId) {
 		this.generator = Objects.requireNonNull(generator, "No generator provided");
+		this.randomStreamId = Objects.requireNonNull(randomStreamId, "No random stream id provided");
+	}
+
+	public PseudoRandomGenerator getDelegate() {
+		return generator;
+	}
+
+	public String getRandomStreamId() {
+		return randomStreamId;
+	}
+
+	public long getDrawOrdinal() {
+		return drawOrdinal;
 	}
 
 	public static class Audit {
+		private final long ordinal;
+		private final String randomStreamId;
 		private final RandomMethod method;
 		private final Optional<Bounds> bounds;
 		private final Number result;
 
 		public Audit(RandomMethod method, Bounds bounds, Number result) {
+			this(-1L, "UNSPECIFIED", method, bounds, result);
+		}
+
+		public Audit(long ordinal, String randomStreamId, RandomMethod method, Bounds bounds, Number result) {
+			this.ordinal = ordinal;
+			this.randomStreamId = Objects.requireNonNull(randomStreamId, "No random stream id provided");
 			this.method = Objects.requireNonNull(method, "No method provided");
 			this.bounds = Optional.ofNullable(bounds);
 			this.result = Objects.requireNonNull(result, "No result provided");
+		}
+
+		public long getOrdinal() {
+			return ordinal;
+		}
+
+		public String getRandomStreamId() {
+			return randomStreamId;
 		}
 
 		public RandomMethod getMethod() {
@@ -77,24 +120,28 @@ public class AuditableRandomGenerator implements PseudoRandomGenerator {
 		}
 	}
 
+	private Audit audit(RandomMethod method, Bounds bounds, Number result) {
+		return new Audit(++drawOrdinal, randomStreamId, method, bounds, result);
+	}
+
 	@Override
 	public int nextInt(int lowerBound, int upperBound) {
 		int result = generator.nextInt(lowerBound, upperBound);
-		notifies(new Audit(RandomMethod.BOUNDED_INT, new Bounds(lowerBound, upperBound), result));
+		notifies(audit(RandomMethod.BOUNDED_INT, new Bounds(lowerBound, upperBound), result));
 		return result;
 	}
 
 	@Override
 	public double nextDouble(double lowerBound, double upperBound) {
 		double result = generator.nextDouble(lowerBound, upperBound);
-		notifies(new Audit(RandomMethod.BOUNDED_DOUBLE, new Bounds(lowerBound, upperBound), result));
+		notifies(audit(RandomMethod.BOUNDED_DOUBLE, new Bounds(lowerBound, upperBound), result));
 		return result;
 	}
 
 	@Override
 	public double nextDouble() {
 		double result = generator.nextDouble();
-		notifies(new Audit(RandomMethod.DOUBLE, null, result));
+		notifies(audit(RandomMethod.DOUBLE, null, result));
 		return result;
 	}
 

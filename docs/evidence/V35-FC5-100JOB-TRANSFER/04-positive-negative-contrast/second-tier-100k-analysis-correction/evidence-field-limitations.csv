@@ -1,0 +1,12 @@
+field,available,reason
+fullMergePoolScoreLedger,NO,Only pddrScore/pddrRank of the 4 directional representatives are persisted; full pool of 249-300 candidates not logged
+selectedFingerprintSet,NO,Only nextSlot/role for the 4 representatives; other 96 selected members not identified
+cutoffScoreAtRank100,NO,Requires full score ledger
+displacedByIdentity,NO,Requires selected set
+equivalentSelectedNonRepresentative,NO,Requires full selected fingerprint set
+workingDirectionEqualAfter,YES,Computed by comparing rejected representative objective vs archiveWorkingGap.csv workingBest* at same cycle
+archiveDirectionEqualAfter,YES,Same as above vs archiveBest*
+nextCycleRediscovery,PARTIAL,Only via fingerprint reappearance in next cycle's 4 representatives; not full population scan
+teacherUsePerCandidate,PARTIAL,DSCR log has full Qg uses; directional log has lifetime totals without window attribution before correction
+checkpointFullFrontVectors,NO,Only final front.csv and scalar cmax-audit-curves.csv; no per-PDDR-cycle full front
+HV_IGD_lifecycle,NO,Requires checkpoint fronts

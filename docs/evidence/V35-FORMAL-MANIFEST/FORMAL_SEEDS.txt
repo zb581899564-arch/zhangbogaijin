@@ -1,0 +1,23 @@
+# V35 formal independent seed roster
+# Pre-registered non-performance rule: inclusive integer range 20260808..20260827.
+# Source: docs/ROADMAP.md P9 formal-matrix decision; no outcome-based seed selection.
+20260808
+20260809
+20260810
+20260811
+20260812
+20260813
+20260814
+20260815
+20260816
+20260817
+20260818
+20260819
+20260820
+20260821
+20260822
+20260823
+20260824
+20260825
+20260826
+20260827

@@ -1,0 +1,14 @@
+{
+  "pfrefPoints": 757,
+  "pfrefMatchesHistoricalSaved": true,
+  "orderIndependent": true,
+  "maxAbsDiffHv": 0.0,
+  "maxRelDiffHv": 0.0,
+  "maxAbsDiffIgd": 1.6653345369377348e-16,
+  "maxRelDiffIgd": 1.3286658557345278e-15,
+  "histA2Hv": 0.810244195451609,
+  "histA2Igd": 0.057804242003353316,
+  "pfrefCanonicalSha256": "4dc85dd4fa3c7824ed2bf302b648355df796be7f15375db84047d23c4de683da",
+  "consumedFE": 0,
+  "changedAlgorithm": false
+}

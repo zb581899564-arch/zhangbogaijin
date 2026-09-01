@@ -1,0 +1,12 @@
+workPackage=V35-A3-D
+arm=Q0_QP_OBSERVE_ONLY
+instance=20_2_3_1
+seed=20260824
+population=100
+maxFEs=50000
+profileSha256=4ba177158e78670fab821afcc24e06693149f5fc5d046ad3c1b7031696b0ecb6
+commonBoundary=FM3;ShiftMode.NONE;singleFamily;sequenceIndependentSUT;mixture=20/40/20/20;PDDR=GLOBAL_ORIGINAL;LS=CATA_THEN_INHERITED;teacherPool=OFF
+notDoe=true
+notFormalAblation=true
+formalJarModified=false
+causalPairing=D1_TO_Q0=QP_ACTION_POLICY;Q0_TO_D2=QP_TD_REWARD

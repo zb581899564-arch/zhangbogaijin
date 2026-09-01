@@ -57,10 +57,20 @@
 修订日期：`2026-08-12`——完成P9.1只观察Cmax生命周期审计：`20_2_3_1/20260808/FULL/20000 FE`共产生10条搜索新纪录，全部进入候选集、被PDDR保留、进入个人档案且下一轮仍存活；最后纪录在6750 FE，此后未再生成更低Cmax。教师指纹复跑进一步确认，该201.279纪录只作为G1个人老师教过15个粒子/9代，从未成为G1社会老师，且13224 FE后不再实际教学；Qg反而让205.902纪录作为统一社会老师持续34代。
 修订日期：`2026-08-12`——完成v3.5公平机制闭环烟测与自验收：新增每子群DSCR社会教师缓存及生命周期事件，新增独立N1–N5 `V35MacroCandidateGateway`（不再映射历史O10–O13），新增固定初始种群哈希的`V35FairRunner`；修复正式结构化基线误用全局`JMetalRandom`造成的同seed不可重放问题，并移除DSCR教师重复刷新；jmetal-problem 67项、算法定向95项及jmetal-exec打包通过。当前达到`engineering_smoke_validated/mechanism_chain_validated/formal_comparison_engineering_validated`，仅允许诊断性对照，不代表正式复现。  
 修订日期：`2026-08-13`——完成v3.5运行时深审计和100k重验：修复事件总数口径、正式随机流、分角色DSCR、CA-TA-Lite永久Test、正式FULL/基线外循环不一致、预评价标记漏计FE、谱系初始化及局部候选映射；19项V35回归通过。当前100k只显示TEC/TWC及前沿规模信号，Cmax仍略差。
-修订日期：`2026-08-15`——建立`docs/V35_FORMAL_EXPERIMENT_ROADMAP.md`作为V35-P25–P28唯一实验子路线图：学习ESWA论文45实例、参数主效应、消融、统一reference和50%达到面结构；正式重复固定为20次，当前安全语义固定BAL全开放、压力分类仅诊断、A4为主版本候选、A5教师池默认关闭。该修订只建立协议，不启动正式矩阵。
+修订日期：`2026-08-15`——建立`docs/V35_FORMAL_EXPERIMENT_ROADMAP.md`作为V35-P25–P28唯一实验子路线图：学习ESWA论文45实例、参数主效应、消融、统一reference和50%达到面结构；正式重复固定为20次，当前安全语义固定BAL全开放、压力分类仅诊断、A4为主版本候选、A5教师池默认关闭。该修订只建立协议，不启动正式矩阵。  
+修订日期：`2026-08-29`——完成PFC5 Phase 0总控工作包：PFC5-1四项0-FE治理产物与Failure Replay Reference Contract全部冻结（历史失败seed=20260901按最小ID规则选中、snapshot身份=EXACT_HISTORICAL_SNAPSHOT_AVAILABLE、49实例角色登记、基线fair-ready审计、PFref 757点gold重算PASS）；PFC5-2以既有121 runtime证据满足（`SATISFIED_AFTER_OFFLINE_RECONSTRUCTION`、`newStep0Runs=0`、诊断工具封板）；PFC5-F1完成预登记（`PREREGISTERED_NOT_STARTED`）。全程零FE、零算法改动，核验12/12 PASS。证据：`docs/evidence/V35-PFC5-PHASE0/`（含`evidence-sha256.tsv`与`07-phase0-decision/PFC5_PHASE0_FINAL_REPORT.md`）。当前唯一待办=用户对F1的单独运行授权；F1/F2/F3均未启动。
+修订日期：`2026-08-29`——PFC5-F1 A4历史失败500k OFF Failure Replay**已完成并裁决**：用户单独授权后执行，新鲜运行（`freshRunRequired=true`，未复用历史运行）、精确历史快照起跑（`84d84523…3769`，初群V35/P8=`179a82a3…4c2d`/`7c6f8b42…2d3`）、冻结正式Jar（`8dad8f40…d8b9`）、冻结A4 profile（`5b3cc542…79d1`）、telemetry=OFF（冻结Jar内telemetry类命中数全为0，结构性成立）、`actualFE=decoderCalls=500000`、`remainingFE=0`、`utilizationRate=1.000000000000`、`terminationKind=EXACT_MAX_FE`、运行验收33/33 PASS。按冻结reference contract（`ecdc5589…235f`）与冻结PFref（`4dc85dd4…83da`，757点）计算，gold自检绝对偏差0.0：F1 A4 `HV=0.5545772540415207`、`IGD=0.15898065502479636`；历史A2 `HV=0.810244195451609`、`IGD=0.057804242003353316`；`deltaHV=-0.31554307065117104`、`deltaIGD=-1.7503285142217353`，失败门（ΔHV<-0.05 且 ΔIGD<-0.20）**触发**。裁决 `PFC5-F1=FAILURE_CLASS_REPRODUCED`；`f2Eligible=true`、`f2Preregistered=false`、`f2Started=false`、`f3Started=false`；`FC5_HISTORICAL_CASE=OPEN`。F1终态前沿与历史A4逐字节相同（`f3755d83…`，387点），但该确定性对照不构成裁决依据，裁决基线始终为历史A2。全程未改算法、未改PDDR、未重建Jar、未启动F2/F3/正式矩阵。证据：`docs/evidence/V35-PFC5-F1-FAILURE-REPLAY/`。
+修订日期：`2026-08-29`——PFC5-F2 **0-FE可部署性审计**完成并作裁决（`docs/evidence/V35-PFC5-F2-DEPLOYABILITY-AUDIT/`）：已封存的诊断runtime `121FBB49…` 在 **Teacher/PDDR/checkpoint 三域字段充分**、**CA-TA 为事件级充分但契约永久声明 `cataFullLifecycleValidated=false`**，**CFVF 域为零覆盖**——7类冻结遥测schema中不存在CFVF类文件，全遥测CSV内 `cfvf` 命中数为0，`cfvfRepairs`/`cfvfOffspring`/`baselineUpdateEvents` 三个键诊断runtime均不产出；而CFVF在500k下产生310000个后代（占预算62%）；**诊断runtime缺少CFVF事件级遥测，仅保留有限聚合计数**（措辞已按PFC5-CAL-P0 §二修正：两者为不同部署实体，不存在"开遥测丢失了原本可见的东西"，见`V35-PFC5-F2-DEPLOYABILITY-AUDIT/01-decision/WORDING_REVISION_RECORD.md`）。另有三项独立风险：ON/OFF等价性仅50k验证（250k未跑、500k为10倍外推）；诊断驱动器无snapshot参数、靠重新生成初群且哈希恰等（`179a82a3…`）故为哈希等价而非快照文件绑定；500k遥测体积估约0.9GB。按用户预置判据4，不迭代遥测工具、不走工具升级通道，裁定 `PFC5-F2=NOT_DEPLOYABLE_FIELDS_INSUFFICIENT`、`f2Preregistered=false`、`f2Started=false`，并记 `FC5=MECHANISM_UNRESOLVED`（意为当前观测能力不足以定因，**不等于**任何根因结论）。按D-109冻结主线转入下一站 `Single-Knob Teacher Exposure Calibration`，`PFC5-CAL=ROUTE_OPEN_NOT_PREREGISTERED`、`calStarted=false`。本次审计零FE、零算法改动、零遥测工具改动、零上传。
+修订日期：`2026-08-30`——PFC5-CAL-P0 **Teacher Exposure Calibration 单旋钮预登记**完成（0-FE，`docs/evidence/V35-PFC5-TEACHER-EXPOSURE-CAL-PREREG/`）：源码只读审计确认 Qg action-2 锦标赛是**唯一**存在多元素候选集合的选择点（Qp 四动作与 Qg action 0/1 均为单例，结构上不可注入）；比较器两分支均确认为**越小越优的 loss**，但量纲相差两三个数量级，故 baseLoss 必须在当前候选集合内 min-max 归一化；最终公式 `adjustedLoss = baseLoss + λ × exposure`，exposure 为 controller-local 的 `count/maxCount`（§6.2 建议式 `count/totalCount` 经实测**无杠杆**——翻转一次中位差距需 λ≈25.08，故按实测数据改用 maxCount 归一化）。λ 网格 `[0,0.05,0.15,0.30]` 记为 `FIXED_A_PRIORI_GRID`，未调优。开发实例 `20_2_3_1`/`50_2_3_1`/`100_2_4_1`(normal)/`100_8_3_1`(hard)，seed `20260906`/`20260907`；`100_5_3_1` 与 `20260901` 按角色排除。Race 预登记 32 条 RunKey@250k，统一 `PFref_cal`、Robustness Gate、Rank Race 与 15 项实现测试合同全部冻结。**已知限制必须计入解释**：可改变选择数上限仅为 QG 的 24.58%（全部教师事件的 1.12%），C3 名义区间（35%–60%）不可达，且预测改变比例在 C1 带内或更低；遥测还显示锦标赛路径本身已高度分散（`Hn=0.985`），真正集中的缓存路径恰恰不可注入。**实现前需用户确认路线**。裁定 `PFC5-CAL=PREREGISTERED_NOT_IMPLEMENTED`；`calImplemented=false`、`calUploaded=false`、`calStarted=false`、`raceStarted=false`、`algorithmChanged=false`、`consumedFE=0`。
+修订日期：`2026-08-30`——**PFC5-CAL repair family 关闭裁决（0-FE，`REPAIR_FAMILY_NOT_PURSUED_STRUCTURAL_NO_LEVERAGE`）**：经实现前结构审计确认，预登记的唯一注入点（Qg action-2 锦标赛 exposure penalty）结构性无杠杆——覆盖全部教师事件仅 1.12%（Qg 选择内上限 24.58%，λ 网格 C3 区间数学不可达），该路径自身已近最大分散（295 次/237 唯一教师，`Hn=0.985`，top1=1.4%），而真正集中的 HISTORICAL/PREVIOUS 缓存路径（top5 合计>60%）在源码上均为单例、不可注入；建议式归一化翻转一次中位差距需 λ≈25.08。据此判定 32 条×250k（约 8M FE）Race 的唯一可能结局是机械性 `NO_IMPROVING_CONFIGURATION`，无法区分"Teacher 假设为假"与"处置未接上"，不构成对假设的检验，故在实现前关闭该 repair family，避免预知无信息的 8M FE 消耗。**边界声明：否决注入点 ≠ 否决 Teacher 集中假设（保持 ROOT_CAUSE_CANDIDATE）≠ 否决 Dual-Q；CFVF/CA-TA/PDDR/冻结语义零改动；FC5 维持 MECHANISM_UNRESOLVED、FC5_HISTORICAL_CASE=OPEN。** `PFC5-RACE`/`PFC5-TOP2` 维持 BLOCKED；后续重启须新的可触达集中路径的预登记并经用户批准。证据：`docs/evidence/V35-PFC5-TEACHER-EXPOSURE-CAL-PREREG/07-closure/`；ROADMAP SHA 前后：`1c1edd72…3ac1` → 本次修订后值（见 closure 报告）。  
+修订日期：`2026-08-30`——**外部基线 Fair-Ready 收口（PFC5 阶段B）完成**：`NSGA_II_F=FAIR_READY`、`SPEA2_F=FAIR_READY`。来源定性 `OFFICIAL_JMETAL_CORE` 以 **GitHub tag jmetal-5.8（commit `831d62d0…`，经 GitHub API 验证）与本地隔离副本的逐行 diff** 为唯一依据（差异仅隔离改名与排版，算法语句零差异；本地 m2 重建 sources jar 显式排除为来源证据），MIT 许可证同源；共享层=instance/四向量/FM3/NONE/单族/序列无关SUT/槽[0,1,6]/显式初群/FE=成功decoder调用/精确预算，隔离层=官方核自带的选择/交叉/变异/排序/拥挤度/强度/密度/截断（runner 侧纯委托计数包装，核零插桩）。最小适配：引擎加 THREE_OBJECTIVE 强制门与算子注入重载（null 回退原算子）、新增独立命名空间 `ZhangBoV35ExternalFairBaselineRunner`（落盘全套工件）；零触碰隔离副本/适配器/正式核心。验证：新增单测 14/14、P25E 回归 2/2、jmetal-problem 67/67、六模块 Java8 打包、静态扫描 91 项 0 违规（P25D 引擎/BaselineUpdater/CFVF/DSCR/CA-TA/PDDR/教师池/inheritedLS/O1-O13/dualQ 引用全 0、槽2–5 读取 0）；2k 工程贯通 `20_2_3_1/20260822/pop100` 双算法各 2 次独立 JVM：FE 精确 2000、front 非空、非法解/重复评价/禁止机制事件全 0、同 seed 重放 front hash 逐字节一致、双臂初群哈希一致且与历史试点跨 campaign 吻合。冻结三 Jar（8dad8f40/121fbb49/723d24ed）重算不变；比较构建物独立命名 `external-fair-baseline-comparison-585ca315.jar`。2k=ENGINEERING_SMOKE，不进论文 reference/排名/优越性；首次正式使用前仍须 production preflight。`externalBaselineFormalRunsStarted=false`、Gap Probe/Validation/F2/F3/formal matrix 全部未启动。证据：`docs/evidence/V35-EXTERNAL-BASELINE-FAIR-READY/`（台账 71 文件逐条反算 ALL_MATCH）。  
+修订日期：`2026-08-30`——**V35-EXT-PREFLIGHT-20K 外部基线生产预检完成（`EXTERNAL_BASELINE_PRODUCTION_PREFLIGHT=PASSED`，ENGINEERING_VALIDATION）**：Runner 增加 production 输出边界（`.partial-<runId>-<attempt>` → 清单逐文件 SHA 自校 → `ATOMIC_MOVE` 终目录；终目录已存在/残留 partial/异常退出全部 fail-closed），比较构建物升级为独立命名的 `external-fair-baseline-comparison-preflight-966da3d2.jar`（SHA `966da3d2…`，前序 `585ca315…` 原样保留；修改仅限输出/失败隔离/幂等/证据落盘，搜索语义零改动）。外部 launcher 预检门（Jar/快照/实例哈希、非法算法、终目录已存在、重复 RunKey）+独立后验+**9/9 真实故障注入 fail-closed**（错 Jar/错 snapshot/错实例/重复 RunKey/已存在目录/非法标签/进程中断/缺 front/清单篡改；首版快照门校验对象错误与中断定时缺陷已修复并复验，全程零搜索语义影响）。6/6 生产运行（NSGA-II-F、SPEA2-F × 20_2_3_1/50_2_3_1/100_2_4_1，seed 20260822，pop 100，20k FE，独立 JVM）：actualFE=decoderCalls=fullEvaluations=20000、remainingFE=0、非法解/重复评价/禁止机制事件全 0、front 非空有限、身份事件全真（NSGA-II tournament=19900/crossover=9950/mutation=19900+ranking+crowding+RankingAndCrowding replacement；SPEA2 tournament=39800/crossover=19900/mutation=19900+strength+archive+environmentalSelection）；3/3 同实例双臂初群配对一致（快照 SHA/V35 哈希/P8 哈希/实例 SHA/[0,1,6] 映射）；静态扫描 91 项 0 违规、14/14 单测、冻结 Jar 复算不变。台账 105 文件逐条反算 ALL_MATCH（含 9 份嵌套 run/注入清单；复核勘误后）。20k=ENGINEERING_VALIDATION，不进论文性能表；`externalBaselineFormalRunsStarted=false`，Gap Probe/Validation/Final/正式矩阵全部未启动，不自动进入下一阶段。证据：`docs/evidence/V35-EXTERNAL-BASELINE-PRODUCTION-PREFLIGHT/`。  
+修订日期：`2026-08-30`——**V35-PFC5-GAP-PROBE 第一阶段完成（`GAP_PREREGISTERED_NOT_STARTED`，主计划 §31–32）**：0-FE 预登记八件套 + 3×2k 工程贯通（SHAKEDOWN_PASSED）。算法固定：A4-Pacing（冻结 Jar 8DAD8F40 + 五臂快照绑定启动器薄编译层 bb9d1ce3/f5de5272，算法类运行时全部来自冻结 Jar）、A0=HMOPSO-QGS-F（同冻结 Jar）、SPEA2-F（比较 Jar 966da3d2；按 P25E 5seed-50k 先导 medianHV 0.9103>0.8969 且 medianIGD 0.0838<0.1000 双条件选定，仅开发探针用途）。实例：50_2_3_1（Phase0 注册表最小字典序 50-job CONTAMINATED_DEVELOPMENT）+ 100_5_3_1（已登记困难实例）；seed：**20260827 + 20260906**——全项目 seed 普查证实 20260808..20260828 全部已被 P9/P25B/P25C/DOE1/P25D/确认/工程冒烟消耗，仅 20260827 干净（仅快照物化记录），次小干净 seed 取 CAL development 池 20260906（CAL 关闭前从未实现），其两实例快照由本工作包以 canonical 工厂确定性物化并回读校验（0-FE）。冻结共同条件 pop100/500k FE/FM3/NONE/单族/序列无关SUT/[0,1,6]/独立JVM/相位一致预算；GAP_PROBE_REFERENCE_CONTRACT 独立冻结（逐实例 6 条 raw front 并集→去重→严格ND→统一ideal/nadir→HV(1.1,1.1,1.1)→统一重算；gap 方向/分母/聚合/三档带宽/RED 种子级稳定性规则全部预注册；禁止复用任何历史 reference）。2k 贯通：三臂同快照逐字节一致（V35 a73e922f…/P8 219db415…），A4/A0 在冻结相位协议下 100 FE `PHASE_CONSISTENT_TAIL_STOP`（2k<Q phase 5000 为协议正确行为，启动器门条款预写）、SPEA2-F 精确 2000 FE 全循环，非法解/重复评价/禁止机制全 0。诚实记录三项过程修正（注册表哈希尾部自造→机器重算替换；seed 普查正则少一位→修正后发现全部正式 seed 已消耗；arm-launcher 计划键逐次补全），全程零搜索语义改动。12 条 500k 运行等待用户单独批准，未上传未启动。证据：`docs/evidence/V35-PFC5-GAP-PROBE/`（台账 68 文件逐条反算 ALL_MATCH）。  
+修订日期：`2026-08-30`——**V35-GAP-PROBE-V2 四算法 Gap Probe 完成（用户授权整链：整改→训练机20k→硬门→直启16×500k→验收分析裁决）**：旧三算法预登记废止（SUPERSEDED_BY_D110_FOUR_ALGORITHM.md；旧12条RunKey与每实例6条reference作废；旧2k仅证明接线且A0/A4仅100 FE机制未触发）。V2预登记：四算法=A4-Pacing+A0(HMOPSO-QGS-F)+SPEA2-F+NSGA-II-F；工具身份厦清（启动器v2=c8fb7e00…独立于探针Jar，--release 8 编译、Java 11 远端可载）。训练机 zhangbo-v35-gap-probe-v2-20260830 上 23 文件逐字节核验后：**4×20k 机制贯通 4/4 PASS**（A4 机制全真实触发：outerCycles=2/QgRounds=100/qgSel=400/pddr=2/cfvf=10000/qp=8100/dualQ=19-41-40/caTaTest=447+Apply=100，零禁止项；A0 基线更新=5000 真实触发；外部两臂官方机制计数全真）→ **16×500k 全部 COMPLETED 且 ACCEPTED**（A4/A0=EXACT_MAX_FE或相位尾停，外部精确500000；零非法解/零重复评价/零禁止机制；4 公平组全有效，FE 跨度 2267/0/0/0）。外部臂在 100-job 观测账本累积导致 OOM，按重试规则保留失败 attempt并升级堆至 100g 解决，零搜索语义改动。逐实例 reference（8 条 raw front 严格 ND 并集，顺序无关自检通过）+ HV/IGD/三极值统一重算：**50_2_3_1 上 A4 全面领先**（vs A0 gapHV−50.5%、vs NSGA-II-F −16.0%、vs SPEA2-F HV 差距仅 4.0% 且 IGD 领先 38.5%）=GAP_WITHIN_5×3；**困难实例 100_5_3_1 上 A4/A0 相对官方核大幅落后**（vs SPEA2-F gapHV+63.5%/gapIGD+260.7%；vs NSGA-II-F +67.8%/+311.3%）=GAP_GT_15×2、vs A0=GAP_5_TO_15；总带宽 **GAP_GT_15**，**RED=false**（50-job 无任何主指标落后>4%，种子级稳定性条件不成立）。极值维度 A4 未崩塌（minCmax 接近全场最优），崩塌集中于 Pareto 覆盖质量——与 250k 诊断的覆盖收缩机制候选方向一致。后续最强 external=**SPEA2-F**（均秩 2.25＜A0 2.50＜NSGA-II-F 2.75；冻结规则选定，仅用于开发对照）。下一门=0-FE leverage audit 与单一 repair family 决策，需用户批准；未触 Validation/Final/正式矩阵。台账：03=64、04=250、05=8、06=2 文件逐条反算 ALL_MATCH。证据：`docs/evidence/V35-PFC5-GAP-PROBE/{02..06}-v2-*/`。  
+修订日期：`2026-08-30`——**V35-GAP-LEVERAGE-AUDIT-V1 完成（纯离线 0-FE 杠杆审计，三 Agent 并行取证+总控复核）**：裁决 `SELECT_CATA_BUDGET_REPAIR`，单旋钥=betaMax（局搜窗口份额上界，V35FinalAblationProfile L26=0.65；V35LocalFeBudgetConfiguration.of(betaMin,betaMax)参数化现成；--local-fe-budget CLI 通路存在），C0=0.65（须逐位等价）/C1=0.55/C2=0.45/C3=0.35。核心证据：①A4 全部结构化机制计数在 50/100 实例逐值相同（调度实例盲，总控亲测）；② caTaLiteFE+formalLocalFE=189900 FE(37.98%)恒定，且 62.3% 局部预算落在 FE≥250000 之后——而困难实例 bestCmax 在 129k–252k(25–50%)即停止改善，尾段 LS 接受率仅 1.7–6.5%；③ A0 反事实：无 DYNAMIC_BETA 时 LS 吞 70–84% 预算，betaMax 为已验证阀门。H_CFVF_QP_GUIDANCE 经 9 注入点逐判无≥10% 非禁区可触达旋钥（排除，假设未被否证）；H_CREDIT_TIMING 离线不可测（排除）。历史路线全部登记排除（BP-PDDR/ND-overflow/教师lambda/Shift/压力mask/A2/Cheap-Test/LS顺序/删创新）。最小实验仅预登记：20k 门 8 条（C0逐位等价）→ 50k 开发门 24 条（新 seed 20260907/20260914）→ 250k 16 条仅在前两门通过后另行授权；未实现未运行。另登记 EXTERNAL_ADAPTER_MEMORY_DEBT（外部适配器 100-job 500k 堆需 100g；修复仅限观测/输出保留方式且须 OFF/ON 等价，本包不实现）。台账 10 文件反算 ALL_MATCH。证据：`docs/evidence/V35-GAP-LEVERAGE-AUDIT/`。
 当前阶段：`P8.5_completed；P8.6_completed；P9_decoder_timing_single_pair_completed；P9_1_cmax_audit_20k_completed；I0_v2_input_only_waiting_user_manual_submission；V35-T0_completed；V35-P0_completed；V35-P1-P4_completed；V35-P5/P7/P8_completed_engineering_revalidated；V35-P9_completed_engineering_diagnostic；V35-P10_completed；V35-P10.1_completed；V35-P11_completed；V35-P12_completed；V35-P13-P16_completed；V35-P17/P18_completed；V35-P19_completed；V35-P21_completed；V35-P22_completed；V35-P23_completed；V35-P24.1_completed；V35-P25B_completed_threshold_rejected；V35-P25C_completed_engineering_diagnostic；V35-EXPERIMENT-PROTOCOL_documented`  
 辅助验收门：`I0_v2_common_gap_particle_frozen_waiting_user_manual_submission`  
-当前在途工作：V35-FC-0..FC-5 工程实施已完成（2026-08-17，训练机关机期间只做代码与测试：A4-PREFINAL存档+20000FE×3重放门；N3/N4接FM3真实关键结构（复用O10分析器，只读零Shift，null逐字节回退）；localFeBudget动态预算（null=存档语义，哈希钉子+20000FE集成对照）；Cheap-Test（Top-2加探+20%Test份额硬门，默认关闭）；贡献门控软冻结（softFreezeRho默认0=硬冻结，I_contrib复用gbestInherited/pbestInherited，冻结哈希守卫按ρ放宽）；GIR审计（Kind×Source交叉计数+V35CfvfGirAudit纯观察器，重放逐位一致）。证据：`docs/evidence/V35-P26/FC_ENGINEERING_REPORT.md`；V35-P24.1冻结物按当前源码树重建（P24.2先例）。FC-1..FC-5的实验运行（screening/校准/审计母表）与FC-6..FC-9待服务器恢复后按方案执行，`formal_matrix_started=false`。前置诊断链已收口：P25E忠实适配（A4相对QGS 50k HV+38.6%/IGD−35.7%，5/5 seed）、预算节奏（LS=30吞79% FE；LS 30→2使HV+16~18%、5/5 seed）、500k对照（A4与QGS HV均势、IGD/TEC 4/4领先）、P24.2 dualQ校准（gb15多实例验证100-job明显退化HV−11.4%/IGD+32.1%，不转正，维持gb5）。流水线完整定义见[`V35_P26_FINAL_CANDIDATE_PLAN.md`](V35_P26_FINAL_CANDIDATE_PLAN.md)；单变量顺序、100-job一票否决与禁区清单见D-082。`formal_matrix_started=false`。
+当前在途工作：V35-FC-0..FC-5 工程实施已完成（2026-08-17，训练机关机期间只做代码与测试：A4-PREFINAL存档+20000FE×3重放门；N3/N4接FM3真实关键结构（复用O10分析器，只读零Shift，null逐字节回退）；localFeBudget动态预算（null=存档语义，哈希钉子+20000FE集成对照）；Cheap-Test（Top-2加探+20%Test份额硬门，默认关闭）；贡献门控软冻结（softFreezeRho默认0=硬冻结，I_contrib复用gbestInherited/pbestInherited，冻结哈希守卫按ρ放宽）；GIR审计（Kind×Source交叉计数+V35CfvfGirAudit纯观察器，重放逐位一致）。证据：`docs/evidence/V35-P26/FC_ENGINEERING_REPORT.md`；V35-P24.1冻结物按当前源码树重建（P24.2先例）。**V35-FC-6 已按 D-084/D-085 完成500000 FE裁决：顺序反转因IGD门失败不转正，Region-aware在20-job与100-job均失败（100-job触发一票否决），当前保留`GLOBAL_ORIGINAL + CA-TA→inherited LS`；不得继续叠加修复。** FC-7..FC-9、正式矩阵仍待用户基于FC-6人工复核另行批准。前置诊断链已收口：P25E忠实适配（A4相对QGS 50k HV+38.6%/IGD−35.7%，5/5 seed）、预算节奏（LS=30吞79% FE；LS 30→2使HV+16~18%、5/5 seed）、500k对照（A4与QGS HV均势、IGD/TEC 4/4领先）、P24.2 dualQ校准（gb15多实例验证100-job明显退化HV−11.4%/IGD+32.1%，不转正，维持gb5）。流水线完整定义见[`V35_P26_FINAL_CANDIDATE_PLAN.md`](V35_P26_FINAL_CANDIDATE_PLAN.md)；单变量顺序、100-job一票否决与禁区清单见D-082。Stage2矩阵历史上已启动，当前状态为`formal_matrix_started_historically=true, formal_matrix_running=false, formal_matrix_paused=true`。
 
 2026-08-18 更新：FC-4 20-job 九条已实测（HV/Cmax/QgTD 改善、IGD 9/9 退化，默认 ρ=0）；时间收口阶段通过 D-083 插入 FC-4 与 FC-5 之间（下一可申请工作包 `V35-FC-T-0` 正式计时，方案见[`V35_FC_TIME_PLAN.md`](V35_FC_TIME_PLAN.md)）；100-job 九条重跑进行中，完成后作 soft-freeze 旁证。
 
@@ -1504,7 +1514,7 @@ P8.6的`fatigue-shift-v2-common-gap`代码、I0/I1移位轨迹和P9移位计时�
 | V35-FC-T-3 | FC-TIME-3 Quality–Time 拐点 | `pending`（条件触发） | 仅当等价优化后仍>10×；只调βmin∈{0.25,0.30,0.35}（βmax不动），500k×3 seed找拐点 |
 | V35-FC-T-G | 时间门裁决 | `completed`（2026-08-18） | **R=6.20×（20-job）∈ 可接受区间 → 门通过**；100-job sanity R=4.14×（QGS 68.4s / Pacing 283.2s）→ **FC-TIME 阶段正式关闭**；FC-TIME-3 不触发；恢复 FC-5→FC-8 |
 | V35-FC-5 | Cmax Audit与CFVF GIR审计 | `completed`（2026-08-18 实验） | 四层审计+条件GIR+lineage：Generation/Admission/Survival 通过，**Exploitation 短板**（种群贴不住 archive 好解，seed24 差距 26–78）；G1 改善四向量协同无单向量特异；**FC-6 建议走 Exploitation 支（G1 teacher exposure/Cmax lineage 复用）**；证据 `fc5-cmax-audit/FC5_CMAX_GIR_AUDIT_REPORT.md` |
-| V35-FC-6 | Cmax修复分支（单支） | `pending` | 按FC-5审计证据四选一：A:Generation→G1链强化 / B:Admission→G1 directional acceptance / C:Survival→四方向对称精英保留 / D:Exploitation→G1 teacher exposure归Qg；禁止同时多支 |
+| V35-FC-6 | Cmax修复分支（单支） | `completed_rejected`（2026-08-20） | 用户批准走 **C: Survival** 的受控 FC-6A/B 路径：FC-6A.4反序虽中位Cmax改善6.87%，但IGD +11.68%越过门槛，保留`CA-TA→inherited LS`；FC-6B中`REGION_AWARE`相对`GLOBAL_ORIGINAL`在20-job未达Cmax/HV/IGD门，100-job触发HV/IGD一票否决。BP只读隔离，当前主线保持原始全局PDDR；证据`docs/evidence/V35-P26/FC6A4-local-search-order/`与`FC6B-region-aware/`。 |
 | V35-FC-7 | 最终消融 | `pending` | DSCR D0/D1+CFVF/Qp/CA-TA+pacing/soft-freeze开关，对齐EXP-5合法依赖链 |
 | V35-FC-8 | 四规模Champion Gate | `pending` | 10/20/50/100×{50k,500k}×5 paired seed×9算法；硬目标：HV/IGD第一梯队+Cmax非结构性短板+100-job不退化；即EXP-1主版本冻结门 |
 | V35-FC-9 | 45×20正式矩阵启动门 | `pending` | FC-8通过后授权EXP-3（对应V35-P25）；未通过不烧算力 |
@@ -1689,12 +1699,53 @@ P25E 多 seed 诊断发现：500k 下 A4 的 Qg TD 学习量仅为 QGS 基线的
 
 用户批准在 FC-4 与 FC-5 之间插入时间收口阶段（方案`docs/V35_FC_TIME_PLAN.md`）。背景：20_2_3_1/500k 下新版 A4+PACING 质量面已优于 QGS（HV +10.9%、IGD −73%、TEC/TWC双优），但 CPU 时间跨机粗估约 55 倍量级（当时机制栈≈6×、pacing≈8×的同机批次口径），是 FC-8 正式矩阵前必须处理的论文风险。（注：正式同机口径 FC-TIME-0 后为 6.20×，时间门通过，本段为决策时的历史背景。）
 
+### D-084：FC-6A/B 候选池、局部搜索顺序与区域化生存选择（2026-08-20）
+
+用户批准 FC-5 的 **Survival** 单支收口，不增加搜索动作。实施必须严格分两步：FC-6A.3 固定`PddrSelectionMode`并把`BP_RESERVED_LEGACY`隔离为历史兼容；FC-6A.4 在`20_2_3_1`、三个未观察seed、同一A4-Pacing配置下，仅交换`CA-TA-Lite`与 inherited inter-factory/O1--O9 的调用顺序，PDDR固定`GLOBAL_ORIGINAL`。只有顺序裁决后，FC-6B才在选定顺序下运行`GLOBAL_ORIGINAL`与四方向对称`REGION_AWARE`，槽位/容量固定为`G1=15/G4=55/G2=15/G3=15`，并在`20_2_3_1`与`100_2_3_1`各执行三seed配对。任何BP预留、教师新门控、Shift、PF-SDST或额外搜索机制均在此包拒绝。工程实现与短程重放证据在`docs/evidence/V35-P26/FC6A3-implementation-audit/`；500000 FE裁决见D-085，未转正且不进入正式矩阵。
+
+### D-085：FC-6A.4/FC-6B 500000 FE裁决收口（2026-08-20）
+
+FC-6A.4 已完成 `20_2_3_1 × 20260822/23/24` 的独立JVM配对。反序
+`inherited LS → CA-TA-Lite` 的中位最小 Cmax 改善为`6.870539%`，但中位HV为
+`-0.867938%`、中位IGD为`+11.678867%`，超过预注册IGD `+10%`上限；因此保持
+`CA-TA-Lite → inherited LS`。随后FC-6B在此冻结顺序下完成两实例×三seed的
+`GLOBAL_ORIGINAL` vs `REGION_AWARE` 配对，所有12条运行精确闭合为500000 FE。
+20-job的区域模式中位最小Cmax仅改善`1.671026%`，HV `-3.968887%`、IGD
+`+67.872915%`；100-job中位最小Cmax `-1.574303%`、HV `-22.713251%`、IGD
+`+371.700855%`，并触发单seed灾难门。裁决`STOP_REVIEW`：不冻结区域化PDDR，
+维持`GLOBAL_ORIGINAL`，不自动追加教师或其他修复机制。首次远端提交被运行时
+容量门和缺失100-job输入清单先后fail-closed；二者均保留为部署/接入证据且不混入
+参考前沿。详见`docs/evidence/V35-P26/FC6A4-local-search-order/ORDER_DECISION.md`
+及`docs/evidence/V35-P26/FC6B-region-aware/FC6B_RESULT.md`。实现、运行、失败隔离、
+逐 seed 指标与禁止性结论统一汇编于
+[`docs/evidence/V35-P26/FC6_FINAL_CLOSURE_REPORT.md`](evidence/V35-P26/FC6_FINAL_CLOSURE_REPORT.md)。
+
 1. **核心原则**：核心任务从"再提高HV"转向"保质量、砍时间"；**只灭重复计算，不改任何算法决策**（Q/pacing/CA-TA/PDDR选择结果/随机数调用顺序/FE数一律不动）。
 2. **阶段顺序**：FC-TIME-0 正式计时（同机串行三臂 R1/R2/R）→ FC-TIME-1 模块耗时账（15模块+per-cycle，∑≥95%门）→ FC-TIME-2 语义等价优化（A四热点支配去重→B FM3 critical DAG memo→C copy精简，按profiling）→ 等价性验收（front/Q/事件流逐位一致）→ Runtime Gate。
 3. **时间门（研发冻结标准）**：同机Final/QGS >10× 为红线（不启动45×20，继续瘦身或FC-TIME-3 βmin 0.25/0.30/0.35找拐点）；5–8× 可接受（保持HV≈+10%/IGD大幅下降/TEC/TWC优势）；3–5× 理想；**≤8× 才允许 FC-8 Champion Gate 启动正式矩阵**。
 4. **悬置事项**：Soft-Freeze 默认 ρ=0（100-job结果仅作旁证，除非100-job强证据否则不转正）；Cheap-Test 永久封禁（教训：CA-TA Test 非纯开销，要"算得更便宜"而非"少算"）。
 5. **代码落点（探查证据）**：四热点 `authorScores`（ZhangBoEvaluatedPddrSelector:160-175）、`PDDRFFselect`（ZhangBoMOHPSOQ:7722-7731）、`select()`:1260-1273、`appendAndPrunePersonalHistories`:8088-8097；critical DAG 现算点 `V35MacroCandidateGateway.prepareWithEvaluation`:259 与 O10；per-cycle 插入点主循环:653-654；等价验收基座 `V35Fc0PrefinalArchiveTest`。
 6. **验收门**：每项等价优化必须过"同 seed 重放 front sha256 逐位一致 + Qg/Qp 事件流哈希一致 + FE 一致"；时间门未过（>10×）不得宣称时间已收口。门通过后恢复 FC-5→FC-6→FC-7→FC-8。
+
+### D-086：V35-DOE-1 四子群容量 mixture design（2026-08-20）
+
+FC-6 收口后，正式主线冻结为 `GLOBAL_ORIGINAL + CA-TA-Lite → inherited LS`，不再研究
+`ORDER_SWAP`、`REGION_AWARE`、BP 预留或新搜索机制。DOE-1 只改变搜索期四子群容量，
+其余 FM3、A4-Pacing、双Q P=5/G=5、rho=0、方向教师池关闭、单族、序列无关 SUT 和
+`ShiftMode=NONE` 全部冻结。当前容量基线是物理搜索槽位 `[G1_CMAX,G4_BALANCED,G2_TEC,G3_TWC]=[20,40,20,20]`；
+`[15,55,15,15]` 仅作为历史容量控制点，不是 FC-6B Region-aware 生存配额的重新启用。
+
+实现了不可变 `V35SubSwarmMixture`、111 个合法组合枚举、3 个强制 treatment 和 12 个确定性
+constrained D-optimal/Fedorov treatment（4 线性 + 6 两两交互列，设计秩/条件数/轨迹可重算），
+并将显式 mixture 绑定到 V35 Builder；未提供 mixture 的历史配置保持原 canonical text/hash 不变。
+新增 `ZhangBoV35Doe1MixtureRunner`，只允许 `REGISTRY/PREFLIGHT/RUN` 三阶段，正式入口拒绝
+非 `GLOBAL_ORIGINAL`、非 `CATA_THEN_INHERITED`、Shift、压力掩码、方向教师池等漂移。
+
+15 条 2000 FE 预检已通过（因 Table 9 的完整 Q 阶段需要 5000 FE，预检 FE=100，属于启动边界/预算闭合验证，不宣称机制事件已触发）。135 条开发运行已完成；其二次 Scheffe 模型虽满秩且条件数合格，但 LOTO predicted R2 为负，故按预注册回退到观测配对中位数与五维 Pareto 筛选，选出 T1=`30/50/10/10`、T2=`25/25/25/25`、T3=`20/40/30/10`。
+
+held-out confirmation 已完成：`4 arms × 3 instances × 5 seeds = 60` 条独立 JVM、精确 500000 FE 运行均通过预算、合法性、初始种群一致性与机制门。三个实例的确认 reference 前沿独立于开发前沿构造，并已逐点与独立 ND 重算一致；HV/IGD 独立复算误差分别为 0 和 `5.55e-17`。T1/T2/T3 的总体 median `ΔCmax` 分别为 `+1.7236%/+1.2324%/+0.4419%`，均未达到预注册的 `+2%` 门，因此冻结 `FINAL_SEARCH_MIXTURE=[20,40,20,20]`，不自动启动 DOE-2。完整验收在 `docs/evidence/V35-DOE1-subgroup-mixture/06-heldout-confirmation/HELDOUT_ACCEPTANCE_REPORT.md`，冻结记录在 `07-parameter-freeze/FINAL_PARAMETER_FREEZE.md`。
+
+`formal_matrix_started=false`、`sampled_reproduction_accepted=false`、`full_reproduction_accepted=false` 继续保持。
 
 ### V35-P10–P19当前校正状态（2026-08-13）
 
@@ -1725,3 +1776,727 @@ sampled_reproduction_accepted=false
 full_reproduction_accepted=false
 formal_matrix_started=false
 ```
+
+### D-087：V35 FINAL Stage2 冻结与 Master Campaign 准入（2026-08-23）
+
+用户已人工批准 FC-6 与 DOE-1（development、held-out confirmation、parameter freeze）闭合，
+并冻结搜索物理槽位 `[G1_CMAX,G4_BALANCED,G2_TEC,G3_TWC]=[20,40,20,20]`。历史 FC-8 Champion
+Gate 与 FC-9 仅保留证据，不再作为 Stage2 的启动前置，状态统一记为
+`SUPERSEDED_BY_FC6_AND_DOE1_EVIDENCE`。Stage2 Final 是 pool-off 的 A4-Pacing：FM3、单族、
+序列无关 SUT、Shift NONE、GLOBAL_ORIGINAL、CA-TA-Lite→inherited LS、P5/G5、rho=0、无方向教师池。
+
+Stage2 已完成隔离 clean source freeze（tag `v35-final-doe1-frozen` →
+`2b3316b21512ff9d1d7f3db972f016ba02edac6e`）、45实例/20 seed/900共享初群公平 manifest，
+以及 A0--A4 语义复核。唯一 Master roster 是 A0--A4，预期物理运行量为
+`5×45×20=4500`，其中 A0/A4 必须直接复用作主两算法比较；不得重复运行。
+
+严格 exact-FE 的历史 Gate3 证据已隔离为 `legacy_pre_phase_budget_protocol`。用户于
+2026-08-23 批准方案 C：冻结 jar 保持完整 Q phase，不允许 partial phase；正式 `MaxFEs` 改为
+最大允许完整评价次数。新的 `v35-phase-consistent-budget-v1` 只增加运行后只读审计，要求
+`0<actualFE=decoderCalls<=MaxFEs` 且 `remainingFE<5000`，并要求同一 `(instance,seed)` 五臂
+实际 FE 范围小于 5000。当前重跑 A0--A4/50k Phase-bound Gate3；通过后才执行远端
+4/8/12/16 吞吐 benchmark，随后才可启动 4500 条正式矩阵。详见
+`docs/evidence/V35-PHASE-BUDGET-PROTOCOL/PHASE_CONSISTENT_BUDGET_TERMINATION_PROTOCOL.md`。
+
+### D-088：V35 Stage2 Phase-Consistent Budget Termination 协议（2026-08-23）
+
+用户选择方案 C，而非修改算法以追求 exact FE。`MaxFEs=500000` 的正式含义是最大允许完整
+评价次数；搜索以 `population×Q_Times=100×50=5000` 为不可拆分 Q phase，因剩余预算不足
+下一个完整 phase 而结束的合法运行可记录为 `PHASE_CONSISTENT_TAIL_STOP`。每条运行必须闭合
+`actualFE=decoderCalls`、不超 MaxFEs，且尾段严格小于 5000；500k 利用率因此必须大于 99%。
+同一 instance/seed 的 A0--A4 五臂须共享初群、MaxFEs，实际 FE 范围小于 5000，否则整组
+`INVALID`，不得进入任何 PFref、HV、IGD 或统计。协议以外部 preflight/Master adapter 落地，
+不修改冻结 jar、算法语义、配置、实例或 snapshot hash。先重验 A0--A4/50k，再跑远端
+4/8/12/16 JVM 吞吐，全部接受后才可调度 4500 条正式运行。
+
+### D-089：Phase-bound Gate3 / 吞吐接受，但 A0--A4 Master launcher fail-closed（2026-08-23）
+
+冻结 jar `8dad...ad8b9` 上的 A0--A4/50k Gate3 已完成：A0--A3精确 50000 FE，A4 为
+合法 `48269` FE 尾停，五臂共同初群且实际 FE 范围 `1731<5000`。远端训练机以相同 jar 完成
+4/8/12/16 JVM 吞吐，40/40 运行通过 phase-bound、无 OOM、无 swap、无非法/重复评价，故
+`FORMAL_MAX_PARALLEL=16`。此结论只验证预算协议与容量，不产生质量结论。
+
+随后对冻结正式入口复核发现：`ZhangBoV35FormalComparisonRunner`可读取正式 snapshot，但只
+支持 `HMOPSO_QGS_F` 与 `V35_MAIN` 两臂；而 Stage2 已批准 roster 是 A0--A4（4500条）。当前
+Phase adapter 又缺少它要求的显式 Master renderer。因此不能用两臂入口、诊断 preflight 或临时
+重建 jar 冒充五臂矩阵。正式状态固定为
+`BLOCKED_FORMAL_A0_A4_MASTER_LAUNCHER_GAP`，保持 `formal_matrix_started=false`；恢复必须先
+交付并验收版本化的外部 A0--A4 snapshot-bound launcher/renderer，再进行单组500k acceptance。
+证据：`docs/evidence/V35-PHASE-BUDGET-PROTOCOL/05-remote-throughput/` 与
+`docs/evidence/V35-PHASE-BUDGET-PROTOCOL/06-formal-launch-readiness/`。
+
+### D-090：Stage2-P1 外置 A0--A4 Runner 与 Master v2 验收（2026-08-23）
+
+D-089 的阻断原因现已准确更正：旧 Master renderer 并非不存在，而是只支持双臂、串行执行和
+单一全局配置哈希，不能表达正式 A0--A4 roster。新外置执行链不修改冻结算法 jar，使用公开
+API、正式 snapshot 和独立 JVM 运行 A0--A4，并将 arm profile、snapshot、初群双哈希、Problem
+provenance、算法语义和预算协议全部绑定到 RunKey。
+
+本地2k与50k Gate3、远端 `20_2_3_1/20260828` 非正式500k五臂验收均通过；500k实际FE为
+`500000/500000/499724/500000/500000`，范围276，满足 phase-bound 公平门。Master v2 已渲染
+4500条唯一RunKey和900个完整五臂组，dry-run启动进程数为0；调度固定为每wave三个公平组、
+15个JVM，当前wave全部验收后才进入下一wave。非正式验收组明确不进入PFref或正式统计。
+
+关键执行债已经关闭；历史jMetal默认构造错误、旧证据哈希钉子和本地单模块artifact解析债继续
+隔离，不影响冻结正式路径。详细证据见 `docs/evidence/V35-STAGE2-MASTER-V2/`。
+
+2026-08-23 20:11，远端正式 Master 已启动；首个 wave 的3个五臂公平组（15条运行）全部通过
+phase-budget、roster、provenance、证据反算和日志归档门，随后第二个15-JVM wave才被启动。
+因此 `formal_matrix_started=true`。这只表示4500条矩阵正在运行，不表示最终PFref、论文统计、
+sampled reproduction或full reproduction已经接受。
+
+### D-091：暂停4500条矩阵，先执行A0--A4十二种子先导裁决（2026-08-23）
+
+用户否决“先跑完整矩阵再判断机制”的顺序。Master在12个完整公平组通过后安全停止：正式
+进程和tmux均为0；60条配对完成运行保留，停止wave中的8条孤立完成结果和7个partial尝试不
+进入分析。`formal_matrix_started=true`作为历史事实保留，但当前改为
+`formal_matrix_running=false, formal_matrix_paused=true`，未经新裁决不得恢复。
+
+单实例十二seed先导显示A4相对A0的median HV/IGD/Cmax改善为`+25.24%/+19.02%/+3.95%`，
+HV与IGD均11/12胜；但A2→A3明显退化，说明当前机制链不是单调贡献。Cmax生命周期还显示A4
+在6/12 seed生成过更优记录却未保留到最终global，最坏gap约2.51%。因此下一步先复核
+Qp/个人档案块并做PDDR纯观察归因，不直接修改PDDR、不恢复4500条矩阵。证据见
+`docs/evidence/V35-STAGE2-PILOT-A0-A4-20260823/`。
+
+### D-092：论文证据总账、训练机实验地图与归档清理（2026-08-23）
+
+用户要求从P1至Stage2逐项整理所有可能用于论文的方法、数据、实验、图表和负结果，并明确每个
+训练机目录的位置、语义、有效性和去留。唯一入口固定为
+`docs/PAPER_EVIDENCE_MASTER/`；其中`CURRENT_SCIENTIFIC_STATE.md`优先于仍保留历史状态措辞的
+阶段文档。总账必须把每项证据唯一分类为方法、参数选择、先导诊断、负结果、复现、历史排除或
+临时重试，并为每个当前结论绑定原始数据和SHA-256。
+
+清理遵循“先归档、完整复算、再删除”：当前或潜在论文原始数据至少保留G盘冷归档和训练机压缩
+归档/项目已校验副本两份；只有逐文件清单完整、归档可恢复、目标无活动进程且绝对路径核验通过
+后才允许移除展开副本。李明哲论文/源码/算例、v2/v3.5方案、Final freeze、900份snapshot、I0/I1、
+DOE1与Stage2有效数据的唯一副本永久禁止清理。该工作包不恢复4500矩阵，不修改PDDR、算法Jar
+或任何冻结参数。
+
+### D-093：论文证据总账归档与安全清理验收完成（2026-08-24）
+
+P1至Stage2的campaign、run、artifact、论文结论、图表来源和训练机位置已统一登记到
+`docs/PAPER_EVIDENCE_MASTER/`。总账保留56,151条删除前逐文件记录、480条标准化run记录，
+并把Stage2当前reference资格严格限制为12个完整五臂组的60条配对先导；8条孤立完成和7条
+partial仍被排除。冻结Jar与900份正式snapshot重新逐项验收，失败为0。
+
+G盘冷归档现包含25个训练机campaign、4个本地主要证据归档、3个回归沙箱归档和8份来源文件；
+全部绑定SHA-256。验证后删除本地冗余`13,344,486,757`字节，删除训练机19个展开副本
+`12,416,766,995`字节，并移除可重建传输分片。清理后6个主线训练机目录、Stage2暂停标记、
+冻结Jar和有效五臂数据均保持不变。所有删除项可由`cleanup-execution.csv`记录的G盘路径恢复。
+
+最终交付包为
+`G:\ResearchArchive\ZhangBo-V35-Paper-Evidence-20260823\packages\V35-PAPER-EVIDENCE-CATALOG-20260823.zip`。
+本决策只验收证据治理和可恢复清理，不恢复4500矩阵、不修改PDDR或算法语义，也不产生正式
+统计结论。
+
+### D-094：非支配解数量审计不触发档案或PDDR改造（2026-08-24）
+
+当前A4输出较多非支配点，但既有审计未显示精确重复点污染，也没有证据表明统一reference下的
+HV/IGD信号仅由输出点数造成。非支配点较多可以由四语义子群、CFVF四向量动作、CA-TA-Lite
+局部折中和无界历史档案共同产生，不能把“点多”直接判为缺陷。当前正式活动档案继续固定为
+`UNBOUNDED_FULL`，PDDR继续为`GLOBAL_ORIGINAL`；两者不得捆绑修改。4500矩阵保持暂停，
+本决策不恢复任何远端实验。
+
+### D-095：双层前沿协议与固定基数敏感性（2026-08-24）
+
+正式区分`decision-front`、只读`observed-full-front`、仅展示用`representative-front-k30`和仅
+敏感性用`sensitivity-front-k25/k50`。主HV/IGD/C-metric及PFref只能使用完整科学
+`decision-front`；K30不得进入搜索、reference或主指标，K25/K50不得覆盖主结果。代表集统一
+使用精确三目标去重、三方向极值保留、归一化欧氏maximin和稳定指纹破平，输入顺序不得影响
+输出。ND0控制臂必须满足精确去重后的decision与observed前沿相等，否则停止调查候选生命周期。
+协议见`docs/V35_ND_ARCHIVE_PROTOCOL.md`。
+
+### D-096：休眠档案候选及DOE迁移门（2026-08-24）
+
+预注册五臂：ND0无界控制、ND1/ND2的K50/K25 Qg教师视图，以及ND3/ND4的K200/K100有界
+活动档案。ND1至ND4只能由专用实验Runner创建，正式Runner和默认构造器必须拒绝；本轮只完成
+代码、单元测试和ND0行为等价门，不上传训练机、不运行候选实验。若未来有候选拟升级，必须先
+通过Gate A观察门、逐级50k/100k单变量门，再在四种预注册子群配比上执行DOE迁移性检查；出现
+超过2个百分点交互或配比排序反转时必须重做完整15-treatment DOE。当前DOE1冻结配比仍为
+`20/40/20/20`。完整路线见`docs/V35_ND_ARCHIVE_AND_CARDINALITY_ROADMAP.md`。
+
+### D-097：档案基数、PDDR与A2→A3证据收口（2026-08-24）
+
+从冷归档恢复并反向验收12个完整五臂组/60条Stage2配对运行；8条非配对完成和7条partial继续
+排除。完整decision-front无精确重复或被支配点，0.1%近重复率远低于门槛；K25/K50及65种
+leave-out reference均不改变A4相对A0的HV/IGD方向。因此“非支配点多造成虚假优势”未被证实，
+继续使用`UNBOUNDED_FULL`完整档案。
+
+ND0纯观察Gate A的审计开关保持搜索行为等价，但四条短程运行均出现decision-front与被动
+observed-full-front不相等，说明两者候选生命周期不同；Gate A固定为`BLOCKED`，不得切换论文
+指标来源，也不得自动运行ND1--ND4。PDDR专项证据已收口：保持`GLOBAL_ORIGINAL`，Region-aware
+和BP不回主线；Stage2候选级字段不足只登记为限制，不再称“PDDR尚未审计”。
+
+A2/A3六条`20_2_3_1/50k`补充诊断公平闭合。个人档案无容量截断，双Q阶段无计数漂移，预算与
+provenance一致；但Qp方向奖励在`oldPhi≈0`时出现最高约`-3.33e10`的极端负值。由于A3仍捆绑
+个人档案、Qp和block-frozen双Q，最终因果分类为`COMPOSITE_BLOCK_UNRESOLVED`，最强故障候选为
+`QP_SELECTION_OR_REWARD_NUMERICAL_INSTABILITY`。正式矩阵保持暂停；未经新批准，不改奖励、
+档案或PDDR。总裁决见
+`docs/evidence/V35-ND-ARCHIVE/06-final-decision/V35_EVIDENCE_CLOSURE_AND_A2_A3_DECISION.md`。
+
+### D-098：Qp方向奖励公式一致性纠错与单变量拒绝门（2026-08-24）
+
+这不是DOE，也不是奖励权重调参。v3.5主方案第31节明确要求
+`clip(Δphi,-1,1)`，但当前冻结A3实现只计算相对方向变化、没有裁剪；三seed旧A3日志中保留事件的
+最小方向奖励达到`-3.33061719138e10`。新增默认关闭的`V35_CLIPPED`诊断模式后，边界手算测试将
+该值严格限制为`-1`，三seed共六条`20_2_3_1/50k`运行中裁剪臂所有保留方向奖励均位于
+`[-1,1]`，且FE、初群、非法解和重复评价全部公平闭合。因此
+`QP_REWARD_FORMULA_MISMATCH_CONFIRMED=true`。
+
+纠错不等于自动晋升。相对旧A3，裁剪A3的median HV/IGD/Cmax变化分别为
+`-2.396%/-2.133%/-1.940%`（IGD改善口径为负即恶化），仅1/3 seed在HV与IGD上胜出；使用独立
+`ND(A2+A3_CLIPPED)`参考集后，裁剪A3相对A2的median HV下降`10.038%`、IGD恶化`107.946%`、
+Cmax恶化`2.645%`。故本轮裁决为`REJECTED_PILOT_REGRESSION`：裁剪实现只保留为默认关闭的诊断
+能力，不替换冻结Jar，不恢复4500矩阵，也不据此调奖励权重。A2→A3性能原因仍不能简化为单一
+数值爆炸；若继续研究，必须另行预注册Qp/个人档案/双Q最小单变量拆分，而不能反向迎合结果。
+证据见`docs/evidence/V35-QP-REWARD-CLIP/`。
+
+### D-099：A2→A3四臂最小因果拆分诊断（2026-08-24）
+
+为避免把既有A2/A3捆绑差异误写成单一机制问题，新增的独立诊断构建物在同一
+`20_2_3_1`、三组配对seed、同一初始四向量和50k FE下依次比较：D0=A2精确控制，
+D1=容量6谱系个人档案加确定性方向pbest，D2=D1加同步四动作Qp与未裁剪方向奖励，
+D3=D2加既有10%预热与P5/G5硬冻结。12/12条均完成，`actualFE=decoderCalls=50000`，
+且非法解、重复评价、CFVF repair与来源缺失均为0。
+
+共同参考前沿和相邻独立参考集给出一致方向：D0→D1在2/3 seed触发稳定退化
+（中位ΔHV=-9.02%，中位ΔIGD=+102.56%）；D1→D2在3/3 seed触发稳定退化
+（-4.32%、+30.11%）；D2→D3仅1/3 seed同时变差，且中位ΔIGD=-3.02%，不触发稳定
+退化门。D1的30,000次方向个人领导选择均有档案候选、fallback=0，因此不得写成
+`PERSONAL_ARCHIVE_COLLAPSE`；而D0→D1已经退化，也不得把D1→D2的增量退化独占写成
+`QP_SELECTION_OR_REWARD`。正式裁决为`COMPOSITE_BLOCK_UNRESOLVED`：冻结时序不是唯一
+根因，但方向个人领导与未裁剪Qp选择/奖励均为后续单变量验证对象。
+
+诊断日志确认D2同步Qp真实产生10,000次动作/更新，D3真实产生49个预热、26个P块及25个G块。
+旧writer把完整事件流错误标记为`fullCapture=false`的输出元数据缺陷已隔离并修正：本次所有
+Qp、谱系与dual-Q日志均满足`eventCountTotal=eventsRetained`，原始事件没有截断。该修正仅作用于
+新的诊断构建物，不改变冻结正式Jar。详细数据、参考敏感性、可复算脚本和文件哈希见
+`docs/evidence/V35-A2-A3-DECOMPOSITION/`。
+
+本决策不授权修改A3奖励、个人档案、双Q、PDDR、DOE配比、局部搜索顺序或恢复4500矩阵；如需继续，
+只能另行预注册一个保持D2其它条件不变的单变量奖励/选择验证臂。
+
+### D-100：Qp动作策略与TD奖励学习最小拆分收口（2026-08-24）
+
+在D-099之后，为不把`D1→D2`的退化继续混写为“Qp选择或奖励”，新增唯一Q0臂：Q0与D2具有
+相同的容量6谱系档案、四动作Qp实际pbest选择和同步Qg/Qp时序，但所有周期强制
+`OBSERVE_ONLY_ALL_CYCLES`，即动作和档案继续发生，奖励、TD transition和Q表写入严格为0。
+Q0仅允许由独立诊断Runner创建；正式A0--A4、默认构造器、冻结Jar和正式Runner均fail-closed。
+
+新增遥测先以D1/D2、seed`20260822`、请求2k FE完成兼容重放：冻结初群、FE、decoder calls、
+评价轨迹、最终前沿、个人领导/Qp/dual-Q事件、profile及Qp表/动作计数均一致（纳秒计时不纳入
+行为契约）。随后Q0在`20_2_3_1`、seed`20260822..24`、population=100、50k FE下完成3/3运行；
+9条D1/Q0/D2记录均通过文件级SHA-256反向核验、`actualFE=decoderCalls=50000`和同seed共同初群门。
+
+共同参考与两两独立reference给出相同的预注册结论：D1→Q0有2/3 seed同时HV下降且IGD变差，
+中位`ΔHV=-2.1951%`、`ΔIGD=+11.2588%`，满足稳定退化门；Q0→D2只有1/3 seed同时变差，
+中位`ΔHV=+0.9718%`、`ΔIGD=+5.4631%`，不满足门。因此唯一允许的因果裁决为
+`QP_ACTION_POLICY_HARMFUL`：在Q表尚未学习时，四动作Qp选择策略本身足以造成稳定退化；本数据
+不能把TD奖励学习或P5/G5冻结写成当前退化主因。未裁剪方向奖励的极端数值风险继续作为已知
+公式一致性问题保留，但不得由此反向推断性能因果。
+
+Q0三条运行的初始Q表均为零表，30,000次实际动作中`KEEP=29,146`（97.15%）；其余动作分布见
+`q0-action-distribution.csv`。这与控制器在贪心Q值并列时稳定取第一个合法动作（`KEEP`）一致，
+因此D-100的准确对象是**Qp冷启动/零表动作策略**，不是对“所有TD学习”或“四动作设计本身”的
+普遍否定。
+
+本收口不授权修改正式机制、PDDR、档案容量、DOE1配比或重启4500矩阵。若将来研究，只能另行批准
+一个保持D1其余条件不变、只替换Qp动作策略的预注册最小修复臂。唯一证据入口为
+`docs/evidence/V35-A3-D2-QP-SETTLEMENT/`。
+
+### D-101：Qp冷启动贪心并列破平诊断未获晋升（2026-08-24）
+
+为直接检验D-100中“零表贪心稳定取第一个合法动作KEEP”的冷启动偏差是否足以解释Qp退化，新增
+独立Q1诊断臂。Q1与Q0共享容量6谱系档案、四动作Qp实际pbest、同步Qg/Qp、未裁剪方向奖励配置和
+`OBSERVE_ONLY_ALL_CYCLES`；唯一变化是当`DIRECTIONAL`合法且与最大Q值并列时优先选
+`DIRECTIONAL`，所有奖励、TD transition和Q表写入仍严格为0。
+
+在`20_2_3_1`、100粒子、50k FE、seed`20260822..24`下，九条D1/Q0/Q1记录均完成、文件级哈希
+闭合、同seed初群一致且`actualFE=decoderCalls=50000`。Q1的`DIRECTIONAL`动作由Q0的237/30000
+提高至2104/30000，证明唯一变量真实触发。Q0→Q1有2/3 seed同时HV/IGD改善，但中位
+`ΔHV=+0.8850%`、`ΔIGD=-2.0515%`，未达到预注册的`+2%/-10%`稳定改善门；D1→Q1则3/3同时退化，
+中位`ΔHV=-1.3788%`、`ΔIGD=+16.3038%`。
+
+故裁决为`COLD_START_TIE_BREAK_NOT_CONFIRMED`。该简单tie-break既不得升级为正式A3/A4机制，也
+不得用来重写D-100的`QP_ACTION_POLICY_HARMFUL`结论或触发DOE、PDDR、档案和4500矩阵变化。
+它作为已否定的最小假设永久留证；后续任何Qp修复必须另行获得批准和预登记。证据入口为
+`docs/evidence/V35-A3-D3-QP-COLD-START-TIE/`。
+
+### D-102：A2→A3→A4整体机制链直接裁决（2026-08-24）
+
+不新增运行，直接复用 Stage2 已接受的`100_2_3_1`、seed`20260808..19`、12个完整五臂公平组。
+三臂共享同seed初始种群，均满足利用率大于99%且同组实际FE差小于5000的phase-budget门，并使用
+同一60-run冻结reference。直接比较显示：A2→A3中位`ΔHV=-16.24%`、`ΔIGD=-24.93%`、
+HV/IGD同时退化7/12，故A3不能作为独立正增量；A3→A4为`+22.82%/+37.85%`、同时改善11/12；
+更重要的直接A2→A4仍为`+8.46%/+14.01%/+2.99%Cmax`、HV/IGD同时改善8/12。
+
+裁决是：当前100-job先导支持A4完整链优于A2，CA-TA-Lite不只是掩盖A3损失；但它不证明A3本身
+有效，也不构成多实例论文结论。A3以后只能作为“与CA-TA-Lite耦合的组合机制”解释，不能拆出
+个人档案、Qp或双Q的单独正贡献。下一工作包只能预注册A2对A4的多实例整体确认；若不通过，则
+停止A3组合、保留A2，不能继续在Qp微参数或PDDR上试错。冻结Jar、PDDR、DOE配比和4500矩阵均不变。
+唯一证据入口：`docs/evidence/V35-A2-A3-A4-CHAIN-VERDICT/`。
+
+### D-103：A2/A4跨规模多实例确认优先于Final矩阵（2026-08-24）
+
+当前唯一允许启动的新算法实验为预注册的A2与A4整体确认，而非继续拆解或调优Qp。固定使用
+`20_2_4_1,20_5_3_1,50_2_4_1,50_5_3_1,100_2_4_1,100_5_3_1`与seed`20260901..20260905`，每个
+`instance×seed`内A2/A4共享独立冻结的四向量初始种群，形成60条500k phase-consistent配对运行。
+语义固定为FM3、单族、序列无关SUT、Shift NONE、`[20,40,20,20]`、GLOBAL_ORIGINAL PDDR、
+CA-TA-Lite→inherited LS、P=5/G=5、rho=0与教师池关闭；使用冻结Jar
+`8DAD8F40266FEEAA4CDB9B47DBE4E342D9064847DF32C7F2933149B9B6BAD8B9`，不得以诊断工作树重建替代。
+
+每实例在十条运行都通过预算、前沿、provenance和配对公平门后，独立冻结
+`ND(A2+A4, 5 seed each)`确认reference。A4只有在全局、按实例、按规模及100-job否决门均满足时才可
+作为Final候选；任何一门失败均记为`A4_NOT_PROMOTED`，不救算法、不重调Qp/PDDR，A2进入新的主版本
+裁决。确认集不进入正式PFref或论文统计。完整协议和后续分支分别在
+`docs/V35_A2_A4_MULTISCALE_CONFIRMATION_PROTOCOL.md`与
+`docs/V35_POST_CONFIRMATION_EXECUTION_ROADMAP.md`；4500条Master在本确认完成、Final freeze、preflight、
+吞吐benchmark及用户新批准前保持暂停。
+
+### D-104：A2/A4确认否决A4 Final晋升（2026-08-25）
+
+D-103预注册的六实例、五seed、60条500k phase-consistent配对运行已完成；60/60文件级SHA、
+provenance、共享快照、有限前沿和预算门均通过，形成30/30有效配对。每个实例仅以自身A2/A4共十条
+raw front构造独立`PFref_confirm`，没有混入开发、DOE或Stage2先导reference。总体中位信号为
+`ΔHV=+1.50%`、`ΔIGD=+7.24%`、`ΔCmax=+1.72%`，但100-job pooled中位为`ΔHV=-3.03%`、
+`ΔIGD=-8.02%`，且`100_5_3_1`中位为`ΔHV=-12.96%`、`ΔIGD=-76.31%`，触发单一100-job
+否决门。
+
+因此裁决固定为`A4_NOT_PROMOTED`：总体正向信号不得覆盖跨规模稳定性失败。A2是当前主候选，
+但尚未形成新的Final roster；禁止利用本确认集调Qp、档案、PDDR、CA-TA、Pacing、rho或DOE配比来
+救A4，禁止自动恢复旧A0--A4/4500矩阵，也禁止将确认集纳入正式PFref、统计或论文优越性结论。
+唯一证据入口为`docs/evidence/V35-A2-A4-MULTIINSTANCE-CONFIRMATION/06-remote-analysis-import/`。
+
+### D-105：A2必须先对A0独立跨尺度确认，才可形成Final roster（2026-08-25）
+
+D-104仅证明A4不能取代A2；它不证明A2已经跨尺度优于规范基线A0。因此下一主算法实验固定为
+`docs/V35_A2_FINAL_CANDIDATE_CONFIRMATION_PROTOCOL.md`：A0与A2在未用于DOE、FC-6和D-103确认的
+`20_2_5_1,20_8_3_1,50_2_5_1,50_8_3_1,100_2_5_1,100_8_3_1`上，以seed`20260911..20260915`配对，
+共60条500k运行。该名单、输入SHA、预算、共享snapshot、公平门、每实例reference和A2晋升/否决门均须在
+运行前冻结。
+
+通过时，A2成为Final candidate，内部正式消融roster收敛为`A0 -> A1 -> A2`，A3/A4只保留既有的负向/组合诊断；
+失败时停止主算法的Final Freeze和正式矩阵，不修改PDDR、Qp、CA-TA、Pacing、rho或DOE配比来挽救。A2通过也不
+自动启动矩阵：仍需Final Freeze、production preflight、吞吐benchmark和用户授权。
+
+### D-106：A2/A0确认否决A2 Final晋升（2026-08-25）
+
+D-105规定的独立确认已完成：A0/A2在六个未参与DOE、FC-6或D-103的实例上，以五个预注册seed完成60条
+500k上限运行；30/30配对通过冻结Jar、输入来源、共享初始四向量、前沿有限性、文件SHA-256及
+phase-consistent预算公平门。54条恰好500000 FE，另6条为利用率大于99%的合法原子阶段尾停。
+
+A2相对A0的总体配对中位数为`ΔCmax=-0.7410%`、`ΔTEC=+0.6977%`、`ΔTWC=+0.5998%`、
+`ΔHV=+5.7323%`、`ΔIGD=+6.8067%`。但整体Cmax门失败，只有3/6实例同时满足HV/IGD非负，且
+`100_8_3_1`出现`ΔHV=-22.3210%`、`ΔIGD=-40.2505%`并触发100-job否决门。因此裁决
+`A2_NOT_PROMOTED`：当前不存在获准的V35 Final候选；停止Final Freeze、production preflight、吞吐
+benchmark和正式矩阵。不得重抽实例/seed、重跑追逐结果，或以调整PDDR、Qp、CA-TA、Pacing、rho和DOE配比
+挽救该结论。唯一裁决证据为
+`docs/evidence/V35-A2-FINAL-CANDIDATE-CONFIRMATION/05-decision/A2_NOT_PROMOTED_DECISION.md`。
+
+### D-107：FC5-T 100-job候选膨胀与利用断裂迁移审计（2026-08-25）
+
+在A4与A2均未获Final晋升后，用户明确拒绝重新对CFVF、双Q、CA-TA-Lite、FM3作“六模块平权体检”，
+也禁止把审计当作删除三项创新的依据。下一工作包固定为`FC5_100JOB_TRANSFER_V1`：先检验FC-5既有的
+候选利用断裂是否迁移到100-job退化对照——即合并候选池严格非支配点膨胀、`GLOBAL_ORIGINAL` PDDR压缩为
+100个工作槽位、四方向代表未进入/未留在working population、archive最优与working population最优脱节、
+继而缺少教师暴露与有效后代。
+
+现有A0↔A2（`100_2_5_1`正例、`100_8_3_1`退化例）和A2↔A4（`100_2_4_1`正例、`100_5_3_1`退化例）
+均有最终指标与Cmax生命周期，却没有每轮`Nmerge/Nunique/Nnd/Roverflow`、四方向代表、PDDR槽位、教师使用和
+working-population利用字段。因此历史数据只能作背景，不能把H1声称为已证实。证据已预登记于
+`docs/evidence/V35-FC5-100JOB-TRANSFER/`；只有这些核心字段缺失才允许独立旁路观察重放，严格按
+`50k → 100k → 250k → 必要时500k`升级，首档最多24条50k。遥测不得改变随机流、PDDR、Q表、FE、
+前沿、冻结Jar或历史臂语义。
+
+若退化例在指标分离前出现连续两窗`Nnd>100`、相对正例中位`Roverflow`高至少0.25、任一方向代表的
+pool→next-population保留率低至少20个百分点，且archive-working gap先于指标退化扩大，则仅记为
+`FC5_TRANSFER_CONFIRMED`（强机制迁移证据/root-cause candidate）；下一步才可预注册一个只改一个PDDR
+选择环节的可反驳修复实验。若不成立，才解锁CFVF规模编辑、A4 Qp/双Q、CA-TA/LS预算和FM3的顺序审查。
+本决策不重做DOE、不运行ND1--ND4、不改PDDR，也不恢复4500矩阵。
+
+### D-108：FC5-T 首档 50k 纠错与第二档 100k 筛查收口（2026-08-25）
+
+首档 50k（24 条重放）分析完成只读纠错（Luna A，主 Agent 复核）：PDDR 轮数=74（A0=14/A2=24/A4=36）、
+方向代表记录 296=74×4、archive–working gap 快照 74（71 个 cmaxGap=0、3 个非零），唯一一次代表未保留=
+100_5_3_1/20260901/A4/E_E 5/6=0.8333；判据 2 仅 A2→A4 子块 ΔRoverflow=0.255 边界通过，A0→A2 子块
+Δ=0.075 不通过，联合 H1 门不成立 → `INSUFFICIENT_EVIDENCE`，PDDR 保持 `KEEP_GLOBAL_ORIGINAL`。
+
+第二档 100k 筛查（用户批准 6 条：100_5_3_1 × seed 20260901..03 × A2_CFVF/A4_BUDGET_AWARE_CATA，
+MaxFEs=100000）由 Luna B 远端执行、Luna C 独立分析、主 Agent 审核收口：
+全部 COMPLETED、illegal=0、dup=0、remainingFE<5000（A2≈96653–96680、A4=96025，阶段一致尾停合法）；
+同 seed 两臂初群/snapshot/provenance 一致；evidence 反向复核 0 失败。100k 内全部 36 轮 PDDR
+Nnd∈[8,76] 从未 ≥90 或 >100（无候选池膨胀）；四方向代表 pool→next 保留率 100%（无丢失）；
+教师链路未断裂；A4 后半段 cmaxGap 转正峰值 3.65–5.94（相对 Cmax<1%）且 W2 教师曝光回落
+（23806→3693），但不满足情形 A（无 Nnd>100、无保留率下降）也不满足情形 B（cmaxGap 非零）
+→ 裁决 `FC5_TRANSFER_100K_INCONCLUSIVE`（情形 C）。
+
+关键纪律：Nnd 增加（A4 Roverflow 0.38→0.71）但代表仍 100% 保留、教师仍正常利用 →
+"候选多"本身不是根因，禁止据此修改 PDDR。不自动升级 250k/500k；下一动作须用户决定并独立预注册。
+唯一裁决证据：`docs/evidence/V35-FC5-100JOB-TRANSFER/05-decision/FC5_TRANSFER_100K_DECISION.md`；
+分析证据：`.../04-positive-negative-contrast/second-tier-100k-analysis/`（evidence-sha256.tsv 175 项反向验证 0 失败）。
+
+### D-109：FC5-T 250k否证、PDDR降级与后续执行主线冻结（2026-08-29）
+
+FC5-T第三档12条250k诊断全部通过运行验收，`actualFE=250000`，终止快照及硬门闭合。自动重算结果为：
+
+```text
+max strict Nnd = 92
+rounds with Nnd > 100 = 0
+hard median Roverflow = 0.630
+positive median Roverflow = 0.592
+delta Roverflow = +0.038
+largest directional pool-to-next drop = 7.5 percentage points
+A4 hard median archive-working Cmax gap = 0
+```
+
+困难实例上A4相对A2在250k的中位`ΔCmax=+2.50%`，但`ΔHV=-8.29%`、`ΔIGD=-13.03%`，且3/3 seed的
+HV/IGD均变差。这说明性能退化信号存在，但预注册的“ND候选膨胀→PDDR容量压缩→四方向代表利用断裂”
+没有复现。裁决固定为`FC5_TRANSFER_NOT_CONFIRMED_AT_250K`：PDDR继续`GLOBAL_ORIGINAL`，且降级为旁路
+观察，不再作为第一修复对象；该结果不证明PDDR普遍最优，也不授权删除CFVF、双Q或CA-TA-Lite。
+
+后续唯一主线冻结为：
+
+```text
+Failure Replay
+→ Single-Knob Teacher Exposure Calibration（仅在Gate授权后）
+→ Multi-instance Configuration Race
+→ Top2 500k
+→ Validation Mini Benchmark
+→ Champion Gate
+→ Final Freeze
+→ Formal Main + Leave-one-component-out Ablation
+```
+
+完整执行合同见`docs/V35_POST_FC5_EXECUTION_MASTER_PLAN.md`；根目录`AGENTS.md`第21节为强制停止条件。
+当前保持：`A2Promoted=false`、`A4Promoted=false`、`FinalCandidateApproved=false`、
+`FINAL_FROZEN=false`、`formalMatrix=PAUSED`。
+
+## 13. Post-FC5执行工作包（2026-08-29）
+
+本节不授权自动运行；每个工作包只有在前置Gate通过、完成独立预登记并获得用户批准后才可启动。
+
+| 工作包 | 内容 | 当前状态 | 启动条件/停止条件 |
+|---|---|---|---|
+| `PFC5-0` | 吸收250k否证、固化主计划与治理 | `COMPLETED` | D-109、AGENTS第21节及主计划文档一致 |
+| `PFC5-1` | 四项0-FE治理产物 | `COMPLETED` | 已冻结：失败seed登记（20260901）、snapshot审计（EXACT_HISTORICAL）、49实例角色登记、baseline readiness、FAILURE_REPLAY_REFERENCE_CONTRACT；证据见`docs/evidence/V35-PFC5-PHASE0/` |
+| `PFC5-2` | Step 0诊断工具身份审计/封板 | `SATISFIED_BY_EXISTING_EVIDENCE`（含离线重建，`newStep0Runs=0`） | 既有121 runtime验收经独立复核后复用；工具已封板（`05-diagnostic-identity-audit/DIAGNOSTIC_TOOLING_FREEZE.md`） |
+| `PFC5-F1` | A4历史失败500k OFF replay | `FAILURE_CLASS_REPRODUCED` | 已完成并裁决：运行验收33/33 PASS；`actualFE=decoderCalls=500000`、`remainingFE=0`、`utilizationRate=1.000000000000`；`deltaHV=-0.31554307065117104`、`deltaIGD=-1.7503285142217353`，失败门触发。证据`docs/evidence/V35-PFC5-F1-FAILURE-REPLAY/`；`f1Started=true`，本工作包已终止，不得续跑 |
+| `PFC5-F2` | 同case A4 500k ON | `NOT_DEPLOYABLE_FIELDS_INSUFFICIENT` | 0-FE可部署性审计已裁决：Teacher/PDDR/checkpoint字段充分、CA-TA为PARTIAL、**CFVF零覆盖（阻断项，占500k预算62%却完全不可观测）**；另有等价性仅50k验证、无snapshot文件绑定、遥测约0.9GB三项风险。`f2Eligible=true` 但 `f2Preregistered=false`、`f2Started=false`；按判据4不迭代遥测工具、不走工具升级通道。证据`docs/evidence/V35-PFC5-F2-DEPLOYABILITY-AUDIT/` |
+| `PFC5-F3` | 同case A2 500k ON配对 | `BLOCKED_BY_F1_F2` | 仅F1、F2通过且历史A2 checkpoint不可用时启动（F2未通过，故保持`BLOCKED`） |
+| `PFC5-RC` | 定义`t*`并竞争Teacher/CFVF/CA-TA/PDDR候选 | `BLOCKED` | 仅使用`t*`前异常；每次只允许一个repair family |
+| `PFC5-CAL` | C0/C1/C2/C3 teacher exposure单旋钮校准 | `REPAIR_FAMILY_NOT_PURSUED_STRUCTURAL_NO_LEVERAGE`（2026-08-30关闭，0-FE） | 结构性无杠杆裁决：唯一注入点 Qg action-2 锦标赛仅覆盖全部教师事件的 1.12%（Qg 内上限 24.58%，C3 不可达），该路径自身已高度分散（Hn=0.985、top1=1.4%），而被集中的缓存路径（HISTORICAL top5=37.1%）结构上不可注入；32条×250k（约8M FE）Race 预期机械性 `NO_IMPROVING_CONFIGURATION`，不能区分"假设为假"与"旋钮未接上"，故在实现前关闭。**否决注入点≠否决Teacher假设≠否决Dual-Q**；CFVF/CA-TA/PDDR零改动；`calImplemented=false`、`calStarted=false`、`raceStarted=false`、`teacherHypothesisRejected=false`、`dualQRejected=false`。裁决证据：`docs/evidence/V35-PFC5-TEACHER-EXPOSURE-CAL-PREREG/07-closure/`（预登记原文保留于同目录） |
+| `PFC5-RACE` | 4配置×4 development实例×2seed×250k | `BLOCKED` | `lambda=0`精确等价与校准预登记通过 |
+| `PFC5-TOP2` | Top2×normal/hard100×2seed×500k | `BLOCKED` | Race robustness/rank门通过；选唯一V35-R后关闭内部开发 |
+| `PFC5-GAP` | Current A4/QGS/最强fair-ready外部算法Gap Probe | `OPTIONAL_PREP_ONLY` | 独立reference与CPU域；不得干扰Failure Replay |
+| `PFC5-VAL` | 未污染50/100/150或200-job mini benchmark | `BLOCKED` | V35-R产生且所有外部算法`fairReady=true` |
+| `PFC5-FREEZE` | Champion Gate与Final Freeze | `BLOCKED` | Validation通过；冻结后禁止再改算法 |
+| `PFC5-FORMAL` | 主比较与leave-one-component-out消融 | `BLOCKED` | Final Freeze、production preflight及用户单独授权 |
+
+### 13.1 最近唯一允许动作
+
+当前阶段：`PFC5-F1`已执行完毕并裁决为`FAILURE_CLASS_REPRODUCED`。**当前无任何已授权动作**，一切后续工作包均需用户单独授权。
+
+授权状态：
+
+```ini
+用户已经批准启动F1
+F1=FAILURE_CLASS_REPRODUCED（已完成，本工作包终止）
+F2/F3仍未获批准
+f2Eligible=true
+f2Preregistered=false
+f2Started=false
+f3Started=false
+FC5_HISTORICAL_CASE=OPEN
+FC5=MECHANISM_UNRESOLVED
+nextRoute=HYPOTHESIS_DRIVEN_TEACHER_EXPOSURE_CALIBRATION
+calPreregistered=false
+calStarted=false
+```
+
+**F2 已于 2026-08-29 完成 0-FE 可部署性审计并裁定为 `NOT_DEPLOYABLE_FIELDS_INSUFFICIENT`**：阻断项为 CFVF 字段零覆盖（7 类冻结遥测 schema 中无 CFVF 类，全遥测 CSV 内 `cfvf` 命中数为 0，`cfvfRepairs`/`cfvfOffspring`/`baselineUpdateEvents` 均不产出），而 CFVF 在 500k 下占评价预算 62%；**诊断 runtime 缺少 CFVF 事件级遥测，仅保留有限聚合计数**（措辞已按 PFC5-CAL-P0 §二修正：两者为不同部署实体，不存在"开遥测丢失了原本可见的东西"，见 `V35-PFC5-F2-DEPLOYABILITY-AUDIT/01-decision/WORDING_REVISION_RECORD.md`）。按用户判据 4，**不迭代遥测工具、不走工具升级通道**，据此记 `FC5=MECHANISM_UNRESOLVED`——其含义是"当前观测能力不足以定因"，**不等于**任何根因结论，尤其不等于"根因已排除 Teacher"或"根因是 Teacher"。按 D-109 冻结主线转入下一站 `Single-Knob Teacher Exposure Calibration`（**已于 2026-08-30 完成 PFC5-CAL-P0 预登记：`PFC5-CAL=PREREGISTERED_NOT_IMPLEMENTED`**，未实现、未上传、未启动 Race；证据：`docs/evidence/V35-PFC5-TEACHER-EXPOSURE-CAL-PREREG/`）。证据：`docs/evidence/V35-PFC5-F2-DEPLOYABILITY-AUDIT/`。
+
+`PFC5-1`与`PFC5-2`的0-FE核验已经全部完成，不再是待办动作（产物见`docs/evidence/V35-PFC5-PHASE0/`）：
+
+1. 生成`historical-failure-seed-registry.csv`；
+2. 生成`instance-exposure-role-registry.csv`；
+3. 生成`baseline-fair-readiness.csv`；
+4. 冻结`FAILURE_REPLAY_REFERENCE_CONTRACT`；
+5. 对既有A4/50k OFF/ON 121 runtime证据做合同身份审计，能复用则直接封板；
+6. 提交F1独立预登记，不自动运行F1。
+
+F1只允许完成：预检 → 上传已冻结输入 → 单条A4/500k/telemetry OFF运行 → 运行验收 → 按冻结reference contract计算终态HV/IGD → F1裁决 → 停止。
+
+**F1已按上述范围全部完成并停住**（执行时间2026-08-29，证据`docs/evidence/V35-PFC5-F1-FAILURE-REPLAY/`）：Phase 0证据139/139闭合；预检33项全PASS；远端7项冻结输入SHA逐文件复核一致；零FE复算交叉验证`armProfileSha256`/`runtimeConfigurationSha256`一致；单条新鲜500k运行`actualFE=decoderCalls=500000`、`remainingFE=0`、`terminationKind=EXACT_MAX_FE`、运行验收33/33 PASS；按冻结契约计算`deltaHV=-0.31554307065117104`、`deltaIGD=-1.7503285142217353`，失败门触发。
+
+F1裁决完成后已立即停住；`F2`、`F3`、Teacher Exposure Calibration、Configuration Race、Gap Probe、Validation、正式矩阵以及任何额外seed或实例均未被授权，不得自动启动。F2虽已由F1解锁为`ELIGIBLE_NOT_PREREGISTERED`，但在用户单独授权并完成独立预登记之前一律不得启动；预登记前须先解决telemetry ON运行时来源与其和冻结正式Jar的行为等价性论证（F1所用冻结Jar内不含任何telemetry类，禁止为开启telemetry而重建Jar或修改算法）。F2预登记建议见`docs/evidence/V35-PFC5-F1-FAILURE-REPLAY/06-f1-decision/F2_PREREGISTRATION_PROPOSAL.md`，该文档仅为建议，不构成预登记，也不构成启动。
+
+### 13.2 冻结边界
+
+```ini
+A2Promoted=false
+A4Promoted=false
+FinalCandidateApproved=false
+PDDR=GLOBAL_ORIGINAL
+CFVF=MANDATORY_FINAL_COMPONENT
+DualQ=MANDATORY_FINAL_COMPONENT
+CATA=MANDATORY_FINAL_COMPONENT
+formalMatrix=PAUSED
+FINAL_FROZEN=false
+```
+
+禁止修改PDDR、mixture、Pacing、rho、P5/G5、Q状态/动作/奖励、个人档案容量、CFVF、CA-TA、LS顺序，
+禁止恢复4500矩阵，禁止启动未由预注册Gate授权的计算。该边界只能由用户后续明确批准的新决策替换。
+
+### D-110：竞争优势主线、单一repair family、DOE迁移与分阶段正式实验（2026-08-30）
+
+用户的最终研究目标明确为：形成一个保留`CFVF + Dual-Q + CA-TA-Lite`的V35-R，在公平接口和未污染数据上
+总体优于HMOPSO-QGS-F、李明哲论文相关算法及经典强baseline。为避免继续扩大低边际价值的FC5根因追踪，
+当前开发主线由D-109的Failure Replay/Teacher Exposure优先路线切换为：
+
+```text
+Gap Probe
+→ 0-FE leverage audit
+→ ONE repair family的C0/C1/C2/C3分级开发
+→ DOE migration
+→ untouched Validation
+→ Final Freeze
+→ leave-one-out ablation
+→ staged formal baseline comparison
+```
+
+D-109以前的事实结论继续有效：FC5候选膨胀/经典利用断裂未获250k支持，PDDR保持`GLOBAL_ORIGINAL`并降级为
+旁路观察；Teacher Exposure旋钮因仅覆盖全部教师事件1.12%而关闭；A2/A4均未晋升；DOE1冻结配比继续为
+`20/40/20/20`。本决策不恢复上述失败分支，也不删除三项创新。
+
+第一阶段Gap Probe从三算法改为四算法，避免事后在外部算法中择优：`A4-Pacing + HMOPSO-QGS-F +
+SPEA2-F + NSGA-II-F`，固定一个DEVELOPMENT 50-job、`100_5_3_1`和两个新paired seeds，共16条500k；
+使用独立reference，只输出`GAP_WITHIN_5/GAP_5_TO_15/GAP_GT_15`，稳定大于15%才记RED，其余仅NOT_RED。
+当前只授权准备`V35_GAP_PROBE_P0`的0-FE预登记，不授权16条运行。
+
+Gap后必须先做杠杆审计；Dual-Q→CFVF协调、CA-TA预算、Qp/CA-TA信用时序只是候选域，只能选一个具有
+足够实际覆盖的repair family。C0/C1/C2/C3必须是同一修订轴的四档强度，禁止三个异质机制一起赛马。
+100k默认4配置×4实例×2seed作cheap rejection；Top2为4实例×3seed×250k；500k development final为
+Top2+QGS+Gap冻结规则选出的最强external。其结果只产生`PROVISIONAL_V35_R`。
+
+DOE不自动重做：先四配比×3实例×3seed×250k迁移；若仅一个challenger，先BASE/challenger×3实例×3seed
+的18条500k确认；只有BASE明显掉队、多个challenger稳定占优、交互超过2个百分点或排名广泛反转时，才可
+另行预注册完整15-treatment DOE。DOE2 Pacing仍不自动启动。
+
+Validation必须使用未污染的50/100/150或200-job各一例，V35-R/QGS/最强external×2seed×500k，共18条。
+Validation失败后若修改算法，该批实例转为`CONTAMINATED_DEVELOPMENT`。Final Freeze后才首次打开
+`FINAL_TEST_RESERVED`，冻结后结果不理想也不得再改算法。
+
+正文主消融改为leave-one-component-out首档：6实例×10seed×6臂；渐进A0→A4_LEGACY→V35-R链优先复用
+既有证据，只作开发历史/附录。Formal Stage 1为8算法×9实例×5seed；Formal Main先8算法×45实例×10seed，
+是否补到20seed由预注册功效、方差和排名稳定性决定。统计以实例为主要配对单元，采用Friedman、paired
+Wilcoxon、Holm与paired rank-biserial correlation。
+
+完整合同：`docs/V35_COMPETITIVE_SUPERIORITY_EXECUTION_ROADMAP.md`；治理硬门：根目录`AGENTS.md`第22节；
+决策证据：`docs/evidence/V35-COMPETITIVE-SUPERIORITY-ROADMAP/00-governance/`。
+
+当前状态：
+
+```ini
+activeRoute=V35_COMPETITIVE_SUPERIORITY_V1
+currentStage=V35_GAP_PROBE_P0
+nextAuthorizedScope=ZERO_FE_PREREGISTRATION_ONLY
+gapProbeStarted=false
+repairFamilySelected=false
+v35RProvisional=false
+validationStarted=false
+FinalCandidateApproved=false
+FINAL_FROZEN=false
+formalMatrixRunning=false
+```
+
+
+---
+
+## 14. V35-GAP-LOCAL-FE-PACING-REPAIR-V1 执行记录（2026-08-31，追加）
+
+Gap Probe V2 裁决 `GAP_GT_15` 后的单一 repair family 执行记录。杠杆审计经
+`NAMING_AND_CAUSAL_BOUNDARY_CORRECTION.md` 更正为 `SELECT_LOCAL_FE_PACING_REPAIR`
+（singleKnob=betaMax；原 SELECT_CATA_BUDGET_REPAIR 名称与 CA-TA 因果归因作废，
+CaTaHarmfulNotClaimed=true、rootCauseProven=false）。
+
+| 项 | 记录 |
+|---|---|
+| 实现 | 独立实验Jar `jmetal-algorithm-5.8-V35-LOCAL-FE-PACING-REPAIR-V1.jar`（`a0788580…7331c`，`javac --release 8`，全部新增类 major=52）+ 薄Runner `V35LocalFePacingRepairRunner`（六flag CLI、binding哈希门、快照绑定、PHASE_CONSISTENT_BUDGET、`.partial-*`原子输出）+ 不可变 `V35LocalFePacingRepairProfile`（REF_A4/C0/C1/C2/C3；正式构造器拒绝C1–C3；冻结Jar结构上不含repair类）。冻结正式Jar `8dad8f40…bad8b9` 全程未动 |
+| 本地验证 | profile self-test 93/93；2000 FE wiring smoke（REF/C0）；本地20k×2实例×5臂（与远端front逐字节一致）；禁止模块静态扫描通过；major=52 十二类核验 |
+| 20k机制门 | **PASSED 10/10**（2实例×5臂×seed 20260907×20000 FE）：REF/C0 行为逐位等价（front逐字节一致、机制摘要仅墙钟4字段差）；C0→C1 `totalLocalFE` 5158→4900 严格下降、`formalOuterCycles` 2→3、`cfvfOffspring` 10000→15000 严格增加 → **FE回流成立**；C1=C2=C3 的 totalLocalFE 并列为20k规模伪影（外层循环仅2–3个），50k 检验分化；CFVF/Dual-Q/CA-TA 全部真实触发、dtur=0；PDDR 保持 GLOBAL_ORIGINAL；池级PDDR归因受冻结Jar遥测限制登记为 NOT_EXPORTED_BY_FROZEN_JAR |
+| 裁决 | `repairImplemented=true`、`C0BehaviorEquivalent=true`、`feReallocationDemonstrated=true`、`20kMechanismGate=PASSED` |
+| 50k | 预登记草案已生成（**16条**=4配置×2实例×2seed；更正此前"24条"误计），`50kPreregistered=true(draft_only)`、`50kStarted=false`，待用户批准 |
+| 证据 | `docs/evidence/V35-GAP-LOCAL-FE-PACING-REPAIR/`（00-causal-boundary/01-implementation/02-local-tests/03-remote-20k/04-mechanism-analysis/05-gate-decision；`evidence-sha256.tsv` 529项反向核验0缺失0不匹配） |
+| 训练机 | `/home/inspur/aicomp/zhangbo-v35-local-fe-pacing-repair-20260831`（SHA核验上传；运行~28s；无遗留进程） |
+
+### D-111：GAP修复采用LOCAL_FE_PACING单旋钮并完成20k机制门（2026-08-31）
+
+1. 原裁决名 `SELECT_CATA_BUDGET_REPAIR` 更正为 `SELECT_LOCAL_FE_PACING_REPAIR`；
+   原名称错误归因 CA-TA（仅约3% FE），实际杠杆是 inherited LS 后期窗口（约35% FE）。
+2. repair 以独立实验Jar实现，冻结正式Jar `8dad8f40…` 不变；正式路径拒绝 C1–C3。
+3. 20k 机制门 10/10 通过：C0 与 REF_A4 行为逐位等价；FE 回流成立
+   （outerCycles 2→3、cfvfOffspring 10000→15000）；C1–C3 四档在 20k 的 totalLocalFE
+   并列登记为规模伪影，四档分化以 50k 为准。
+4. PDDR 保持 GLOBAL_ORIGINAL；池级归因缺口如实登记，不以改冻结Jar换取观察。
+5. 50k 预登记（16条）仅为草案；未获用户批准不得启动。禁止换轴或调参续命。
+
+当前状态：
+
+```ini
+activeRoute=V35_COMPETITIVE_SUPERIORITY_V1
+gapRepairFamily=LOCAL_FE_PACING
+singleKnob=betaMax
+rootCauseProven=false
+repairImplemented=true
+C0BehaviorEquivalent=true
+feReallocationDemonstrated=true
+20kMechanismGate=PASSED
+strict20kDoseGate=NOT_FULLY_PASSED
+doseResolutionAt20k=NOT_RESOLVED
+50kPreregistered=true(frozen_20260831)
+50kStarted=true
+50kCompleted=true
+doseResolution50k=PASSED
+selectedCandidates=C2+C3(betaMax=0.45/0.35, corrected 20260831)
+budgetSensitivityConflict=RETIRED_AS_MINOR_FLUCTUATION(C2)
+C1Rejected=true
+250kEligible=true
+250kApproved=false
+250kCompleted=true
+250kDecision=NO_REPAIR_CANDIDATE
+C3CheckpointConsistency=CONFLICT
+repairFamily_LOCAL_FE_PACING=REJECTED_AT_250K_CONFIRMATION
+paretoCoverageLeverageAudit=NO_ACTIONABLE_LEVER(20260831, read-only)
+rootCauseCandidate=NONE
+diagnosticGapRegistered=250k candidate-level PDDR/source attribution telemetry
+campaignP1_sourceDiagnostics=NO_SOURCE_LEVEL_FAILURE(20260831)
+algorithmOptimizationClosed=true
+repairFamilyBudget=UNSPENT
+phaseA0=PHASE_A0_PREREGISTRATION_PASSED(20260901 corrected: counterfactual producerSet semantics + decomposed memory model)
+observerImplemented=true
+observerBehavioralEquivalent=true
+memoryGatePassed=true
+observerSchemaFrozen=true
+observerJarFrozen=true
+observerMemoryStreamingFixed=true(20260901)
+sourceAttribution500kEligible=true
+sourceAttribution500kStarted=false
+500kStarted=false
+DOEStarted=false
+validationStarted=false
+FinalCandidateApproved=false
+FINAL_FROZEN=false
+formalMatrixRunning=false
+PDDRChanged=false
+CFVFChanged=false
+DualQChanged=false
+CaTaRemoved=false
+formalJarChanged=false
+```
+
+---
+
+## 15. SOURCE-ATTRIBUTION-500K Phase A 冻结执行路线（2026-08-31，追加）
+
+### D-112：三人共识只授权500k纵向来源归因诊断
+
+用户批准`docs/V35_SOURCE_ATTRIBUTION_500K_PHASE_A_PLAN.md`作为最新执行合同。该决策回应Campaign P1
+仅在100k得到`NO_SOURCE_LEVEL_FAILURE`、而历史A4 Pareto failure在500k才确定性复现的预算错位：不直接
+进入重复A2/A4 Final比较，也不重新开放算法调优，而用一个HARD failure轨迹和一个确定性解析的NORMAL
+100-job轨迹进行500k纵向、候选级、只观察来源归因。
+
+本决策对D-110、D-111及第29节的覆盖边界如下：
+
+- `algorithmOptimizationClosed=true`继续有效；只新增一次`PHASE_A_AUTHORIZED_ONLY`诊断例外；
+- P1 `NO_SOURCE_LEVEL_FAILURE`保留为100k历史结论，不外推为500k来源健康；
+- 不授权repair、Qp-v2、DOE、Configuration Race、Validation、Final Freeze或正式矩阵；
+- PDDR、mixture、betaMax、CFVF、Dual-Q、CA-TA及正式Jar保持不变；
+- 不重启REGION_AWARE/BP/ORDER_SWAP/soft-freeze/gb15/Cheap-Test/A5/teacher-lambda/pacing/tie/reward clipping。
+
+### 15.1 Phase A0：0-FE冻结
+
+必须先完成：
+
+1. 从`instance-exposure-role-registry + accepted ledger`确定性解析NORMAL control，输出全部候选与淘汰原因；
+2. HARD固定`100_5_3_1/20260901/A4/CASE_SELECTED_DIAGNOSTIC_ONLY`；
+3. 冻结四类一级source：GLOBAL_CFVF、CATA、INHERITED_LS、PARENT_CARRYOVER；
+4. 冻结HARD Failure Replay reference与运行前历史NORMAL reference；
+5. 冻结WHVGShare、ExclusiveNDShare和coverage divergence阈值；
+6. 设计有界observer并完成wall-clock正确性审计。
+
+NORMAL无法合法解析、reference无法冻结或阈值不能运行前确定时，状态为`DO_NOT_RUN`。
+
+### 15.2 工程门
+
+独立Source Observer Jar不得覆盖正式Jar。先运行HARD case 20k OFF/ON，要求初群、RNG、Qg/Qp、teacher、
+CFVF候选、目标、PDDR、CA-TA、Q表、FE、working population和decision-front行为等价。100-job/20k ON
+内存预测必须满足`estimated500kPeak < 0.60×assignedJavaHeap`；不允许用无限扩堆掩盖观察器保留问题。
+
+若真实wall-clock影响CA-TA决策，后续HARD/NORMAL必须单JVM、固定affinity和相同资源域。工程门通过后
+冻结observer schema/Jar；任何字段、标签、buffer、生命周期或hash变化都要重新过20k。
+
+### 15.3 500k顺序和预算
+
+```text
+A4 HARD 500k ON
+→ failure-class reproduction gate
+→ A4 NORMAL 500k ON
+→ G1/G3 analysis
+→ A2 HARD 500k ON only if G1 is triggered
+→ G1/G2/G3/G4
+→ mandatory stop and user review
+```
+
+每25k nominal FE保存phase-consistent累计/窗口snapshot。Phase A科学预算为1.0M FE，条件A2后最多1.5M FE；
+不得新增第三实例、第二diagnostic seed或更多arm。
+
+### 15.4 量化出口
+
+- G1：GLOBAL_CFVF的hard-normal `WHVGShare` deficit≥冻结`T_HV`或exclusiveND deficit≥`T_ND`，连续两窗，
+  首次不晚于`t_div`，且不能由更强的PDDR/working survival异常解释。
+- G2：仅G1后跑A2；A4满足G1而A2不满足，登记`QP_CFVF_COORDINATION`候选。A2也满足则为common-CFVF。
+- G3：GLOBAL未满足G1、CATA满足同类持续门且消耗实质local FE；没有预先命名的单轴则不授权repair。
+- G4：G1/G3均未过门，记`OLD_A4_DIAGNOSTIC_CLOSED=true`，永久停止PDDR/pacing/teacher/source扩大诊断。
+
+以上只能产生`SOURCE_LEVER_CANDIDATE`，不能产生`ROOT_CAUSE_CONFIRMED`。最终properties只能是：
+
+```text
+SOURCE_ATTRIBUTION=G1_GLOBAL_CFVF
+SOURCE_ATTRIBUTION=G2_QP_CFVF
+SOURCE_ATTRIBUTION=G3_CATA
+SOURCE_ATTRIBUTION=G4_NO_ACTIONABLE_LEVER
+```
+
+### 15.5 当前状态和下一动作
+
+```ini
+activeRoute=V35_SOURCE_ATTRIBUTION_500K_PHASE_A_V1
+currentStage=PHASE_A0_ZERO_FE_PREREGISTRATION
+PHASE_A_AUTHORIZED_ONLY=true
+observerImplemented=false
+observerFrozen=false
+observerImplemented=true
+observerBehavioralEquivalent=true
+memoryGatePassed=true
+observerSchemaFrozen=true
+observerJarFrozen=true
+observerMemoryStreamingFixed=true(20260901)
+sourceAttribution500kEligible=true
+sourceAttribution500kStarted=false
+DOE_AUTHORIZED=false
+QP_V2_AUTHORIZED=false
+CONFIG_RACE_AUTHORIZED=false
+VALIDATION_AUTHORIZED=false
+FORMAL_AUTHORIZED=false
+A2Promoted=false
+A4Promoted=false
+FinalCandidateApproved=false
+FINAL_FROZEN=false
+formalMatrixRunning=false
+PDDR=GLOBAL_ORIGINAL
+mixture=20,40,20,20
+betaMax=0.65
+```
+
+当前唯一允许的下一动作是Phase A0的0-FE预登记；不得跳过NORMAL resolver、reference/threshold冻结、内存与
+timing设计直接构建observer或上传500k。Phase A结束后必须重新向用户汇报，不能自动进入Phase B。

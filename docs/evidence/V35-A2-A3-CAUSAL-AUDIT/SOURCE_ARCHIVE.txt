@@ -1,0 +1,4 @@
+sourceArchive=G:\ResearchArchive\ZhangBo-V35-Paper-Evidence-20260823\remote-campaigns\zhangbo-v35-stage2-master-v2-20260823.tar.gz
+sourceArchiveSha256=0202356f28c7013894fb14b7347eb77a66243ad9312139cd0fe2a62f24cad5fb
+scope=results/formal-a0-a4-4500/100_2_3_1/seed-20260808..20260819/A2,A3 plus pilot-a0-a4/output
+restoredCopyRetained=false

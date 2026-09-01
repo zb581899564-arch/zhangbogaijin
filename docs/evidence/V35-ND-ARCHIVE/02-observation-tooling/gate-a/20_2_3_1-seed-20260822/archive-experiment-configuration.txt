@@ -1,0 +1,9 @@
+archiveExperimentArm=ND0_FULL_ARCHIVE_CONTROL
+archiveExperimentVersion=v35-archive-experiment-v1
+archiveMode=UNBOUNDED_FULL
+teacherViewCapacity=0
+activeArchiveCapacity=0
+objectiveSlots=0,1,6
+selection=maximin-extremes-stable-fingerprint
+pddrSelectionMode=UNCHANGED_GLOBAL_ORIGINAL
+archiveExperimentHash=6b6d1362bc79079a342d8f98967d707452996a4bb9a75e78baed5566f06ca823

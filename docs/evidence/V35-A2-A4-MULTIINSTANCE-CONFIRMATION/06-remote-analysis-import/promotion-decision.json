@@ -1,0 +1,25 @@
+{
+  "schema": "v35-a2-a4-confirmation-analysis-v1",
+  "acceptedRuns": 60,
+  "acceptedPairs": 30,
+  "overallMedians": {
+    "deltaCmax": 0.01724070019480768,
+    "deltaTEC": -0.006800844776527029,
+    "deltaTWC": 0.00778749652626598,
+    "deltaHV": 0.015031185352558627,
+    "deltaIGD": 0.07239766309432442
+  },
+  "positiveHvIgdInstances": 4,
+  "gates": {
+    "all30PairsValid": true,
+    "overallMedianDeltaHVPositive": true,
+    "overallMedianDeltaIGDPositive": true,
+    "overallMedianDeltaCmaxAtLeastMinus2Percent": true,
+    "positiveHvIgdInstancesAtLeast4": true,
+    "everyScaleMedianHvIgdNonnegative": false,
+    "hundredJobPooledMedianHvIgdNonnegative": false,
+    "noSingleHundredJobVeto": false,
+    "noSimultaneousTecAndTwcSystematicRegression": true
+  },
+  "decision": "A4_NOT_PROMOTED"
+}

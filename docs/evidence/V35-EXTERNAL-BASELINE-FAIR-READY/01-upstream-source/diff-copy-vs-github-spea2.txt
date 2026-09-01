@@ -1,0 +1,132 @@
+--- /tmp/jmetal58-github/algorithm/SPEA2.java	2026-08-30 11:31:56.901646800 +0800
++++ E:/学习/李明哲-毕业材料/张博改进/java-jmetal58/jmetal-algorithm/src/main/java/org/uma/jmetal/algorithm/multiobjective/mypso/v35/p25e/official/OfficialJMetal58SPEA2.java	2026-08-15 19:38:55.879000000 +0800
+@@ -1,5 +1,4 @@
+-package org.uma.jmetal.algorithm.multiobjective.spea2;
+-
++package org.uma.jmetal.algorithm.multiobjective.mypso.v35.p25e.official;
+ import org.uma.jmetal.algorithm.impl.AbstractGeneticAlgorithm;
+ import org.uma.jmetal.algorithm.multiobjective.spea2.util.EnvironmentalSelection;
+ import org.uma.jmetal.operator.CrossoverOperator;
+@@ -9,15 +8,13 @@
+ import org.uma.jmetal.solution.Solution;
+ import org.uma.jmetal.util.evaluator.SolutionListEvaluator;
+ import org.uma.jmetal.util.solutionattribute.impl.StrengthRawFitness;
+-
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+-/**
+- * @author Juan J. Durillo
+- **/
++/** Official jMetal 5.8 SPEA2; only package and class/constructor names are isolated. */
+ @SuppressWarnings("serial")
+-public class SPEA2<S extends Solution<?>> extends AbstractGeneticAlgorithm<S, List<S>> {
++public class OfficialJMetal58SPEA2<S extends Solution<?>>
++    extends AbstractGeneticAlgorithm<S, List<S>> {
+   protected final int maxIterations;
+   protected final SolutionListEvaluator<S> evaluator;
+   protected int iterations;
+@@ -26,48 +23,29 @@
+   protected final EnvironmentalSelection<S> environmentalSelection;
+   protected final int k ;
+ 
+-  public SPEA2(Problem<S> problem, int maxIterations, int populationSize,
++  public OfficialJMetal58SPEA2(Problem<S> problem, int maxIterations, int populationSize,
+       CrossoverOperator<S> crossoverOperator, MutationOperator<S> mutationOperator,
+       SelectionOperator<List<S>, S> selectionOperator, SolutionListEvaluator<S> evaluator,
+-               int k) {
++      int k) {
+     super(problem);
+     this.maxIterations = maxIterations;
+     this.setMaxPopulationSize(populationSize);
+-
+     this.k = k ;
+     this.crossoverOperator = crossoverOperator;
+     this.mutationOperator = mutationOperator;
+     this.selectionOperator = selectionOperator;
+     this.environmentalSelection = new EnvironmentalSelection<S>(populationSize, k);
+-
+     this.archive = new ArrayList<>(populationSize);
+-
+     this.evaluator = evaluator;
+   }
+-
+-  @Override
+-  protected void initProgress() {
+-    iterations = 1;
+-  }
+-
+-  @Override
+-  protected void updateProgress() {
+-    iterations++;
+-  }
+-
+-  @Override
+-  protected boolean isStoppingConditionReached() {
+-    return iterations >= maxIterations;
+-  }
+-
+-  @Override
+-  protected List<S> evaluatePopulation(List<S> population) {
++  @Override protected void initProgress() { iterations = 1; }
++  @Override protected void updateProgress() { iterations++; }
++  @Override protected boolean isStoppingConditionReached() { return iterations >= maxIterations; }
++  @Override protected List<S> evaluatePopulation(List<S> population) {
+     population = evaluator.evaluate(population, getProblem());
+     return population;
+   }
+-
+-  @Override
+-  protected List<S> selection(List<S> population) {
++  @Override protected List<S> selection(List<S> population) {
+     List<S> union = new ArrayList<>(2*getMaxPopulationSize());
+     union.addAll(archive);
+     union.addAll(population);
+@@ -75,11 +53,8 @@
+     archive = environmentalSelection.execute(union);
+     return archive;
+   }
+-
+-  @Override
+-  protected List<S> reproduction(List<S> population) {
++  @Override protected List<S> reproduction(List<S> population) {
+     List<S> offSpringPopulation= new ArrayList<>(getMaxPopulationSize());
+-
+     while (offSpringPopulation.size() < getMaxPopulationSize()){
+       List<S> parents = new ArrayList<>(2);
+       S candidateFirstParent = selectionOperator.execute(population);
+@@ -87,30 +62,17 @@
+       S candidateSecondParent;
+       candidateSecondParent = selectionOperator.execute(population);
+       parents.add(candidateSecondParent);
+-
+       List<S> offspring = crossoverOperator.execute(parents);
+       mutationOperator.execute(offspring.get(0));
+       offSpringPopulation.add(offspring.get(0));
+     }
+     return offSpringPopulation;
+   }
+-
+-  @Override
+-  protected List<S> replacement(List<S> population,
++  @Override protected List<S> replacement(List<S> population,
+       List<S> offspringPopulation) {
+     return offspringPopulation;
+   }
+-
+-  @Override
+-  public List<S> getResult() {
+-    return archive;
+-  }
+-
+-  @Override public String getName() {
+-    return "SPEA2" ;
+-  }
+-
+-  @Override public String getDescription() {
+-    return "Strength Pareto. Evolutionary Algorithm" ;
+-  }
++  @Override public List<S> getResult() { return archive; }
++  @Override public String getName() { return "SPEA2" ; }
++  @Override public String getDescription() { return "Strength Pareto. Evolutionary Algorithm" ; }
+ }

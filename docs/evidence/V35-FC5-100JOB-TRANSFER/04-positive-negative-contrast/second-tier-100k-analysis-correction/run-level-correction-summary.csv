@@ -1,0 +1,7 @@
+seed,arm,actualFE,pddrCycles,maxNnd,roundsNndOver100,directionLabelEvents,directionLabelRejected,uniqueDirectionRepresentatives,uniqueDirectionRejected
+20260901,A2,96680,3,59,0,12,0,12,0
+20260901,A4,96025,12,73,0,48,4,47,4
+20260902,A2,96672,3,70,0,12,0,12,0
+20260902,A4,96025,12,76,0,48,0,48,0
+20260903,A2,96653,3,61,0,12,0,12,0
+20260903,A4,96025,12,73,0,48,2,48,2

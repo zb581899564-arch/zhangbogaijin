@@ -1,0 +1,5 @@
+candidate,betaMax,normalSafetyGate,hardImprovementGate,tripleObjectiveGate,dualCaliberGate,allFourGates,dHV_hard_terminal_median,dIGD_hard_terminal_median,dCmax_all_worstCommonMedian,dTEC_all_worstCommonMedian,dTWC_all_worstCommonMedian,dHV_normal_terminal_median,dIGD_normal_terminal_median,dominatedBy_allCandidates,dominatedBy_qualified,tb1_dCmax_hard_common,tb2_dTEC_hard_common,tb3_dHV_normal_terminal,tb4_dTWC_normal_terminal,tb5_betaDistTo065,gateFlags,retained,retentionRank
+C1,0.55,PASS,FAIL,PASS,PASS,FAIL,-0.001856,0.037685,0.003436,-0.001219,-0.005268,0.027203,0.294490,NONE,NONE,0.003436,0.001293,0.027203,-0.006772,0.10,NONE,NO,
+C2,0.45,PASS,PASS,PASS,FAIL,FAIL,0.107184,0.251343,-0.002753,-0.004995,-0.007929,0.132318,0.400477,NONE,NONE,0.011194,-0.002292,0.132318,0.011930,0.20,dualCaliberConflict:TWC term=+0.1293% common=-0.1059%,NO,
+C3,0.35,PASS,PASS,PASS,PASS,PASS,0.045778,0.173045,-0.007869,0.003764,-0.006253,0.061558,0.365035,NONE,NONE,-0.007869,0.009307,0.061558,-0.007762,0.30,NONE,YES,1
+FINAL,,,,,,,,,,,,,,,,,,,,,finalVerdict=ONE_CANDIDATE_ADVANCES_TO_250K retained=C3 doseGate=PASSED budgetSensitivityConflict=true

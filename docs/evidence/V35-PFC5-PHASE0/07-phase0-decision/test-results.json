@@ -1,0 +1,74 @@
+[
+  {
+    "item": 1,
+    "name": "CSV schema (4 registries)",
+    "verdict": "PASS",
+    "detail": "historical-failure-seed-registry.csv:ok instance-exposure-role-registry.csv:ok baseline-fair-readiness.csv:ok snapshot-identity-audit.csv:ok"
+  },
+  {
+    "item": 2,
+    "name": "seed selection determinism",
+    "verdict": "PASS",
+    "detail": "in_class=['20260901', '20260904', '20260905'] selected=['20260901']"
+  },
+  {
+    "item": 3,
+    "name": "instance role mutual exclusion & hard rules",
+    "verdict": "PASS",
+    "detail": "n=49 unique=True diag=True no_validation_if_exposed=True"
+  },
+  {
+    "item": 4,
+    "name": "snapshot physical/logical hash identity",
+    "verdict": "PASS",
+    "detail": "sha=84d845233e332a66…"
+  },
+  {
+    "item": 5,
+    "name": "raw front finite/dedup/strict-ND idempotence",
+    "verdict": "PASS",
+    "detail": "10 fronts ok"
+  },
+  {
+    "item": 6,
+    "name": "reference input order independence",
+    "verdict": "PASS",
+    "detail": "canonical=4dc85dd4fa3c7824…"
+  },
+  {
+    "item": 7,
+    "name": "HV/IGD historical gold recalculation",
+    "verdict": "PASS",
+    "detail": "max abs diff = 1.665e-16 (gate 1e-12)"
+  },
+  {
+    "item": 8,
+    "name": "Step 0 jar SHA reverse verification",
+    "verdict": "PASS",
+    "detail": "formal=8dad8f40 runtime121=121fbb49 base723d=723d24ed"
+  },
+  {
+    "item": 9,
+    "name": "OFF/ON core behavior field comparison",
+    "verdict": "PASS",
+    "detail": "29 fields, unequal=[]"
+  },
+  {
+    "item": 10,
+    "name": "evidence-sha256 per-file reverse recompute",
+    "verdict": "PASS",
+    "detail": "139 files verified, mismatches=[]"
+  },
+  {
+    "item": 11,
+    "name": "documentation path existence",
+    "verdict": "PASS",
+    "detail": ""
+  },
+  {
+    "item": 12,
+    "name": "AGENTS/ROADMAP frozen-boundary consistency",
+    "verdict": "PASS",
+    "detail": "roadmap=True agents=True"
+  }
+]

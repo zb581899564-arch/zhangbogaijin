@@ -18,6 +18,7 @@ import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoDualQCoordin
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoGlobalSearchConfiguration;
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoIncrementalParetoArchive;
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoEvaluatedPddrSelector;
+import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.PddrSelectionMode;
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoEventLog;
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoFormalHmopsoQgsConfiguration;
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoLineageCoordinator;
@@ -32,6 +33,7 @@ import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoQpController
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoQpCandidateSelector;
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoQpConfiguration;
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoQpLineageState;
+import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoDirectionalArchiveSelector;
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoResourceDomain;
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoResourceVelocity;
 import org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoProblemContext;
@@ -70,6 +72,11 @@ import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35PressureBottleneckCl
 import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ShadowDiagnosisAudit;
 import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35EvaluationSourceContext;
 import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35Fc52LifecycleAudit;
+import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35Fc6LocalCandidateAudit;
+import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35Fc5TransferAudit;
+import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35TrueSequenceAudit;
+import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35TeacherConcentrationObserver;
+import org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35CheckpointFrontObserver;
 import org.uma.jmetal.problem.Problem;
 import org.uma.jmetal.problem.multiobjective.dfsp.DHFSP;
 import org.uma.jmetal.problem.multiobjective.dfsp.ZhangBoEDHHFSPW;
@@ -165,6 +172,8 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             new EnumMap<>(ZhangBoSubSwarm.class);
     private final Map<ZhangBoSubSwarm, List<PermutationSolution<Integer>>> pendingQgBefore =
             new EnumMap<>(ZhangBoSubSwarm.class);
+    private final Map<ZhangBoSubSwarm, String> pendingQgTeacherEvents =
+            new EnumMap<>(ZhangBoSubSwarm.class);
     private final ZhangBoEventLog zhangBoP6Events = new ZhangBoEventLog();
     private long fullEvaluationCount;
     /** Number of completed outer PSO generations; local-search FE never increments it. */
@@ -198,6 +207,9 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
     private ZhangBoQpCandidateSelector zhangBoArchivePersonalLeaderSelector;
     private final Map<Long, ZhangBoQpController.Selection> pendingQpSelections =
             new LinkedHashMap<>();
+    private final Map<Long, String> pendingQpTeacherEvents = new LinkedHashMap<>();
+    private final Map<Long, PermutationSolution<Integer>> pendingQpTeacherSolutions =
+            new LinkedHashMap<>();
     private final Map<Long, ZhangBoPersonalLeaderDecision> pendingPersonalLeaders =
             new LinkedHashMap<>();
     private ZhangBoDualQCoordinator zhangBoDualQCoordinator;
@@ -217,6 +229,14 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
     private final org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35CmaxLifecycleAudit
             v35CmaxLifecycleAudit =
             new org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35CmaxLifecycleAudit();
+    /** Opt-in causal telemetry; isolated from formal event/action hashes. */
+    private final org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35A2A3PersonalLeaderAudit
+            v35A2A3PersonalLeaderAudit =
+            new org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35A2A3PersonalLeaderAudit();
+    /** FC5-T observer only; never read by a search decision. */
+    private final V35Fc5TransferAudit v35Fc5TransferAudit = new V35Fc5TransferAudit();
+    /** V35-MIDHORIZON unified telemetry; null means OFF, zero construction. */
+    private org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35MidHorizonTelemetry midHorizonTelemetry;
     private final ZhangBoEventLog zhangBoDualQEvents = new ZhangBoEventLog();
     private final Map<ZhangBoDualQCoordinator.Phase, Long> dualQPhaseCounts =
             new EnumMap<>(ZhangBoDualQCoordinator.Phase.class);
@@ -226,6 +246,7 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
     private long pendingQgUpdatesBefore;
     private long pendingQpActionsBefore;
     private long pendingQpTransitionsBefore;
+    private long pendingQpFrozenObservationsBefore;
     private List<PermutationSolution<Integer>> initialSwarmOverride;
     private ZhangBoCaTaController zhangBoCaTaController;
     private V35CaTaLiteController v35CaTaLiteController;
@@ -251,10 +272,17 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
     private long caTaFullEvaluations;
     private boolean caTaRewardsSettled;
     private long authorRandomInvocation;
+    /** True-sequence parent metadata is observation-only and populated only when audit is active. */
+    private final Map<PermutationSolution<Integer>, TrueCandidateParent> trueParentByCandidate =
+            new IdentityHashMap<>();
+    private final List<TrueCandidateParent> trueParentBySlot = new ArrayList<>();
     /** Optional observer only; null is the production default and preserves the historical path. */
     private ZhangBoCmaxAudit cmaxAudit;
     /** V35-P17 passive observer only; null is the production default (pure bypass, no decisions read it). */
     private V35PassiveEvaluationArchive v35PassiveArchive;
+    /** Dormant archive experiment runtime; production and formal runners always leave this null. */
+    private org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ArchiveExperimentRuntime
+            v35ArchiveExperimentRuntime;
 
     /**
      * Constructor
@@ -405,6 +433,23 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             throw new IllegalArgumentException("globalSearchConfiguration cannot be null");
         }
         this.globalSearchConfiguration = configuration;
+        // FC-6B REGION_AWARE assigns the four physical slots according to the
+        // registered region capacities (15/55/15/15).  The historical
+        // bootstrap uses 20/40/20/20, so leaving these fields untouched would
+        // make the first region-aware survivor partition fail its own
+        // capacity invariant.  Switch the runtime slot capacities before the
+        // first updateVelocity call; ArrayList capacities above are only
+        // allocation hints and do not encode the semantic sizes.
+        if (configuration.getPddrSelectionMode() == PddrSelectionMode.REGION_AWARE) {
+            if (swarmSize != 100) {
+                throw new IllegalArgumentException(
+                        "REGION_AWARE requires swarmSize=100 for capacities 15/55/15/15");
+            }
+            this.upSize = 15;
+            this.centralSize = 55;
+            this.downSize = 15;
+            this.upNewSize = 15;
+        }
         boolean needsP8Runtime = configuration.isQgEnabled()
                 || configuration.isResourceFlightEnabled()
                 || configuration.isEvaluatedPddrEnabled()
@@ -432,7 +477,8 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             throw new IllegalArgumentException(
                     "P6.0/P6.1 require an enabled nonzero P5 fatigue parameter manifest");
         }
-        zhangBoP6Random = new JavaRandomGenerator(configuration.getSeed());
+        zhangBoP6Random = V35TrueSequenceAudit.wrapActive(
+                new JavaRandomGenerator(configuration.getSeed()), "P6");
         if (configuration.isQgEnabled()) {
             zhangBoQgController = new ZhangBoQgController(zhangBoP6Random,
                     configuration.getQEpsilon(), configuration.getQAlpha(), configuration.getQGamma());
@@ -462,13 +508,17 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             zhangBoQpController = new ZhangBoQpController(
                     configuration.getQpConfiguration(),
                     configuration.getPersonalArchiveConfiguration(),
-                    new JavaRandomGenerator(qpSeed), qpSeed,
+                    V35TrueSequenceAudit.wrapActive(new JavaRandomGenerator(qpSeed), "QP"), qpSeed,
                     configuration.getP8AblationProfile() != null
                             && configuration.getP8AblationProfile().isAuthorDiagnostic());
             zhangBoDualQCoordinator = new ZhangBoDualQCoordinator(
                     configuration.getDualQCoordinationConfiguration());
         }
-        if (usesArchivePersonalLeader() && !configuration.isQpEnabled()) {
+        // Only the historical P8 random-four policy needs the Qp candidate
+        // helper while Qp itself is disabled.  The V35 directional diagnostic
+        // uses ZhangBoDirectionalArchiveSelector and must not construct a Qp
+        // table, reward path, or Qp selector.
+        if (usesP8ArchiveRandomPolicy() && !configuration.isQpEnabled()) {
             zhangBoArchivePersonalLeaderSelector = new ZhangBoQpCandidateSelector(
                     ZhangBoQpConfiguration.standard(),
                     configuration.getPersonalArchiveConfiguration());
@@ -480,7 +530,8 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         boolean needsFormalLocalSearch = formalBaselineConfiguration.isEnabled();
         if (configuration.isLocalSearchEnabled() || needsFormalLocalSearch) {
             long caTaSeed = configuration.getSeed() ^ ZhangBoCaTaConfiguration.DOMAIN_SEED;
-            zhangBoCaTaRandom = new JavaRandomGenerator(caTaSeed);
+            zhangBoCaTaRandom = V35TrueSequenceAudit.wrapActive(
+                    new JavaRandomGenerator(caTaSeed), "CATA");
             if (configuration.isCaTaEnabled()) {
                 zhangBoCaTaController = new ZhangBoCaTaController(
                         configuration.getCaTaConfiguration(),
@@ -534,11 +585,33 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
     public void run() {
         if (!formalBaselineConfiguration.isEnabled()) {
             super.run();
+            finishMidHorizonTerminalSnapshot();
             finishCmaxAudit();
             return;
         }
         runFormalHmopsoQgsBaseline();
+        finishMidHorizonTerminalSnapshot();
         finishCmaxAudit();
+    }
+
+    /**
+     * Publishes the final state to the diagnostic observer after the last
+     * real PDDR boundary has completed.  This hook only reads algorithm state;
+     * it does not alter FE accounting, decisions, randomness, or stop rules.
+     */
+    private void finishMidHorizonTerminalSnapshot() {
+        if (midHorizonTelemetry == null || !midHorizonTelemetry.isEnabled()) return;
+        List<PermutationSolution<Integer>> working = getSwarm() == null
+                ? null : new ArrayList<PermutationSolution<Integer>>(getSwarm());
+        List<PermutationSolution<Integer>> decision = globallyOptimalIndividual == null
+                ? null : new ArrayList<PermutationSolution<Integer>>(globallyOptimalIndividual);
+        List<PermutationSolution<Integer>> observed = v35PassiveArchive == null
+                ? null : v35PassiveArchive.snapshot();
+        midHorizonTelemetry.onTerminalRunEnd(fullEvaluationCount, generationNumber(),
+                (int) formalBaselineOuterCycles, formalQRoundIndex, working, decision, observed,
+                org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35CheckpointFrontObserver
+                        .TERMINATION_KIND_PHASE_CONSISTENT_BUDGET,
+                globalSearchConfiguration.isV35CaTaLiteEnabled());
     }
 
     private void finishCmaxAudit() {
@@ -702,6 +775,10 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                         System.nanoTime() - tArch0, 1L);
                 formalBaselineQgRounds++;
                 completedRounds++;
+                observeMidHorizonBatch(
+                        org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35CheckpointFrontObserver
+                                .BOUNDARY_Q_ROUND,
+                        swarm);
             }
             formalQRoundIndex = -1;
             if (completedRounds == 0) break;
@@ -730,20 +807,41 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             // V35-FC-2: open the shared local-FE window for this cycle before
             // CA-TA-Lite and the inherited local search consume it.
             beginLocalFeBudgetWindow(fullEvaluationCount - beforeCycle);
-            if (globalSearchConfiguration.isV35CaTaLiteEnabled()) {
-                long tCata = System.nanoTime();
-                runV35CaTaLiteLocalSearch(swarm, problemContext);
+            double auditAfterCaTa;
+            double auditAfterLs;
+            if (globalSearchConfiguration.getV35LocalSearchOrder()
+                    == org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35LocalSearchOrder
+                    .INHERITED_THEN_CATA) {
+                long tLs0 = System.nanoTime();
+                runFormalInheritedLocalSearch(swarm, problemContext);
                 org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.record(
-                        org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.CATA,
-                        System.nanoTime() - tCata, 1L);
+                        org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.LS,
+                        System.nanoTime() - tLs0, 1L);
+                auditAfterLs = bestCmaxOf(swarm);
+                if (globalSearchConfiguration.isV35CaTaLiteEnabled()) {
+                    long tCata = System.nanoTime();
+                    runV35CaTaLiteLocalSearch(swarm, problemContext);
+                    org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.record(
+                            org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.CATA,
+                            System.nanoTime() - tCata, 1L);
+                }
+                auditAfterCaTa = bestCmaxOf(swarm);
+            } else {
+                if (globalSearchConfiguration.isV35CaTaLiteEnabled()) {
+                    long tCata = System.nanoTime();
+                    runV35CaTaLiteLocalSearch(swarm, problemContext);
+                    org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.record(
+                            org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.CATA,
+                            System.nanoTime() - tCata, 1L);
+                }
+                auditAfterCaTa = bestCmaxOf(swarm);
+                long tLs0 = System.nanoTime();
+                runFormalInheritedLocalSearch(swarm, problemContext);
+                org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.record(
+                        org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.LS,
+                        System.nanoTime() - tLs0, 1L);
+                auditAfterLs = bestCmaxOf(swarm);
             }
-            double auditAfterCaTa = bestCmaxOf(swarm);
-            long tLs0 = System.nanoTime();
-            runFormalInheritedLocalSearch(swarm, problemContext);
-            org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.record(
-                    org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.LS,
-                    System.nanoTime() - tLs0, 1L);
-            double auditAfterLs = bestCmaxOf(swarm);
             long tDecode2 = System.nanoTime();
             V35EvaluationSourceContext.begin(V35EvaluationSourceContext.Source.FINAL_EVALUATE);
             try {
@@ -770,8 +868,21 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.record(
                     org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.ARCHIVE,
                     System.nanoTime() - tArch1, 1L);
+            if (v35Fc5TransferAudit.isEnabled()) {
+                v35Fc5TransferAudit.observeArchiveWorkingGap(auditCycle, fullEvaluationCount,
+                        swarm, globallyOptimalIndividual);
+            }
             updateProgress();
             formalBaselineOuterCycles++;
+            if (midHorizonTelemetry != null && midHorizonTelemetry.isEnabled()) {
+                midHorizonTelemetry.onAtomicPhaseEnd(fullEvaluationCount,
+                        generationNumber(), (int) formalBaselineOuterCycles,
+                        completedRounds, new ArrayList<PermutationSolution<Integer>>(swarm),
+                        globallyOptimalIndividual,
+                        v35PassiveArchive == null ? null : v35PassiveArchive.snapshot(),
+                        org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35CheckpointFrontObserver
+                                .BOUNDARY_PDDR_POST_SAMPLE);
+            }
             // FC-6A-POST / Build-C2: per-cycle population/archive geometry + lineage snapshot
             // (pure observation; enabled flag short-circuits when the audit is off).
             if (org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35Fc6BpPddrDiagnosticAudit
@@ -1049,6 +1160,13 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                 (int) formalBaselineOuterCycles + 1, formalQRoundIndex, lineageId(solution));
     }
 
+    /** FC5-T resolves only already-created observer links after real decoder evaluation. */
+    private void fc5TransferRecordEvaluated(PermutationSolution<Integer> solution, long fe) {
+        if (v35Fc5TransferAudit.isEnabled()) {
+            v35Fc5TransferAudit.observeEvaluatedCandidate(solution, fe);
+        }
+    }
+
     private void fc52LocalAccepted(PermutationSolution<Integer> candidate, long fe,
             String reason) {
         V35Fc52LifecycleAudit fc52 = V35Fc52LifecycleAudit.current();
@@ -1062,6 +1180,29 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         V35Fc52LifecycleAudit fc52 = V35Fc52LifecycleAudit.current();
         if (fc52 != null) {
             fc52.recordLocalRejected(candidate, fe, reason);
+        }
+    }
+
+    /** FC-6A.3 audit hooks; all are read-only and disappear completely when disabled. */
+    private void fc6RecordEvaluated(ZhangBoEvaluatedPddrSelector.Source source,
+            PermutationSolution<Integer> candidate) {
+        V35Fc6LocalCandidateAudit audit = V35Fc6LocalCandidateAudit.current();
+        if (audit != null) audit.recordEvaluated((int) formalBaselineOuterCycles + 1,
+                // Every caller reaches this hook immediately after exactly one
+                // complete local candidate evaluation.  The ledger therefore
+                // records source-local FE, not the running global FE counter.
+                source, 1L, candidate);
+    }
+
+    private void fc6RecordAccepted(ZhangBoEvaluatedPddrSelector.Source source) {
+        V35Fc6LocalCandidateAudit audit = V35Fc6LocalCandidateAudit.current();
+        if (audit != null) audit.recordAccepted((int) formalBaselineOuterCycles + 1, source);
+    }
+
+    private void fc6RecordSuperseded(LocalCandidateOrigin source) {
+        V35Fc6LocalCandidateAudit audit = V35Fc6LocalCandidateAudit.current();
+        if (audit != null && source != null) {
+            audit.recordSuperseded((int) formalBaselineOuterCycles + 1, source.selectorSource);
         }
     }
 
@@ -1085,6 +1226,12 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                 }
             }
             if (!unevaluated.isEmpty()) {
+                auditTrueCandidatesBeforeEvaluation(
+                        unevaluated,
+                        evaluationsBefore == 0L
+                                ? V35EvaluationSourceContext.Source.INITIAL_POPULATION.name()
+                                : V35EvaluationSourceContext.Source.GLOBAL_CFVF.name(),
+                        evaluationsBefore);
                 evaluator.evaluate(unevaluated, (Problem<PermutationSolution<Integer>>) problem);
                 fullEvaluationCount += unevaluated.size();
                 if (cmaxAudit != null && evaluationsBefore == 0L) {
@@ -1111,6 +1258,8 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                         fc52RecordEvaluated(solution,
                                 fullEvaluationCount - unevaluated.size() + index + 1L,
                                 V35EvaluationSourceContext.current());
+                        fc5TransferRecordEvaluated(solution,
+                                fullEvaluationCount - unevaluated.size() + index + 1L);
                     }
                 }
                 if (v35PassiveArchive != null) {
@@ -1121,6 +1270,12 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             }
             return swarm;
         }
+        auditTrueCandidatesBeforeEvaluation(
+                swarm,
+                evaluationsBefore == 0L
+                        ? V35EvaluationSourceContext.Source.INITIAL_POPULATION.name()
+                        : V35EvaluationSourceContext.Source.GLOBAL_CFVF.name(),
+                evaluationsBefore);
         swarm = evaluator.evaluate(swarm, (Problem<PermutationSolution<Integer>>) problem);
         fullEvaluationCount += swarm.size();
         if (cmaxAudit != null && evaluationsBefore == 0L) {
@@ -1144,6 +1299,8 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                         fc52RecordEvaluated(solution,
                                 fullEvaluationCount - swarm.size() + index + 1L,
                                 V35EvaluationSourceContext.current());
+                        fc5TransferRecordEvaluated(solution,
+                                fullEvaluationCount - swarm.size() + index + 1L);
                     }
                 }
                 if (v35PassiveArchive != null) {
@@ -1236,6 +1393,27 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         groupUNewSolution.clear();
         groupC2Solution.clear();
         groupD3Solution.clear();
+
+        // FC-6B: REGION_AWARE PDDR already assigned every survivor to the
+        // immutable physical role. Do not silently overwrite that assignment
+        // by re-running the historical global extrema regrouping below.
+        if (globalSearchConfiguration.getPddrSelectionMode()
+                == PddrSelectionMode.REGION_AWARE) {
+            int assignedRoles = countRegionAwareRoles(swarm);
+            // The initial population predates its first PDDR selection and
+            // therefore deliberately has no assigned region.  It is grouped
+            // by the historical deterministic bootstrap once; every later
+            // survivor must carry the PDDR-assigned physical role.
+            if (assignedRoles == swarmSize) {
+                partitionRegionAwareSwarm(swarm);
+                select();
+                return;
+            }
+            if (assignedRoles != 0) {
+                throw new IllegalStateException("REGION_AWARE partial physical-role assignment: "
+                        + assignedRoles + "/" + swarmSize);
+            }
+        }
 
         List<PermutationSolution<Integer>> temp1 = new ArrayList<>(swarmSize);
         List<PermutationSolution<Integer>> temp2 = new ArrayList<>(swarmSize);
@@ -1355,6 +1533,59 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
 
         select();
 
+    }
+
+    /** Rebuilds the four author physical slots from REGION_AWARE PDDR roles. */
+    private void partitionRegionAwareSwarm(List<PermutationSolution<Integer>> swarm) {
+        if (swarm.size() != swarmSize || tempSwarm.size() != swarmSize) {
+            throw new IllegalStateException("Region-aware swarm/history alignment is incomplete");
+        }
+        for (int index = 0; index < swarm.size(); index++) {
+            Object raw = swarm.get(index).getAttribute(ZhangBoSubSwarm.class);
+            if (!(raw instanceof ZhangBoSubSwarm)) {
+                throw new IllegalStateException("REGION_AWARE survivor has no physical role at index=" + index);
+            }
+            ZhangBoSubSwarm role = (ZhangBoSubSwarm) raw;
+            PermutationSolution<Integer> copy = (PermutationSolution<Integer>) swarm.get(index).copy();
+            List<PermutationSolution<Integer>> history =
+                    ZhangBoSolutionSupport.deepCopySolutions(tempSwarm.get(index));
+            switch (role) {
+                case G1_CMAX:
+                    groupU1Solution.add(copy);
+                    upGroup1Population.add(history);
+                    break;
+                case G4_BALANCED:
+                    groupC2Solution.add(copy);
+                    centralGroup2Population.add(history);
+                    break;
+                case G2_TEC:
+                    groupD3Solution.add(copy);
+                    downGroup3Population.add(history);
+                    break;
+                case G3_TWC:
+                    groupUNewSolution.add(copy);
+                    upNewGroup1Population.add(history);
+                    break;
+                default:
+                    throw new IllegalStateException("Unhandled REGION_AWARE role=" + role);
+            }
+        }
+        if (groupU1Solution.size() != upSize || groupC2Solution.size() != centralSize
+                || groupD3Solution.size() != downSize || groupUNewSolution.size() != upNewSize) {
+            throw new IllegalStateException("REGION_AWARE physical capacity mismatch: slot1="
+                    + groupU1Solution.size() + ",slot2=" + groupC2Solution.size()
+                    + ",slot3=" + groupD3Solution.size() + ",slot4=" + groupUNewSolution.size());
+        }
+    }
+
+    private int countRegionAwareRoles(List<PermutationSolution<Integer>> swarm) {
+        int count = 0;
+        for (PermutationSolution<Integer> solution : swarm) {
+            if (solution.getAttribute(ZhangBoSubSwarm.class) instanceof ZhangBoSubSwarm) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -1840,6 +2071,7 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
 
     @Override
     protected void updatePosition(List<PermutationSolution<Integer>> swarm) {
+        captureTrueGlobalParents(swarm);
         long tDualQ0 = System.nanoTime();
         prepareDualQCoordination();
         org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.record(
@@ -2580,6 +2812,7 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         pendingQgUpdatesBefore = zhangBoQgController.getTdUpdateCount();
         pendingQpActionsBefore = zhangBoQpController.getExecutedActionCount();
         pendingQpTransitionsBefore = zhangBoQpController.getTrainedTransitionCount();
+        pendingQpFrozenObservationsBefore = zhangBoQpController.getFrozenObservationCount();
     }
 
     private void prepareOriginalQg() {
@@ -2604,6 +2837,7 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             candidates.addAll(copySolutions(groupD3Solution));
             candidates.addAll(copySolutions(groupUNewSolution));
         }
+        long archiveCopyElapsed = System.nanoTime() - tOgCopy0;
         long tOgDscr0 = System.nanoTime();
         if (globalSearchConfiguration.isDscrEnabled()) {
             candidates = applyV35Dscr(candidates);
@@ -2613,14 +2847,35 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.record(
                 org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.OG_DSCR,
                 System.nanoTime() - tOgDscr0, 1L);
+        long archiveSanitationElapsed = System.nanoTime() - tOgDscr0;
+        List<PermutationSolution<Integer>> fullTeacherCandidates = candidates;
+        long teacherViewBuildStarted = System.nanoTime();
+        List<PermutationSolution<Integer>> teacherCandidates =
+                v35ArchiveExperimentRuntime == null ? fullTeacherCandidates
+                        : v35ArchiveExperimentRuntime.teacherCandidates(fullTeacherCandidates);
+        long teacherViewBuildElapsed = System.nanoTime() - teacherViewBuildStarted;
         long tOgSelect0 = System.nanoTime();
-        selectQgLeader(ZhangBoSubSwarm.G1_CMAX, groupU1Solution, candidates);
-        selectQgLeader(ZhangBoSubSwarm.G4_BALANCED, groupC2Solution, candidates);
-        selectQgLeader(ZhangBoSubSwarm.G2_TEC, groupD3Solution, candidates);
-        selectQgLeader(ZhangBoSubSwarm.G3_TWC, groupUNewSolution, candidates);
+        selectQgLeader(ZhangBoSubSwarm.G1_CMAX, groupU1Solution, teacherCandidates);
+        selectQgLeader(ZhangBoSubSwarm.G4_BALANCED, groupC2Solution, teacherCandidates);
+        selectQgLeader(ZhangBoSubSwarm.G2_TEC, groupD3Solution, teacherCandidates);
+        selectQgLeader(ZhangBoSubSwarm.G3_TWC, groupUNewSolution, teacherCandidates);
+        long teacherSelectionElapsed = System.nanoTime() - tOgSelect0;
         org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.record(
                 org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ModuleTimer.OG_LEADER_SELECT,
-                System.nanoTime() - tOgSelect0, 1L);
+                teacherSelectionElapsed, 1L);
+        if (v35ArchiveExperimentRuntime != null) {
+            long elapsedPerGroup = teacherSelectionElapsed / 4L;
+            for (ZhangBoSubSwarm group : new ZhangBoSubSwarm[]{
+                    ZhangBoSubSwarm.G1_CMAX, ZhangBoSubSwarm.G4_BALANCED,
+                    ZhangBoSubSwarm.G2_TEC, ZhangBoSubSwarm.G3_TWC}) {
+                v35ArchiveExperimentRuntime.observeTeacherSelection(
+                        fullEvaluationCount, generationNumber(), group,
+                        pendingQgSelections.get(group), fullTeacherCandidates,
+                        teacherCandidates, archiveCopyElapsed / 4L,
+                        archiveSanitationElapsed / 4L, teacherViewBuildElapsed / 4L,
+                        elapsedPerGroup);
+            }
+        }
         all3GlobalOptIndividuals.clear();
         for (ZhangBoSubSwarm group : new ZhangBoSubSwarm[]{
                 ZhangBoSubSwarm.G1_CMAX, ZhangBoSubSwarm.G4_BALANCED,
@@ -2712,6 +2967,28 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                 ? zhangBoQgController.selectGreedy(group, candidates)
                 : zhangBoQgController.select(group, candidates);
         pendingQgSelections.put(group, selection);
+        if (midHorizonTelemetry != null && midHorizonTelemetry.isEnabled()) {
+            double selectedScore = teacherDirectionalScore(selection.getLeader(), group, candidates);
+            double eligibleBest = bestTeacherDirectionalScore(group, candidates);
+            String eventId = midHorizonTelemetry.onTeacherSelection(
+                    V35TeacherConcentrationObserver.SelectionContext.observed(
+                            "QG", selection.getState(), qgActionText(selection.getAction()),
+                            ZhangBoSubSwarmSemantics.physicalSlotForRole(group), group,
+                            candidates.size(), eligibleBest, selectedScore,
+                            selectedScore - eligibleBest, qgTeacherSource(selection.getAction()),
+                            qgCacheType(selection.getAction())),
+                    selection.getLeader(), fullEvaluationCount,
+                    generationNumber(), (int) formalBaselineOuterCycles + 1);
+            pendingQgTeacherEvents.put(group, eventId);
+        }
+        // FC-6B: region membership is observational only.  Qg remains free
+        // to select a cross-region teacher; the audit records exposure rather
+        // than adding a new teacher gate.
+        V35Fc6LocalCandidateAudit fc6LocalAudit = V35Fc6LocalCandidateAudit.current();
+        if (fc6LocalAudit != null) {
+            fc6LocalAudit.recordTeacherExposure((int) formalBaselineOuterCycles + 1,
+                    group, selection.getLeader());
+        }
         // FC-6A-POST / Build-C2: Qg 教师曝光（纯观察；按 fingerprint 匹配 rescue 注册表）。
         if (org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35Fc6BpPddrDiagnosticAudit
                 .isEnabled()) {
@@ -2723,6 +3000,10 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         v35CmaxLifecycleAudit.markTeacher(lineageId(selection.getLeader()));
         // FC-5.1: is the selected Qg leader the archive-best Cmax solution?
         v35CmaxLifecycleAudit.observeQgTeacher(lineageId(selection.getLeader()));
+        if (v35Fc5TransferAudit.isEnabled()) {
+            v35Fc5TransferAudit.observeTeacherUse("QG", group, selection.getLeader(),
+                    fullEvaluationCount, (int) formalBaselineOuterCycles + 1);
+        }
         if (globalSearchConfiguration.isDscrEnabled()) {
             if (pendingV35SocialSnapshot == null) {
                 throw new IllegalStateException("DSCR selection has no frozen social snapshot");
@@ -2741,6 +3022,87 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                 throw new IllegalStateException("DSCR selected a strictly dominated Qg teacher for " + group);
             }
         }
+    }
+
+    private static String qgActionText(int action) {
+        if (action == 0) return "PREVIOUS_CACHE";
+        if (action == 1) return "HISTORICAL_CACHE";
+        return "GLOBAL_ARCHIVE_TOURNAMENT";
+    }
+
+    private static V35TeacherConcentrationObserver.TeacherSource qgTeacherSource(int action) {
+        if (action == 0) return V35TeacherConcentrationObserver.TeacherSource.PREVIOUS_CACHE;
+        if (action == 1) return V35TeacherConcentrationObserver.TeacherSource.HISTORICAL_CACHE;
+        return V35TeacherConcentrationObserver.TeacherSource.GLOBAL_ARCHIVE;
+    }
+
+    private static V35TeacherConcentrationObserver.CacheType qgCacheType(int action) {
+        if (action == 0) return V35TeacherConcentrationObserver.CacheType.PREVIOUS_CACHE;
+        if (action == 1) return V35TeacherConcentrationObserver.CacheType.HISTORICAL_CACHE;
+        return V35TeacherConcentrationObserver.CacheType.NOT_A_CACHE;
+    }
+
+    private static double bestTeacherDirectionalScore(ZhangBoSubSwarm group,
+            List<PermutationSolution<Integer>> candidates) {
+        if (candidates == null || candidates.isEmpty()) return Double.NaN;
+        double best = Double.POSITIVE_INFINITY;
+        for (PermutationSolution<Integer> candidate : candidates) {
+            double score = teacherDirectionalScore(candidate, group, candidates);
+            if (Double.isFinite(score)) best = Math.min(best, score);
+        }
+        return best == Double.POSITIVE_INFINITY ? Double.NaN : best;
+    }
+
+    private static double teacherDirectionalScore(PermutationSolution<Integer> candidate,
+            ZhangBoSubSwarm group, List<PermutationSolution<Integer>> candidates) {
+        if (candidate == null || group == null || candidates == null || candidates.isEmpty()) {
+            return Double.NaN;
+        }
+        double[] min = new double[]{Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY,
+                Double.POSITIVE_INFINITY};
+        double[] max = new double[]{Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY,
+                Double.NEGATIVE_INFINITY};
+        int[] objectives = new int[]{0, 1, 6};
+        for (PermutationSolution<Integer> value : candidates) {
+            if (value == null) continue;
+            for (int index = 0; index < objectives.length; index++) {
+                double objective = value.getObjective(objectives[index]);
+                min[index] = Math.min(min[index], objective);
+                max[index] = Math.max(max[index], objective);
+            }
+        }
+        for (int index = 0; index < min.length; index++) {
+            if (!Double.isFinite(min[index]) || !Double.isFinite(max[index])) return Double.NaN;
+        }
+        return ZhangBoSubSwarmSemantics.phi(candidate, group, min, max);
+    }
+
+    private static PermutationSolution<Integer> bestDirectionalSolution(
+            List<PermutationSolution<Integer>> candidates, ZhangBoSubSwarm group) {
+        if (candidates == null || candidates.isEmpty()) return null;
+        PermutationSolution<Integer> best = candidates.get(0);
+        double bestScore = teacherDirectionalScore(best, group, candidates);
+        for (PermutationSolution<Integer> candidate : candidates) {
+            double score = teacherDirectionalScore(candidate, group, candidates);
+            if (score < bestScore) {
+                best = candidate;
+                bestScore = score;
+            }
+        }
+        return best;
+    }
+
+    private static boolean directionalTeacherImproved(
+            PermutationSolution<Integer> offspring,
+            PermutationSolution<Integer> teacher,
+            ZhangBoSubSwarm group) {
+        List<PermutationSolution<Integer>> comparison = new ArrayList<>();
+        comparison.add(teacher);
+        comparison.add(offspring);
+        double teacherScore = teacherDirectionalScore(teacher, group, comparison);
+        double offspringScore = teacherDirectionalScore(offspring, group, comparison);
+        return Double.isFinite(teacherScore) && Double.isFinite(offspringScore)
+                && offspringScore < teacherScore;
     }
 
     private void settleOriginalQg(List<PermutationSolution<Integer>> evaluated) {
@@ -2787,9 +3149,18 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                 zhangBoP6Events.add("generation=" + currentIteration + ":" + group
                         + ":reward=" + reward);
             }
+            String teacherEventId = pendingQgTeacherEvents.get(group);
+            if (teacherEventId != null && teacherEventId.length() > 0
+                    && midHorizonTelemetry != null && midHorizonTelemetry.isEnabled()) {
+                PermutationSolution<Integer> outcome = bestDirectionalSolution(groupAfter, group);
+                boolean improved = bestTeacherDirectionalScore(group, groupAfter)
+                        < bestTeacherDirectionalScore(group, pendingQgBefore.get(group));
+                midHorizonTelemetry.onTeacherOffspringEvaluated(teacherEventId, outcome, improved);
+            }
         }
         pendingQgSelections.clear();
         pendingQgBefore.clear();
+        pendingQgTeacherEvents.clear();
         pendingCfvfGbestContrib.clear();
     }
 
@@ -2867,10 +3238,11 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                     : zhangBoBaselineUpdater.update(current, personalLeader, socialLeader,
                     zhangBoResourceDomain, Rand_k, Cross_c, Mutation_m,
                     mutationRate4machine, mutationRate4worker, zhangBoP6Random);
-            PermutationSolution<Integer> offspring = result.getSolution();
-            offspring.setAttribute(ZhangBoSubSwarm.class, group);
-            particles.set(index, offspring);
-            zhangBoP6Events.add("generation=" + currentIteration + ":baseline=" + group
+             PermutationSolution<Integer> offspring = result.getSolution();
+             offspring.setAttribute(ZhangBoSubSwarm.class, group);
+             particles.set(index, offspring);
+             rememberTrueGlobalParent(offspring, current, trueGlobalSlot(group, index));
+             zhangBoP6Events.add("generation=" + currentIteration + ":baseline=" + group
                     + ":particle=" + index + ":pbestIndex=" + personalIndex
                     + ":events=" + result.getEvents().size());
             baselineUpdateEventCount++;
@@ -3121,10 +3493,11 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                         g1Diagnostics.getJsHamming() > 0, g1Diagnostics.getFaHamming() > 0,
                         g1Diagnostics.getMaHamming() > 0, g1Diagnostics.getWaHamming() > 0);
             }
-            PermutationSolution<Integer> offspring = result.getSolution();
-            offspring.setAttribute(ZhangBoSubSwarm.class, group);
-            particles.set(index, offspring);
-            ZhangBoCfvfDiagnostics diagnostics = result.getDiagnostics();
+             PermutationSolution<Integer> offspring = result.getSolution();
+             offspring.setAttribute(ZhangBoSubSwarm.class, group);
+             particles.set(index, offspring);
+             rememberTrueGlobalParent(offspring, current, trueGlobalSlot(group, index));
+             ZhangBoCfvfDiagnostics diagnostics = result.getDiagnostics();
             // FC-6A-POST / Build-C2: CFVF 学习曝光（纯观察；gbest/pbestInherited>0 为真实学习）。
             if (org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35Fc6BpPddrDiagnosticAudit
                     .isEnabled()) {
@@ -3132,6 +3505,19 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                         .current().observeCfvfLearning(group, leader, personalLeader,
                         diagnostics.getGbestInherited(), diagnostics.getPbestInherited(),
                         fullEvaluationCount, (int) formalBaselineOuterCycles + 1);
+            }
+            if (v35Fc5TransferAudit.isEnabled()) {
+                if (diagnostics.getGbestInherited() > 0) {
+                    v35Fc5TransferAudit.observeGeneratedOffspring(current, leader, offspring,
+                            "QG", group);
+                }
+                if (globalSearchConfiguration.isQpEnabled()
+                        && diagnostics.getPbestInherited() > 0) {
+                    v35Fc5TransferAudit.observeTeacherUse("QP", group, personalLeader,
+                            fullEvaluationCount, (int) formalBaselineOuterCycles + 1);
+                    v35Fc5TransferAudit.observeGeneratedOffspring(current, personalLeader,
+                            offspring, "QP", group);
+                }
             }
             cfvfOffspringCount++;
             cfvfRepairCount += diagnostics.getRepairs();
@@ -3172,10 +3558,13 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
     }
 
     private boolean usesArchivePersonalLeader() {
+        return globalSearchConfiguration.isLineageArchiveEnabled();
+    }
+
+    private boolean usesP8ArchiveRandomPolicy() {
         P8AblationProfile profile = globalSearchConfiguration.getP8AblationProfile();
-        return globalSearchConfiguration.isQpEnabled() || (profile != null
-                && profile.getPersonalLeaderMode()
-                != P8AblationProfile.PersonalLeaderMode.AUTHOR_SINGLE);
+        return profile != null && profile.getPersonalLeaderMode()
+                == P8AblationProfile.PersonalLeaderMode.ARCHIVE_RANDOM_FOUR;
     }
 
     private void prepareP8ArchivePersonalLeaders() {
@@ -3203,8 +3592,10 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             PermutationSolution<Integer> socialLeader, Map<Long, ZhangBoLineageMemory> memories,
             org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoArchiveBounds bounds,
             long firstBranch) {
-        P8AblationProfile.PersonalLeaderMode mode = globalSearchConfiguration
-                .getP8AblationProfile().getPersonalLeaderMode();
+        P8AblationProfile profile = globalSearchConfiguration.getP8AblationProfile();
+        P8AblationProfile.PersonalLeaderMode mode = profile == null
+                ? P8AblationProfile.PersonalLeaderMode.AUTHOR_SINGLE
+                : profile.getPersonalLeaderMode();
         for (int index = 0; index < particles.size(); index++) {
             PermutationSolution<Integer> particle = particles.get(index);
             Object lineageValue = particle.getAttribute(ZhangBoLineageTag.class);
@@ -3215,10 +3606,13 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             ZhangBoLineageMemory memory = memories.get(lineage);
             if (memory == null) throw new IllegalStateException("Missing lineage " + lineage);
             List<ZhangBoArchiveEntry> entries = memory.getEntries();
-            ZhangBoArchiveEntry selected = zhangBoArchivePersonalLeaderSelector.directional(
+            ZhangBoArchiveEntry selected = ZhangBoDirectionalArchiveSelector.select(
                     entries, group, bounds);
             boolean randomPolicy = mode == P8AblationProfile.PersonalLeaderMode.ARCHIVE_RANDOM_FOUR;
             if (randomPolicy && entries.size() > 1) {
+                if (zhangBoArchivePersonalLeaderSelector == null) {
+                    throw new IllegalStateException("P8 random archive selector was not initialized");
+                }
                 String selectedFingerprint = null;
                 Object state = particle.getAttribute(ZhangBoQpLineageState.class);
                 if (state instanceof ZhangBoQpLineageState) {
@@ -3250,12 +3644,18 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                     new ZhangBoQpBranchTag(branchId, lineage));
             pendingPersonalLeaders.put(branchId,
                     ZhangBoPersonalLeaderDecision.archive(branchId, group, selected, randomPolicy));
+            v35A2A3PersonalLeaderAudit.record(generationNumber(), fullEvaluationCount,
+                    group.name(), branchId, lineage, "ARCHIVE_DIRECTIONAL",
+                    randomPolicy ? "ARCHIVE_RANDOM_POLICY" : "DIRECTIONAL",
+                    "", entries.size(), selected.getFingerprint(), false);
         }
         return firstBranch + particles.size();
     }
 
     private void prepareQpSelections() {
         pendingQpSelections.clear();
+        pendingQpTeacherEvents.clear();
+        pendingQpTeacherSolutions.clear();
         pendingPersonalLeaders.clear();
         Map<Long, ZhangBoLineageMemory> memories = zhangBoLineageCoordinator.getMemories();
         org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoArchiveBounds bounds =
@@ -3302,11 +3702,41 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             }
             pendingPersonalLeaders.put(selection.getBranchId(),
                     ZhangBoPersonalLeaderDecision.fromQp(selection));
+            int particleIndex = (int) (selection.getBranchId() - firstBranchId);
+            if (particleIndex < 0 || particleIndex >= particles.size()) {
+                throw new IllegalStateException("Qp branch does not map to its source particle: "
+                        + selection.getBranchId());
+            }
+            PermutationSolution<Integer> teacher = selection.pbestSolution(particles.get(particleIndex));
+            pendingQpTeacherSolutions.put(selection.getBranchId(), teacher);
+            if (midHorizonTelemetry != null && midHorizonTelemetry.isEnabled()) {
+                String eventId = midHorizonTelemetry.onTeacherSelection(
+                        V35TeacherConcentrationObserver.SelectionContext.observed(
+                                "QP", selection.getState(), selection.getAction().name(),
+                                ZhangBoSubSwarmSemantics.physicalSlotForRole(group), group,
+                                selection.getPreviousArchiveSize(),
+                                selection.getEligibleBestDirectionalScore(),
+                                selection.getSelectedDirectionalScore(),
+                                selection.getSelectedDirectionalScore()
+                                        - selection.getEligibleBestDirectionalScore(),
+                                V35TeacherConcentrationObserver.TeacherSource.PERSONAL_ARCHIVE,
+                                V35TeacherConcentrationObserver.CacheType.NOT_A_CACHE),
+                        teacher, fullEvaluationCount, generationNumber(),
+                        (int) formalBaselineOuterCycles + 1);
+                pendingQpTeacherEvents.put(selection.getBranchId(), eventId);
+            }
+            v35A2A3PersonalLeaderAudit.record(generationNumber(), fullEvaluationCount,
+                    group.name(), selection.getBranchId(), selection.getLineageId(), "QP_ACTION",
+                    selection.getAction().name(), java.util.Arrays.toString(selection.getMask()),
+                    memories.get(selection.getLineageId()).getEntries().size(),
+                    selection.getSelectedPbestFingerprint(), false);
         }
     }
 
     private void prepareWarmupPersonalLeaders() {
         pendingQpSelections.clear();
+        pendingQpTeacherEvents.clear();
+        pendingQpTeacherSolutions.clear();
         pendingPersonalLeaders.clear();
         Map<Long, ZhangBoLineageMemory> memories = zhangBoLineageCoordinator.getMemories();
         org.uma.jmetal.algorithm.multiobjective.mypso.zhangbo.ZhangBoArchiveBounds bounds =
@@ -3339,6 +3769,15 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             if (pendingPersonalLeaders.put(decision.getBranchId(), decision) != null) {
                 throw new IllegalStateException("Duplicate warmup branch " + decision.getBranchId());
             }
+            Object lineageValue = particles.get((int) (decision.getBranchId() - firstBranchId))
+                    .getAttribute(ZhangBoLineageTag.class);
+            long lineage = lineageValue instanceof ZhangBoLineageTag
+                    ? ((ZhangBoLineageTag) lineageValue).getLineageId() : -1L;
+            int archiveSize = lineage < 0L ? 0 : memories.get(lineage).getEntries().size();
+            v35A2A3PersonalLeaderAudit.record(generationNumber(), fullEvaluationCount,
+                    group.name(), decision.getBranchId(), lineage, "WARMUP_DIRECTIONAL",
+                    "DIRECTIONAL", "", archiveSize,
+                    decision.getSelectedPbestFingerprint(), false);
         }
     }
 
@@ -3354,6 +3793,8 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             if (!pendingQpSelections.isEmpty()) {
                 throw new IllegalStateException("Warmup created Qp transitions");
             }
+            pendingQpTeacherEvents.clear();
+            pendingQpTeacherSolutions.clear();
             pendingPersonalLeaders.clear();
             return;
         }
@@ -3362,7 +3803,10 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         }
         long firstOrdinal = fullEvaluationCount - evaluated.size() + 1L;
         double softRho = dualQSoftFreezeRho();
-        if (pendingDualQDecision != null && pendingDualQDecision.isGBlock()
+        boolean observeOnlyAllCycles = globalSearchConfiguration.getV35QpSettlementPolicy()
+                == org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35QpSettlementPolicy
+                        .OBSERVE_ONLY_ALL_CYCLES;
+        if (!observeOnlyAllCycles && pendingDualQDecision != null && pendingDualQDecision.isGBlock()
                 && softRho > 0.0) {
             java.util.Set<Long> contributingBranches = new java.util.HashSet<>();
             for (java.util.Set<Long> branches : pendingCfvfPbestContribBranches.values()) {
@@ -3373,14 +3817,35 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                     ZhangBoQpController.SettlementMode.SOFT_LEARN, softRho,
                     contributingBranches);
         } else {
-            ZhangBoQpController.SettlementMode settlementMode =
-                    pendingDualQDecision != null && pendingDualQDecision.isGBlock()
+            ZhangBoQpController.SettlementMode settlementMode = observeOnlyAllCycles
+                    ? ZhangBoQpController.SettlementMode.OBSERVE_ONLY
+                    : pendingDualQDecision != null && pendingDualQDecision.isGBlock()
                     ? ZhangBoQpController.SettlementMode.OBSERVE_ONLY
                     : ZhangBoQpController.SettlementMode.LEARN;
             zhangBoQpController.settle(evaluated, pendingQpSelections,
                     zhangBoLineageCoordinator.getFrozenBounds(), firstOrdinal, settlementMode);
         }
+        if (midHorizonTelemetry != null && midHorizonTelemetry.isEnabled()) {
+            for (Map.Entry<Long, String> event : pendingQpTeacherEvents.entrySet()) {
+                PermutationSolution<Integer> child = null;
+                for (PermutationSolution<Integer> candidate : evaluated) {
+                    Object tag = candidate.getAttribute(ZhangBoQpBranchTag.class);
+                    if (tag instanceof ZhangBoQpBranchTag
+                            && ((ZhangBoQpBranchTag) tag).getBranchId() == event.getKey()) {
+                        child = candidate;
+                        break;
+                    }
+                }
+                PermutationSolution<Integer> teacher = pendingQpTeacherSolutions.get(event.getKey());
+                boolean improved = child != null && teacher != null
+                        && directionalTeacherImproved(child, teacher,
+                        pendingQpSelections.get(event.getKey()).getGroup());
+                midHorizonTelemetry.onTeacherOffspringEvaluated(event.getValue(), child, improved);
+            }
+        }
         pendingQpSelections.clear();
+        pendingQpTeacherEvents.clear();
+        pendingQpTeacherSolutions.clear();
         pendingPersonalLeaders.clear();
         pendingCfvfPbestContribBranches.clear();
     }
@@ -4611,6 +5076,9 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             if (ZhangBoPreEvaluatedTag.isMarked(candidate)) {
                 throw new IllegalStateException("Global CFVF offspring unexpectedly carried a pre-evaluation marker");
             }
+            auditTrueCandidateBeforeEvaluation(
+                    candidate, V35EvaluationSourceContext.Source.GLOBAL_CFVF.name(),
+                    fullEvaluationCount, trueParentFor(candidate, slot));
             V35EvaluationSourceContext.begin(V35EvaluationSourceContext.Source.GLOBAL_CFVF);
             try {
                 problem.evaluate(candidate);
@@ -4747,12 +5215,18 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                                     new ZhangBoNeighborhoodCandidateGateway.CompleteEvaluator() {
                                         @Override
                                         public void evaluate(PermutationSolution<Integer> candidate) {
-                                            V35EvaluationSourceContext.begin(decision.isTestPhase()
-                                                    ? V35EvaluationSourceContext.Source.CATA_TEST
-                                                    : V35EvaluationSourceContext.Source.CATA_APPLY);
-                                            try {
-                                                problem.evaluate(candidate);
-                                            } finally {
+                                             V35EvaluationSourceContext.begin(decision.isTestPhase()
+                                                     ? V35EvaluationSourceContext.Source.CATA_TEST
+                                                     : V35EvaluationSourceContext.Source.CATA_APPLY);
+                                             try {
+                                                 auditTrueCandidateBeforeEvaluation(
+                                                         candidate,
+                                                         decision.isTestPhase()
+                                                                 ? V35EvaluationSourceContext.Source.CATA_TEST.name()
+                                                                 : V35EvaluationSourceContext.Source.CATA_APPLY.name(),
+                                                         fullEvaluationCount, parent);
+                                                 problem.evaluate(candidate);
+                                             } finally {
                                                 V35EvaluationSourceContext.end();
                                             }
                                         }
@@ -4814,7 +5288,7 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                                 ZhangBoPreEvaluatedTag.Source.INTRA_FACTORY_VNS, parent.slot,
                                 lineageId(parent.solution), fullEvaluationCount));
                         pendingCaTaLocalCandidates.add(new PendingCaTaLocalCandidate(local,
-                                parent.slot, parent.history));
+                                parent.slot, parent.history, LocalCandidateOrigin.O1_O9));
                         globalOffspring.add(local);
                     }
                 }
@@ -4950,17 +5424,33 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                 long attemptSeed = mixCaTaSeed(globalSearchConfiguration.getSeed()
                         ^ generationNumber() ^ parent.slot ^ decision.getEpoch()
                         ^ decision.getCallOrdinal() ^ action.ordinal());
-                V35MacroCandidateGateway.Prepared prepared = previews.get(action);
-                if (prepared == null) continue;
-                V35MacroCandidateGateway.Attempt attempt = v35MacroCandidateGateway.evaluateOne(prepared,
+                 V35MacroCandidateGateway.Prepared prepared = previews.get(action);
+                 if (prepared == null) continue;
+                 String telemetryEventId = "";
+                 if (midHorizonTelemetry != null && midHorizonTelemetry.isEnabled()) {
+                     telemetryEventId = midHorizonTelemetry.onCaTaCandidateGenerated(
+                             decision.isTest() ? "TEST" : "APPLY", action, parent.group,
+                             classification.getBottleneck() == null ? "UNKNOWN"
+                                     : classification.getBottleneck().name(),
+                             parent.solution, prepared.getCandidate(), fullEvaluationCount,
+                             (int) formalBaselineOuterCycles + 1,
+                             (int) formalBaselineOuterCycles + 1);
+                 }
+                 V35MacroCandidateGateway.Attempt attempt = v35MacroCandidateGateway.evaluateOne(prepared,
                         new V35MacroCandidateGateway.CompleteEvaluator() {
                             @Override public void evaluate(PermutationSolution<Integer> candidate) {
-                                V35EvaluationSourceContext.begin(decision.isTest()
-                                        ? V35EvaluationSourceContext.Source.CATA_TEST
-                                        : V35EvaluationSourceContext.Source.CATA_APPLY);
-                                try {
-                                    problem.evaluate(candidate);
-                                } finally {
+                                 V35EvaluationSourceContext.begin(decision.isTest()
+                                         ? V35EvaluationSourceContext.Source.CATA_TEST
+                                         : V35EvaluationSourceContext.Source.CATA_APPLY);
+                                 try {
+                                     auditTrueCandidateBeforeEvaluation(
+                                             candidate,
+                                             decision.isTest()
+                                                     ? V35EvaluationSourceContext.Source.CATA_TEST.name()
+                                                     : V35EvaluationSourceContext.Source.CATA_APPLY.name(),
+                                             fullEvaluationCount, parent);
+                                     problem.evaluate(candidate);
+                                 } finally {
                                     V35EvaluationSourceContext.end();
                                 }
                             }
@@ -4968,7 +5458,11 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                 if (!attempt.isApplicable()) continue;
                 fullEvaluationCount += attempt.getCompleteEvaluations();
                 caTaFullEvaluations += attempt.getCompleteEvaluations();
+                ZhangBoEvaluatedPddrSelector.Source fc6Source = decision.isTest()
+                        ? ZhangBoEvaluatedPddrSelector.Source.CATA_TEST
+                        : ZhangBoEvaluatedPddrSelector.Source.CATA_APPLY;
                 PermutationSolution<Integer> local = attempt.getCandidate();
+                fc6RecordEvaluated(fc6Source, local);
                 fc52RecordEvaluated(local, fullEvaluationCount,
                         decision.isTest()
                                 ? V35EvaluationSourceContext.Source.CATA_TEST
@@ -4983,6 +5477,7 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                         && ZhangBoLocalSearchAcceptance.accepts(parent.solution, local, parent.group);
                 if (accepted) {
                     fc52LocalAccepted(local, fullEvaluationCount, "ACCEPTED");
+                    fc6RecordAccepted(fc6Source);
                 } else {
                     fc52LocalRejected(local, fullEvaluationCount,
                             recoveryGain ? "NOT_BETTER" : "NO_RECOVERY_GAIN");
@@ -4996,10 +5491,20 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                             accepted);
                 }
                 observePassiveArchive(local);
-                v35CaTaLiteController.record(context, action, accepted, gain,
+                 v35CaTaLiteController.record(context, action, accepted, gain,
                         attempt.getCompleteEvaluations(), attempt.getWorkUnits(),
-                        attempt.getElapsedNanos(),
-                        decision.isTest());
+                         attempt.getElapsedNanos(),
+                         decision.isTest());
+                 if (midHorizonTelemetry != null && midHorizonTelemetry.isEnabled()) {
+                     midHorizonTelemetry.onCaTaCandidateEvaluated(telemetryEventId, local,
+                             fullEvaluationCount);
+                     midHorizonTelemetry.onCaTaAcceptedLocally(telemetryEventId, accepted,
+                             accepted ? "ACCEPTED" : (recoveryGain ? "NOT_BETTER"
+                                     : "NO_RECOVERY_GAIN"));
+                     if (!accepted) {
+                         midHorizonTelemetry.onCaTaEnteredMergePool(telemetryEventId, false);
+                     }
+                 }
                 if (decision.isTest()) caTaTestCalls++; else caTaApplyCalls++;
                 zhangBoCaTaEvents.add("v35Lite:action=" + action
                         + ",accepted=" + accepted + ",fe=" + fullEvaluationCount
@@ -5009,10 +5514,14 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                     ZhangBoPreEvaluatedTag.mark(local, new ZhangBoPreEvaluatedTag(
                             ZhangBoPreEvaluatedTag.Source.INTRA_FACTORY_VNS, parent.slot,
                             lineageId(parent.solution), fullEvaluationCount));
-                    pendingCaTaLocalCandidates.add(new PendingCaTaLocalCandidate(local, parent.slot, parent.history));
-                }
-            }
-        }
+                     retainFinalLocalCandidate(new PendingCaTaLocalCandidate(local, parent.slot,
+                             parent.history, decision.isTest() ? LocalCandidateOrigin.CATA_TEST
+                                     : LocalCandidateOrigin.CATA_APPLY, telemetryEventId));
+                 }
+             }
+             observeMidHorizonBatch(V35CheckpointFrontObserver.BOUNDARY_CATA_BATCH,
+                     globalOffspring);
+         }
     }
 
     private static V35SubSwarmRole v35Role(ZhangBoSubSwarm group) {
@@ -5126,6 +5635,10 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                                         V35EvaluationSourceContext.begin(
                                                 V35EvaluationSourceContext.Source.INTRA_FACTORY_VNS);
                                         try {
+                                            auditTrueCandidateBeforeEvaluation(
+                                                    candidate,
+                                                    V35EvaluationSourceContext.Source.INTRA_FACTORY_VNS.name(),
+                                                    fullEvaluationCount, parent);
                                             problem.evaluate(candidate);
                                         } finally {
                                             V35EvaluationSourceContext.end();
@@ -5175,7 +5688,7 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                             ZhangBoPreEvaluatedTag.Source.INTRA_FACTORY_VNS, parent.slot,
                             lineageId(parent.solution), fullEvaluationCount));
                     pendingCaTaLocalCandidates.add(new PendingCaTaLocalCandidate(local,
-                            parent.slot, parent.history));
+                            parent.slot, parent.history, LocalCandidateOrigin.O1_O9));
                     globalOffspring.add(local);
                 }
             }
@@ -5196,6 +5709,7 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         for (CaTaParent parent : parents) {
             PermutationSolution<Integer> current = parent.solution;
             long acceptedOrdinal = -1L;
+            LocalCandidateOrigin acceptedOrigin = null;
             int[] factories = criticalFactories(current, parent.group,
                     fatigueProblem.getFatigueInstanceData().getFactories());
 
@@ -5204,6 +5718,10 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                         current, factories[0], factories[1]);
                 V35EvaluationSourceContext.begin(V35EvaluationSourceContext.Source.INTER_FACTORY_LS);
                 try {
+                    auditTrueCandidateBeforeEvaluation(
+                            candidate,
+                            V35EvaluationSourceContext.Source.INTER_FACTORY_LS.name(),
+                            fullEvaluationCount, parent);
                     problem.evaluate(candidate);
                     fullEvaluationCount++;
                 } finally {
@@ -5211,10 +5729,12 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                 }
                 caTaFullEvaluations++;
                 formalCriticalFactorySwapEvaluations++;
+                fc6RecordEvaluated(ZhangBoEvaluatedPddrSelector.Source.CRITICAL_SWAP, candidate);
                 boolean accepted = ZhangBoLocalSearchAcceptance.accepts(
                         current, candidate, parent.group);
                 if (accepted) {
                     fc52LocalAccepted(candidate, fullEvaluationCount, "ACCEPTED");
+                    fc6RecordAccepted(ZhangBoEvaluatedPddrSelector.Source.CRITICAL_SWAP);
                 } else {
                     fc52LocalRejected(candidate, fullEvaluationCount, "NOT_BETTER");
                 }
@@ -5230,8 +5750,10 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                         + ",slot=" + parent.slot + ",op=CRITICAL_FACTORY_SWAP,accepted="
                         + accepted + ",fe=" + fullEvaluationCount);
                 if (accepted) {
+                    fc6RecordSuperseded(acceptedOrigin);
                     current = candidate;
                     acceptedOrdinal = fullEvaluationCount;
+                    acceptedOrigin = LocalCandidateOrigin.CRITICAL_SWAP;
                 }
             }
 
@@ -5242,6 +5764,10 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                         current, factories[0], factories[1]);
                 V35EvaluationSourceContext.begin(V35EvaluationSourceContext.Source.INTER_FACTORY_LS);
                 try {
+                    auditTrueCandidateBeforeEvaluation(
+                            candidate,
+                            V35EvaluationSourceContext.Source.INTER_FACTORY_LS.name(),
+                            fullEvaluationCount, parent);
                     problem.evaluate(candidate);
                     fullEvaluationCount++;
                 } finally {
@@ -5249,10 +5775,12 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                 }
                 caTaFullEvaluations++;
                 formalCriticalFactoryInsertEvaluations++;
+                fc6RecordEvaluated(ZhangBoEvaluatedPddrSelector.Source.CRITICAL_INSERT, candidate);
                 boolean accepted = ZhangBoLocalSearchAcceptance.accepts(
                         current, candidate, parent.group);
                 if (accepted) {
                     fc52LocalAccepted(candidate, fullEvaluationCount, "ACCEPTED");
+                    fc6RecordAccepted(ZhangBoEvaluatedPddrSelector.Source.CRITICAL_INSERT);
                 } else {
                     fc52LocalRejected(candidate, fullEvaluationCount, "NOT_BETTER");
                 }
@@ -5268,8 +5796,10 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                         + ",slot=" + parent.slot + ",op=CRITICAL_FACTORY_INSERT,accepted="
                         + accepted + ",fe=" + fullEvaluationCount);
                 if (accepted) {
+                    fc6RecordSuperseded(acceptedOrigin);
                     current = candidate;
                     acceptedOrdinal = fullEvaluationCount;
+                    acceptedOrigin = LocalCandidateOrigin.CRITICAL_INSERT;
                 }
             }
 
@@ -5301,6 +5831,10 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                                             V35EvaluationSourceContext.begin(
                                                     V35EvaluationSourceContext.Source.INTRA_FACTORY_VNS);
                                             try {
+                                                auditTrueCandidateBeforeEvaluation(
+                                                        candidate,
+                                                        V35EvaluationSourceContext.Source.INTRA_FACTORY_VNS.name(),
+                                                        fullEvaluationCount, parent);
                                                 problem.evaluate(candidate);
                                             } finally {
                                                 V35EvaluationSourceContext.end();
@@ -5318,6 +5852,7 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                     caTaFullEvaluations += attempt.getCompleteEvaluations();
                     formalOriginalNeighborhoodEvaluations += attempt.getCompleteEvaluations();
                     PermutationSolution<Integer> candidate = attempt.getCandidate();
+                    fc6RecordEvaluated(ZhangBoEvaluatedPddrSelector.Source.O1_O9, candidate);
                     fc52RecordEvaluated(candidate, fullEvaluationCount,
                             V35EvaluationSourceContext.Source.INTRA_FACTORY_VNS);
                     boolean recoveryGain = ZhangBoNaturalRecoveryGate.allows(
@@ -5326,6 +5861,7 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                             current, candidate, parent.group);
                     if (accepted) {
                         fc52LocalAccepted(candidate, fullEvaluationCount, "ACCEPTED");
+                        fc6RecordAccepted(ZhangBoEvaluatedPddrSelector.Source.O1_O9);
                     } else {
                         fc52LocalRejected(candidate, fullEvaluationCount,
                                 recoveryGain ? "NOT_BETTER" : "NO_RECOVERY_GAIN");
@@ -5343,8 +5879,10 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                             + ",accepted=" + accepted + ",recoveryGain=" + recoveryGain
                             + ",qGain=" + gain + ",fe=" + fullEvaluationCount);
                     if (accepted) {
+                        fc6RecordSuperseded(acceptedOrigin);
                         current = candidate;
                         acceptedOrdinal = fullEvaluationCount;
+                        acceptedOrigin = LocalCandidateOrigin.O1_O9;
                     }
                 }
             }
@@ -5354,10 +5892,43 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                 ZhangBoPreEvaluatedTag.mark(current, new ZhangBoPreEvaluatedTag(
                         ZhangBoPreEvaluatedTag.Source.INTRA_FACTORY_VNS, parent.slot,
                         lineageId(parent.solution), acceptedOrdinal));
-                pendingCaTaLocalCandidates.add(new PendingCaTaLocalCandidate(
-                        current, parent.slot, parent.history));
+                retainFinalLocalCandidate(new PendingCaTaLocalCandidate(
+                        current, parent.slot, parent.history, acceptedOrigin));
+            }
+            if (!budgetExhausted) {
+                observeMidHorizonBatch(
+                        org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35CheckpointFrontObserver
+                                .BOUNDARY_INHERITED_LS_BATCH,
+                        globalOffspring);
             }
         }
+    }
+
+    /**
+     * FC-6A.3 final-carrier contract: a parent has at most one accepted local
+     * incumbent in the PDDR merge pool.  A later accepted local result replaces
+     * the earlier one, which is retained only in the observation ledger as
+     * {@code superseded}; no candidate is re-evaluated and no random event is
+     * consumed here.
+     */
+    private void retainFinalLocalCandidate(PendingCaTaLocalCandidate replacement) {
+        if (replacement == null) throw new IllegalArgumentException("replacement");
+        java.util.Iterator<PendingCaTaLocalCandidate> values =
+                pendingCaTaLocalCandidates.iterator();
+        while (values.hasNext()) {
+            PendingCaTaLocalCandidate prior = values.next();
+            if (prior.parentSlot == replacement.parentSlot) {
+                fc6RecordSuperseded(prior.origin);
+                if (midHorizonTelemetry != null && midHorizonTelemetry.isEnabled()
+                        && prior.telemetryEventId.length() > 0) {
+                    // The carrier replacement is an observed fact: the
+                    // superseded candidate cannot enter this PDDR pool.
+                    midHorizonTelemetry.onCaTaEnteredMergePool(prior.telemetryEventId, false);
+                }
+                values.remove();
+            }
+        }
+        pendingCaTaLocalCandidates.add(replacement);
     }
 
     private int[] criticalFactories(PermutationSolution<Integer> solution,
@@ -5480,6 +6051,132 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         }
     }
 
+    private void observeMidHorizonBatch(String boundary,
+            List<PermutationSolution<Integer>> workingPopulation) {
+        if (midHorizonTelemetry == null || !midHorizonTelemetry.isEnabled()) return;
+        midHorizonTelemetry.onAtomicPhaseEnd(fullEvaluationCount, generationNumber(),
+                (int) formalBaselineOuterCycles + 1, formalQRoundIndex,
+                workingPopulation == null ? null
+                        : new ArrayList<PermutationSolution<Integer>>(workingPopulation),
+                globallyOptimalIndividual,
+                v35PassiveArchive == null ? null : v35PassiveArchive.snapshot(), boundary);
+    }
+
+    /**
+     * Records the actual candidate sequence immediately before a batch is
+     * evaluated.  This is deliberately a no-op unless the diagnostic audit
+     * was installed before algorithm construction; the observer must never
+     * alter the ordinary search path.
+     */
+    private void auditTrueCandidatesBeforeEvaluation(
+            List<PermutationSolution<Integer>> candidates, String source, long feBefore) {
+        if (candidates == null || candidates.isEmpty()) return;
+        V35TrueSequenceAudit audit = V35TrueSequenceAudit.activeOrNull();
+        if (audit == null) return;
+        for (int index = 0; index < candidates.size(); index++) {
+            PermutationSolution<Integer> candidate = candidates.get(index);
+            TrueCandidateParent parent = trueParentFor(candidate, index);
+            auditTrueCandidateBeforeEvaluation(candidate, source, feBefore + index,
+                    parent);
+        }
+    }
+
+    /** Records one actual candidate before its complete first evaluation. */
+    private void auditTrueCandidateBeforeEvaluation(
+            PermutationSolution<Integer> candidate, String source, long feBefore,
+            TrueCandidateParent parent) {
+        V35TrueSequenceAudit audit = V35TrueSequenceAudit.activeOrNull();
+        if (audit == null) return;
+        if (source == null || source.length() == 0) {
+            throw new IllegalStateException("SOURCE_UNOBSERVABLE");
+        }
+        int parentSlot = parent == null ? -1 : parent.physicalSlot;
+        String parentFingerprint = null;
+        if (parent != null && parent.solution != null) {
+            parentFingerprint = V35TrueSequenceAudit.stableSolutionFingerprint(parent.solution);
+            Object parentId = parent.solution.getAttribute("candidateId");
+            if (parentId != null && String.valueOf(parentId).length() > 0) {
+                candidate.setAttribute("parentId", String.valueOf(parentId));
+            }
+        }
+        Long candidateLineage = candidateLineageId(candidate);
+        V35TrueSequenceAudit.UnobservableReason reason;
+        if (parent == null && !V35EvaluationSourceContext.Source.INITIAL_POPULATION.name()
+                .equals(source)) {
+            reason = V35TrueSequenceAudit.UnobservableReason.PARENT_SLOT_UNOBSERVABLE;
+        } else if (candidateLineage == null) {
+            reason = V35TrueSequenceAudit.UnobservableReason.LINEAGE_ID_UNOBSERVABLE;
+        } else {
+            reason = V35TrueSequenceAudit.UnobservableReason.NONE;
+        }
+        audit.recordCandidateBeforeEvaluation(candidate, source, feBefore, generationNumber(),
+                parentSlot, parentFingerprint, candidateLineage, reason);
+    }
+
+    /** Local-search candidates use the real parent object and its subgroup slot. */
+    private void auditTrueCandidateBeforeEvaluation(
+            PermutationSolution<Integer> candidate, String source, long feBefore,
+            CaTaParent parent) {
+        TrueCandidateParent translated = parent == null ? null
+                : new TrueCandidateParent(parent.solution, trueGlobalSlot(parent.group, parent.slot));
+        auditTrueCandidateBeforeEvaluation(candidate, source, feBefore, translated);
+    }
+
+    /** Saves the real pre-update parent for each newly produced global candidate. */
+    private void rememberTrueGlobalParent(
+            PermutationSolution<Integer> offspring, PermutationSolution<Integer> parent,
+            int physicalSlot) {
+        if (V35TrueSequenceAudit.activeOrNull() == null || offspring == null) return;
+        trueParentByCandidate.put(offspring, new TrueCandidateParent(parent, physicalSlot));
+    }
+
+    /** Captures real parent objects before updatePosition replaces any swarm slot. */
+    private void captureTrueGlobalParents(List<PermutationSolution<Integer>> swarm) {
+        trueParentByCandidate.clear();
+        trueParentBySlot.clear();
+        if (V35TrueSequenceAudit.activeOrNull() == null || swarm == null) return;
+        for (PermutationSolution<Integer> solution : swarm) {
+            Object value = solution == null ? null : solution.getAttribute(ZhangBoSubSwarm.class);
+            ZhangBoSubSwarm group = value instanceof ZhangBoSubSwarm
+                    ? (ZhangBoSubSwarm) value : null;
+            int physicalSlot = trueGlobalSlot(group, -1);
+            TrueCandidateParent parent = new TrueCandidateParent(solution, physicalSlot);
+            trueParentBySlot.add(parent);
+            trueParentByCandidate.put(solution, parent);
+        }
+    }
+
+    /** Resolves a produced candidate's real captured parent, never from a pool ordinal. */
+    private TrueCandidateParent trueParentFor(
+            PermutationSolution<Integer> candidate, int slot) {
+        TrueCandidateParent parent = trueParentByCandidate.get(candidate);
+        if (parent != null) return parent;
+        return slot >= 0 && slot < trueParentBySlot.size() ? trueParentBySlot.get(slot) : null;
+    }
+
+    /** Returns the formal physical subgroup slot (1..4), or -1 when unobservable. */
+    private static int trueGlobalSlot(ZhangBoSubSwarm group, int ignoredParticleIndex) {
+        return group == null ? -1 : ZhangBoSubSwarmSemantics.physicalSlotForRole(group);
+    }
+
+    private static Long candidateLineageId(PermutationSolution<Integer> candidate) {
+        if (candidate == null) return null;
+        Object value = candidate.getAttribute(ZhangBoLineageTag.class);
+        return value instanceof ZhangBoLineageTag
+                ? Long.valueOf(((ZhangBoLineageTag) value).getLineageId()) : null;
+    }
+
+    /** Immutable observation-only parent reference. */
+    private static final class TrueCandidateParent {
+        final PermutationSolution<Integer> solution;
+        final int physicalSlot;
+
+        TrueCandidateParent(PermutationSolution<Integer> solution, int physicalSlot) {
+            this.solution = solution;
+            this.physicalSlot = physicalSlot;
+        }
+    }
+
     private static final class CaTaParent {
         final PermutationSolution<Integer> solution;
         final int slot;
@@ -5503,16 +6200,41 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         }
     }
 
+    /** Immutable audited provenance; never consulted by local acceptance or PDDR score. */
+    private enum LocalCandidateOrigin {
+        CATA_TEST(ZhangBoEvaluatedPddrSelector.Source.CATA_TEST),
+        CATA_APPLY(ZhangBoEvaluatedPddrSelector.Source.CATA_APPLY),
+        CRITICAL_SWAP(ZhangBoEvaluatedPddrSelector.Source.CRITICAL_SWAP),
+        CRITICAL_INSERT(ZhangBoEvaluatedPddrSelector.Source.CRITICAL_INSERT),
+        O1_O9(ZhangBoEvaluatedPddrSelector.Source.O1_O9);
+
+        private final ZhangBoEvaluatedPddrSelector.Source selectorSource;
+        LocalCandidateOrigin(ZhangBoEvaluatedPddrSelector.Source selectorSource) {
+            this.selectorSource = selectorSource;
+        }
+    }
+
     private static final class PendingCaTaLocalCandidate {
         final PermutationSolution<Integer> solution;
         final int parentSlot;
         final List<PermutationSolution<Integer>> history;
+        final LocalCandidateOrigin origin;
+        final String telemetryEventId;
 
         PendingCaTaLocalCandidate(PermutationSolution<Integer> solution, int parentSlot,
-                List<PermutationSolution<Integer>> history) {
+                List<PermutationSolution<Integer>> history, LocalCandidateOrigin origin) {
+            this(solution, parentSlot, history, origin, "");
+        }
+
+        PendingCaTaLocalCandidate(PermutationSolution<Integer> solution, int parentSlot,
+                List<PermutationSolution<Integer>> history, LocalCandidateOrigin origin,
+                String telemetryEventId) {
+            if (origin == null) throw new IllegalArgumentException("origin");
             this.solution = ZhangBoSolutionSupport.deepCopy(solution);
             this.parentSlot = parentSlot;
             this.history = ZhangBoSolutionSupport.deepCopySolutions(history);
+            this.origin = origin;
+            this.telemetryEventId = telemetryEventId == null ? "" : telemetryEventId;
         }
     }
 
@@ -8506,7 +9228,8 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
     private Random authorRandom() {
         if (!globalSearchConfiguration.isReplayableAuthorRandomEnabled()
                 && !formalBaselineConfiguration.isEnabled()) {
-            return new Random();
+            return V35TrueSequenceAudit.wrapActiveJavaRandom(
+                    new Random(), "AUTHOR_RANDOM");
         }
         long ordinal = authorRandomInvocation++;
         long value = globalSearchConfiguration.getSeed()
@@ -8516,7 +9239,8 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         value ^= value >>> 33;
         value *= 0xc4ceb9fe1a85ec53L;
         value ^= value >>> 33;
-        return new Random(value);
+        return V35TrueSequenceAudit.wrapActiveJavaRandom(
+                new Random(value), "AUTHOR_RANDOM");
     }
 
 
@@ -8603,7 +9327,18 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                 fc52.observeArchiveAdd(candidate, globallyOptimalIndividual,
                         fullEvaluationCount, generationNumber());
             }
-            ZhangBoIncrementalParetoArchive.add(globallyOptimalIndividual, candidate);
+            if (v35ArchiveExperimentRuntime == null) {
+                ZhangBoIncrementalParetoArchive.add(globallyOptimalIndividual, candidate);
+            } else {
+                int beforeSize = globallyOptimalIndividual.size();
+                long archiveUpdateStarted = System.nanoTime();
+                ZhangBoIncrementalParetoArchive.Update update =
+                        ZhangBoIncrementalParetoArchive.addWithReport(
+                                globallyOptimalIndividual, candidate);
+                v35ArchiveExperimentRuntime.afterArchiveUpdate(globallyOptimalIndividual,
+                        fullEvaluationCount, generationNumber(), beforeSize, update,
+                        archiveUpdateStarted);
+            }
         }
 //        System.out.println("globallyOptimalIndividual.size"+globallyOptimalIndividual.size());
 
@@ -9086,12 +9821,20 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
 
     private void applyEvaluatedPddr(List<PermutationSolution<Integer>> evaluatedOffspring) {
         int globalOffspringCount = pendingPddrOffspringHistories.size();
+        V35Fc6LocalCandidateAudit fc6LocalAudit = V35Fc6LocalCandidateAudit.current();
+        final boolean fc5TransferEnabled = v35Fc5TransferAudit.isEnabled();
+        List<ZhangBoEvaluatedPddrSelector.Source> fc5PddrSources = fc5TransferEnabled
+                ? new ArrayList<ZhangBoEvaluatedPddrSelector.Source>() : null;
         // Local v3.5 candidates are pre-evaluated outside the jMetal swarm list;
         // materialize them here exactly once before the common PDDR pass.
         if (evaluatedOffspring.size() == globalOffspringCount
                 && !pendingCaTaLocalCandidates.isEmpty()) {
             for (PendingCaTaLocalCandidate local : pendingCaTaLocalCandidates) {
                 evaluatedOffspring.add(local.solution);
+                if (fc6LocalAudit != null) {
+                    fc6LocalAudit.recordEnteredPddr((int) formalBaselineOuterCycles + 1,
+                            local.origin.selectorSource);
+                }
                 V35Fc52LifecycleAudit fc52 = V35Fc52LifecycleAudit.current();
                 if (fc52 != null) {
                     fc52.recordMergePool(Collections.singletonList(local.solution),
@@ -9107,6 +9850,8 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         }
         long firstOrdinal = fullEvaluationCount - evaluatedOffspring.size() + 1L;
         List<ZhangBoEvaluatedPddrSelector.CandidateInput> inputs = new ArrayList<>();
+        List<ZhangBoEvaluatedPddrSelector.Source> fc6PddrSources =
+                fc6LocalAudit == null ? null : new ArrayList<ZhangBoEvaluatedPddrSelector.Source>();
         for (int index = 0; index < globalOffspringCount; index++) {
             PermutationSolution<Integer> candidate = evaluatedOffspring.get(index);
             ZhangBoPreEvaluatedTag marker = ZhangBoPreEvaluatedTag.get(candidate);
@@ -9115,24 +9860,51 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                     pendingPddrOffspringHistories.get(index),
                     ZhangBoEvaluatedPddrSelector.Source.GLOBAL_OFFSPRING,
                     index, ordinal, index));
+            if (fc6LocalAudit != null) {
+                fc6LocalAudit.recordEnteredPddr((int) formalBaselineOuterCycles + 1,
+                        ZhangBoEvaluatedPddrSelector.Source.GLOBAL_OFFSPRING);
+                fc6PddrSources.add(ZhangBoEvaluatedPddrSelector.Source.GLOBAL_OFFSPRING);
+            }
+            if (fc5PddrSources != null) {
+                fc5PddrSources.add(ZhangBoEvaluatedPddrSelector.Source.GLOBAL_OFFSPRING);
+            }
         }
         for (int index = 0; index < pendingCaTaLocalCandidates.size(); index++) {
             PendingCaTaLocalCandidate local = pendingCaTaLocalCandidates.get(index);
             ZhangBoPreEvaluatedTag marker = ZhangBoPreEvaluatedTag.get(local.solution);
             long ordinal = marker != null ? marker.getEvaluationOrdinal() : fullEvaluationCount;
             inputs.add(ZhangBoEvaluatedPddrSelector.CandidateInput.ofEvaluated(local.solution,
-                    local.history, ZhangBoEvaluatedPddrSelector.Source.INTRA_FACTORY_VNS,
+                    local.history, local.origin.selectorSource,
                     local.parentSlot, ordinal, globalOffspringCount + index));
+            if (fc6LocalAudit != null) fc6PddrSources.add(local.origin.selectorSource);
+            if (fc5PddrSources != null) fc5PddrSources.add(local.origin.selectorSource);
+        }
+        if (fc6LocalAudit != null) {
+            for (int index = 0; index < pendingPddrParents.size(); index++) {
+                fc6LocalAudit.recordEnteredPddr((int) formalBaselineOuterCycles + 1,
+                        ZhangBoEvaluatedPddrSelector.Source.PARENT);
+                fc6PddrSources.add(ZhangBoEvaluatedPddrSelector.Source.PARENT);
+            }
+        }
+        if (fc5PddrSources != null) {
+            for (int index = 0; index < pendingPddrParents.size(); index++) {
+                fc5PddrSources.add(ZhangBoEvaluatedPddrSelector.Source.PARENT);
+            }
         }
         List<ZhangBoEvaluatedPddrSelector.Candidate> selected =
                 zhangBoEvaluatedPddrSelector.select(inputs, pendingPddrParents,
-                        pendingPddrParentHistories, swarmSize);
+                        pendingPddrParentHistories, swarmSize,
+                        globalSearchConfiguration.getPddrSelectionMode());
+        if (fc6LocalAudit != null) {
+            fc6LocalAudit.recordPddrOutcome((int) formalBaselineOuterCycles + 1,
+                    fc6PddrSources, selected);
+        }
         V35Fc52LifecycleAudit fc52Audit = V35Fc52LifecycleAudit.current();
         org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35Fc6BpPddrDiagnosticAudit
             fc6DiagAudit = org.uma.jmetal.algorithm.multiobjective.mypso.v35
                 .V35Fc6BpPddrDiagnosticAudit.current();
         List<PermutationSolution<Integer>> pddrAll = null;
-        if (fc52Audit != null || fc6DiagAudit != null) {
+        if (fc52Audit != null || fc6DiagAudit != null || fc5TransferEnabled) {
             // Order must mirror the select-internal values order: global offspring
             // (evaluatedOffspring[0..globalOffspringCount-1]), then local candidates
             // (pendingCaTaLocalCandidates[0..n-1]), then parents.
@@ -9147,6 +9919,8 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         if (fc52Audit != null) {
             fc52Audit.recordPddrRound(pddrAll, selected, fullEvaluationCount);
         }
+        List<PendingCaTaLocalCandidate> cataLifecycleCandidates =
+                new ArrayList<>(pendingCaTaLocalCandidates);
         if (cmaxAudit != null) {
             cmaxAudit.observePddrSelection(selected, generationNumber());
         }
@@ -9159,6 +9933,9 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             for (int index = 0; index < selected.size(); index++) {
                 ZhangBoEvaluatedPddrSelector.Candidate candidate = selected.get(index);
                 PermutationSolution<Integer> solution = candidate.getSolution();
+                if (candidate.getAssignedRegionRole() != null) {
+                    solution.setAttribute(ZhangBoSubSwarm.class, candidate.getAssignedRegionRole());
+                }
                 Object lineage = branches.get(index).getSolution()
                         .getAttribute(ZhangBoLineageTag.class);
                 solution.setAttribute(ZhangBoLineageTag.class, lineage);
@@ -9175,7 +9952,11 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             }
         } else {
             for (ZhangBoEvaluatedPddrSelector.Candidate candidate : selected) {
-                evaluatedOffspring.add(candidate.getSolution());
+                PermutationSolution<Integer> solution = candidate.getSolution();
+                if (candidate.getAssignedRegionRole() != null) {
+                    solution.setAttribute(ZhangBoSubSwarm.class, candidate.getAssignedRegionRole());
+                }
+                evaluatedOffspring.add(solution);
                 tempSwarm.add(candidate.getAuthorHistory());
             }
         }
@@ -9186,6 +9967,17 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             fc6DiagAudit.recordPddrRound(pddrAll, selected, evaluatedOffspring,
                     fullEvaluationCount, (int) formalBaselineOuterCycles + 1);
         }
+        if (fc5TransferEnabled) {
+            v35Fc5TransferAudit.recordPddrRound(pddrAll, fc5PddrSources, selected,
+                    fullEvaluationCount, (int) formalBaselineOuterCycles + 1,
+                    upSize, centralSize, downSize, upNewSize);
+        }
+        if (midHorizonTelemetry != null && midHorizonTelemetry.isEnabled() && pddrAll != null) {
+            midHorizonTelemetry.onPddrRound(pddrAll, fc5PddrSources, selected,
+                    fullEvaluationCount, (int) formalBaselineOuterCycles + 1,
+                    generationNumber());
+        }
+        settleCaTaNextGeneration(cataLifecycleCandidates, evaluatedOffspring);
         evaluatedPddrSelections += selected.size();
         int globalSelected = 0;
         int localSelected = 0;
@@ -9195,7 +9987,7 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                     == ZhangBoEvaluatedPddrSelector.Source.GLOBAL_OFFSPRING) {
                 globalSelected++;
             } else if (candidate.getSource()
-                    == ZhangBoEvaluatedPddrSelector.Source.INTRA_FACTORY_VNS) {
+                    != ZhangBoEvaluatedPddrSelector.Source.PARENT) {
                 localSelected++;
             } else if (candidate.getSource()
                     == ZhangBoEvaluatedPddrSelector.Source.PARENT) {
@@ -9212,6 +10004,30 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         pendingPddrParentHistories = new ArrayList<>();
         pendingPddrOffspringHistories = new ArrayList<>();
         pendingCaTaLocalCandidates.clear();
+    }
+
+    private void settleCaTaNextGeneration(List<PendingCaTaLocalCandidate> candidates,
+            List<PermutationSolution<Integer>> nextGeneration) {
+        if (midHorizonTelemetry == null || !midHorizonTelemetry.isEnabled()) return;
+        for (PendingCaTaLocalCandidate local : candidates) {
+            if (local.telemetryEventId.length() == 0) continue;
+            midHorizonTelemetry.onCaTaSurvived(local.telemetryEventId,
+                    containsSolution(nextGeneration, local.solution));
+        }
+    }
+
+    private static boolean containsSolution(List<PermutationSolution<Integer>> values,
+            PermutationSolution<Integer> target) {
+        if (values == null || target == null) return false;
+        Object targetId = target.getAttribute("candidateId");
+        String targetFingerprint = ZhangBoQgController.fingerprint(target);
+        for (PermutationSolution<Integer> value : values) {
+            if (value == null) continue;
+            Object valueId = value.getAttribute("candidateId");
+            if (targetId != null && targetId.equals(valueId)) return true;
+            if (targetFingerprint.equals(ZhangBoQgController.fingerprint(value))) return true;
+        }
+        return false;
     }
 
     private void recordDualQCoordination() {
@@ -9239,6 +10055,8 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         long qpActions = zhangBoQpController.getExecutedActionCount() - pendingQpActionsBefore;
         long qpTransitions = zhangBoQpController.getTrainedTransitionCount()
                 - pendingQpTransitionsBefore;
+        long qpFrozenObservations = zhangBoQpController.getFrozenObservationCount()
+                - pendingQpFrozenObservationsBefore;
         String qgPolicy = phase == ZhangBoDualQCoordinator.Phase.P_BLOCK
                 ? "GREEDY_FROZEN" : "EPSILON_GREEDY_LEARN";
         String qpPolicy;
@@ -9246,6 +10064,10 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
             qpPolicy = "DIRECTIONAL_WARMUP";
         } else if (phase == ZhangBoDualQCoordinator.Phase.G_BLOCK) {
             qpPolicy = "GREEDY_FROZEN";
+        } else if (globalSearchConfiguration.getV35QpSettlementPolicy()
+                == org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35QpSettlementPolicy
+                        .OBSERVE_ONLY_ALL_CYCLES) {
+            qpPolicy = "EPSILON_GREEDY_OBSERVE_ONLY";
         } else {
             qpPolicy = "EPSILON_GREEDY_LEARN";
         }
@@ -9258,7 +10080,11 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
                 + ",QpHashBefore=" + pendingQpTableHashBefore
                 + ",QpHashAfter=" + qpAfter
                 + ",QgSelections=" + qgSelections + ",QgTdUpdates=" + qgUpdates
-                + ",QpActions=" + qpActions + ",QpTrainedTransitions=" + qpTransitions);
+                + ",QpActions=" + qpActions + ",QpTrainedTransitions=" + qpTransitions
+                + (globalSearchConfiguration.getV35QpSettlementPolicy()
+                    == org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35QpSettlementPolicy
+                        .OBSERVE_ONLY_ALL_CYCLES
+                    ? ",QpFrozenObservations=" + qpFrozenObservations : ""));
         pendingDualQDecision = null;
     }
 
@@ -9304,6 +10130,16 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
         this.v35PassiveArchive = archive;
     }
 
+    /** Dedicated archive-experiment hook. Production runners must never call this method. */
+    public void setArchiveExperimentRuntime(
+            org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35ArchiveExperimentRuntime runtime) {
+        if (runtime == null) throw new IllegalArgumentException("runtime");
+        if (this.v35ArchiveExperimentRuntime != null) {
+            throw new IllegalStateException("archive experiment runtime already installed");
+        }
+        this.v35ArchiveExperimentRuntime = runtime;
+    }
+
     /** V35-P17 passive feed; a pure copy-only bypass, never read by any search mechanism. */
     private void observePassiveArchive(PermutationSolution<Integer> evaluated) {
         if (v35PassiveArchive != null) v35PassiveArchive.observe(evaluated);
@@ -9327,6 +10163,18 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
 
     public long getCfvfOffspringCount() {
         return cfvfOffspringCount;
+    }
+
+    /**
+     * Pure run-end audit of the four physical capacities.  The result lists
+     * are intentionally released by the algorithm after run(), so their final
+     * element counts are not evidence of the capacities that governed search.
+     */
+    public String getRuntimeSubSwarmSizes() {
+        return "G1_CMAX=" + upSize
+                + ";G4_BALANCED=" + centralSize
+                + ";G2_TEC=" + downSize
+                + ";G3_TWC=" + upNewSize;
     }
 
     public long getCfvfRepairCount() {
@@ -9426,6 +10274,60 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
 
     public String getV35DscrTeacherUsesCsv() {
         return v35DscrTeacherCache == null ? "" : v35DscrTeacherCache.teacherUsesCsv();
+    }
+
+    /** Enables opt-in A2-to-A3 causal telemetry without changing search state. */
+    public void setV35A2A3PersonalLeaderAuditEnabled(boolean value) {
+        v35A2A3PersonalLeaderAudit.setEnabled(value);
+    }
+
+    /** Enables FC5-T observer-only merge/representative telemetry. */
+    public void setV35Fc5TransferAuditEnabled(boolean value) {
+        v35Fc5TransferAudit.setEnabled(value);
+    }
+
+    /** Binds the V35-MIDHORIZON unified observer (null disables, zero construction). */
+    public void setMidHorizonTelemetry(
+            org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35MidHorizonTelemetry telemetry) {
+        this.midHorizonTelemetry = telemetry;
+    }
+
+    public org.uma.jmetal.algorithm.multiobjective.mypso.v35.V35MidHorizonTelemetry
+            getMidHorizonTelemetry() {
+        return midHorizonTelemetry;
+    }
+
+    /** Binds FC5-T evidence to the seed without feeding it into the search. */
+    public void setV35Fc5TransferAuditSeed(long seed) {
+        v35Fc5TransferAudit.setSeed(seed);
+    }
+
+    public String getV35Fc5TransferMergeRoundsCsv() {
+        return v35Fc5TransferAudit.mergeRoundsCsv();
+    }
+
+    public String getV35Fc5TransferWindowedMergeCsv() {
+        return v35Fc5TransferAudit.windowedMergeCsv();
+    }
+
+    public String getV35Fc5TransferRepresentativesCsv() {
+        return v35Fc5TransferAudit.representativesCsv();
+    }
+
+    public String getV35Fc5TransferArchiveWorkingGapCsv() {
+        return v35Fc5TransferAudit.archiveWorkingGapCsv();
+    }
+
+    public String getV35Fc5TransferSummary() {
+        return v35Fc5TransferAudit.summaryProperties();
+    }
+
+    public String getV35A2A3PersonalLeaderAuditCsv() {
+        return v35A2A3PersonalLeaderAudit.toCsv();
+    }
+
+    public long getV35A2A3PersonalLeaderAuditEventCount() {
+        return v35A2A3PersonalLeaderAudit.getEventCount();
     }
 
     public List<String> getZhangBoP6Events() {
@@ -9537,6 +10439,18 @@ public class ZhangBoMOHPSOQ extends AbstractParticleSwarmOptimization<Permutatio
 
     public long getQpTrainedTransitionCount() {
         return zhangBoQpController == null ? 0L : zhangBoQpController.getTrainedTransitionCount();
+    }
+
+    public long getQpFrozenObservationCount() {
+        return zhangBoQpController == null ? 0L : zhangBoQpController.getFrozenObservationCount();
+    }
+
+    public String getQpRewardSummary() {
+        return zhangBoQpController == null ? "rewardSamples=0\n" : zhangBoQpController.rewardSummary();
+    }
+
+    public String getQpTableSummary() {
+        return zhangBoQpController == null ? "tableFiniteCells=0\n" : zhangBoQpController.tableSummary();
     }
 
     public String getQgTableHash() {

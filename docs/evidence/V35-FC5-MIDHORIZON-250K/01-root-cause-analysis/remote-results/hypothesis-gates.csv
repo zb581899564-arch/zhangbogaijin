@@ -1,0 +1,5 @@
+gate,result,evidence
+H1.1 two consecutive 50k windows with Nnd>100 before degradation in >=2/3 hard seeds,FAIL,all runs maxNnd=92; roundsNndOver100=0
+H1.2 hard median Roverflow exceeds positive by >=0.25,FAIL,hard=0.630000; positive=0.592000; delta=+0.038000
+H1.3 at least one directional pool-to-next retention is >=20pp lower in hard case,FAIL,largest positive-minus-hard drop=+0.075269
+H1.4 archive-working Cmax gap expands before representative loss and performance degradation,FAIL,hard median gap=0; positive median gap=0; hard terminal joint-worse seeds=3/3

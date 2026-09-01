@@ -1,0 +1,12 @@
+workPackage=V35-A3-D
+arm=D1_PA_DIRECTIONAL
+instance=20_2_3_1
+seed=20260822
+population=100
+maxFEs=2000
+profileSha256=1613e91620b2430cad854190de3e2de32910bdf9d268e5a962834c72d475521c
+commonBoundary=FM3;ShiftMode.NONE;singleFamily;sequenceIndependentSUT;mixture=20/40/20/20;PDDR=GLOBAL_ORIGINAL;LS=CATA_THEN_INHERITED;teacherPool=OFF
+notDoe=true
+notFormalAblation=true
+formalJarModified=false
+causalPairing=D0_TO_D1=PERSONAL_ARCHIVE;D1_TO_D2=QP_ACTION_AND_TD;D2_TO_D3=BLOCK_FREEZE

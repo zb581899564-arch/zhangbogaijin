@@ -1,0 +1,1 @@
+runId,algorithmRole,instance,seed,instanceSha256,sutExtensionSha256,fatigueParameterSha256,initialPopulationHashV35,initialPopulationHashP8,decoderMode,familyMode,setupMode,shiftMode,objectives,pddrSelectionMode,localSearchOrder,pressureMode,mixture,fullEvaluations,decoderCalls,illegalSolutions,duplicateEvaluations,pass

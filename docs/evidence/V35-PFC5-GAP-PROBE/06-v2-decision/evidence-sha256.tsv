@@ -1,0 +1,4 @@
+# per-directory evidence ledger; reverse-verify individually
+sha256	path	bytes
+820889f32f2487a9e111966908feee49d20434c682208ab7f6bf7a21f46722d7	GAP_PROBE_V2_DECISION.md	3288
+085574b8d7f357b770ee89f9395202854a07de25d47c46bed70d4d03d4ac9fc3	GAP_PROBE_V2_DECISION.properties	1323

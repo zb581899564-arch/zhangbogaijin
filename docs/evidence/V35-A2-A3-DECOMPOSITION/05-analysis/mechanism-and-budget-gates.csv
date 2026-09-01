@@ -1,0 +1,13 @@
+runId,arm,seed,completed,finiteFront,fullEvaluations,decoderCalls,feClosed,illegalSolutions,duplicateEvaluations,cfvfRepairs,personalLeaderTelemetry,mechanismGate
+seed-20260822:D0_A2_CONTROL,D0_A2_CONTROL,20260822,true,true,50000,50000,true,0,0,0,false,true
+seed-20260822:D1_PA_DIRECTIONAL,D1_PA_DIRECTIONAL,20260822,true,true,50000,50000,true,0,0,0,true,true
+seed-20260822:D2_QP_SYNCHRONOUS,D2_QP_SYNCHRONOUS,20260822,true,true,50000,50000,true,0,0,0,true,true
+seed-20260822:D3_A3_BLOCK_FROZEN,D3_A3_BLOCK_FROZEN,20260822,true,true,50000,50000,true,0,0,0,true,true
+seed-20260823:D0_A2_CONTROL,D0_A2_CONTROL,20260823,true,true,50000,50000,true,0,0,0,false,true
+seed-20260823:D1_PA_DIRECTIONAL,D1_PA_DIRECTIONAL,20260823,true,true,50000,50000,true,0,0,0,true,true
+seed-20260823:D2_QP_SYNCHRONOUS,D2_QP_SYNCHRONOUS,20260823,true,true,50000,50000,true,0,0,0,true,true
+seed-20260823:D3_A3_BLOCK_FROZEN,D3_A3_BLOCK_FROZEN,20260823,true,true,50000,50000,true,0,0,0,true,true
+seed-20260824:D0_A2_CONTROL,D0_A2_CONTROL,20260824,true,true,50000,50000,true,0,0,0,false,true
+seed-20260824:D1_PA_DIRECTIONAL,D1_PA_DIRECTIONAL,20260824,true,true,50000,50000,true,0,0,0,true,true
+seed-20260824:D2_QP_SYNCHRONOUS,D2_QP_SYNCHRONOUS,20260824,true,true,50000,50000,true,0,0,0,true,true
+seed-20260824:D3_A3_BLOCK_FROZEN,D3_A3_BLOCK_FROZEN,20260824,true,true,50000,50000,true,0,0,0,true,true

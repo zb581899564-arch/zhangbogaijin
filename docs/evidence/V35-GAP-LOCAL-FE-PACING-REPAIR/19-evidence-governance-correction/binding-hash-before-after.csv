@@ -1,0 +1,9 @@
+file,key,beforeValue,beforeLength,afterValue,afterLength,note
+staging-250k/seed-20260916/bindings/50_2_3_1.binding.properties,setupFileSha256,f9bde51a5f873896291527676bcbfaf8291c72b91175a6828dd722eaa54df54,63,f9bde51a5f873896291527676bcbfaf8291c72b91175a6828dd722eaa54df54e,64,trailing character lost in manual transcription into artifact-binding.csv; true SHA-256 of inputs/java-jmetal58/instance-extensions/v1/50_2_3_1.setup.txt verified before and after
+staging-250k/seed-20260917/bindings/50_2_3_1.binding.properties,setupFileSha256,f9bde51a5f873896291527676bcbfaf8291c72b91175a6828dd722eaa54df54,63,f9bde51a5f873896291527676bcbfaf8291c72b91175a6828dd722eaa54df54e,64,same
+staging-250k/seed-20260918/bindings/50_2_3_1.binding.properties,setupFileSha256,f9bde51a5f873896291527676bcbfaf8291c72b91175a6828dd722eaa54df54,63,f9bde51a5f873896291527676bcbfaf8291c72b91175a6828dd722eaa54df54e,64,same
+staging-250k/seed-20260916/bindings/50_2_3_1.binding.properties,allOtherKeys,unchanged,,unchanged,,formalJar/experimentalJar/instance/fatigue/snapshot/setup+fatigueConfiguration/initialV35+P8 hashes verified identical pre/post
+staging-250k/seed-20260917/bindings/50_2_3_1.binding.properties,allOtherKeys,unchanged,,unchanged,,same
+staging-250k/seed-20260918/bindings/50_2_3_1.binding.properties,allOtherKeys,unchanged,,unchanged,,same
+artifact-binding.csv,setupFileSha256-50_2_3_1,f9bde51a5f873896291527676bcbfaf8291c72b91175a6828dd722eaa54df54,63,f9bde51a5f873896291527676bcbfaf8291c72b91175a6828dd722eaa54df54e,64,documentation row corrected to true hash
+100_5_3_1 bindings (all seeds),allKeys,unchanged,,unchanged,,no 100_5_3_1 binding was affected

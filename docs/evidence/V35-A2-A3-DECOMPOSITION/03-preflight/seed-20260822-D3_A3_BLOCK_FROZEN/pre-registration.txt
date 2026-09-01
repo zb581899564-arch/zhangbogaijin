@@ -1,0 +1,11 @@
+workPackage=V35-A3-D
+arm=D3_A3_BLOCK_FROZEN
+instance=20_2_3_1
+seed=20260822
+population=100
+maxFEs=2000
+profileSha256=9046a3bdeae73df42e8113e546a5f308ccec630061a8a6f0eeaf28bbcda8898f
+commonBoundary=FM3;ShiftMode.NONE;singleFamily;sequenceIndependentSUT;mixture=20/40/20/20;PDDR=GLOBAL_ORIGINAL;LS=CATA_THEN_INHERITED;teacherPool=OFF
+notDoe=true
+notFormalAblation=true
+formalJarModified=false

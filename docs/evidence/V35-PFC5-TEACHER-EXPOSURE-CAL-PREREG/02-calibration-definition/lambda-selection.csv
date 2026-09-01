@@ -1,0 +1,8 @@
+﻿config,lambda,intendedInterpretation,maxPenaltyDifferential,predictedFlipShareOfTournaments,predictedChangeShareOfQgSelections,nominalBand,bandReachable,notes
+C0_CURRENT,0,精确调用现有冻结选择路径（无 exposure 项）,0.0,0.0,0.0,n/a,n/a,C0 gate contract; bit-identical to current A4
+C1_WEAK,0.05,仅在方向质量非常接近时改选 teacher,0.03750000,approx 0.074,approx 0.018,C1 (5-15%),yes,near-tie only
+C2_MEDIUM,0.15,在中等质量差距时允许分散暴露,0.11250000,approx 0.212,approx 0.052,C1 (5-15%) ceiling-bounded,yes,nominal C2 not attainable
+C3_STRONG,0.30,明显优先降低过度暴露，但仍不选极差 teacher,0.22500000,approx 0.394,approx 0.097,C1-C2 (5-24.58%),yes,nominal C3 unattainable
+gridLabel,0;0.05;0.15;0.30,FIXED_A_PRIORI_GRID,na,na,na,na,na,not tuned on any result; frozen now
+predictedShareBasis,uniform-approximation P(|deltaLoss| < t) = 2t - t^2,na,na,na,na,na,order-of-magnitude estimate only, not a performance prediction
+structuralCeiling,0.24583333,share of QG selections with a multi-element candidate set,na,na,na,na,na,hard upper bound regardless of lambda
