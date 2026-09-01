@@ -1,0 +1,28 @@
+metric,value
+frontSourcePath,09-v5-sa-hard-500k/02-remote-run/results/SA-HARD-V5-500k/front.csv
+frontSha256Raw,f3755d83a2acb4280ff8dd566025340c8b64edc71050e05bbd6a3ff4b1239bdd
+rawFrontSize,387
+finiteFrontSize,387
+exactDedupSize,387
+strictNdSize,387
+canonicalFrontSha256,256dbce5e44dcd51fbfa10797773ec7e50299501cac6618028e0305f3b2ecb57
+pipeline,rawFiniteFront -> normalize(frozen PFref) -> HV/IGD (same calibre as gold anchors)
+hv,0.5545772540415207
+igd,0.15898065502479636
+deltaHV,-0.31554307065117104
+deltaIGD,-1.7503285142217353
+minCmax,755.144349612787
+minTEC,113858.2152135067
+minTWC,307754.57119086105
+hvAfterStrictNd,0.5545772540415207
+igdAfterStrictNd,0.15898065502479636
+deltaHVAfterStrictNd,-0.31554307065117104
+deltaIGDAfterStrictNd,-1.7503285142217353
+diagnosticOnly,hvAfterStrictNd/igdAfterStrictNd/delta*AfterStrictNd do NOT feed the verdict
+failureGateHv,-0.05
+failureGateIgd,-0.2
+failureGateTriggered,true
+determinismFrontMatchesHistoricalA4,true
+canonicalFrontMatchesHistoricalA4,true
+cmaxRole,NOT_A_HARD_GATE
+verdict,SA_HARD_FAILURE_CLASS_REPRODUCED

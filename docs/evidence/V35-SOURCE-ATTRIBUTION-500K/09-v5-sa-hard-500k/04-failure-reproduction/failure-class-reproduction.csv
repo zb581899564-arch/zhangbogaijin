@@ -1,0 +1,5 @@
+role,source,frontSha256,points,hv,igd,deltaHV,deltaIGD
+historicalA2,baseline (frozen anchor),75d8a44a71428274a591a1c6413ddac0cb7e7deb421da419a11b2d3196a204aa,412,0.810244195451609,0.057804242003353316,0.0,0.0
+historicalA2Recomputed,gold self-check by this script,75d8a44a71428274a591a1c6413ddac0cb7e7deb421da419a11b2d3196a204aa,412,0.810244195451609,0.057804242003353316,0.0,0.0
+saHardA4_500k_observerON,09-v5-sa-hard-500k/02-remote-run/results/SA-HARD-V5-500k/front.csv,f3755d83a2acb4280ff8dd566025340c8b64edc71050e05bbd6a3ff4b1239bdd,387,0.5545772540415207,0.15898065502479636,-0.31554307065117104,-1.7503285142217353
+historicalA4,NOT A BASELINE - determinism reference only,f3755d83a2acb4280ff8dd566025340c8b64edc71050e05bbd6a3ff4b1239bdd,387,,,,

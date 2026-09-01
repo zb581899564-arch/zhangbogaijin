@@ -1,0 +1,62 @@
+gate,value,expected,result
+evidenceManifestMatched,67,67,PASS
+evidenceManifestMissing,0,0,PASS
+evidenceManifestMismatch,0,0,PASS
+budgetRequestedMaxFE,500000,500000,PASS
+statusCompleted,COMPLETED,COMPLETED,PASS
+processExitCode,0,0,PASS
+failuresNone,NONE,NONE,PASS
+actualFeEqualsDecoderCalls,True,True,PASS
+actualFeInRange,True,True,PASS
+remainingFEInRange,True,True,PASS
+remainingFEValue,0,500000-actualFE,PASS
+utilizationRate,1.0,>0.99,PASS
+terminationKind,EXACT_MAX_FE,EXACT_MAX_FE,PASS
+illegalSolutions,0,0,PASS
+duplicateEvaluations,0,0,PASS
+formalJarShaInBudget,8dad8f40266feeaa4cdb9b47dbe4e342d9064847df32c7f2933149b9b6bad8b9,8dad8f40266feeaa4cdb9b47dbe4e342d9064847df32c7f2933149b9b6bad8b9,PASS
+observerJarShaInBudget,1a73e3cf025f7cfdb47bde38a7b34e8f8b0810958f61323a5d3cbc35272c8c9e,1a73e3cf025f7cfdb47bde38a7b34e8f8b0810958f61323a5d3cbc35272c8c9e,PASS
+heapXmx4gNotEnlarged,True,True,PASS
+abnormalRepairs,0,0,PASS
+observerExecutionErrors,0,0,PASS
+telemetryLedgerErrors,0,0,PASS
+telemetryLedgerRowsEqualsActualFE,500000,500000,PASS
+observerLossZero,True,True,PASS
+sourceLossZero,0,0,PASS
+mechanismFingerprintOuterCycles,62,62 (matches F1),PASS
+mechanismFingerprintCfvfOffspring,310000,310000 (matches F1),PASS
+mechanismFingerprintQgTableHash,F0E6D62B,F0E6D62B (matches F1),PASS
+mechanismFingerprintQpTableHash,9328966A,9328966A (matches F1),PASS
+mechanismFingerprintPddrStreamHash,D698245E,D698245E (matches F1),PASS
+runtimeMixture,G1_CMAX=20;G4_BALANCED=40;G2_TEC=20;G3_TWC=20,G1=20;G4=40;G2=20;G3=20,PASS
+initialPopulationHashMatchesSnapshot,179a82a3825566380ab6798aa898002d31565dad9d65802e57b295c2a4294c2d,179a82a3825566380ab6798aa898002d31565dad9d65802e57b295c2a4294c2d,PASS
+ledgerRows,500000,500000,PASS
+ledgerRowsEqualsActualFE,True,True,PASS
+ledgerUnsetSourceRows,0,0,PASS
+ledgerInvalidObjectiveRows,0,0,PASS
+ledgerNominalWindowRuleViolations,0,0,PASS
+finalEvaluateColumnPresent,True,True,PASS
+ledgerSourceDistribution,"{'NOT_APPLICABLE': 100, 'GLOBAL_CFVF': 310000, 'CATA': 15198, 'INHERITED_LS': 174702}",4 known classes,PASS
+b0StrictNdRecalcSize,11,exported 11,PASS
+b0PointwiseMatch,PASSED,PASSED,PASS
+lifecycleEventTypes,"['DESCENDANT', 'GENERATED', 'IMPROVING_DESCENDANT', 'MERGE_POOL', 'PDDR_SELECTED', 'PERSONAL_ARCHIVE', 'QG_TEACHER', 'QP_ACTION', 'QP_TEACHER', 'WORKING_POPULATION']","['DESCENDANT', 'GENERATED', 'IMPROVING_DESCENDANT', 'MERGE_POOL', 'PDDR_SELECTED', 'PERSONAL_ARCHIVE', 'QG_TEACHER', 'QP_ACTION', 'QP_TEACHER', 'WORKING_POPULATION']",PASS
+lifecycleMissingTypes,[],[],PASS
+lifecycleUnsetSourceRows,0,0,PASS
+configuredCheckpointTargets,19,19,PASS
+checkpointTargetsGrid,"[25000, 50000, 75000, 100000, 125000, 150000, 175000, 200000, 225000, 250000, 275000, 300000, 325000, 350000, 375000, 400000, 425000, 450000, 475000]",25000..475000 step 25000,PASS
+terminalTargetFE,[500000],[500000],PASS
+b0TargetFE,[0],[0],PASS
+nonB0SnapshotTargetCount,20,20,PASS
+maxOvershootFE,0,<5000,PASS
+terminalRows,2,2,PASS
+b0Rows,2,2,PASS
+nonB0SnapshotCount,20,20 (19 checkpoints + 1 terminal; terminal NOT a 21st window),PASS
+terminalRegistryRows,1,1,PASS
+terminalObservedFE,500000,500000,PASS
+terminalOvershootFE,0,0,PASS
+checkpointsUnreadable,0,0,PASS
+checkpointNonFiniteObjectives,0,0,PASS
+frontPoints,387,>0,PASS
+frontAllFinite,True,True,PASS
+frontSha256Raw,f3755d83a2acb4280ff8dd566025340c8b64edc71050e05bbd6a3ff4b1239bdd,f3755d83a2acb4280ff8dd566025340c8b64edc71050e05bbd6a3ff4b1239bdd,PASS
+heapUsedPeakBytes,3566581248,recorded,PASS
