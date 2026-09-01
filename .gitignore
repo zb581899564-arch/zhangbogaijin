@@ -1,4 +1,4 @@
-﻿# Build targets and artifacts
+# Build targets and artifacts
 target/
 **/target/
 build/
@@ -35,3 +35,13 @@ __pycache__/
 *.pyc
 *.pyo
 .venv/
+
+# Frozen evidence exceptions (2026-09-01):
+# docs/evidence 下的 Jar/class 是冻结证据（由各包 evidence-sha256.tsv 清单哈希锚定），
+# 不是构建产物；相同副本在 git 对象库中自动去重为单一 blob，最大单 Jar 46.3 MB < GitHub 100 MB 限制。
+# 例外：build/ 与 target/ 目录内的 Jar/class 仍保持排除（父目录已排除，negation 无法穿透）。
+!docs/evidence/**/*.jar
+!docs/evidence/**/*.class
+# 活动工作包（V35-SOURCE-ATTRIBUTION-500K）的小体积证据日志（约1 MB）随镜像入库，
+# 其余历史 campaign 的大体积 *.log 仍留在本地与 G 盘冷归档（两份副本纪律）。
+!docs/evidence/V35-SOURCE-ATTRIBUTION-500K/**/*.log
