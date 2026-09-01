@@ -45,3 +45,9 @@ __pycache__/
 # 活动工作包（V35-SOURCE-ATTRIBUTION-500K）的小体积证据日志（约1 MB）随镜像入库，
 # 其余历史 campaign 的大体积 *.log 仍留在本地与 G 盘冷归档（两份副本纪律）。
 !docs/evidence/V35-SOURCE-ATTRIBUTION-500K/**/*.log
+
+# 500k 级逐评价遥测超大单文件（>=100 MB，GitHub 硬限制，AGENTS.md §35.5）：
+# 改为「G 盘冷归档 + 包级 evidence-sha256.tsv / cold-archive-locations.tsv 的 SHA 登记」，
+# 本地工作副本与训练机各保留一份（三份副本纪律），不进入 git 对象库。
+docs/evidence/V35-SOURCE-ATTRIBUTION-500K/09-v5-sa-hard-500k/02-remote-run/results/SA-HARD-V5-500k/source-ledger.csv
+docs/evidence/V35-SOURCE-ATTRIBUTION-500K/09-v5-sa-hard-500k/02-remote-run/results/SA-HARD-V5-500k/source-lifecycle-events.csv
