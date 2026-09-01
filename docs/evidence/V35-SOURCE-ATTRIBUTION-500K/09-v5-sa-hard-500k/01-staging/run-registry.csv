@@ -1,0 +1,4 @@
+﻿runKey,arm,instance,seed,role,profile,population,maxFEs,observerMode,observerSchema,executionCondition,executionOrder,notes
+SA-HARD-V5,A4,100_5_3_1,20260901,CASE_SELECTED_DIAGNOSTIC_ONLY,C0_BETA_MAX_065,100,500000,ON,v35-source-attribution-observer-schema-v2,unconditional-first,1,campaign=V35-SOURCE-ATTRIBUTION-V5-SA-HARD-500K; must satisfy historical FAIL class at terminal else FAILURE_CLASS_REPRODUCTION=FAILED and stop; SA-NORMAL NOT auto-started
+SA-NORMAL,A4,100_2_3_1,20260901,CONTAMINATED_DEVELOPMENT,C0_BETA_MAX_065,100,500000,ON,v35-source-attribution-observer-schema-v2,BLOCKED_IN_THIS_WORK_PACKAGE,NOT_SCHEDULED,requires separate user approval after V5 SA-HARD acceptance
+SA-A2-CONDITIONAL,A2,100_5_3_1,20260901,CASE_SELECTED_DIAGNOSTIC_ONLY,C0_BETA_MAX_065,100,500000,ON,v35-source-attribution-observer-schema-v2,BLOCKED_IN_THIS_WORK_PACKAGE,NOT_SCHEDULED,onlyIf=G1_TRIGGERED after SA-NORMAL; not authorized in this package
