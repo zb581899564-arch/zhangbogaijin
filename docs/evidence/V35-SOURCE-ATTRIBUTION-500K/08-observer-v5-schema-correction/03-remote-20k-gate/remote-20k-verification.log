@@ -1,0 +1,11 @@
+REMOTE_20K_V5_VERIFICATION=PASSED
+manifestEntriesOFF=22
+manifestEntriesON=35
+byteEqualFiles=14
+maskedEquivalentFiles=2
+ledgerRows=15258
+lifecycleRows=72686
+lifecycleEventTypes=10
+b0StrictNdSize=11
+estimated500kPeak=1383199568
+memoryRatio=0.322051245719

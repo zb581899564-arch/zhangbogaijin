@@ -1,0 +1,32 @@
+{
+  "b0DecisionFrontExported": false,
+  "ledgerMissingColumns": [
+    "generation",
+    "nominalFE",
+    "outerCycle",
+    "qRound"
+  ],
+  "lifecycleLedgerPresent": false,
+  "parentVectorLookupUsesChildLineage": true,
+  "qpActionHardcodedNA": true,
+  "requiredLifecycleEvents": [
+    "DESCENDANT",
+    "GENERATED",
+    "IMPROVING_DESCENDANT",
+    "MERGE_POOL",
+    "PDDR_SELECTED",
+    "PERSONAL_ARCHIVE",
+    "QG_TEACHER",
+    "QP_TEACHER",
+    "WORKING_POPULATION"
+  ],
+  "schema": "v35-source-attribution-observer-schema-v1",
+  "verdict": "V4_SCHEMA_VIOLATION_CONFIRMED",
+  "violations": [
+    "MISSING_LEDGER_COLUMNS",
+    "MISSING_LIFECYCLE_LEDGER",
+    "B0_NOT_EXPORTED",
+    "QP_ACTION_NOT_OBSERVED",
+    "PARENT_VECTOR_LOOKUP_KEY_ERROR"
+  ]
+}
