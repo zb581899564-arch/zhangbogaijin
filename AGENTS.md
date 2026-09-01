@@ -1387,3 +1387,20 @@ phaseA0Decision=PHASE_A0_PREREGISTRATION_PASSED（evidenceRepackComplete=true）
    补推。远端出现非 fast-forward（他处有新提交）时先 `git pull --rebase` 复核无冲突再推。
 7. **镜像基线**：2026-09-01 已完成全量现状同步（`c108f287` 文本/证据层 + `0449f765` 冻结
    Jar/class 层），此后每次更改按本节规则增量维护。
+
+## 36. Source Observer V4退回与V5工程冻结（2026-09-01，追加）
+
+1. V4 SA-HARD运行的冻结轨迹、500k预算、终态前沿和失败类复现有效；但V4缺少Phase A0合同要求的
+   nominalFE/轮次上下文、真实生命周期账本、严格B0导出和真实Qp action，且parent向量查询键错误。
+   因此V4不得用于来源根因结论，任何既有“CFVF占62%即根因”等表述均无效。
+2. V5为独立诊断Jar，正式算法Jar仍为`8DAD8F40...BAD8B9`且未重建。V5修正：
+   `actualFE+nominalFE+generation+outerCycle+qRound`、十类流式生命周期事件、严格B0、
+   parentLineageId查询以及Qp真实动作事件。Observer事件时间戳不等于新增FE。
+3. V5身份：schema=`v35-source-attribution-observer-schema-v2`，Jar SHA-256=
+   `1A73E3CF025F7CFDB47BDE38A7B34E8F8B0810958F61323A5D3CBC35272C8C9E`，44类均Java major52。
+4. 工程门：本地2k OFF/ON通过；训练机100_5_3_1/20260901/C0/20k OFF/ON均
+   actualFE=decoderCalls=15258，14项行为文件逐字节一致，ledger=15258，lifecycle=72686，
+   十类事件齐全，B0独立复算一致，内存预测ratio=0.3221<0.60。
+5. 状态：`v5ObserverJarFrozen=true`、`sourceAttribution500kEligible=true`；但
+   `correctedSaHard500kStarted=false`、`saNormalStarted=false`、`sourceAttributionRootCauseEstablished=false`。
+   下一步必须单独批准V5 SA-HARD 500k；未验收该运行前不得启动SA-NORMAL或做根因裁决。

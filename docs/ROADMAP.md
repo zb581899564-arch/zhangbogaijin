@@ -2500,3 +2500,26 @@ betaMax=0.65
 
 当前唯一允许的下一动作是Phase A0的0-FE预登记；不得跳过NORMAL resolver、reference/threshold冻结、内存与
 timing设计直接构建observer或上传500k。Phase A结束后必须重新向用户汇报，不能自动进入Phase B。
+
+### D-113：V4来源合同退回，V5工程门通过（2026-09-01）
+
+- V4 SA-HARD 500k运行仅保留“冻结A4失败类可确定性复现”的资格；来源归因schema不合格，不能形成根因结论。
+- V5独立观察器补齐25k nominal窗口、generation/outerCycle/qRound、严格B0、十类真实生命周期事件、
+  parentLineageId查询与Qp真实动作；正式算法Jar和搜索语义不变。
+- 本地2k和训练机20k OFF/ON工程门通过；20k actualFE=15258，行为文件14/14一致，
+  source ledger 15258行、lifecycle 72686行、B0独立复算一致，内存门ratio=0.3221。
+- V5 Jar冻结为`1A73E3CF...72C8C9E`。当前只具备重新运行V5 SA-HARD 500k的资格，未自动启动。
+
+```ini
+currentStage=V5_OBSERVER_ENGINEERING_GATE_PASSED
+v4FailureReplayAccepted=true
+v4SourceAttributionSchemaCompliant=false
+v5ObserverSchemaCompliant=true
+v5ObserverJarFrozen=true
+sourceAttribution500kEligible=true
+correctedSaHard500kStarted=false
+saNormalStarted=false
+sourceAttributionRootCauseEstablished=false
+formalMatrixRunning=false
+formalJarChanged=false
+```

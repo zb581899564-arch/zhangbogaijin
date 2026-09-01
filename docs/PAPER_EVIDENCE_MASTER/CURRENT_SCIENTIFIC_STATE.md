@@ -442,3 +442,23 @@ formalJarChanged = false; PDDRChanged = false (all frozen semantics untouched)
 - Observer内存流式修正（2026-09-01）：初版flushedEventLedger内存驻留问题已修正为真流式
   （磁盘临时文件）；行为等价更正为12字节一致+2掩码等价+1测量；内存门重算ratio=0.2891<0.60
   → PASS；冻结文档含完整Jar SHA `78bf4d30…46565`。500k待用户批准。
+
+### Source Observer V5合同纠正（2026-09-01，工程门通过）
+
+```ini
+v4FailureReplayAccepted = true
+v4SourceAttributionSchemaCompliant = false
+v5ObserverJarSha256 = 1A73E3CF025F7CFDB47BDE38A7B34E8F8B0810958F61323A5D3CBC35272C8C9E
+v5ObserverSchemaCompliant = true
+v5ObserverBehavioralEquivalent = true
+v5MemoryGatePassed = true (estimated ratio 0.3221)
+sourceAttribution500kEligible = true
+correctedSaHard500kStarted = false
+saNormalStarted = false
+sourceAttributionRootCauseEstablished = false
+```
+
+- V4的500k失败轨迹与前沿复现有效，但其来源账本不符合Phase A0合同，因此不允许写来源根因。
+- V5补齐真实生命周期、25k nominal窗口、轮次上下文、严格B0、parent lineage和Qp action。
+- 本地2k及训练机20k OFF/ON均通过；正式Jar仍为`8DAD8F40…BAD8B9`，算法/PDDR/CFVF/Dual-Q/CA-TA均未变。
+- 下一步如获批准，只重跑一条V5 SA-HARD 500k；通过失败复现与来源证据验收后才允许SA-NORMAL。
