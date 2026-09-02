@@ -1,0 +1,10 @@
+candidateId,kValue,additionalRngDrawsPerSelection,additionalFePerSelection,totalFePer500kRun,rngStreamShiftImpact,cfvfFormulaChanged,qgImpact,pddrImpact
+CANDIDATE_A_TOPK_UNIFORM,1,0,0,500000,NONE (Bit-identical to A4),FALSE,NONE,NONE
+CANDIDATE_A_TOPK_UNIFORM,2,"1 (when non-KEEP and poolSize>=2; 0 otherwise)",0,500000,Shifts downstream CFVF RNG stream (controlled stochastic policy),FALSE,NONE,NONE
+CANDIDATE_A_TOPK_UNIFORM,3,"1 (when non-KEEP and poolSize>=2; 0 otherwise)",0,500000,Shifts downstream CFVF RNG stream (controlled stochastic policy),FALSE,NONE,NONE
+CANDIDATE_A_TOPK_UNIFORM,4,"1 (when non-KEEP and poolSize>=2; 0 otherwise)",0,500000,Shifts downstream CFVF RNG stream (controlled stochastic policy),FALSE,NONE,NONE
+CANDIDATE_B_TOPK_DETERMINISTIC,1,0,0,500000,NONE (Bit-identical to A4),FALSE,NONE,NONE
+CANDIDATE_B_TOPK_DETERMINISTIC,2,0,0,500000,NONE (RNG stream count identical; leader identity changes),FALSE,NONE,NONE
+CANDIDATE_B_TOPK_DETERMINISTIC,3,0,0,500000,NONE (RNG stream count identical; leader identity changes),FALSE,NONE,NONE
+CANDIDATE_B_TOPK_DETERMINISTIC,4,0,0,500000,NONE (RNG stream count identical; leader identity changes),FALSE,NONE,NONE
+CANDIDATE_C_MULTI_LEADER,2,K-fold CFVF draws,"100*(K-1) in C2 / 0 in C1",1000000 (in C2) / 500000 (C1),SEVERE (Corrupts entire budget or CFVF formula),TRUE (in C1),NONE,NONE

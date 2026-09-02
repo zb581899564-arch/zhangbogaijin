@@ -1,0 +1,7 @@
+verificationDimension,gateLevel,targetMetricOrAssertion,candidateA_ObservabilityMethod,engineeringImpact,passCriteria
+K1_Byte_Equivalence,2k (Local),front.csv and evaluation trace SHA-256 identical to A4,Compare hash against frozen A4 2k output; assert qpPoolExtraDraws==0,Zero-risk regression verification,Exact SHA-256 bit-level match
+K1_Behavioral_Equivalence,20k (Machine),Front metrics and event stream hash identical to A4,Compare against existing A4 20k evidence; assert 100% canonical selections,Confirms zero drift in longer warmup/G-blocks,Exact SHA-256 match
+K2_Mechanism_Trigger,20k (Machine),qpPoolSize>=2 and qpPoolIndex>0 events observed,Telemetry sink records qpPoolSize and qpPoolIndex on 100_5_3_1,Proves K=2 diverges from canonical in >=5% selections,Real event counts > 0
+K3_K4_Pool_Construction,Unit Test (Synthetic),Pool size strictly min(K archiveSize) for all actions,Deterministic unit test with synthetic archive L=6; mock RNG assertion,Verifies K=3/4 logic independent of FE budget,100% assertions pass
+K_Exploration_Uniformity,Unit Test (Statistical),Draw index distribution across pool matches uniform,Chi-squared test on 10000 draws over pool of size 4,Ensures fair exploration across all anchor points,p-value > 0.01
+Target_Instance_Coverage,250k (Science),Non-dominated coverage metrics and Pareto mid-tail HV/IGD,16-run DOE matrix (4 configs x 2 instances x 2 seeds); evaluate against PFref,Evaluates scientific hypothesis on target instances,Normal safety + Hard improvement

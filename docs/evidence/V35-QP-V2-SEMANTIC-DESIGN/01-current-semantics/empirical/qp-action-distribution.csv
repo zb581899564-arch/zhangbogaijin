@@ -1,0 +1,8 @@
+run,instance,seed,MaxFEs,role,totalQpActions,keep,directional,epsilon,complementary,nonKeep,nonKeepPct,notes
+SA-HARD-V5,100_5_3_1,20260901,500000,hard_diagnostic,271800,134223,55965,38214,43398,137577,50.617%,lifecycle double-write halved; verified against mechanismSummary
+SA-NORMAL-V5,100_2_3_1,20260901,500000,normal_control,271800,118612,65643,50286,37259,153188,56.361%,same
+A4-50k-hard,100_5_3_1,20260901,50000,midhorizon_diag,25100,16666,3938,3626,870,8434,33.602%,from telemetry-teacher-use-events (QP rows)
+D3-50k-seed822,20_2_3_1,20260822,50000,diagnostic_d_chain,5100,4225,364,492,19,875,17.157%,from a2a3-personal-leader-events
+D3-50k-seed823,20_2_3_1,20260823,50000,diagnostic_d_chain,5100,4225,364,492,19,875,17.157%,deterministic action sequence on same instance
+D3-50k-seed824,20_2_3_1,20260824,50000,diagnostic_d_chain,5100,4225,364,492,19,875,17.157%,same
+D2-50k-pooled,20_2_3_1,pooled_3seed,50000,diagnostic_d_chain,30000,25935,1914,2014,137,4065,13.550%,synchronous dualQ no warmup

@@ -550,3 +550,33 @@ remoteOriginMain=051877aa (IN_SYNC, 此前推送阻塞已解除)
   正式矩阵均未启动，须用户另行批准。
 - 证据：`docs/evidence/V35-QP-V2-SINGLE-AXIS/`（00-governance / 01-semantic-source-audit /
   07-decision；清单 4+1 项反向复算闭合）。重启须用户先冻结含 8 项缺失定义的 K 语义预注册。
+
+### V35-QP-V2-SEMANTIC-DESIGN Phase B0.5：单轴 K 语义设计闭合（2026-09-02，D-117）
+
+```ini
+currentStage=QP_V2_SEMANTIC_DESIGN_CLOSED
+QP_V2_SEMANTICS_DESIGNED=true
+QP_V2_SELECTED_CANDIDATE=CANDIDATE_A_TOPK_UNIFORM
+QP_V2_IMPLEMENTED=false
+QP_V2_EXPERIMENT_STARTED=false
+PHASE_B1_ENGINEERING_GATE=PENDING_USER_TASK_AUTHORIZATION
+QP_V2_250K_ELIGIBLE=false
+QP_V2_250K_PREREGISTERED=false
+QP_V2_250K_STARTED=false
+DOE_AUTHORIZED=false
+VALIDATION_AUTHORIZED=false
+FORMAL_AUTHORIZED=false
+formalMatrixRunning=false
+formalJarChanged=false
+PDDRChanged=false
+CFVFChanged=false
+DualQActionRewardChanged=false
+CaTaChanged=false
+newFEConsumed=0
+```
+
+- **含义**：用户以新任务书授权执行 Phase B0.5（0-FE 纯设计包），补齐 D-116 登记的 K 语义预注册缺口。
+  事实审计与经验量化确认非 KEEP 且档案 $\ge 2$ 的可触达率达 33.60%–50.6%（Qp 占教师事件 95.6%）。
+  严格数学定理与状态归纳法证明候选 A（`CANDIDATE_A_TOPK_UNIFORM`）在 $K=1$ 时端到端逐位等价于当前 A4。
+  五张 CSV 裁决矩阵全量闭合，裁决为 `QP_V2_SEMANTIC_DECISION=SELECT_ONE(CANDIDATE_A_TOPK_UNIFORM)`。
+- **冻结边界**：0 FE 消耗、0 新代码、0 编译构建、0 实验运行；产物为预注册设计包（`docs/evidence/V35-QP-V2-SEMANTIC-DESIGN/`，24 文件 SHA-256 全量反向复算 0 失败）。任何实现与后续工程门须等待用户以新任务书正式授权。

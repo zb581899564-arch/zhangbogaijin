@@ -1,0 +1,3 @@
+run,instance,budget,distinctIdentities,top1Count,top1Pct,top5Count,top5Pct,totalQpEvents,sourceFile
+A4-50k-hard,100_5_3_1,50000,194,4243,16.904%,13729,54.697%,25100,V35-FC5-MIDHORIZON-DIAGNOSTICS/26-final-runtime-jar-validation/A4-50k-ON-s20260901-121FBB49/telemetry-teacher-use-events.csv
+A4-20k-normal,100_2_4_1,20258,117,3473,26.715%,11558,88.908%,13000,V35-FC5-MIDHORIZON-DIAGNOSTICS/18-final-2k-20k-50k-gates/A4-20k-effective-20258-100_2_4_1-ON-final/telemetry-teacher-use-events.csv

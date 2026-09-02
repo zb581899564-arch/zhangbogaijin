@@ -1,0 +1,6 @@
+run,instance,budget,archiveSize1,archiveSize2,archiveSize3,archiveSize4,archiveSize5,archiveSize6,archiveSizeGE2Total,archiveSizeGE2Pct,sourceFile
+A4-50k-hard,100_5_3_1,50000,10053,6037,3596,3627,1787,0,15047,59.948%,V35-FC5-MIDHORIZON-DIAGNOSTICS/26-final-runtime-jar-validation/A4-50k-ON-s20260901-121FBB49/telemetry-teacher-use-events.csv
+A4-20k-hard,100_5_3_1,20258,11580,1420,0,0,0,0,1420,10.923%,V35-FC5-MIDHORIZON-DIAGNOSTICS/18-final-2k-20k-50k-gates/A4-20k-effective-20258-100_5_3_1-ON-final/telemetry-teacher-use-events.csv
+A4-20k-normal,100_2_4_1,20258,11882,1118,0,0,0,0,1118,8.600%,V35-FC5-MIDHORIZON-DIAGNOSTICS/18-final-2k-20k-50k-gates/A4-20k-effective-20258-100_2_4_1-ON-final/telemetry-teacher-use-events.csv
+D3-50k-pooled,20_2_3_1,50000,8466,6834,0,0,0,0,6834,44.667%,V35-A2-A3-DECOMPOSITION/04-runs/seed-2026082*/*/a2a3-personal-leader-events.csv (pooled 3 seeds)
+D2-50k-pooled,20_2_3_1,50000,23750,6250,0,0,0,0,6250,20.833%,same (pooled 3 seeds)

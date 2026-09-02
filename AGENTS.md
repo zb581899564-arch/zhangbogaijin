@@ -1484,3 +1484,23 @@ phaseA0Decision=PHASE_A0_PREREGISTRATION_PASSED（evidenceRepackComplete=true）
 5. 重启条件：用户须先以新的明确授权冻结 K 语义预注册（补齐 8 项缺失定义：计数对象、作用集合、
    K>1 选择规则、破平规则、候选不足 fallback、RNG 契约、K=1 还原机制证明、动作/奖励/容量不变式），
    方可进入实现与等价门。证据：`docs/evidence/V35-QP-V2-SINGLE-AXIS/`（清单 4+1 项反向复算闭合）。
+
+## 40. V35-QP-V2-SEMANTIC-DESIGN Phase B0.5：单轴 K 语义设计与候选裁决（2026-09-02，追加）
+
+1. **性质与授权**：用户以新任务书授权执行 Phase B0.5（0-FE 纯设计工作包），补齐 D-116 登记的 K 语义预注册缺口；
+   严格禁止编码、编译、构建与运行实验（`newFEConsumed=0`）。
+2. **事实审计与经验量化**：
+   - 审计 Qp 端到端调用链、规范语义合同与设计约束（`CURRENT_QP_CALL_CHAIN.md`, `CURRENT_QP_SEMANTIC_CONTRACT.md`, `QP_V2_DESIGN_CONSTRAINTS.md`）；
+   - 确认真实 A4 500k 100-job 非 KEEP 动作被选占比 50.6%–56.4%；50k HARD 档案规模 1–5（$\ge 2$ 占 59.95%，$\ge 3$ 占 35.9%）；
+     非 KEEP ∧ 档案 $\ge 2$ 占全部 Qp 动作 33.60%–50.6%；Qp 占全部教师事件 95.6%（$K$ 杠杆覆盖全部教师事件 32%–54%，
+     与 teacher-lambda 的 1.12% 存在两个数量级本质物理差异）；
+3. **候选设计与 K=1 证明**：
+   - `CANDIDATE_A_TOPK_UNIFORM`（动作一致Top-K候选池 + 均匀随机探索）：16项完整定义 + Java 8 伪代码；
+     定理 1 与程序级状态归纳法严格证明 $K=1$ 端到端逐位等价（0 额外 RNG，`front.csv` 逐位相同）；
+   - `CANDIDATE_B_TOPK_DETERMINISTIC`（动作一致Top-K候选池 + 确定性轮转）：因轮转函数构成第二隐藏设计自由度，被 A 支配；
+   - `CANDIDATE_C_MULTI_LEADER`（多领导联合/多子代全评价）：改变 CFVF 公式或 FE 预算，超范围直接否决；
+4. **科学裁决**：`QP_V2_SEMANTIC_DECISION=SELECT_ONE`，唯一入选 `CANDIDATE_A_TOPK_UNIFORM`；
+   五张裁决 CSV 矩阵全部生成并闭合；
+5. **冻结声明与边界**：0 FE 消耗、0 新代码、0 编译构建、0 实验运行；产物为预注册设计包
+   （`docs/evidence/V35-QP-V2-SEMANTIC-DESIGN/`，24 文件 SHA-256 全量反向复算 0 失败）；
+   任何算法实现与后续 Phase B1 工程门必须等待用户以新任务书正式授权。

@@ -2658,3 +2658,38 @@ CFVFChanged=false
 DualQActionRewardChanged=false
 CaTaChanged=false
 ```
+
+### D-117：Phase B0.5 Qp-v2 单轴 K 语义设计与候选裁决（2026-09-02）
+
+用户授权执行 `V35-QP-V2-SEMANTIC-DESIGN`（Phase B0.5，0-FE 纯设计工作包）：
+
+1. **事实审计**：完成当前 Qp 调用链与规范语义合同审计（`CURRENT_QP_CALL_CHAIN.md`, `CURRENT_QP_SEMANTIC_CONTRACT.md`, `QP_V2_DESIGN_CONSTRAINTS.md`）；
+2. **经验可触达率确认**（只读既有遥测，0 新 FE）：A4 500k 100-job 真实非 KEEP 动作占比 50.6%–56.4%；50k HARD 档案规模 1–5（$\ge 2$ 占 59.95%，$\ge 3$ 占 35.9%）；非 KEEP 且档案 $\ge 2$ 达 33.60%–50.6%；Qp 占教师事件 95.6%（$K$ 杠杆覆盖全部教师事件 32%–54%，与 teacher-lambda 的 1.12% 存在本质物理差异）；
+3. **候选设计与 K=1 证明**：
+   - `CANDIDATE_A_TOPK_UNIFORM`（动作一致Top-K候选池 + 均匀随机探索）：定理 1 与程序状态归纳法证明 $K=1$ 端到端逐位等价（0 额外 RNG，front.csv 相同）；
+   - `CANDIDATE_B_TOPK_DETERMINISTIC`（动作一致Top-K候选池 + 确定性轮转）：因轮转函数构成第二隐藏设计自由度，被 A 支配；
+   - `CANDIDATE_C_MULTI_LEADER`（多领导联合/多子代全评价）：改变 CFVF 公式或 FE 预算，超范围直接否决；
+4. **裁决结果**：`QP_V2_SEMANTIC_DECISION=SELECT_ONE`，唯一入选 `CANDIDATE_A_TOPK_UNIFORM`；
+5. **冻结声明与边界**：0 FE 消耗、0 新代码、0 编译构建、0 实验运行；产物为预注册设计包（`docs/evidence/V35-QP-V2-SEMANTIC-DESIGN/`，24 文件 SHA-256 全量复算一致）；任何实现与后续工程门必须由用户以新任务书批准。
+
+```ini
+currentStage=QP_V2_SEMANTIC_DESIGN_CLOSED
+QP_V2_SEMANTICS_DESIGNED=true
+QP_V2_SELECTED_CANDIDATE=CANDIDATE_A_TOPK_UNIFORM
+QP_V2_IMPLEMENTED=false
+QP_V2_EXPERIMENT_STARTED=false
+PHASE_B1_ENGINEERING_GATE=PENDING_USER_TASK_AUTHORIZATION
+QP_V2_250K_ELIGIBLE=false
+QP_V2_250K_PREREGISTERED=false
+QP_V2_250K_STARTED=false
+DOE_AUTHORIZED=false
+VALIDATION_AUTHORIZED=false
+FORMAL_AUTHORIZED=false
+formalMatrixRunning=false
+formalJarChanged=false
+PDDRChanged=false
+CFVFChanged=false
+DualQActionRewardChanged=false
+CaTaChanged=false
+newFEConsumed=0
+```
