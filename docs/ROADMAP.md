@@ -2572,3 +2572,45 @@ formalJarChanged=false
 
 唯一在册下一步为 `SA-NORMAL`（`100_2_3_1/20260901/A4/500k/V5 ON`，同一25k网格），须用户单独批准；
 未完成该运行前不得计算hard–normal差值门或宣布G1/G3。
+
+### D-115：SA-NORMAL V5 500k完成，Phase A G4收口（2026-09-02）
+
+- 唯一运行 `SA-NORMAL-V5`（`100_2_3_1/20260901/A4/C0_BETA_MAX_065/500k/observer V5 ON`）完成并验收：56/56门PASS，
+  `actualFE=500000`、`EXACT_MAX_FE`、`sourceLedgerRows=500000`、lifecycle十类事件2,488,377行、B0独立重算5/5逐点一致、
+  19+1检查点overshoot=0、正式Jar运行前后SHA不变。训练机全新目录，单JVM、`-Xms1g -Xmx4g`（未扩堆）、堆峰值2.98GB无OOM。
+- 初始种群快照：`100_2_3_1×20260901`此前无已执行记录，使用项目规范零-FE物化器 `V35RepairSnapshotMaterializer`
+  确定性物化（`ea19f691…`）。**生成器同源性证明**：同一生成器对 `100_5_3_1/20260901` 再物化与历史HARD快照逐字节一致。
+  快照溯源29/29门通过。attempt1漏传binding秒退（0 FE），补齐后attempt2成功。
+- **HARD–NORMAL分析（冻结Phase A0合同）**：`t_div=NOT_REACHED`（无连续两checkpoint lag）、
+  `G1_GLOBAL_CFVF=INSUFFICIENT`（WHVG deficit窗1-2持续+ExND deficit窗17-18持续但时序前提`t_div`不满足）、
+  `G3_CATA=NOT_TRIGGERED`（无持续deficit+FE占比<5%）、**`SOURCE_ATTRIBUTION=G4_NO_ACTIONABLE_LEVER`**、
+  `OLD_A4_DIAGNOSTIC_CLOSED=true`、`SOURCE_LEVER_CANDIDATE=NONE`。
+- 限制：B0退化基线（HV_0=0）使i=1 hvProgress数值不稳定但不影响lag判定；PA/QP利用层约53%事件无法按来源归属（如实登记）。
+- 证据：`docs/evidence/V35-SOURCE-ATTRIBUTION-500K/10-v5-sa-normal-500k/`（121项清单0缺0 mismatch；两文件≥100MB冷归档+SHA登记）。
+
+```ini
+currentStage=PHASE_A_G4_CLOSED
+SA_NORMAL_V5_STARTED=true
+SA_NORMAL_V5_COMPLETED=true
+RUN_ACCEPTANCE=PASSED
+HARD_NORMAL_ANALYSIS=COMPUTED
+t_div=NOT_REACHED
+G1_GLOBAL_CFVF=INSUFFICIENT
+G3_CATA=NOT_TRIGGERED
+SOURCE_ATTRIBUTION=G4_NO_ACTIONABLE_LEVER
+OLD_A4_DIAGNOSTIC_CLOSED=true
+SOURCE_LEVER_CANDIDATE=NONE
+SOURCE_ATTRIBUTION_ROOT_CAUSE_CONFIRMED=false
+SA_A2_CONDITIONAL_ELIGIBLE=false
+SA_A2_CONDITIONAL_STARTED=false
+DOE_AUTHORIZED=false
+QP_V2_AUTHORIZED=false
+CONFIG_RACE_AUTHORIZED=false
+VALIDATION_AUTHORIZED=false
+FORMAL_AUTHORIZED=false
+formalMatrixRunning=false
+PDDRChanged=false; CFVFChanged=false; DualQChanged=false; CaTaChanged=false; formalJarChanged=false
+```
+
+**Phase A结束（G4出口）**。Phase B、Qp-v2、DOE、Configuration Race、Validation、Final Freeze、正式矩阵均须新的明确授权。
+永久停止追 PDDR/pacing/teacher exposure/source扩大诊断（G4条款）。

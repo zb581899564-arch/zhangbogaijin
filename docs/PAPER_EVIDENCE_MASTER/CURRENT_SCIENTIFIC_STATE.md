@@ -485,3 +485,37 @@ SA_NORMAL_STARTED=false  formalMatrixRunning=false  formalJarChanged=false
 - 禁止：把"GLOBAL_CFVF占62%评价量"或任何窗口份额写为根因；用单侧轨迹自配对构造t_div代理值；据本包启动SA-NORMAL。
 - 证据：`docs/evidence/V35-SOURCE-ATTRIBUTION-500K/09-v5-sa-hard-500k/`（110项包级清单0缺失0不匹配；
   两文件≥100MB已G盘冷归档+SHA登记）。决策：`07-decision/SA_HARD_V5_DECISION.{md,properties}`。
+
+### V5 SA-NORMAL 500k与Phase A G4收口（2026-09-02，完成：HARD–NORMAL分析，G4出口）
+
+```ini
+SA_NORMAL_V5_STARTED=true
+SA_NORMAL_V5_COMPLETED=true
+RUN_ACCEPTANCE=PASSED(56/56)
+actualFE=decoderCalls=500000  remainingFE=0  utilizationRate=1.0  EXACT_MAX_FE
+sourceLedgerRows=500000  lifecycleRows=2488377(十类)  b0=5/5逐点一致  checkpointOvershoot=0
+snapshotSha256=ea19f691…  snapshotSource=MATERIALIZED_ZERO_FE(生成器同源性证明)
+initialPopulationHashV35=1fdf0820…  heapPeak=2.98GB(<4GB,no OOM)
+t_div=NOT_REACHED
+G1_GLOBAL_CFVF=INSUFFICIENT(窗口deficit信号存在但时序前提t_div不满足)
+G3_CATA=NOT_TRIGGERED(无持续deficit+FE占比<5%)
+SOURCE_ATTRIBUTION=G4_NO_ACTIONABLE_LEVER
+OLD_A4_DIAGNOSTIC_CLOSED=true
+SOURCE_LEVER_CANDIDATE=NONE
+SOURCE_ATTRIBUTION_ROOT_CAUSE_CONFIRMED=false
+SA_A2_CONDITIONAL_ELIGIBLE=false  SA_A2_CONDITIONAL_STARTED=false
+formalMatrixRunning=false  formalJarChanged=false
+```
+
+- 含义：HARD与NORMAL两条500k V5轨迹在冻结Phase A0合同下完成逐窗口来源归因比较。GLOBAL_CFVF在窗口层确有
+  WHVGShare/ExclusiveNDShare deficit（NORMAL的CFVF份额更高），但**没有coverage divergence锚点**（t_div=NOT_REACHED：
+  HARD未在decision-front HV/IGD上相对NORMAL持续落后）→G1的时序前提不成立→INSUFFICIENT。G3无信号。
+  **G4_NO_ACTIONABLE_LEVER**：Phase A结束，OLD_A4_DIAGNOSTIC_CLOSED=true，永久停止追PDDR/pacing/teacher/source扩大诊断。
+- 初始种群快照：`100_2_3_1×20260901`此前无已执行记录，使用项目规范零-FE物化器确定性物化；生成器同源性证明
+  （同一生成器复现HARD快照逐字节一致）。attempt1漏传binding秒退（0FE），补齐后attempt2成功。
+- 禁止：把CFVF 62%预算占比或任何窗口份额写为根因；FIRST_ADMISSION归因；新调阈值或重建reference。
+- 限制：B0退化基线（HV_0=0）使i=1 hvProgress数值不稳定但不影响lag判定；PA/QP利用层约53%事件无法按来源归属
+  （NOT_ATTRIBUTABLE_BY_FINGERPRINT_JOIN，如实登记未猜测）。
+- 证据：`docs/evidence/V35-SOURCE-ATTRIBUTION-500K/10-v5-sa-normal-500k/`（121项清单0缺0不匹配；
+  两文件≥100MB G盘冷归档+SHA登记）。决策：`06-decision/SA_NORMAL_V5_DECISION.{md,properties}`。
+  分析：`04-hard-normal-analysis/`（4份CSV+报告+decision.properties）。

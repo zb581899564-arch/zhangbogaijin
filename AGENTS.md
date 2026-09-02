@@ -1433,3 +1433,30 @@ phaseA0Decision=PHASE_A0_PREREGISTRATION_PASSED（evidenceRepackComplete=true）
 8. 停止边界保持：`SA_NORMAL_STARTED=false`、`SA_A2_CONDITIONAL_STARTED=false`、
    `SOURCE_ATTRIBUTION_ROOT_CAUSE_CONFIRMED=false`、`DOE/QP_V2/CONFIG_RACE/VALIDATION/FORMAL_AUTHORIZED=false`、
    `formalMatrixRunning=false`、`PDDR/CFVF/DualQ/CaTa/正式Jar全部零改动`。SA-NORMAL须用户另行批准。
+
+## 38. SA-NORMAL V5 500k完成与Phase A G4收口（2026-09-02，追加）
+
+1. 已执行唯一一条 SA-NORMAL V5 500k：`100_2_3_1/20260901/A4/C0_BETA_MAX_065/500k/observer V5 ON`。
+   训练机全新目录 `zhangbo-v35-source-attribution-v5-sa-normal-500k-20260902`，单 JVM、nice 10、`-Xms1g -Xmx4g`、
+   V5在前+正式Jar在后。`exit=0`、`COMPLETED`、`actualFE=500000`、`remainingFE=0`、`utilizationRate=1.0`、
+   `EXACT_MAX_FE`。验收56/56通过。
+2. **初始种群快照**：`100_2_3_1×20260901` 此前无任何已执行记录（正式 manifest 只覆盖 seeds 20260808..20260827），
+   训练机亦无此快照。使用项目规范零-FE物化器 `V35RepairSnapshotMaterializer` 确定性物化
+   （`ea19f691…3a1842`）。**生成器同源性证明**：同一生成器对 `100_5_3_1/20260901` 的再物化与历史 HARD 快照
+   逐字节一致（`84d84523…`）→ NORMAL 与 HARD 快照出自同一条确定性生成规则。快照溯源29/29门通过。
+3. attempt1 因漏传 `bindings/100_2_3_1.binding.properties` 秒退（exit=1，评价前，0 FE），日志归档 `logs-attempt1/`，
+   补齐后 attempt2 成功。如实保留。
+4. **HARD–NORMAL 分析（冻结Phase A0合同，不重建reference/阈值）**：
+   - `t_div=NOT_REACHED`：HARD 相对 NORMAL 在 decision-front HV/IGD 上无连续两 checkpoint 同时满足 lag 条件。
+   - `G1_GLOBAL_CFVF=INSUFFICIENT`：GLOBAL_CFVF 的 WHVGShare deficit 在窗1–2 持续（fpw=1）、ExNDShare deficit
+     在窗17–18 持续（fpw=17），但 t_div=NOT_REACHED → 时序前提（firstPersistentWindow ≤ t_div）不满足。
+     survival 异常不竞争（mergeToPddr/pddrToWorking 逐来源差 <10pp）。
+   - `G3_CATA=NOT_TRIGGERED`：CATA 无任何 metric 持续 deficit；FE 占比 2.23%(N)/3.04%(H) < 5% 实质性门槛。
+   - **`SOURCE_ATTRIBUTION=G4_NO_ACTIONABLE_LEVER`**；`OLD_A4_DIAGNOSTIC_CLOSED=true`；`SOURCE_LEVER_CANDIDATE=NONE`。
+5. 限制（如实登记）：(a) B0 退化基线（HV_0=0）使 i=1 的 hvProgress 数值不稳定，但 lag 在 i=1 因 IGD 分量未过门
+   而 False，不影响 t_div；(b) PA/QP 利用层中 `PERSONAL_ARCHIVE/QP_TEACHER/QP_ACTION` 主体指纹不在评价账本
+   （NORMAL 1,321,618行 / HARD 1,323,122行）无法按来源归属，标记 `NOT_ATTRIBUTABLE_BY_FINGERPRINT_JOIN`。
+6. 证据治理：10包121项清单0缺0 mismatch；两文件≥100MB G盘冷归档+SHA登记；`.gitignore`单独排除。
+7. **Phase A 结束（G4出口）**。`SA_A2_CONDITIONAL_ELIGIBLE=false`、`SA_A2_CONDITIONAL_STARTED=false`。
+   Phase B、Qp-v2、DOE、Configuration Race、Validation、Final Freeze、正式矩阵均须新的明确授权。
+   永久停止追 PDDR/pacing/teacher exposure/source扩大诊断（G4 条款）。
