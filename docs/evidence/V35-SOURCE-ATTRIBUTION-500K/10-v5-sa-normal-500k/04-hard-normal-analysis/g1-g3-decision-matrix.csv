@@ -1,0 +1,5 @@
+source,firstPersistentWindow_WHVGShare,firstPersistentWindow_ExclusiveNDShare,t_div,timingOk_firstPersistent_le_t_div,survivalAnomalyCompetes,cataFEMaterialityMet,verdict
+GLOBAL_CFVF,1,17,NOT_REACHED,False,False,False,INSUFFICIENT
+CATA,NONE,NONE,NOT_REACHED,False,False,False,NOT_TRIGGERED
+INHERITED_LS,NONE,NONE,NOT_REACHED,False,False,False,N/A (not a G1/G3 lever candidate)
+PARENT_CARRYOVER,NONE,NONE,NOT_REACHED,False,False,False,N/A (not a G1/G3 lever candidate)

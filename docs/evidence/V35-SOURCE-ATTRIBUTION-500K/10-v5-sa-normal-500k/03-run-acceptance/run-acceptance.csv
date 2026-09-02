@@ -1,0 +1,57 @@
+gate,value,expected,result
+evidenceManifestMatched,67,67,PASS
+evidenceManifestMissing,0,0,PASS
+evidenceManifestMismatch,0,0,PASS
+budgetRequestedMaxFE,500000,500000,PASS
+statusCompleted,COMPLETED,COMPLETED,PASS
+processExitCode,0,0,PASS
+failuresNone,NONE,NONE,PASS
+actualFeEqualsDecoderCalls,True,True,PASS
+actualFeInRange,True,True,PASS
+remainingFEInRange,True,True,PASS
+remainingFEValue,0,500000-actualFE,PASS
+utilizationRate,1.0,>0.99,PASS
+terminationKind,EXACT_MAX_FE,EXACT_MAX_FE,PASS
+illegalSolutions,0,0,PASS
+duplicateEvaluations,0,0,PASS
+formalJarShaInBudget,8dad8f40266feeaa4cdb9b47dbe4e342d9064847df32c7f2933149b9b6bad8b9,8dad8f40266feeaa4cdb9b47dbe4e342d9064847df32c7f2933149b9b6bad8b9,PASS
+observerJarShaInBudget,1a73e3cf025f7cfdb47bde38a7b34e8f8b0810958f61323a5d3cbc35272c8c9e,1a73e3cf025f7cfdb47bde38a7b34e8f8b0810958f61323a5d3cbc35272c8c9e,PASS
+heapXmx4gNotEnlarged,True,True,PASS
+abnormalRepairs,0,0,PASS
+observerExecutionErrors,0,0,PASS
+telemetryLedgerErrors,0,0,PASS
+telemetryLedgerRowsEqualsActualFE,500000,500000,PASS
+observerLossZero,True,True,PASS
+mechanismFingerprintOuterCycles,62,62 (frozen A4 schedule),PASS
+mechanismFingerprintCfvfOffspring,310000,310000 (frozen A4 schedule),PASS
+mechanismFingerprintQgSelections,12400,12400 (frozen A4 schedule),PASS
+mechanismFingerprintQpActions,271800,271800 (frozen A4 schedule),PASS
+runtimeMixture,G1_CMAX=20;G4_BALANCED=40;G2_TEC=20;G3_TWC=20,G1=20;G4=40;G2=20;G3=20,PASS
+initialPopulationHashMatchesSnapshot,1fdf0820a8a5d035d53801dcd845313f0d9d3fb0f19c134ad29316da2192155e,1fdf0820a8a5d035d53801dcd845313f0d9d3fb0f19c134ad29316da2192155e,PASS
+snapshotStagingSha256,ea19f69137e088fc9ef15b6c67700f8ee5029116df7c14ff931ae4cdb53a1842,ea19f69137e088fc9ef15b6c67700f8ee5029116df7c14ff931ae4cdb53a1842,PASS
+ledgerRows,500000,500000,PASS
+ledgerRowsEqualsActualFE,True,True,PASS
+ledgerUnsetSourceRows,0,0,PASS
+ledgerInvalidObjectiveRows,0,0,PASS
+ledgerNominalWindowRuleViolations,0,0,PASS
+finalEvaluateColumnPresent,True,True,PASS
+ledgerSourceDistribution,"{'NOT_APPLICABLE': 100, 'GLOBAL_CFVF': 310000, 'CATA': 11167, 'INHERITED_LS': 178733}",4 known classes,PASS
+sourceLossZero,0,0,PASS
+b0StrictNdRecalcSize,5,exported 5,PASS
+b0PointwiseMatch,PASSED,PASSED,PASS
+lifecycleEventTypes,"['DESCENDANT', 'GENERATED', 'IMPROVING_DESCENDANT', 'MERGE_POOL', 'PDDR_SELECTED', 'PERSONAL_ARCHIVE', 'QG_TEACHER', 'QP_ACTION', 'QP_TEACHER', 'WORKING_POPULATION']","['DESCENDANT', 'GENERATED', 'IMPROVING_DESCENDANT', 'MERGE_POOL', 'PDDR_SELECTED', 'PERSONAL_ARCHIVE', 'QG_TEACHER', 'QP_ACTION', 'QP_TEACHER', 'WORKING_POPULATION']",PASS
+lifecycleMissingTypes,[],[],PASS
+lifecycleUnsetSourceRows,0,0,PASS
+configuredCheckpointTargets,19,19,PASS
+checkpointTargetsGrid,"[25000, 50000, 75000, 100000, 125000, 150000, 175000, 200000, 225000, 250000, 275000, 300000, 325000, 350000, 375000, 400000, 425000, 450000, 475000]",25000..475000 step 25000,PASS
+terminalTargetFE,[500000],[500000],PASS
+b0TargetFE,[0],[0],PASS
+nonB0SnapshotTargetCount,20,20,PASS
+maxOvershootFE,0,<5000,PASS
+terminalObservedFE,500000,500000,PASS
+checkpointsUnreadable,0,0,PASS
+checkpointNonFiniteObjectives,0,0,PASS
+frontPoints,518,>0,PASS
+frontAllFinite,True,True,PASS
+frontSha256Raw,bd4464f36f021b4b1d03d52959fbcd775dd0da031f6bf476ffadc6eb4b0965c1,recorded (no determinism reference for NORMAL/20260901),PASS
+heapUsedPeakBytes,3202396152,"recorded (must be < 4GB, no OOM)",PASS
