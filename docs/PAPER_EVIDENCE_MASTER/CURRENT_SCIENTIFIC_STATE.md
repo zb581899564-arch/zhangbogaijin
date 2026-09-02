@@ -519,3 +519,34 @@ formalMatrixRunning=false  formalJarChanged=false
 - 证据：`docs/evidence/V35-SOURCE-ATTRIBUTION-500K/10-v5-sa-normal-500k/`（121项清单0缺0不匹配；
   两文件≥100MB G盘冷归档+SHA登记）。决策：`06-decision/SA_NORMAL_V5_DECISION.{md,properties}`。
   分析：`04-hard-normal-analysis/`（4份CSV+报告+decision.properties）。
+
+### V35-QP-V2-SINGLE-AXIS Phase B1：语义欠定义停止（2026-09-02，D-116）
+
+```ini
+QP_V2_SEMANTICS_UNDERDEFINED=true
+QP_V2_SEMANTICS_FROZEN=false
+QP_V2_IMPLEMENTED=false
+QP_V2_EXPERIMENT_STARTED=false
+K1_BEHAVIOR_EQUIVALENT=false (NOT_OBSERVABLE, 未实现未运行)
+K2_K4_MECHANISM_TRIGGERED=false
+PHASE_B1_ENGINEERING_GATE=BLOCKED (K语义欠定义)
+QP_V2_250K_ELIGIBLE=false
+QP_V2_250K_PREREGISTERED=false
+QP_V2_250K_STARTED=false
+DOE_AUTHORIZED=false  VALIDATION_AUTHORIZED=false  FORMAL_AUTHORIZED=false
+formalMatrixRunning=false  newFEConsumed=0
+PDDRChanged=false  CFVFChanged=false  DualQActionRewardChanged=false  CaTaChanged=false
+formalJarChanged=false (Jar 8DAD8F40…BAD8B9 前后实测一致)
+remoteOriginMain=051877aa (IN_SYNC, 此前推送阻塞已解除)
+```
+
+- 含义：用户授权的 Qp-v2 单轴 K（K=1,2,3,4）工作包在第一硬门（语义来源核查）处 fail-closed。
+  获批材料对 K 仅有轴取值、K=1≡A4 要求、同时调整禁令与证明协议；计数对象、作用候选集合、
+  K>1 选择/破平规则、候选不足 fallback、RNG 契约、K=1 还原机制全部缺失。当前 A4 的 Qp 是
+  "动作→唯一候选"确定性映射（`ZhangBoQpCandidateSelector`），不存在现成多元素候选集，
+  任何 Top-K 实现都是自行发明算法。未实现、未编译、未运行、未消耗 FE。
+- Phase A G4 结论不受影响：OLD_A4_DIAGNOSTIC_CLOSED=true 继续有效；Phase B 是假设驱动的
+  新候选路线，工程门 BLOCKED 不涉及任何性能结论。250k、DOE、Validation、Final Freeze、
+  正式矩阵均未启动，须用户另行批准。
+- 证据：`docs/evidence/V35-QP-V2-SINGLE-AXIS/`（00-governance / 01-semantic-source-audit /
+  07-decision；清单 4+1 项反向复算闭合）。重启须用户先冻结含 8 项缺失定义的 K 语义预注册。

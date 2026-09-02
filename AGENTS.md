@@ -1460,3 +1460,27 @@ phaseA0Decision=PHASE_A0_PREREGISTRATION_PASSED（evidenceRepackComplete=true）
 7. **Phase A 结束（G4出口）**。`SA_A2_CONDITIONAL_ELIGIBLE=false`、`SA_A2_CONDITIONAL_STARTED=false`。
    Phase B、Qp-v2、DOE、Configuration Race、Validation、Final Freeze、正式矩阵均须新的明确授权。
    永久停止追 PDDR/pacing/teacher exposure/source扩大诊断（G4 条款）。
+
+## 39. V35-QP-V2-SINGLE-AXIS Phase B1：语义欠定义裁决（2026-09-02，追加）
+
+1. 用户授权的 Phase B1 工作包（Qp-v2 单轴 K 语义冻结、隔离实现与 20k 工程门）已执行到**第一硬门即停止**。
+   语义来源核查（9类来源全查：Phase A计划全文、AGENTS/ROADMAP/CURRENT_SCIENTIFIC_STATE、三人共识证据目录、
+   Qp 源码 `ZhangBoQpCandidateSelector.java`、冻结Jar源码树审计
+   `V35-PFC5-TEACHER-EXPOSURE-CAL-PREREG/01-source-semantics/TEACHER_SELECTION_CALL_CHAIN.md`、git全历史）
+   确认：获批材料对 K 的全部定义只有 Phase A 计划 §8 一句话——轴取值 `K=1,2,3,4`、
+   K=1 精确等价 current A4 的**要求**、"不得同时调 teacher lambda/PA size/tauQ/epsilon"禁令与
+   证明协议；G2 出口虽命名 `QP_CANDIDATE_SET_POLICY_V2`，但该出口从未触发，无任何展开。
+2. 七项必需语义定义中五项完全缺失（K计数对象、作用候选集合、K>1选择规则、稳定破平、
+   候选不足fallback、RNG消费契约），K=1→A4 仅有要求无还原机制。当前 A4 的 Qp 是
+   "动作→唯一候选"确定性映射（每动作 argmin + fingerprint 破平），不存在现成的多元素候选集；
+   任何 Top-K 实现都是自行发明算法，违反第一硬门。
+3. 裁决：`QP_V2_SEMANTICS_UNDERDEFINED=true`、`QP_V2_IMPLEMENTED=false`、
+   `QP_V2_EXPERIMENT_STARTED=false`、`PHASE_B1_ENGINEERING_GATE=BLOCKED`
+   （阻塞条件=K语义欠定义）、`QP_V2_250K_ELIGIBLE=false`。未实现任何 Profile/Runner/实验Jar，
+   未运行任何实验（`newFEConsumed=0`），未启动 250k/DOE/Validation/正式矩阵。
+   正式 Jar `8DAD8F40…BAD8B9` 前后实测一致；PDDR/CFVF/双Q动作奖励/CA-TA 零改动。
+4. 远端同步：`origin/main` 已推进至 `051877aa`（=本地 main），上次登记的推送阻塞已解除。
+   工作区遗留的未跟踪文件（`07-sa-hard-500k/` 下 8 项）只读登记不处置。
+5. 重启条件：用户须先以新的明确授权冻结 K 语义预注册（补齐 8 项缺失定义：计数对象、作用集合、
+   K>1 选择规则、破平规则、候选不足 fallback、RNG 契约、K=1 还原机制证明、动作/奖励/容量不变式），
+   方可进入实现与等价门。证据：`docs/evidence/V35-QP-V2-SINGLE-AXIS/`（清单 4+1 项反向复算闭合）。
