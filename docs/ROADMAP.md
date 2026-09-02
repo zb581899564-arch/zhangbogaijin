@@ -2693,3 +2693,52 @@ DualQActionRewardChanged=false
 CaTaChanged=false
 newFEConsumed=0
 ```
+
+### D-118：Phase B1 Qp-v2 Candidate A 隔离实现与三级工程门（Gate 0/1/2）全部通过（2026-09-02）
+
+用户明确授权执行 `V35-QP-V2-PHASEB1-IMPLEMENTATION`（Qp-v2 Candidate A 隔离实现与三级工程门）：
+
+1. **源码事实审计与隔离实现**：
+   - 依据Phase B0.5冻结规范完成8项源码事实核验（`SOURCE_FACT_AUDIT.md`）；
+   - 实现隔离源码包（`V35QpTopKConfiguration`, `V35QpV2Profile`, `V35QpTopKCandidateSelector`, `V35QpV2TelemetrySink`, `V35QpV2ExperimentRunner`），在独立构建产物 `jmetal-algorithm-5.8-V35-QP-V2-PHASEB1.jar`（SHA-256: `B0799FCA46B9DCA4512A20F9784BB7A3328D9D669B77030F7DC647E396836DD3`）中完成打包；
+   - 正式算法 Jar `8DAD8F40266FEEAA4CDB9B47DBE4E342D9064847DF32C7F2933149B9B6BAD8B9` 零修改、零重构。
+2. **Gate 0 单元测试套件（14/14 通过）**：
+   - 覆盖K值范围校验（1..4）、动作候选池排序比较器、条目不足K截断无填充、KEEP单例、COMPLEMENTARY无伪造、K=1严格等价、K=1零RNG消耗、K=2..4单次RNG绘制、动作掩码K不变性、冻结机制完整性、配置文本与哈希唯一性、基线配置文件拒绝K2..4、打乱输入排序稳定性、退化边界稳定破平；全部通过（`GATE0_UNIT_TEST_REPORT.md`）。
+3. **Gate 1 本地 2k 验证（通过）**：
+   - 在 `20_2_3_1` / seed `20260822` 执行 5 臂（`REF_A4`, `QP_V2_K1`, `QP_V2_K2`, `QP_V2_K3`, `QP_V2_K4`）；
+   - 阶段一致预算终止生效（actualFE=100），前沿全部逐字节完全一致（SHA-256: `B16A070CA939B7534AB863CB0172E7C07CD8519D351B8AD04E545E0848422072`），验证了前Q阶段不变性与K=1等价性（`GATE1_LOCAL_2K_REPORT.md`）。
+4. **Gate 2 远端 20k 工程门（10/10 运行全部通过）**：
+   - 在训练机 `aic-inspur-home` 执行 2 实例（`20_2_3_1` / seed `20260822`, `100_5_3_1` / seed `20260901`）$\times$ 5 臂 = 10 条 20k 运行，actualFE=15258 严格符合阶段一致终止；
+   - **$K=1$ 行为等价性**：在两个实例上 `QP_V2_K1` 的 `front.csv` 与基线 `REF_A4` 达到 **100% 逐字节一致**（`BYTE_IDENTICAL`），且额外 RNG 消耗与非规范选择数均为 0；
+   - **$K \ge 2$ 机制激活**：在 `20_2_3_1` 上触发 2,199 次多候选选择与 1,108 次非规范探索；在 `100_5_3_1` 上触发 172 次多候选选择与 87 次非规范探索；
+   - 全量遥测和事件记录正常，无任何崩溃或异常（`GATE2_REMOTE_20K_REPORT.md`）。
+5. **冻结与治理边界**：
+   - 产物进入 `docs/evidence/V35-QP-V2-PHASEB1-IMPLEMENTATION/`（155项清单0缺失0不匹配）；
+   - 250k、DOE矩阵、Validation矩阵、正式矩阵全部未启动；
+   - 机制零破坏：动作空间（4动作）、奖励函数、档案容量（$L=6$）、CFVF公式、PDDR（`GLOBAL_ORIGINAL`）100%保持冻结；
+   - 当前具备 Phase B2（250k 探索或预选）的工程准入资格，但未获用户新任务书前不得自动启动任何 250k/500k 运行。
+
+```ini
+currentStage=PHASE_B1_IMPLEMENTATION_AND_GATES_PASSED
+QP_V2_IMPLEMENTED=true
+QP_V2_SELECTED_CANDIDATE=CANDIDATE_A_TOPK_UNIFORM
+GATE0_UNIT_TESTS=PASSED (14/14)
+GATE1_LOCAL_2K=PASSED (5/5 arms, K1 byte identical)
+GATE2_REMOTE_20K=PASSED (10/10 runs, K1 byte identical, K2..4 triggered)
+K1_BEHAVIOR_EQUIVALENT=BYTE_IDENTICAL
+K2_K4_MECHANISM_TRIGGERED=true
+PHASE_B1_ENGINEERING_GATE=PASSED
+QP_V2_250K_ELIGIBLE=true
+QP_V2_250K_PREREGISTERED=false
+QP_V2_250K_STARTED=false
+DOE_AUTHORIZED=false
+VALIDATION_AUTHORIZED=false
+FORMAL_AUTHORIZED=false
+formalMatrixRunning=false
+formalJarChanged=false
+PDDRChanged=false
+CFVFChanged=false
+DualQActionRewardChanged=false
+CaTaChanged=false
+newFEConsumed=0 (0 250k/500k formal FE consumed)
+```

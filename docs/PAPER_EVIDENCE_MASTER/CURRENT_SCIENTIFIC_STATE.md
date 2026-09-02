@@ -580,3 +580,37 @@ newFEConsumed=0
   严格数学定理与状态归纳法证明候选 A（`CANDIDATE_A_TOPK_UNIFORM`）在 $K=1$ 时端到端逐位等价于当前 A4。
   五张 CSV 裁决矩阵全量闭合，裁决为 `QP_V2_SEMANTIC_DECISION=SELECT_ONE(CANDIDATE_A_TOPK_UNIFORM)`。
 - **冻结边界**：0 FE 消耗、0 新代码、0 编译构建、0 实验运行；产物为预注册设计包（`docs/evidence/V35-QP-V2-SEMANTIC-DESIGN/`，24 文件 SHA-256 全量反向复算 0 失败）。任何实现与后续工程门须等待用户以新任务书正式授权。
+
+### V35-QP-V2-PHASEB1-IMPLEMENTATION Phase B1：隔离实现与三级工程门全部通过（2026-09-02，D-118）
+
+```ini
+currentStage=PHASE_B1_IMPLEMENTATION_AND_GATES_PASSED
+QP_V2_IMPLEMENTED=true
+QP_V2_SELECTED_CANDIDATE=CANDIDATE_A_TOPK_UNIFORM
+GATE0_UNIT_TESTS=PASSED (14/14)
+GATE1_LOCAL_2K=PASSED (5/5 arms, K1 byte identical)
+GATE2_REMOTE_20K=PASSED (10/10 runs, K1 byte identical, K2..4 triggered)
+K1_BEHAVIOR_EQUIVALENT=BYTE_IDENTICAL
+K2_K4_MECHANISM_TRIGGERED=true
+PHASE_B1_ENGINEERING_GATE=PASSED
+QP_V2_250K_ELIGIBLE=true
+QP_V2_250K_PREREGISTERED=false
+QP_V2_250K_STARTED=false
+DOE_AUTHORIZED=false
+VALIDATION_AUTHORIZED=false
+FORMAL_AUTHORIZED=false
+formalMatrixRunning=false
+formalJarChanged=false
+PDDRChanged=false
+CFVFChanged=false
+DualQActionRewardChanged=false
+CaTaChanged=false
+newFEConsumed=0 (0 250k/500k formal FE consumed)
+```
+
+- **含义**：根据用户任务书执行 Phase B1 实现与验证。
+  1. **隔离实现**：源码与实验独立打包为 `jmetal-algorithm-5.8-V35-QP-V2-PHASEB1.jar`（SHA-256: `B0799FCA46B9DCA4512A20F9784BB7A3328D9D669B77030F7DC647E396836DD3`），Java 8 字节码兼容，正式算法 Jar（`8DAD8F40…BAD8B9`）完全零改动；
+  2. **Gate 0 单元测试**：14 项科学与工程不变式测试全量 PASS（含 K=1 零额外 RNG、KEEP 单例、打乱输入稳定破平等）；
+  3. **Gate 1 本地 2k 验证**：5 臂运行全部 PASS，前 Q 阶段不变性与阶段一致预算终止生效，K1 与基线逐字节一致；
+  4. **Gate 2 远端 20k 工程门**：训练机 10 条运行全部 PASS；`QP_V2_K1` 与 `REF_A4` 在两测试实例（`20_2_3_1` / seed `20260822` 与 `100_5_3_1` / seed `20260901`）上达成 **100% 逐字节完全一致（`BYTE_IDENTICAL`）**，额外 RNG 为 0；`QP_V2_K2..K4` 成功激活非规范探索与单次额外 RNG 消耗（`20_2_3_1` 触发 2,199 次，`100_5_3_1` 触发 172 次）。
+- **冻结边界**：证据归档于 `docs/evidence/V35-QP-V2-PHASEB1-IMPLEMENTATION/`（155 项清单复算 0 失败）。动作空间、奖励、档案容量、CFVF、PDDR 保持 100% 冻结。具备 Phase B2 准入资格，但在获得用户明确任务授权前不得启动任何 250k/500k 运行。
