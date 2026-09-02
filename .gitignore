@@ -51,3 +51,5 @@ __pycache__/
 # 本地工作副本与训练机各保留一份（三份副本纪律），不进入 git 对象库。
 docs/evidence/V35-SOURCE-ATTRIBUTION-500K/09-v5-sa-hard-500k/02-remote-run/results/SA-HARD-V5-500k/source-ledger.csv
 docs/evidence/V35-SOURCE-ATTRIBUTION-500K/09-v5-sa-hard-500k/02-remote-run/results/SA-HARD-V5-500k/source-lifecycle-events.csv
+docs/evidence/V35-SOURCE-ATTRIBUTION-500K/10-v5-sa-normal-500k/02-remote-run/results/SA-NORMAL-V5-500k/source-ledger.csv
+docs/evidence/V35-SOURCE-ATTRIBUTION-500K/10-v5-sa-normal-500k/02-remote-run/results/SA-NORMAL-V5-500k/source-lifecycle-events.csv
